@@ -649,11 +649,11 @@ function fini( data ){
 		
 ---
 
-#A vos claviers !
+#C'est fini !
 
 <br>
 .full-page[![Source: http://www.lemonde.fr/education/article/2014/05/23/faut-il-enseigner-le-code-informatique-a-l-ecole_4424397_1473685.html](images/code-pour-tous.jpg)]
 <br>
 .center[
-##et stylos...
+##Pour aller (beaucoup) plus loin : le [DU Data Médias](http://www.datamedias.fr)
 ]
