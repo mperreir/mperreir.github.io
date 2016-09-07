@@ -1,0 +1,385 @@
+layout: true
+class: left, middle, animated, fadeIn
+
+---
+#Technologies web et XML
+
+<span class='footnote'><span class='red'>*</span> par R. LEHN, N. NORMAND et M. PERREIRA DA SILVA<span>
+
+---
+<div class='hidden'><div></div>
+
+# Table des matières
+
+[TOC]
+
+</div>
+
+---
+# Organisation des enseignements
+## Les cours (1/2)
+
+1. <span class='red'>RL</span> - Intro XML
+2. <span class='red'>RL</span> - Documents bien formés, espaces de nommage XML
+3. <span class='blue'>MPDS</span> - Intro Web, URI, HTML (1/2)
+4. <span class='blue'>MPDS</span> - HTML (2/2), CSS
+5. <span class='green'>NN</span> - Intro JavaScript, JavaScript et programmation objet par prototype
+6. <span class='green'>NN</span> - JavaScript fonctionnel, asynchronisme
+7. <span class='red'>RL</span> - DOM et SAX
+8. <span class='green'>NN</span> - Programmation défensive en JavaScript, mode strict, cross-doc
+
+---
+# Organisation des enseignements
+## Les cours (2/2)
+
+9. <span class='blue'>MPDS</span> - HTTP, cookies, websocket
+10. <span class='green'>NN</span> - Événements DOM, callback, promises, XHR, jQuery
+11. <span class='blue'>MPDS</span> - Technos serveur *(CGI, servlet, JSP, PHP, NodeJS, etc.)*
+12. <span class='red'>RL</span> - XPATH, XQuery
+13. <span class='red'>RL</span> - XSL, Validation XML
+14. <span class='green'>NN</span> - Promises, Fetch
+15. <span class='blue'>MPDS</span> - Services web et protocoles associés *(REST, SOAP, etc.)*
+
+
+---
+# Organisation des enseignements
+## Mes cours
+
+3. **Introduction**
+    + Historique, définitions et vue globale des technos web
+    + HTML5 (partie 1)
+4. **Technologies front-end** : affichage
+    + HTML5 (partie 2)
+    + CSS + Media queries
+    + responsive web design et accessibilité
+9. **Protocoles web**
+    + HTTP(S), MIME, Cookies, WebSocket
+11. **Programmation coté serveur**
+    + (FAST)CGI, WSGI, JSP, Servlets, Nodejs / Angularjs, etc.
+12. **Services web et protocoles associés**
+    + REST, XML-RPC, JSON-RPC, SOAP, UDDI, WSDL, etc.
+
+---
+# Introduction
+
+---
+# Le web?
+
+- <span class='red'>Web &ne; Internet</span>
+    + l'Internet = l'interconnexion de dizaines de milliers de réseaux autonomes
+        * Différents protocoles de communication : IP, TCP, DNS, FTP, HTTP, Telnet, etc.
+    + le Web = un système hypertexte public fonctionnant sur l'Internet
+        * Deux protocoles principaux : HTTP et WebSocket
+        * Et d'autres : IP, TCP, UDP, FTP, etc.
+
+- Permet de mettre des .green[ressources] à disposition des utilisateurs
+    + Texte
+    + Images
+    + Vidéos
+    + etc.
+
+---
+# Quelques dates
+
+- **1967** : Début du programme ARPANET au ministère de la défense des Etat-Unis
+- **1979** : Création du réseau civil USENET (newsgroup)
+- **1984** : Scission d'ARPANET entre MILNET  (militaire) et INTERNET
+- **1989** : Invention du Web (système hypertexte) au CERN par Tim Berners-Lee
+- **1991** : Apparition des fournisseurs d'accès commerciaux
+- **1993** : Premier navigateur graphique (NCSA Mosaic)
+
+---
+# Le web : un écosystème standardisé
+## Le W3C
+
+<span class='pull-right'>![Logo W3c](images/W3C_Icon.svg "Source: http://www.w3.org/Consortium/Legal/logo-usage-20000308")</span>
+
+- World Wide Web consortium (http://www.w3.org/)
+    - Fondé en 1994
+    - Président : Tim Berners-Lee (ancien du CERN)
+    - 384 membres (dont Microsoft, Mozilla, Apple, Opera, Google, etc.)
+- Objectif : créer et promouvoir les standards du web
+- Standard W3C = Recommandation
+    + Différentes étapes avant recommandation finale (draft, candidate, proposed, etc.)
+
+---
+# Le web : un écosystème standardisé
+## Le W3C
+
+- Nombreuses technologies standardisées
+    + DOM, (X)HTML, PNG, XML (XPath, XQuery, etc.), SVG, SOAP,  WSDL, etc.
+- Documents de normalisation en ligne
+    + Ex HTML 5: http://www.w3.org/TR/html5/
+    + Ex CSS 2.1: http://www.w3.org/TR/CSS2/
+- Outils de validation (gratuits)
+    + HTML: http://validator.w3.org/
+    + CSS: http://jigsaw.w3.org/css-validator/
+    + Mobile-friendly:  http://validator.w3.org/mobile/
+
+---
+# Le web : un écosystème standardisé
+## Le WaSP
+
+<span class='pull-right'>![Logo WaSP](images/WSaP_logo.png "Source: http://en.wikipedia.org/wiki/Web_Standards_Project")</span>
+
+- Web Standards Project (http://www.webstandards.org/)
+    + Fondé en 1998
+- Objectif : respect des standards par les navigateurs
+- Les outils du WaSP
+    + ACID test (actuellement ACID3)
+        * http://www.acidtests.org/
+    + Évalue : HTML, DOM, CSS, SVG, ECMAScript (JavaScript)
+
+---
+# Le web : un écosystème standardisé
+## L'IETF et les RFC
+
+<span class='pull-right'>![Logo IETF](images/ietflogotrans.gif "Source: https://www.ietf.org/")</span>
+
+- Internet Engineering Task Force
+    + Groupe informel
+    + Création de la plupart de RFC (Request For Comment)
+- Certaines RFC sont des standards (liste complète dans [RFC 5000](https://www.ietf.org/rfc/rfc5000.txt))
+    + UTF-8: [RFC 3629](https://www.ietf.org/rfc/rfc3629.txt)
+    + MIME: [RFC 2045](https://www.ietf.org/rfc/rfc2045.txt)
+    + HTTP: [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)
+    + etc.
+
+---
+<span class='full-page'>![Logo IETF](images/Moz_ffx_openStandards_1280x1024.jpg "Source: https://developer.mozilla.org/en-US/docs/MDN/Promote")</span>
+
+---
+# Terminologie et définitions
+- **Hôte** : Ordinateur relié au réseau
+- **Client** : Ordinateur envoyant des requêtes auxquelles un autre ordinateur va répondre
+- **Serveur** : Ordinateur qui écoute et traite les requêtes du client
+- **Navigateur** : programme informatique permettant de consulter des ressources sur le Web
+- **Ressource** : "Objet" qui peut être localisé et atteint à travers le réseau
+- **Nom de domaine** : Identifie un ensemble d'ordinateurs reliés à Internet et possédant une caractéristique commune
+
+---
+# Terminologie et définitions  (suite)
+- **Hypertexte** : Système contenant des nœuds reliées entre eux par des liens
+- **Hyperlien** : Lien qui relie deux nœuds entre eux
+- **HTTP** (Hypertext Transfer Protocol) : Protocole de communication client-serveur principalement utilisé sur le web
+- **HTML** (Hypertext Markup Language) : Langage de balisage conçu pour représenter des pages web. Permet de définir de l'Hypertexte.
+- **CSS** (Cascading Style Sheets) : Langage de description permettant de mettre en forme les documents HTML et CSS
+- **SVG** (Scalable Vector Graphics): Format de données basé sur XML, permettant de décrire des images vectorielles
+- **PNG** (Portable Network Graphics) : Format d'images matricielles permettant une compression sans pertes
+
+---
+# URI, URL et URN
++ **URI** (Uniform Resource Identifier) : Identifie une ressource (physique ou abstraite) sur un réseau ([RFC 3986](http://www.rfc-base.org/rfc-3986.html))
++ **Schéma** : Type de ressource identifiée par l'URI (ex: http, ftp, mailto, about). Ne référence pas forcement un protocole
++ **URL** (Uniform Resource Locator) : Est une URI, mais fournit en plus un moyen d'agir sur la ressource ou d'en obtenir une représentation. Décrit également le mode d'accès à cette ressource
+    * Ex1: http://web.polytech.univ-nantes.fr/
+    * Ex2: mailto:matthieu.perreiradasilva@univ-nantes.fr
++ **URN** (Uniform Resource Name) : Est une URI qui identifie une ressource par son nom dans un espace de nom
+    * Ex:  isbn:978-2-7540-3849-2
+
+---
+# URL et protocole HTTP
+- **Absolue** : `schéma://utilisateur:motdepasse@domaine:port/chemin?requête#fragment`
+    * Ex: `http://joe:bar@www.univ-nantes.fr:80/polytech/dpts/info?enseignant=perreiradasilva-m&cours=technos-web#slide4`
+- **Relative** : `chemin?requête#fragment`
+    * Ex1: `ici`
+    * Ex2: `/ici`
+    * Ex3: `./ici?query=something`
+    * Ex4: `../la/fichier.html`
+
+---
+#Encodage des caractères
+
+- Représentation numérique des caractères
+	+ Ex: `'A' = 0x41` en ASCII (hexadécimal)
+- **ASCII**: caractères de base (US) codés sur 7bits
+- **Variantes de l'ASCII** sur 8 bits
+	+ Nécessité de préciser le **jeu de caractères** (character set / codepage)
+	+ Ex: ISO [8859-1](http://www.open-std.org/JTC1/SC2/WG3/docs/n411.pdf) (europe occidentale) et [8859-15](http://www.open-std.org/JTC1/SC2/WG3/docs/n404.pdf) (variation avec €)
+- **UTF-8**: encodage universel à taille variable ([RFC 3629](http://tools.ietf.org/html/rfc3629))
+	+ De 8 à 32 bits, rétrocompatible avec ASCII
+ 	+ Ex: `'A' = 0x41`, `'à' = 0xC3 0xA0`, `'€' = 0xE2 0x82 0xAC `
+
+---
+# Percent-encoding
+
+- Les URI ne sont codées qu'à partir d'un jeu limité de caractères ASCII
+    + Caractères réservés : ont une signification particulière
+
+    ` !   #   $   &   '   (   )   *   +   ,   /   :   ;   =   ?   @   [   ] `
+
+    + Caractères non réservés : pas de signification particulière
+
+    ` A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z `
+
+    ` a   b   c   d   e   f   g   h   i   j   k   l   m   n   o   p   q   r   s   t   u   v   w   x   y   z `
+
+    ` 0   1   2   3   4   5   6   7   8   9   -   _   .   ~ `
+
+---
+# Percent-encoding (suite)
+
+- Pour tous les autres caractères ou pour utiliser les caractères réservés sans qu'ils ne soient interprétés on utilise le percent encoding
+
+    + Règle générale: %code_UTF-8 (en hexadécimal)
+        * Ex1: `espace = %20`
+        * Ex2: `% = %25`
+        * Ex3: `€ = %E2%82%AC`
+
+    + Même chose pour les caractères réservés
+
+| !     | #     | $     | &     | '     | (     | )     | *     | +     |
+| ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| %21   | %23   | %24   | %26   | %27   | %28   | %29   | %2A   | %2B   |
+
+| ,     | /     | :     | ;     | =     | ?     | @     | [     | ]     |
+| ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| %2C   | %2F   | %3A   | %3B   | %3C   | %3F   | %40   | %5B   | %5D   |
+
+---
+# Programmer pour le web ?
+
+<span class='full-page-h1'>![Les langages du web ?](images/web-languages.jpg  "Source: http://wikisocial.org/wp-content/uploads/2013/07/web-languages.jpg")</span>
+
+
+---
+# Site statique vs. dynamique
+
+##Site statique
+- Pages HTML (+CSS) créées à l'avance
+- Le serveur web ne fait qu'envoyer le contenu des fichiers
+- Pas de possibilité d'adaptation aux requêtes du client
+- Le web des années 90...
+
+<span class='center'>![Fonctionnement d'un site statique](images/schema01-3c35a.jpg "Source: http://www.cndp.fr/crdp-dijon/Sites-statiques-sites-dynamiques.html")</span>
+
+---
+# Site statique vs. dynamique
+
+##Site dynamique
+- Pages HTML générées à la demande par le serveur
+- Exécution de scripts sur le serveur (PHP, ASP, Python, etc.)
+- Possibilité d'adapter le contenu à la requête envoyée par le client
+- Interaction du serveur web avec un SGBD (généralement)
+- Le web des années 2000...
+
+<span class='center'>![Fonctionnement d'un site dynamique](images/schema02-6a42d.jpg "Source: http://www.cndp.fr/crdp-dijon/Sites-statiques-sites-dynamiques.html")</span>
+
+---
+# Deux façons de scripter
+
+## Client ou serveur ?
+
+- Historiquement : scripts exécutés sur le serveur (Server Side Scripting)
+    + PHP, ASP, J(2)EE, etc.
+
+- Plus récemment : DOM + évolutions de JavaScript
+    + Nombreuses interactions coté client (Client Side Scripting)
+    + Utilisation d'AJAX pour récupérer des données
+    + Applications internet riches (RIA)
+        * Ex: Gmail
+
+---
+# Applications internet riches (RIA)
+
+<span class='full-page-h1'>![Applications internet riches](images/diagramme_des_applications_nmedia_solutions.jpg "Source: http://www.nmediasolutions.com/publications/conseils/applications-internet-riches-rich-internet-application")</span>
+
+---
+# RIA pour les nuls ?
+## Applets et plugins
+
+<span class='pull-right'>![Plugins RIA](images/Introduction-to-JavaFX-Flex-and-Silverlight.jpg "Source: http://www.linkgard.com/blog/software-development/web-technologies/introduction-to-javafx-flex-and-silverlight.html")</span>
+
+- JavaFX (Oracle)
+    + Basé sur Java
+
+- Flex  (Adobe)
+    + Basé sur Flash
+
+- Silverlight   (Microsoft)
+    + Basé sur le Framework .Net
+
+---
+# Applets et plugins
+
+<div class='pull-left'><div></div>
+
+<h2> <span class='green'>Avantages</span> </h2>
+- Richesse graphique
+    + Animations, etc.
+- UX proche d'une application "Desktop"
+    + Interface, réactivité, etc.
+- Ajout de fonctionnalités non / mal supportées par les navigateurs
+    + Ex: streaming vidéo
+
+</div>
+
+<div class='pull-right'><div></div>
+
+<h2> <span class='red'>Inconvénients</span> </h2>
+- Nécessité de télécharger un plugin
+- Temps de téléchargement initial de l'application
+- Risques de failles de sécurité accrus
+- Accessibilité et référencement
+
+</div>
+
+---
+# Les deux faces du développement web...
+
+<div class='pull-left'><div></div>
+
+- Frontend
+    + (Très) proche du design
+    + Integration
+    + Interactions
+    + HTML / CSS / Javascript
+
+- Backend
+    + Le "Vrai" développeur web...
+    + Accès aux données
+    + Code métier
+    + PHP / MySQL, J2EE, NodeJS
+
+</div>
+
+<span class='pull-right'>![Développer fontend vs. backend](images/iceberg-front-end-back-end-developers.jpg "Source: http://www.alticreation.com/difference-developpeur-front-end-et-developpeur-back-end/")</span>
+
+---
+# Les technologies web c'est aussi...
+## Les systèmes distribués
+
+<div class='pull-left'><div></div>
+
+- Pas que des sites web...
+    + Applications mobiles
+    + Clients lourds
+    + Services / API web
+    + Cloud computing
+    + Etc.
+
+- Technologies réutilisées
+    + HTTP, XML, JSON, MIME, URI, etc.
+
+</div>
+
+<span class='pull-right'>![Systèmes distribués](images/MESH-network-500x328.jpg "Source: http://adam.hypotheses.org/1263")</span>
+
+
+---
+# Pour votre culture
+
+- Faits marquants du web
+    + [http://www.webdirections.org/history/](http://www.webdirections.org/history/)
+    + [http://www.pewinternet.org/2014/03/11/world-wide-web-timeline/](http://www.pewinternet.org/2014/03/11/world-wide-web-timeline/)
+
+<span class='center'><iframe width="420" height="315" src="https://www.youtube.com/embed/-5x5OXfe9KY" frameborder="0" allowfullscreen>Dancing baby...</iframe></span>
+
+<span class='center'>*Ex: (1996) Dancing baby : première vidéo virale*</span>
+
+---
+# This is (almost) the end...
+## Next : HTML + CSS
+
+<span class='full-page-h1-h2'>![Illustration finale](images/422213306_e34827aaa6_o.jpg "Source: http://www.flickr.com/photos/daniello/422213306/")</span>
+>

@@ -1,0 +1,20 @@
+layout: true
+class: left, middle, animated, fadeIn
+
+---
+#Technologies web et XML
+.footnote[M. PERREIRA DA SILVA]
+
+- Cours 1
+    + [Introduction](intro.html)
+    + [HTML (partie 1)](html.html)
+- Cours 2
+    + [HTML (partie 2)](html.html#22)
+    + [CSS (partie 1)](css.html)
+- Cours 3 
+    + [CSS (partie 2)](css.html#35)
+    + [Protocoles web](protocoles.html)
+- Cours 4
+    + [Programmation coté serveur](prog-serveur.html)
+- Cours 5
+   + [Services web et protocoles associés](services-web.html)
