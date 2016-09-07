@@ -1,0 +1,659 @@
+layout: true
+class: left, top, animated, fadeIn
+
+---
+.center[
+#Les bases du code pour les journalistes 
+##(et les autres)
+]
+
+.full-page-h1[![Source: https://medium.freecodecamp.com/javascript-modules-a-beginner-s-guide-783f7d7a5fcc#.pkd53zaou](images/code.jpg)]
+
+.center[<br>Matthieu PERREIRA DA SILVA *(Polytech Nantes)* - Septembre 2016]
+
+---
+#Coder ?
+
+.float-right[![Source: http://blii.dvrlists.com/coder/](images/coder.jpg)]
+<br>
+- **Coder**: passer d'une représentation à une autre
+- **Programmer**: établir à l'avance une suite d'opérations
+--
+
+<br><br><br>
+- Pour programmer il faut
+	* Un **objectif** 
+	* **Un langage** 
+		+ Possède une syntaxe et une grammaire
+	* Des **données**
+--
+
+<br><br><br>
+- Algorithme = programme théorique (sans langage cible)
+
+---
+#Pourquoi ?
+<br>
+- **Communiquer** avec les programmeurs
+--
+
+<br><br>
+- **Evaluer**.red[*] ce qu'il est possible de faire
+--
+
+<br><br>
+.float-right[![Source: https://www.linkedin.com/pulse/why-programming-core-skill-21st-century-rahul-srivastava](images/why.jpg)]
+- **Faire**.red[°] soi même
+	* Créer / modifier une page web
+	* Collecter des données
+	* Nettoyer des données
+	* Analyser des données
+	* Visualiser des données
+--
+
+<br><br>
+- **Comprendre les limites** du traitement automatique des données
+
+.footnote[.red[*]vaguement<br>
+.red[°]un peu]
+
+---
+#Attention !
+
+.full-page[![Source http://imgur.com/wENqWRW](images/coding-in-1-night.jpg)]
+
+---
+#Au programme
+<br><br><br><br>
+
+## Langage de description vs. langage de programmation
+## Quel langage pour les débutants ?
+## 10 concepts clés de programmation
+
+---
+#Les langages de description
+
+- Définissent une **structure** et/ou des **règles**
+
+- Sans langage spécifique, la structure n'est pas toujours explicite
+--
+
+
+<br>
+**Exemple de texte seul:**
+.resultat[
+Le médialab Speed training
+
+Une journée pour se former aux outils et contenus numériques
+
+La 3ème édition de cet événement, organisé par Ouest Médialab, aura lieu cette année le mercredi 21 septembre 2016 à la CCI Nantes Saint-Nazaire. 
+
+30 modules: 30 tutoriels, démos, retours d’expérience… présentés dans les salles de la CCI Nantes Saint-Nazaire.
+
+30 intervenants: 30 intervenants professionnels : communicants, journalistes, designers, community managers, vidéastes…
+
+30 minutes: 30 minutes par module pour découvrir de nouveaux outils pour créer, produire, gérer et diffuser des contenus numériques. 
+]
+
+---
+#Les langages de description (HTML)
+
+- **Structurer** l'information en vue de la **présenter**
+	* **Balises**: définissent le sens
+		+ Exemple: `<h3></h3>`
+	* **Attributs**: permettent d'apporter des informations complémentaires
+		+ Exemple: `<a href="http://nantesstnazaire.cci.fr/"></a>`
+--
+
+
+```html
+<section id="speed_training">
+<h3>Le médialab Speed training</h3>
+<h4>Une journée pour se former aux outils et contenus numériques</h4>
+<p>Fort du succès des éditions précédentes (400 participants en 2015), le Médialab SpeedTraining revient !</p>
+<p>La 3ème édition de cet événement, organisé par Ouest Médialab, aura lieu cette année le mercredi 21 septembre 2016 à la <a href="http://nantesstnazaire.cci.fr/">CCI Nantes Saint-Nazaire</a>.</p> 
+<ul>
+	<li><h5>30 modules</h5>30 tutoriels, démos, retours d’expérience… présentés dans les salles de la CCI Nantes Saint-Nazaire.</li>
+	<li><h5>30 intervenants</h5>30 intervenants professionnels : communicants, journalistes, designers, community managers, vidéastes…</li>
+	<li><h5>30 minutes</h5>30 minutes par module pour découvrir de nouveaux outils pour créer, produire, gérer et diffuser des contenus numériques.</li> 
+</ul>
+</section>
+```
+
+---
+#Les langages de description (HTML)
+
+**Rendu du document** HTML dans un navigateur web:
+.resultat[
+<section id="speed_training" style="font-size:12pt">
+<h3>Le médialab Speed training</h3>
+<h4>Une journée pour se former aux outils et contenus numériques</h4>
+<p>Fort du succès des éditions précédentes (400 participants en 2015), le Médialab SpeedTraining revient !</p>
+<p>La 3ème édition de cet événement, organisé par Ouest Médialab, aura lieu cette année le mercredi 21 septembre 2016 à la <a href="http://nantesstnazaire.cci.fr/">CCI Nantes Saint-Nazaire</a>.</p> 
+<ul>
+	<li><h5>30 modules</h5>30 tutoriels, démos, retours d’expérience… présentés dans les salles de la CCI Nantes Saint-Nazaire.</li>
+	<li><h5>30 intervenants</h5>30 intervenants professionnels : communicants, journalistes, designers, community managers, vidéastes…</li>
+	<li><h5>30 minutes</h5>30 minutes par module pour découvrir de nouveaux outils pour créer, produire, gérer et diffuser des contenus numériques.</li> 
+</ul>
+</section>]
+
+---
+#Les langages de description (CSS)
+<br>
+- Définir des **règles** de présentation
+	* s'appliquent à un/des éléments choisis à l'aide d'un **sélecteur**
+--
+
+
+<br>
+```CSS
+#speed_training h3, #speed_training h4{
+	text-align: center;
+}
+	
+#speed_training{ 			/* un sélecteur */ 
+	font-size: 12pt;		/* une règle    */
+}
+
+#speed_training li{
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+```
+
+---
+#Les langages de description (CSS)
+<br>
+**Rendu du même document** HTML avec les règles CSS
+.resultat[
+<section id="speed_training1">
+<style>
+#speed_training1 h3, #speed_training1 h4{
+	text-align: center;
+}
+	
+#speed_training1{
+	font-size: 12pt;
+}
+
+#speed_training1 li{
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+</style>
+<h3>Le médialab Speed training</h3>
+<h4>Une journée pour se former aux outils et contenus numériques</h4>
+<p>Fort du succès des éditions précédentes (400 participants en 2015), le Médialab SpeedTraining revient !</p>
+<p>La 3ème édition de cet événement, organisé par Ouest Médialab, aura lieu cette année le mercredi 21 septembre 2016 à la <a href="http://nantesstnazaire.cci.fr/">CCI Nantes Saint-Nazaire</a>.</p> 
+<ul>
+	<li><h5>30 modules</h5>30 tutoriels, démos, retours d’expérience… présentés dans les salles de la CCI Nantes Saint-Nazaire.</li>
+	<li><h5>30 intervenants</h5>30 intervenants professionnels : communicants, journalistes, designers, community managers, vidéastes…</li>
+	<li><h5>30 minutes</h5>30 minutes par module pour découvrir de nouveaux outils pour créer, produire, gérer et diffuser des contenus numériques.</li> 
+</ul>
+</section>
+]
+
+---
+#Les langages de description (XML/JSON)
+- **Structurer** l'information en vue de la **manipuler**
+
+| Departement | Nom              | Surface | Habitants |
+| :---------: | :--------------: | ------: | --------: |
+| 44          | Loire-atlantique | 6815    | 1328620   |
+| 85          | Vendée           | 6720    | 655506    |
+--
+
+devient
+
+.pull-left[
+
+```xml
+<liste_departements>
+	<departement id="44">
+		<nom> Loire-Atlantique </nom>
+		<surface> 6815 </surface>
+		<habitants> 1328620 </habitants>
+	</departement>
+	<departement id="85">
+		<nom> Vendée </nom>
+		<surface> 6720 </surface>
+		<habitants> 655506 </habitants>
+	</departement>
+</liste_departements>
+```
+.center[XML]
+]
+.pull-right[
+
+```json
+[{ "44": {
+		"nom": "Loire-Altantique",
+		"surface": "6815",
+		"habitants": "1328620"
+	}
+}, 
+{ "85": {
+		"nom": "Vendée",
+		"surface": "6720",
+		"habitants": "655506"
+	}
+}]
+```
+.center[JSON]
+]
+
+---
+#Les langages de programmation
+
+
+
+- Décrire et **manipuler** des données
+
+- Quel langage apprendre pour les journalistes (et autres débutants) ?
+--
+
+.pull-left[
+.full-page-h1-h2[![Logo Javascript](images/logo_javascript.png)]
+* Pour le **web** (client)
+	+ HTML / CSS / Javascript
+	+ Seul langage compris par tous les navigateurs
+	+ Parfois complexe...
+]
+--
+
+.pull-right[
+.full-page-h1-h2[![Logo Python](images/logo_python.png)]
+* Langage simple et **polyvalent**
+	* Web (serveur), analyse de données, jeu, calcul scientifique, etc.
+	* Pas disponible dans les nativateurs
+]
+
+
+
+
+---
+#Concept de programmation #1
+- **Les variables**
+	* "case" dans laquelle on stocke une donnée
+	* Possède un nom
+	* Possède un type (indiqué explicitement ou non)
+--
+
+
+*Python*
+
+```python
+a=12 		# on crée une variable en lui affectant une valeur
+	
+# on utilise ensuite la valeur stockée dans la variable
+print(a) 	# affichera 12
+```
+--
+
+	
+*Javascript*
+
+```javascript
+var a;				// déclaration de la variable a
+a=12; 				// on lui affecte la valeur 12
+console.log(a)		// affichera 12
+```
+	
+---
+#Concept de programmation #2
+- **Les types de données**
+	* Simples: entier, réel, chaine de caractère, etc.
+	* Composés: tableau, liste, objet, etc.
+		* peuvent contenir des types simples ou composés
+--
+
+
+*Python*
+
+```python
+a=12										# entier
+b="oml"									 # chaine de caractères
+c=[3, 12, 5, 8, 98] 						# liste d'entiers
+d={ "nom": "Roux", "prénom" : "Philippe" }  # dictionnaire
+e=[{"prenom":"Philippe", "nom": "Roux"}, 
+{"nom": "Kostreche", "prénom" : "Julien" }] # liste de dictionnaires
+```
+--
+
+
+*Javascript*
+
+```javascript
+var a=12; 											// entier
+var b="oml"; 										 // chaine
+var c=[3, 12, 5, 8, 98]; 							 // tableau
+var d={ "nom": "Roux", "prénom" : "Philippe" } 	   // objet
+var e=[{"prenom":"Philippe", "nom": "Roux"}, 
+		{"nom": "Kostreche", "prénom" : "Julien" }];  // liste d'objets
+```
+
+---
+#Concept de programmation #3
+- **Les indexeurs / sélecteurs**
+	* Récuperer un élément parmi un ensemble d'éléments
+--
+
+
+*Python*
+
+```python
+c=[3, 12, 5, 8, 98] 	# liste d'entiers
+print( c[2] ) 		  # affichera 5
+
+d={ "nom": "Roux", "prénom" : "Philippe" }	# dictionnaire
+print( d["nom"] ) 						    # affichera Roux
+
+e=[{"prenom":"Philippe", "nom": "Roux"}, 
+{"nom": "Kostreche", "prénom" : "Julien" }]   # liste de dictionnaires
+print( e[1]["nom"] ) 	 					# affichera Kostreche
+```
+--
+
+	
+*Javascript*
+
+```javascript
+console.log( c[2] );			// affichera 5
+console.log( d["nom"] );		// affichera Roux
+console.log( d.nom ); 		  // affichera aussi Roux
+console.log( e[1]["nom"] ); 	// affichera Kostreche
+console.log( e[1].nom ); 	   // affichera aussi Kostreche
+
+```
+
+---
+#Concept de programmation #3
+- **Les indexeurs / sélecteurs**
+	* Récuperer un élément parmi un ensemble d'éléments
+--
+
+
+*CSS*.red[*] 
+
+```css
+#truc { } 		  /* élément HTML dont l'attribut id a la valeur truc */
+h1 { } 			 /* élément HTML h1 */
+.bidule { } 		/* élément HTML dont l'attribut class a la valeur bidule */
+div.chouette h1 { } /* élément HTML h1 situé dans un div dont l'attribut class a la valeur chouette */
+```
+.footnote[.red[*]langage de description]
+--
+
+
+*Javascript* (JQuery / D3js)
+
+```javascript
+// Certaines librairies utilisent la syntaxe CSS pour sélectionner des éléments
+	
+// Ex: Cacher l'élément HTML ayant pour id truc
+$("#truc").hide();								 // avec Jquery
+d3.select(".bidule").style("display", "none"); 	// avec D3js
+```
+
+
+
+---
+#Concept de programmation #4
+- **Les opérateurs**
+	* Pour affecter: `=`
+	* Pour calculer: `+` `-` `/` `*` `(` `)`
+	* Pour comparer: `<` `<=` `>` `>=` `==` `!=`
+	* Pour combiner des comparaisons: `and` `or` `not` (python) ou `&&` `||` `!` (javascript)
+--
+
+
+*Python*
+
+```python
+a=(12+13-7)/6 			# a contient la valeur 3
+b=a+20					# on peut aussi calculer avec des variables
+c="speed"+"training" 	 # c contient speedtraining 
+b>22					  # le résultat de cette opération est true (vrai)
+b > 22 and c == "speed"   # vaut false (faux)
+```
+--
+
+	
+*Javascript*
+
+```javascript
+b > 22 && c == "speed" 	// vaut false (faux)
+```
+
+
+---
+#Concept de programmation #5
+- **Les structures de contrôle**
+	* Effectuer des opérations de manière conditionnelle: `if` + `else`
+	* Répéter des opérations: `for` ou `while`
+--
+
+
+*Python* .pull-left[
+
+```python
+if nom == "Julien":
+	print("Bonjour Julien")
+else:
+	print("On ne se connait pas!")
+```
+] .pull-right[
+
+```python
+# Affiche les nombres de 0 à 9
+for i in range(0,10):
+	print(i) 
+```
+]
+--
+
+
+*Javascript* .pull-left[
+
+```javascript
+if( nom == "Julien" ){
+	console.log("Bonjour Julien");
+}
+else {
+	console.log("On ne se connait pas!);
+}
+```	
+] .pull-right[
+
+```javascript
+// Affiche les nombres de 0 à 9
+for( var i=0; i<10; i=i+1 ){
+	console.log(i); 
+}
+```	
+]
+
+---
+#Concept de programmation #6
+- **Les fonctions**
+	* Regrouper un ensemble d'opérations pour les réutiliser
+	* Possibilité de récupérer des valeurs en entrée (paramètres)
+	* Possibilité de renvoyer une valeur à la fin des opérations: `return`
+--
+
+
+*Python*
+.pull-left[
+
+```python
+def moyenne( listeVal ):
+	somme=0
+	for val in listeVal:
+		somme = somme + val
+	return somme / len(listeVal)
+```
+]
+.pull-right[
+
+```python
+# appel de la fonction
+valeurs=[1,2,3,4,5,6,7,8,9]
+maMoyenne = moyenne( valeurs )
+print(maMoyenne)  # Affiche 5
+```
+]
+--
+
+
+*Javascript*
+.pull-left[
+
+```javascript
+function moyenne( listeVal ){
+	somme =0;
+	for( var i = 0; i<listeVal.length; i=i+1 ) {
+		somme = somme + listeVal[i];
+	}
+	return somme / listeVal;
+}
+```	
+]
+.pull-right[
+
+```javascript
+// appel de la fonction
+var valeurs=[1,2,3,4,5,6,7,8,9];
+maMoyenne = moyenne( valeurs );
+console.log(maMoyenne);  // Affiche 5
+```
+]
+
+---
+#Concept de programmation #7
+- **Les objets**
+	* Un objet = données + fonctions associées (appelées méthodes)
+	* Facilite la réutilisabilité du code
+--
+
+
+*Python* : pas d'objet
+
+```python
+p1x=10 	  # un point
+p1y=20	   # un point
+p2x=0		# un autre
+p2y=5		# un autre
+AfficherPoint(p1x, p1y)				  # on affiche un point
+AfficherLigne(p1x, p1y, p2x, p2y)		# et la ligne
+```
+--
+
+
+*Python* : des objets
+
+```python
+p1=Point(10,20)	  # un point
+p2=Point(0,5)		# un autre
+l1=Ligne(p1,p2)	  # une ligne à partir de p1 et p2
+p1.Afficher()		# on affiche un point
+l1.Afficher()		# et la ligne
+```
+
+---
+#Concept de programmation #8
+
+- **Les bibliothèques, API, SDK, etc.**
+	* Fourniture d'un ensemble de fonctionalités sous la forme
+		+ D'adresses internet (url) = [API ou service web](http://data.nantes.fr/donnees/fonctionnement-de-lapi/getdisponibiliteparkingspublics/)
+			+ REST (orienté données = généralement "simple")
+			+ SOAP (plus complexe)
+--
+
+		+ De fonctions ou d'objets
+		
+*HTML + Javascript*		
+```html
+<html>
+	<head>
+		<!-- import de la librairie JQuery -->
+		<script src="jquery.min.js"></script>
+		<script>
+			// utilisation de JQuery : on masque le titre h1
+			$("h1").hide();
+		</script>
+	</head>
+	<body>
+		<!-- le contenu de la page html : ici juste un titre -->
+		<h1>Bonjour</h1>
+	</body>
+</html>
+```
+
+---
+#Concept de programmation #9
+
+
+.full-page-h1[![Source: http://www.alticreation.com/difference-developpeur-front-end-et-developpeur-back-end/](images/iceberg.jpg)]
+.center[**Client et serveur**]
+	
+---
+#Concept de programmation #10
+<br>
+- **Asynchronisme**
+	- Synchrone = attendre la fin d'une opération avant d'entamer la suivante
+		* Programmation classique
+		* Sûr mais peu efficace
+--
+
+
+<br>
+*Python*
+
+```python
+f = open('mesdonnees.txt', 'r') 		# ouverture d'un fichier
+data = f.read()						# lecture de son contenu
+
+# cette ligne ne sera exécutée qu'après lecture complète du fichier
+print( data )						# affichage du contenu
+```
+	
+---
+#Concept de programmation #10
+- **Asynchronisme**
+	
+	- Asynchrone = ne pas attendre la fin d'une opération avant de passer à la suivante
+		* Programmation "moderne" (AJAX, nodeJS)
+		* Plus complexe mais plus efficace
+--
+
+
+<br>
+*Javascript*
+
+```javascript
+// on demande de lire des données à partir d'un serveur web (via JQuery)
+$.get("www.univ-nantes.fr/mesdonnees.txt", fini );
+// cette ligne est exécutée immédiatement après!
+// je ne peux pas accéder au données ici
+	
+// cette fonction ne sera appelée qu'à la fin de la lecture des données
+function fini( data ){
+	// Maintenant les données sont lues
+	console.log(data);	// on affiche les données
+}
+```
+		
+---
+
+#A vos claviers !
+
+<br>
+.full-page[![Source: http://www.lemonde.fr/education/article/2014/05/23/faut-il-enseigner-le-code-informatique-a-l-ecole_4424397_1473685.html](images/code-pour-tous.jpg)]
+<br>
+.center[
+##et stylos...
+]
