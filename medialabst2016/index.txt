@@ -300,7 +300,7 @@ print(a) 	# affichera 12
 ```javascript
 var a;				// déclaration de la variable a
 a=12; 				// on lui affecte la valeur 12
-console.log(a);		// affichera 12
+console.log(a);	   // affichera 12
 ```
 	
 ---
@@ -331,7 +331,7 @@ e=[{"prenom":"Philippe", "nom": "Roux"},
 var a=12; 											// entier
 var b="oml"; 										 // chaine
 var c=[3, 12, 5, 8, 98]; 							 // tableau
-var d={ "nom": "Roux", "prénom" : "Philippe" };    	   // objet
+var d={ "nom": "Roux", "prénom" : "Philippe" };       // objet
 var e=[{"prenom":"Philippe", "nom": "Roux"}, 
 		{"nom": "Kostreche", "prénom" : "Julien" }];  // liste d'objets
 ```
