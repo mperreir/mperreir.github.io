@@ -19,44 +19,44 @@ class: left, middle, animated, fadeIn
 # Organisation des enseignements
 ## Les cours (1/2)
 
-1. <span class='red'>RL</span> - Intro XML
-2. <span class='red'>RL</span> - Documents bien formés, espaces de nommage XML
-3. <span class='blue'>MPDS</span> - Intro Web, URI, HTML (1/2)
-4. <span class='blue'>MPDS</span> - HTML (2/2), CSS
-5. <span class='green'>NN</span> - Intro JavaScript, JavaScript et programmation objet par prototype
-6. <span class='green'>NN</span> - JavaScript fonctionnel, asynchronisme
-7. <span class='red'>RL</span> - DOM et SAX
-8. <span class='green'>NN</span> - Programmation défensive en JavaScript, mode strict, cross-doc
+1. <span class='blue'>MPDS</span> - Introduction
+2. <span class='blue'>MPDS</span> - HTML / CSS
+3. <span class='blue'>MPDS</span> - Fin de CSS + HTTP et Websocket
+4. <span class='green'>NN</span> - Introduction JavaScript
+5. <span class='green'>NN</span> - Programmation défensive en JavaScript, 'use strict', bonnes pratiques
+6. <span class='green'>NN</span> - JavaScript fonctionnel, fonctions flèche, générateurs
+7. <span class='red'>RL</span> - Outils, tests unitaires et intégration continue
+8. <span class='red'>RL</span> - XML
 
 ---
 # Organisation des enseignements
 ## Les cours (2/2)
 
-9. <span class='blue'>MPDS</span> - HTTP, cookies, websocket
-10. <span class='green'>NN</span> - Événements DOM, callback, promises, XHR, jQuery
-11. <span class='blue'>MPDS</span> - Technos serveur *(CGI, servlet, JSP, PHP, NodeJS, etc.)*
-12. <span class='red'>RL</span> - XPATH, XQuery
-13. <span class='red'>RL</span> - XSL, Validation XML
-14. <span class='green'>NN</span> - Promises, Fetch
-15. <span class='blue'>MPDS</span> - Services web et protocoles associés *(REST, SOAP, etc.)*
+9. <span class='red'>RL</span> - XML
+10. <span class='green'>NN</span> - JavaScript asynchrone 1/2, AJAX
+11. <span class='green'>NN</span> - JavaScript asynchrone 2/2, Promise, API fetch, générateurs
+12. <span class='blue'>MPDS</span> - Programmation côté serveur
+13. <span class='blue'>MPDS</span> - Services Web
+14. <span class='red'>RL</span> - DOM + XPATH
+15. <span class='red'>RL</span> - XSL
 
 
 ---
 # Organisation des enseignements
 ## Mes cours
 
-3. **Introduction**
+1. **Introduction**
     + Historique, définitions et vue globale des technos web
     + HTML5 (partie 1)
-4. **Technologies front-end** : affichage
+2. **Technologies front-end** : affichage
     + HTML5 (partie 2)
     + CSS + Media queries
     + responsive web design et accessibilité
-9. **Protocoles web**
+3. **Protocoles web**
     + HTTP(S), MIME, Cookies, WebSocket
-11. **Programmation coté serveur**
+12. **Programmation coté serveur**
     + (FAST)CGI, WSGI, JSP, Servlets, Nodejs / Angularjs, etc.
-12. **Services web et protocoles associés**
+13. **Services web et protocoles associés**
     + REST, XML-RPC, JSON-RPC, SOAP, UDDI, WSDL, etc.
 
 ---
