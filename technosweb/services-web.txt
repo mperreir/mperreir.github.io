@@ -833,7 +833,7 @@ Réponse
     + REST: **s'adapte** aux capacités du client (négociation de contenu)
     + WSDL: **définit finement** les formats des données échangées
 - Documentation :
-    + REST : **pas de norme**, mais possible depuis WSDL 2.0
+    + REST : **pas de norme**, mais [possible depuis WSDL 2.0](https://www.ibm.com/developerworks/library/ws-restwsdl/)
     + WSDL : **définit finement** (mais verbeusement) les échanges
 
 ---
