@@ -680,9 +680,9 @@ Réponse
     "version": "1.0",
     "servicename": "MonService",
     "method": "doubleUnEntier",
-    "result": 1230,
+    "result": 7230,
     "reflection": {
-        "id": 2
+        "id": 1234
     }
 }
 ```
