@@ -610,7 +610,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     + Les annuaires UDDI sont plutôt privés (inter entreprise)
 
 ---
-#[JSON-WSP](http://en.wikipedia.org/wiki/JSON-WSP)
+#[JSON-WSP](http://en.wikipedia.org/wiki/JSON-WSP) (Abandonné...)
 
 - **Alternative aux services web SOAP**, pas encore standardisée
     + RFC en cours...
