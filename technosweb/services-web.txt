@@ -198,7 +198,7 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 ---
 #Services web
 
-<span class='center full-page'>![Services](images/services.png "Source: http://se-preparer-aux-crises.fr/creer-de-l-argent-a-partir-de-rien/")</span>
+<span class='center full-page'>![Services](images/Services.png "Source: http://se-preparer-aux-crises.fr/creer-de-l-argent-a-partir-de-rien/")</span>
 
 ---
 #C'est quoi ?
@@ -610,7 +610,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     + Les annuaires UDDI sont plutôt privés (inter entreprise)
 
 ---
-#[JSON-WSP](http://en.wikipedia.org/wiki/JSON-WSP)
+#[JSON-WSP](http://en.wikipedia.org/wiki/JSON-WSP) (Abandonné...)
 
 - **Alternative aux services web SOAP**, pas encore standardisée
     + RFC en cours...
@@ -680,9 +680,9 @@ Réponse
     "version": "1.0",
     "servicename": "MonService",
     "method": "doubleUnEntier",
-    "result": 1230,
+    "result": 7230,
     "reflection": {
-        "id": 2
+        "id": 1234
     }
 }
 ```
@@ -833,7 +833,7 @@ Réponse
     + REST: **s'adapte** aux capacités du client (négociation de contenu)
     + WSDL: **définit finement** les formats des données échangées
 - Documentation :
-    + REST : **pas de norme**, mais possible depuis WSDL 2.0
+    + REST : **pas de norme**, mais [possible depuis WSDL 2.0](https://www.ibm.com/developerworks/library/ws-restwsdl/)
     + WSDL : **définit finement** (mais verbeusement) les échanges
 
 ---

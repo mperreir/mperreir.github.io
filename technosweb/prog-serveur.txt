@@ -307,7 +307,7 @@ public class InfoServlet extends HttpServlet {
 #PHP (1/2)
 
 - Langage **interprété**, **faiblement typé**, créé en 1994 par Rasmus Lerdorf
-- Version actuelle : 5.6 et 7.0 (version 5.x depuis 2004 !)
+- Version actuelle : 5.6 et 7.1 (version 5.x depuis 2004 !)
 - Doit être **intégré à un serveur web** (ex: Apache via mod_php)
 - Un fichier `.php` est traité par PHP comme
     + un fichier HTML
@@ -660,7 +660,7 @@ server.on('connection', function (stream) {
 - NodeJS propose des **fonctionnalités de bas niveau**
     + Besoin d'outils d'un peu plus haut niveau pour être productif
 - Les **frameworks** web répondent à cette problématique (dans tous les langages web)
-- **ExpressJS** est un framework web léger (minimaliste ?) pour NodeJS
+- **ExpressJS** est un framework web léger (minimaliste ?) pour NodeJS<span class='red'>*</span>
 - Fonctionnalités:
     + Routage: quelle fonction est associée à quelle URL ?
     + Automatisation du traitement de certaines requêtes via des "Middleware"
@@ -668,6 +668,8 @@ server.on('connection', function (stream) {
     + Gestion des erreurs
     + Générateur (de squelette) d'application web
 - ExpressJS est un **module** de NodeJS : `var express = require('express');`
+
+<span class='footnote'><span class='red'>*</span>Il existe bien entendu d'autres frameworks pour NodeJS (ex: [Koa](http://koajs.com))</span>
 
 ---
 #ExpressJS: exemple
