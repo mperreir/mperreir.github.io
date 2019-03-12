@@ -700,7 +700,7 @@ Résultat:
     * `inline`: éléments **en ligne**, les uns à coté des autres
     * `block`: éléments **bloc**, les uns en dessous des autres
     * `inline-block`: éléments **bloc**, les uns à coté des autres
-
+    * `flex`, `flow`, `grid` : conteneur d'autres blocs pour positionnement avancé
 </div>
 
 <div class='pull-right small-right'><div></div>
@@ -866,7 +866,8 @@ Résultat:
 - **Fonds** (background) **multiples**
 - **Ombrage** des boites et du texte: `box-shadow`
 - **Multi-colonnes**: `columns`, `column-fill`, `break-after`, etc.
-- **Flexbox** : `display: flex` (le futur du postionnement, plus de détails [ici](https://css-tricks.com/snippets/css/a-guide-to-flexbox/))
+- **Flexbox** : `display: flex` (plus de détails [ici](https://css-tricks.com/snippets/css/a-guide-to-flexbox/))
+- **Grille** : `display: grid` (plus de details [ici](https://css-tricks.com/snippets/css/complete-guide-grid/))
 - **Transformations** d'éléments (rotations, etc.): `transform`
 - **Animations**: `animation`, `@keyframes`, etc.
 - **Transitions**: `transition`
