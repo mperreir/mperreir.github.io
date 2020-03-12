@@ -307,7 +307,7 @@ public class InfoServlet extends HttpServlet {
 #PHP (1/2)
 
 - Langage **interprété**, **faiblement typé**, créé en 1994 par Rasmus Lerdorf
-- Version actuelle : 5.6 et 7.1 (version 5.x depuis 2004 !)
+- Version actuelle : 7.3 (version 5.x de 2004 à fin 2018!)
 - Doit être **intégré à un serveur web** (ex: Apache via mod_php)
 - Un fichier `.php` est traité par PHP comme
     + un fichier HTML
@@ -552,7 +552,7 @@ bonjour.aspx
 ---
 #NodeJS est asynchrone (2/2)
 
-- Modèle de **programmation "asychrone"**: on n'attend pas la fin d'une tâche (potentiellement longue) avant de passe à la suivante
+- Modèle de **programmation "asychrone"**: on n'attend pas la fin d'une tâche (potentiellement longue) avant de passer à la suivante
     + Utilisation massive de fonctions "callback" pour répondre à un évènement
     + Ex: Lecture (asynchrone) d'un fichier
 
@@ -591,7 +591,7 @@ var callback = function(err, contenu) {
 fs.readFile('/etc/hosts', callback);
 ```
 
-<span class='footnote'><span class='red'>*</span>Les promises / promesses JavaScript sont également très utiles pour la programmation asynchrone...<span>
+<span class='footnote'><span class='red'>*</span>Les promesses JavaScript et le mécanisme async / await sont également très utiles pour la programmation asynchrone... (bien supporté depuis nodejs 10)<span>
 
 ---
 #NodeJS est également un serveur web...
@@ -868,7 +868,7 @@ $ npm install
     + Technologies encore jeunes
 
 ---
-#AngularJS ?
+#AngularJS (et autres...)?
 
 - Framework développé par Google pour le développement d'applications "Single Page"
 - **Déporte** une grande partie des actions généralement effectuées sur le serveur **vers le client**
