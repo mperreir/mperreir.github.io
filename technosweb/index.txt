@@ -9,7 +9,7 @@ class: left, middle, animated, fadeIn
     + [Introduction](intro.html)
     + [HTML (partie 1)](html.html)
 - Cours 2
-    + [HTML (partie 2)](html.html#22)
+    + [HTML (partie 2)](html.html#35)
     + [CSS (partie 1)](css.html)
 - Cours 3 
     + [CSS (partie 2)](css.html#35)
