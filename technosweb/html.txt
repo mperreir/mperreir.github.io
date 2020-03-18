@@ -613,7 +613,7 @@ Résultat
     + L'attribut `alt` fournit une description textuelle de l'image (accessibilité).
     + L'attribut `srcset` permet de définit différentes tailles d'image (responsive + high dpi)
     + Peut être insérée dans une balise `<a>` pour créer une image cliquable
-- `<picture>` et `<source>`: Solution HTML5, alternative à `srcset`, pour spécifier **différentes tailles d'images** (responsive + high dpi) ou **différents formats** (ex: JPG et WebP)
+- `<picture>` et `<source>`: Solution HTML5, alternative à `srcset`, pour spécifier **différentes images** (choix artistique) ou **différents formats** (ex: JPG et WebP)
 - `<canvas>`: **Surface** (matricielle) de dessin, qui sera manipulée via l'API javascript éponyme.
     + A besoin d'un attribut `id` pour être référencée en JavaScript
     + Ne pas oublier de lui donner une largeur et une hauteur (de préférence en CSS)
@@ -637,7 +637,7 @@ Résultat
 <picture>
   <source media="(min-width: 650px)" srcset="images/kitten-large.png">
   <source media="(min-width: 465px)" srcset="images/kitten-medium.png">
-  <!-- un élément <img>, pour les navigateurs ne supportant pas <picture> -->
+  <!-- par défaut / pour les navigateurs ne supportant pas <picture> -->
   <img src="images/kitten-small.png" alt="a cute kitten">
 </picture>
 ```
@@ -655,7 +655,7 @@ Résultat
 - `<audio>` : Définit un **son** à jouer sur une page
 - Attributs utiles:
     + `src`: L'URL du son à jouer
-        * **Attention** : tous les navigateurs ne supportent pas les mêmes codecs. Il faut au moins fournir le son au formats Ogg/Vorbis et MP4/AAC
+        * **Attention** : tous les (anciens) navigateurs ne supportent pas les mêmes codecs. Il faut au moins fournir le son au formats Ogg/Vorbis et MP4/AAC
     + `autoplay`: Comme son nom l'indique...
     + `controls`: Permet d'afficher une interface de lecture du son
     + `type`: Le type MIME du son à jouer
@@ -675,7 +675,7 @@ Description alternative ici !
 - `<video>` : Définit une **vidéo** à jouer sur une page
  Attributs utiles:
     + `src`: L'URL du son à jouer
-        * **Attention** : comme pour l'audio, tous les navigateurs ne supportent pas les mêmes codecs. Le .h264 (mp4) est [de mieux en mieux supporté](http://caniuse.com/#feat=mpeg4), mais il faut aussi compter avec WebM et Theora.
+        * **Attention** : comme pour l'audio, tous les (anciens) navigateurs ne supportent pas les mêmes codecs. Le .h264 (mp4) est [de mieux en mieux supporté](http://caniuse.com/#feat=mpeg4), mais il faut aussi compter avec WebM et Theora.
     + `autoplay`: Comme son nom l'indique...
     + `controls`: Permet d'afficher une interface de lecture du son
     + `type`: Le type MIME du son à jouer
