@@ -307,7 +307,7 @@ public class InfoServlet extends HttpServlet {
 #PHP (1/2)
 
 - Langage **interprété**, **faiblement typé**, créé en 1994 par Rasmus Lerdorf
-- Version actuelle : 7.3 (version 5.x de 2004 à fin 2018!)
+- Version actuelle : 7.4 (version 5.x de 2004 à fin 2018!)
 - Doit être **intégré à un serveur web** (ex: Apache via mod_php)
 - Un fichier `.php` est traité par PHP comme
     + un fichier HTML
@@ -766,7 +766,7 @@ app.listen(8080);
 - C'est le rôle des **moteurs de template**:
     + [Jade](http://jade-lang.com/): permet de générer du HTML à partir d'un dialecte allégé (ex: `h1` à la place de `<h1>`), mais paramétrable (boucles, variables, etc.)
     + [EJS](http://www.embeddedjs.com/): Extension de HTML pour permettre d'enrichir le code HTML via du code JavaScript. Syntaxe proche de celle de JSP
-    + Et bien d'autres (Hogan.js, DoT.js, Mustache.js, Handlebars.js, etc.)
+    + Et bien d'autres (Hogan.js, DoT.js, **Mustache.js**, Handlebars.js, etc.)
 
 - On peut utiliser les templates avec NodeJS seul ou avec NodeJS+ExpressJS (plus simple)
 
@@ -868,7 +868,8 @@ $ npm install
     + Technologies encore jeunes
 
 ---
-#AngularJS (et autres...)?
+#Client side frameworks
+##[AngularJS](https://angularjs.org)
 
 - Framework développé par Google pour le développement d'applications "Single Page"
 - **Déporte** une grande partie des actions généralement effectuées sur le serveur **vers le client**
@@ -880,6 +881,8 @@ $ npm install
     + Modèle: Données sur le serveur, envoyées en JSON ou XML
     + Vue: Le code HTML mis à jour par AngularJS
     + Contrôleur: Code JavaScript permettant de mettre à jour la vue en fonction des données du modèle
+
+##Nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), etc.
 
 ---
 ##AngularJS: exemple
@@ -914,6 +917,16 @@ function($scope){
  $scope.liste = [{nom: 'e1', desc: 'element 1'}, {nom: 'e2', desc: 'element 2'}];
 }]);
 ```
+
+---
+#Client side frameworks
+##Gestion des états
+
+- Problème de passage à l'échelle des applications coté client
+- Comment gérer l'état de tous les composants (pure HTML ou ReactJS) ?
+- Flux / Redux => notion de store, d'état et d'action
+
+<span class='center full-page'>![Flot de données Redux](images/redux.png "Source: https://medium.com/@sidathasiri/flux-and-redux-f6c9560997d7")</span>
 
 ---
 #Et les bases de données ?
