@@ -81,7 +81,6 @@ class: left, middle, animated, fadeIn
 
 <span class='center full-page'>![Zoom](images/zoom.png "Source: http://en.wikipedia.org/wiki/File:ZOOM_Israel.png")</span>
 
-
 ---
 #[ONC RPC](http://tools.ietf.org/html/rfc5531) : rudimentaire
 
@@ -109,7 +108,7 @@ class: left, middle, animated, fadeIn
 - Description de l'interface des objets via le **langage IDL**
     + Syntaxe proche du C++
     + Traduction automatique de l'interface vers un squelette C++,Python, Java, etc.
-- Fourniture de différents service
+- Fourniture de différents services
     + Nommage: retrouver un objet à partir de son nom
     + Courtage: retrouver un objet à partir de ses propriétés
     + etc.
@@ -238,7 +237,6 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 #Les formats d'échange de données web
 
 <span class='center full-page'>![Echange de données](images/echange-donnees.jpg "Source: http://www.rxtrace.com/2013/11/dqsa-getting-to-electronic-transaction-data-exchange.html/")</span>
-
 
 ---
 #[XML](http://www.w3.org/XML/)
@@ -692,7 +690,6 @@ Réponse
 
 <br>
 <span class='center full-page'>![ROA](images/roa.png "Source: https://dfflanders.wordpress.com/2010/03/07/the-new-architectural-layer-loa/")</span>
-
 
 ---
 #REST ? (1/2)
