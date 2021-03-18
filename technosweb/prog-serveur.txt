@@ -3,16 +3,10 @@ class: left, middle, animated, fadeIn
 
 ---
 #Programmation coté serveur
-<span class='footnote'>M. PERREIRA DA SILVA</span>
+.footnote[M. PERREIRA DA SILVA]
 
 ---
-<div class='hidden'><div></div>
-
-# Table des matières
-
-[TOC]
-
-</div>
+# [Version PDF des slides](pdf/04-prog-serveur.pdf)
 
 ---
 #Rôle d'un serveur web
@@ -32,19 +26,19 @@ class: left, middle, animated, fadeIn
 ---
 #Serveurs web généralistes
 
-- **Apache**: serveur open source de référence (40% des sites<span class='red'>*</span>). Existe depuis 1995
+- **Apache**: serveur open source de référence (40% des sites.red[*]). Existe depuis 1995
 - **IIS**: Le serveur Web fournit par Microsoft pour la plateforme NT (27% des sites). Seule solution pour faire fonctionner les solutions Microsoft (ASP / ASP.Net). Existe depuis 1994
 - **Nginx**: serveur **asynchrone** open source Russe (15% des sites). Existe depuis 2002
 - **Google Web Server**: version modifiée d'Apache. Code non public, uniquement utilisé par Google. (2% des sites)
 
-<span class='footnote'><span class='red'>*</span>Source: [étude Netcraft](http://news.netcraft.com/archives/2015/01/15/january-2015-web-server-survey.html) janvier 2015</span>
+.footnote[.red[*] Source: [étude Netcraft](http://news.netcraft.com/archives/2015/01/15/january-2015-web-server-survey.html) janvier 2015]
 
 ---
 #Proxy inverse
 
 - Proxy web: donne accès a internet à partir d'un réseau LAN
 
-<span class='pull-right'>![Proxy inverse](images/reverse-proxy.jpg "Source: https://saboursecurity.wordpress.com/2011/01/29/le-reverse-proxy-en-5-questions/")</span>
+.float-right.width-40[![Proxy inverse](images/reverse-proxy.jpg "Source: https://saboursecurity.wordpress.com/2011/01/29/le-reverse-proxy-en-5-questions/")]
 
 - Proxy inverse: donne accès à un réseau LAN à partir d'internet
     + **Cache** pour décharger les serveurs webs d'une partie de leur travail
@@ -173,6 +167,8 @@ echo "Et ici ce sont les données (POST)=$DATA"
 echo "</body></html>"
 ```
 
+.hidden[
+
 ---
 #WSGI / Python
 
@@ -269,6 +265,8 @@ public class InfoServlet extends HttpServlet {
     }
 }
 ```
+
+]
 
 ---
 #Bilan: CGI, Servlets, WSGI, etc.
@@ -388,6 +386,8 @@ bonjour.php
     // on renvoie le code HTML au serveur web
     echo $out;
 ```
+
+.hidden[
 
 ---
 #ASP
@@ -512,6 +512,8 @@ bonjour.aspx
 </html>
 ```
 
+]
+
 ---
 #Technologie sans serveur web externe
 ##NodeJS
@@ -529,6 +531,8 @@ bonjour.aspx
         * Il existe de nombreux modules pour simplifier le développent
     + Multi-threadé
         * **Une seule instance** de votre code est exécutée
+
+.hidden[
 
 ---
 #NodeJS est asynchrone (1/2)
@@ -591,7 +595,9 @@ var callback = function(err, contenu) {
 fs.readFile('/etc/hosts', callback);
 ```
 
-<span class='footnote'><span class='red'>*</span>Les promesses JavaScript et le mécanisme async / await sont également très utiles pour la programmation asynchrone... (bien supporté depuis nodejs 10)<span>
+.footnote[.red[*] Les promesses JavaScript et le mécanisme async / await sont également très utiles pour la programmation asynchrone... (bien supporté depuis nodejs 10)]
+
+]
 
 ---
 #NodeJS est également un serveur web...
@@ -614,7 +620,7 @@ var server = http.createServer(function(request, response) {
 console.log('Serveur lancé sur le port 8080...');
 ```
 
-- On lance le programme (serveur) avec: `$ node serveur.js`
+- On lance le programme (serveur) avec: `node serveur.js`
 
 ---
 #Gestion des requêtes et des réponses
@@ -660,7 +666,7 @@ server.on('connection', function (stream) {
 - NodeJS propose des **fonctionnalités de bas niveau**
     + Besoin d'outils d'un peu plus haut niveau pour être productif
 - Les **frameworks** web répondent à cette problématique (dans tous les langages web)
-- **ExpressJS** est un framework web léger (minimaliste ?) pour NodeJS<span class='red'>*</span>
+- **ExpressJS** est un framework web léger (minimaliste ?) pour NodeJS.red[*]
 - Fonctionnalités:
     + Routage: quelle fonction est associée à quelle URL ?
     + Automatisation du traitement de certaines requêtes via des "Middleware"
@@ -669,7 +675,7 @@ server.on('connection', function (stream) {
     + Générateur (de squelette) d'application web
 - ExpressJS est un **module** de NodeJS : `var express = require('express');`
 
-<span class='footnote'><span class='red'>*</span>Il existe bien entendu d'autres frameworks pour NodeJS (ex: [Koa](http://koajs.com))</span>
+.footnote[.red[*] Il existe bien entendu d'autres frameworks pour NodeJS (ex: [Koa](http://koajs.com))]
 
 ---
 #ExpressJS: exemple
@@ -827,11 +833,12 @@ app.get('/', function(req, res){
 app.listen(8080);
 ```
 
+.hidden[
+
 ---
 #ExpressJS: générateur d'applications
 
-
-<div class='pull-left big-left'><div></div>
+.float-right.width-30[![Générateur d'applications ExpressJS](images/ExpressGenerator.png "Source: http://expressjs.com/starter/generator.html")]
 
 - **Module** à installer avec la commande : `$ npm install express-generator -g`
 
@@ -848,9 +855,6 @@ $ cd monAppli
 $ npm install
 ```
 
-</div>
-<span class='small-right pull-right'>![Générateur d'applications ExpressJS](images/ExpressGenerator.png "Source: http://expressjs.com/starter/generator.html")</span>
-
 ---
 #"Pile technologique" web
 ##LAMP vs. MEAN
@@ -866,6 +870,8 @@ $ npm install
     + Base de données orientée document (NoSQL)
     + Un seul langages (Javascript)
     + Technologies encore jeunes
+
+]
 
 ---
 #Client side frameworks
@@ -926,13 +932,15 @@ function($scope){
 - Comment gérer l'état de tous les composants (pure HTML ou ReactJS) ?
 - Flux / Redux => notion de store, d'état et d'action
 
-<span class='center full-page'>![Flot de données Redux](images/redux.png "Source: https://medium.com/@sidathasiri/flux-and-redux-f6c9560997d7")</span>
+.center[![Flot de données Redux](images/redux.png "Source: https://medium.com/@sidathasiri/flux-and-redux-f6c9560997d7")]
+
+.hidden[
 
 ---
 #Et les bases de données ?
 
 - Vous connaissez les **bases de données relationnelles**
-    + Ex: Oracle, MySQL, Postgres, etc.
+    + Ex: Oracle, SQLite MySQL, Postgres, etc.
     + Besoin d'un schéma de données défini à l'avance
     + On effectue des requêtes (pouvant être complexes) en SQL
 
@@ -960,25 +968,26 @@ function($scope){
 ---
 #MongoDB: exemple de données
 <br>
-<div class='pull-left'><div></div>
+.pure-g[.pure-u-1-2[
 
-<span class='center'>Modèle **"dénormalisé"**</span>
+.centerc[Modèle **"dénormalisé"**]
 - Possible redondance de données
 - Moins de requêtes à effectuer pour accéder aux informations
 
 ![Exemple de données non-normalisées MongoDB](images/data-model-denormalized.png "Source: http://docs.mongodb.org/manual/core/data-model-design/")
 
-</div>
-<div class='pull-right'><div></div>
+]
+.pure-u-1-2[
 
-<span class='center'>Modèle **normalisé** (classique)</span>
+.center[Modèle **normalisé** (classique)]
 - Pas de redondance
 - Plus de requêtes et requêtes plus complexes
 
 ![Exemple de données normalisées MongoDB](images/data-model-normalized.png "Source: http://docs.mongodb.org/manual/core/data-model-design/")
 
-</div>
+]]
 
+]
 
 ---
 #Plus loin avec NodeJS
@@ -997,4 +1006,4 @@ function($scope){
 ---
 #Prochainement: les services web
 
-<span class='center full-page'>![SOAP vs. REST](images/SOAP vs. REST.jpg "Source: http://geekandpoke.typepad.com/geekandpoke/2009/11/service-calling-made-easy-part-1.html")</span>
+.center[.inline-block.width-65[![SOAP vs. REST](images/SOAP vs. REST.jpg "Source: http://geekandpoke.typepad.com/geekandpoke/2009/11/service-calling-made-easy-part-1.html")]]

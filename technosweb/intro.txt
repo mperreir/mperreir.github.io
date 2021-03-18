@@ -2,43 +2,37 @@ layout: true
 class: left, middle, animated, fadeIn
 
 ---
-#Technologies web et XML
+# Technologies web et XML
 
-<span class='footnote'><span class='red'>*</span> par R. LEHN, N. NORMAND et M. PERREIRA DA SILVA<span>
+.footnote[.red[*] par R. LEHN, N. NORMAND et M. PERREIRA DA SILVA]
 
 ---
-<div class='hidden'><div></div>
-
-# Table des matières
-
-[TOC]
-
-</div>
+# [Version PDF des slides](pdf/00-intro.pdf) 
 
 ---
 # Organisation des enseignements
 ## Les cours (1/2)
 
-1. <span class='blue'>MPDS</span> - Introduction
-2. <span class='blue'>MPDS</span> - HTML / CSS
-3. <span class='blue'>MPDS</span> - Fin de CSS + HTTP et Websocket
-4. <span class='green'>NN</span> - Introduction JavaScript
-5. <span class='green'>NN</span> - Programmation défensive en JavaScript, 'use strict', bonnes pratiques
-6. <span class='green'>NN</span> - JavaScript fonctionnel, fonctions flèche, générateurs
-7. <span class='red'>RL</span> - Outils, tests unitaires et intégration continue
-8. <span class='red'>RL</span> - XML
+1. .blue[MPDS] - Introduction
+2. .blue[MPDS] - HTML / CSS
+3. .blue[MPDS] - Fin de CSS + HTTP et Websocket
+4. .green[NN] - Introduction JavaScript
+5. .green[NN] - Programmation défensive en JavaScript, 'use strict', bonnes pratiques
+6. .green[NN] - JavaScript fonctionnel, fonctions flèche, générateurs
+7. .red[RL] - Outils, tests unitaires et intégration continue
+8. .red[RL] - XML
 
 ---
 # Organisation des enseignements
 ## Les cours (2/2)
 
-9. <span class='red'>RL</span> - XML
-10. <span class='green'>NN</span> - JavaScript asynchrone 1/2, AJAX
-11. <span class='green'>NN</span> - JavaScript asynchrone 2/2, Promise, API fetch, générateurs
-12. <span class='blue'>MPDS</span> - Programmation côté serveur
-13. <span class='blue'>MPDS</span> - Services Web
-14. <span class='red'>RL</span> - DOM + XPATH
-15. <span class='red'>RL</span> - XSL
+9. .red[RL] - XML
+10. .green[NN] - JavaScript asynchrone 1/2, AJAX
+11. .green[NN] - JavaScript asynchrone 2/2, Promise, API fetch, générateurs
+12. .blue[MPDS] - Programmation côté serveur
+13. .blue[MPDS] - Services Web
+14. .red[RL] - DOM + XPATH
+15. .red[RL] - XSL
 
 
 ---
@@ -65,12 +59,12 @@ class: left, middle, animated, fadeIn
 ---
 # Le web?
 
-- <span class='red'>Web &ne; Internet</span>
-    + l'Internet = l'interconnexion de dizaines de milliers de réseaux autonomes
+- .red[Web &ne; Internet]
+    + l'Internet = interconnexion de dizaines de milliers de réseaux autonomes
         * Différents protocoles de communication : IP, TCP, DNS, FTP, HTTP, Telnet, etc.
     + le Web = un système hypertexte public fonctionnant sur l'Internet
         * Deux protocoles principaux : HTTP et WebSocket
-        * Et d'autres : IP, TCP, UDP, FTP, etc.
+        * Et d'autres : Ethernet, IP, TCP, UDP, FTP, etc.
 
 - Permet de mettre des .green[ressources] à disposition des utilisateurs
     + Texte
@@ -92,7 +86,7 @@ class: left, middle, animated, fadeIn
 # Le web : un écosystème standardisé
 ## Le W3C
 
-<span class='pull-right'>![Logo W3c](images/W3C_Icon.svg "Source: http://www.w3.org/Consortium/Legal/logo-usage-20000308")</span>
+.float-right.width-25[![Logo W3c](images/W3C_Icon.svg "Source: http://www.w3.org/Consortium/Legal/logo-usage-20000308")]
 
 - World Wide Web consortium (http://www.w3.org/)
     - Fondé en 1994
@@ -116,11 +110,13 @@ class: left, middle, animated, fadeIn
     + CSS: http://jigsaw.w3.org/css-validator/
     + Mobile-friendly:  http://validator.w3.org/mobile/
 
+.footnote[.red[*] Aller regarder un standard]
+
 ---
 # Le web : un écosystème standardisé
 ## Le WaSP
 
-<span class='pull-right'>![Logo WaSP](images/WSaP_logo.png "Source: http://en.wikipedia.org/wiki/Web_Standards_Project")</span>
+.float-right.width-25[![Logo WaSP](images/WSaP_logo.png "Source: http://en.wikipedia.org/wiki/Web_Standards_Project")]
 
 - Web Standards Project (http://www.webstandards.org/)
     + Fondé en 1998
@@ -134,11 +130,12 @@ class: left, middle, animated, fadeIn
 # Le web : un écosystème standardisé
 ## L'IETF et les RFC
 
-<span class='pull-right'>![Logo IETF](images/ietflogotrans.gif "Source: https://www.ietf.org/")</span>
+.float-right.width-25[![Logo IETF](images/ietflogotrans.gif "Source: https://www.ietf.org/")]
 
 - Internet Engineering Task Force
     + Groupe informel
     + Création de la plupart de RFC (Request For Comment)
+
 - Certaines RFC sont des standards (liste complète dans [RFC 5000](https://www.ietf.org/rfc/rfc5000.txt))
     + UTF-8: [RFC 3629](https://www.ietf.org/rfc/rfc3629.txt)
     + MIME: [RFC 2045](https://www.ietf.org/rfc/rfc2045.txt)
@@ -146,7 +143,7 @@ class: left, middle, animated, fadeIn
     + etc.
 
 ---
-<span class='full-page'>![Logo IETF](images/Moz_ffx_openStandards_1280x1024.jpg "Source: https://developer.mozilla.org/en-US/docs/MDN/Promote")</span>
+.center[![Logo IETF](images/Moz_ffx_openStandards_1280x1024.jpg "Source: https://developer.mozilla.org/en-US/docs/MDN/Promote")]
 
 ---
 # Terminologie et définitions
@@ -162,6 +159,7 @@ class: left, middle, animated, fadeIn
 - **Hypertexte** : Système contenant des nœuds reliées entre eux par des liens
 - **Hyperlien** : Lien qui relie deux nœuds entre eux
 - **HTTP** (Hypertext Transfer Protocol) : Protocole de communication client-serveur principalement utilisé sur le web
+- **XML** (eXtensible Markup Language) : Langage de balisage générique.
 - **HTML** (Hypertext Markup Language) : Langage de balisage conçu pour représenter des pages web. Permet de définir de l'Hypertexte.
 - **CSS** (Cascading Style Sheets) : Langage de description permettant de mettre en forme les documents HTML et CSS
 - **SVG** (Scalable Vector Graphics): Format de données basé sur XML, permettant de décrire des images vectorielles
@@ -188,7 +186,7 @@ class: left, middle, animated, fadeIn
     * Ex4: `../la/fichier.html`
 
 ---
-#Encodage des caractères
+# Encodage des caractères
 
 - Représentation numérique des caractères
 	+ Ex: `'A' = 0x41` en ASCII (hexadécimal)
@@ -198,6 +196,7 @@ class: left, middle, animated, fadeIn
 	+ Ex: ISO [8859-1](http://www.open-std.org/JTC1/SC2/WG3/docs/n411.pdf) (europe occidentale) et [8859-15](http://www.open-std.org/JTC1/SC2/WG3/docs/n404.pdf) (variation avec €)
 - **UTF-8**: encodage universel à taille variable ([RFC 3629](http://tools.ietf.org/html/rfc3629))
 	+ De 8 à 32 bits, rétrocompatible avec ASCII
+
  	+ Ex: `'A' = 0x41`, `'à' = 0xC3 0xA0`, `'€' = 0xE2 0x82 0xAC `
 
 ---
@@ -239,31 +238,28 @@ class: left, middle, animated, fadeIn
 ---
 # Programmer pour le web ?
 
-<span class='full-page-h1'>![Les langages du web ?](images/web-languages.jpg  "Source: http://wikisocial.org/wp-content/uploads/2013/07/web-languages.jpg")</span>
-
+.center[![Les langages du web ?](images/web-languages.jpg  "Source: http://wikisocial.org/wp-content/uploads/2013/07/web-languages.jpg")]
 
 ---
-# Site statique vs. dynamique
+# Site statique
 
-##Site statique
 - Pages HTML (+CSS) créées à l'avance
 - Le serveur web ne fait qu'envoyer le contenu des fichiers
 - Pas de possibilité d'adaptation aux requêtes du client
 - Le web des années 90...
 
-<span class='center'>![Fonctionnement d'un site statique](images/schema01-3c35a.jpg "Source: http://www.cndp.fr/crdp-dijon/Sites-statiques-sites-dynamiques.html")</span>
+.center[![Fonctionnement d'un site statique](images/static website.png "Source: MPDS")]
 
 ---
-# Site statique vs. dynamique
+# Site dynamique
 
-##Site dynamique
 - Pages HTML générées à la demande par le serveur
 - Exécution de scripts sur le serveur (PHP, ASP, Python, etc.)
 - Possibilité d'adapter le contenu à la requête envoyée par le client
-- Interaction du serveur web avec un SGBD (généralement)
-- Le web des années 2000...
+- Interaction du serveur web avec une base de données
+- Le web des années 2000+.
 
-<span class='center'>![Fonctionnement d'un site dynamique](images/schema02-6a42d.jpg "Source: http://www.cndp.fr/crdp-dijon/Sites-statiques-sites-dynamiques.html")</span>
+.center[![Fonctionnement d'un site dynamique](images/dynamic website.png "Source: MPDS")]
 
 ---
 # Deux façons de scripter
@@ -275,20 +271,21 @@ class: left, middle, animated, fadeIn
 
 - Plus récemment : DOM + évolutions de JavaScript
     + Nombreuses interactions coté client (Client Side Scripting)
-    + Utilisation d'AJAX pour récupérer des données
+    + Utilisation de requêtes pour récupérer des données (ex: AJAX)
+        * Toujours besoin d'un serveur web pour les données / l'API
     + Applications internet riches (RIA)
         * Ex: Gmail
 
 ---
 # Applications internet riches (RIA)
 
-<span class='full-page-h1'>![Applications internet riches](images/diagramme_des_applications_nmedia_solutions.jpg "Source: http://www.nmediasolutions.com/publications/conseils/applications-internet-riches-rich-internet-application")</span>
+.center[>![Applications internet riches](images/diagramme_des_applications_nmedia_solutions.jpg "Source: http://www.nmediasolutions.com/publications/conseils/applications-internet-riches-rich-internet-application")]
 
 ---
 # RIA pour les nuls ?
-## Applets et plugins
+## Applets et plugins (obsolète)
 
-<span class='pull-right'>![Plugins RIA](images/Introduction-to-JavaFX-Flex-and-Silverlight.jpg "Source: http://www.linkgard.com/blog/software-development/web-technologies/introduction-to-javafx-flex-and-silverlight.html")</span>
+.float-right[![Plugins RIA](images/Introduction-to-JavaFX-Flex-and-Silverlight.jpg "Source: http://www.linkgard.com/blog/software-development/web-technologies/introduction-to-javafx-flex-and-silverlight.html")]
 
 - JavaFX (Oracle)
     + Basé sur Java
@@ -300,11 +297,9 @@ class: left, middle, animated, fadeIn
     + Basé sur le Framework .Net
 
 ---
-# Applets et plugins
+# Applets et plugins (obsolète)
 
-<div class='pull-left'><div></div>
-
-<h2> <span class='green'>Avantages</span> </h2>
+##.green[Avantages]
 - Richesse graphique
     + Animations, etc.
 - UX proche d'une application "Desktop"
@@ -312,22 +307,16 @@ class: left, middle, animated, fadeIn
 - Ajout de fonctionnalités non / mal supportées par les navigateurs
     + Ex: streaming vidéo
 
-</div>
-
-<div class='pull-right'><div></div>
-
-<h2> <span class='red'>Inconvénients</span> </h2>
+##.red[Inconvénients]
 - Nécessité de télécharger un plugin
 - Temps de téléchargement initial de l'application
 - Risques de failles de sécurité accrus
 - Accessibilité et référencement
 
-</div>
-
 ---
 # Les deux faces du développement web...
 
-<div class='pull-left'><div></div>
+.float-right.width-50[![Développer fontend vs. backend](images/iceberg-front-end-back-end-developers.jpg "Source: http://www.alticreation.com/difference-developpeur-front-end-et-developpeur-back-end/")]
 
 - Frontend
     + (Très) proche du design
@@ -339,17 +328,15 @@ class: left, middle, animated, fadeIn
     + Le "Vrai" développeur web...
     + Accès aux données
     + Code métier
-    + PHP / MySQL, J2EE, NodeJS
+    + PHP / MySQL, J2EE, NodeJS, Python
 
-</div>
-
-<span class='pull-right'>![Développer fontend vs. backend](images/iceberg-front-end-back-end-developers.jpg "Source: http://www.alticreation.com/difference-developpeur-front-end-et-developpeur-back-end/")</span>
+.footnote[.red[*] Manip inspecteur web]
 
 ---
 # Les technologies web c'est aussi...
 ## Les systèmes distribués
 
-<div class='pull-left'><div></div>
+.float-right.width-50[![Systèmes distribués](images/MESH-network-500x328.jpg "Source: http://adam.hypotheses.org/1263")]
 
 - Pas que des sites web...
     + Applications mobiles
@@ -361,9 +348,15 @@ class: left, middle, animated, fadeIn
 - Technologies réutilisées
     + HTTP, XML, JSON, MIME, URI, etc.
 
-</div>
+---
 
-<span class='pull-right'>![Systèmes distribués](images/MESH-network-500x328.jpg "Source: http://adam.hypotheses.org/1263")</span>
+# Cloud computing
+## Dématérialisation de l'informatique
+
+- Bonus, pour votre culture: 
+    + https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/
+
+.center[.inline-block.width-65[![Systèmes distribués](images/Cloud_computing.svg "Source: https://en.wikipedia.org/wiki/Cloud_computing")]]
 
 
 ---
@@ -373,13 +366,12 @@ class: left, middle, animated, fadeIn
     + [http://www.webdirections.org/history/](http://www.webdirections.org/history/)
     + [http://www.pewinternet.org/2014/03/11/world-wide-web-timeline/](http://www.pewinternet.org/2014/03/11/world-wide-web-timeline/)
 
-<span class='center'>![Dancing baby](images/BabyOrigMed1.gif)</span>
+.center[![Dancing baby](images/BabyOrigMed1.gif)]
 
-<span class='center'>*Ex: (1996) Dancing baby : première vidéo virale*</span>
+.center[*Ex: (1996) Dancing baby : première vidéo virale*]
 
 ---
 # This is (almost) the end...
 ## Next : HTML + CSS
 
-<span class='full-page-h1-h2'>![Illustration finale](images/422213306_e34827aaa6_o.jpg "Source: http://www.flickr.com/photos/daniello/422213306/")</span>
->
+.center[![Illustration finale](images/422213306_e34827aaa6_o.jpg "Source: http://www.flickr.com/photos/daniello/422213306/")]

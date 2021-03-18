@@ -3,7 +3,7 @@
 @import url(//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
 body {
-  font-family: 'Droid Serif';
+  font-family: FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;
 }
 h1, h2, h3 {
   font-family: 'Yanone Kaffeesatz';
@@ -46,6 +46,11 @@ code {
   white-space: pre-wrap;
 }
 
+.pure-g [class*=pure-u]{
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+
 .hidden{
   display: none;
 }
@@ -58,8 +63,14 @@ code {
   word-wrap: break-word;
 }
 
-.exemple > p{
-  text-decoration: underline;
+img{
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.inline-block{
+  display: inline-block;
 }
 
 .citation {
@@ -87,65 +98,6 @@ color: #7a7a7a;
 
 .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 .remark-code-line-highlighted     { background-color: #DBEC62; }
-
-.pull-left {
-  float: left;
-  width: 47%;
-  text-align: left;
-  position: relative;
-}
-.pull-right {
-  float: right;
-  width: 47%;
-  text-align: left;
-  position: relative;
-}
-.pull-right ~ p {
-  clear: both;
-}
-
-.pull-right img, .pull-left img {
-  max-width: 100%;
-  max-height: 50em;
-  margin: 1em;
-}
-
-.pull-right img{
-  float: right;
-}
-
-.big-left {
-  float: left;
-  width: 63%;
-}
-
-.small-right {
-  float: right;
-  width: 33%;
-}
-
-.center {
-  margin: 0px auto;
-}
-
-.full-page > img {
-  max-width: 100%;
-  max-height: 50ex;
-}
-
-.full-page-h1 > img {
-  max-width: 85%;
-  max-height: 40ex;
-  display: block;
-  margin: 0px auto;
-}
-
-.full-page-h1-h2 > img {
-  max-width: 70%;
-  max-height: 30ex;
-  display: block;
-  margin: 0px auto;
-}
 
 #slideshow .slide .content code {
   font-size: 0.8em;
@@ -199,20 +151,14 @@ color: #7a7a7a;
   z-index: 0;
 }
 
-/* Two-column layout */
-.left-column {
-  color: #777;
-  width: 20%;
-  height: 92%;
+.float-left {
   float: left;
+  padding: 0.5em;
 }
-  .left-column h2:last-of-type, .left-column h3:last-child {
-    color: #000;
-  }
-.right-column {
-  width: 75%;
+
+.float-right {
   float: right;
-  padding-top: 1em;
+  padding: 0.5em;
 }
 
 .remark-slide-content .remark-slide-number {
