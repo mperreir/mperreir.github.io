@@ -34,7 +34,7 @@ class: left, middle, animated, fadeIn
     + Compatible avec divers langages (HTML, XML, SVG, etc.)
 - <span class='red'>**Inconvénients**</span>
     + Encore quelques différences de rendu entre les navigateurs
-    + Certaines fonctionnalités récentes (CSS3) pas encore supportées par tous les navigateurs
+    + Certaines fonctionnalités récentes (CSS3/4) pas encore supportées par tous les navigateurs
 
 ---
 # Un peu d'histoire... (1/3)
@@ -71,7 +71,7 @@ class: left, middle, animated, fadeIn
         * Nouveaux sélecteurs
         * Média Queries
         * Gestion de la couleur
-     + Actuellement, [prise en charge partielle](http://en.wikipedia.org/wiki/Comparison_of_layout_engines_(Cascading_Style_Sheets) par les navigateurs
+     + Actuellement, [prise en charge partielle](https://en.wikipedia.org/wiki/Comparison_of_browser_engines_%28CSS_support%29) par les navigateurs
 
 - **CSS 4 ?**
     + Seulement des modules CSS level 4
@@ -147,9 +147,9 @@ class: left, middle, animated, fadeIn
     + Ex: `body { background: url("./images/untruc.gif") }`
 
 ---
-# Lier styles CSS et document HTML (1/4)
+# Lier styles CSS et document HTML (1/3)
 
-- **Style en ligne** (à vraiment éviter)
+- **Style en ligne** (à **VRAIMENT** éviter)
     + Attribut `style` des balises HTML
     + Pas de séparation fond / forme...
 
@@ -160,9 +160,9 @@ class: left, middle, animated, fadeIn
     ```
 
 ---
-# Lier styles CSS et document HTML (2/4)
+# Lier styles CSS et document HTML (2/3)
 
-- **Feuille de style interne** (à éviter)
+- **Feuille de style interne** (à éviter aussi)
     + Balise `<style></style>` dans la partie `<head>` de la page
     + On préfèrera écrire les règles CSS dans une feuille de style séparée
 
@@ -183,30 +183,7 @@ class: left, middle, animated, fadeIn
     ```
 
 ---
-# Lier styles CSS et document HTML (3/4)
-
-- **Feuille de style externe importée** (attention aux temps de chargement)
-    + Règles CSS dans un fichier externe
-    + Import d'une feuille de style **dans une autre feuille de style** (`@import`) ou **dans un fichier HTML** (`@import` dans une balise `<style>`)
-    + **Possibilité** de spécifier un média cible
-
-- Exemple:
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="fr">
-      <head>
-        <!-- on suppose que le balise obligatoires du header ont été déclarées -->
-        <style>
-            @import url("mon_fichier") screen; /*screen n'est pas obligatoire */
-        </style>
-      </head>
-      <body><p id="phrase_rouge"> Une phrase en rouge. </p></body>
-    </html>
-    ```
-
----
-# Lier styles CSS et document HTML (4/4)
+# Lier styles CSS et document HTML (3/3)
 
 - **Feuille de style externe liée** (à privilégier)
     + Règles CSS dans un fichier externe
@@ -234,7 +211,7 @@ class: left, middle, animated, fadeIn
     + au liage / à l'import d'une feuille de style (*vu juste avant*)
     + au niveau des règles CSS, avec `@media type_media { /* code CSS */ }`
         * Exemple:
-       
+        
         ```css
         @media print {
             /* le menu n'est pas affiché à l'impression */
@@ -252,16 +229,16 @@ class: left, middle, animated, fadeIn
 ---
 # Sélecteurs simples (1/2)
 
-- `nomelement`: sélecteur de **balise**
+- `nomElement`: sélecteur de **balise**
     + Exemple:
 
     ```css
     p { color: red;} /* tous les paragraphes <p> */
     ```
 
-- `.nomclasse`: sélecteur de **classe**
+- `.nomClasse`: sélecteur de **classe**
     + Exemple:
-   
+    
     ```css
     .maClasse { color: green;} /* les élements de la classe "maClasse" */
     ```
@@ -273,20 +250,19 @@ class: left, middle, animated, fadeIn
     #monId { color: blue;} /* l'élément ayant l'ID "monId" */
     ```
 
-
 ---
 # Sélecteurs simples (2/2)
 
 - `*`: sélecteur **universel**
     + Exemple:
-   
+    
     ```css
      * { color: orange;} /* tous les éléments */
     ```
 
 - On peut **combiner** les sélecteurs
     + Exemple:
-   
+    
     ```css
     p.maClasse { color: lime; } /* tous les <p> de classe "maClasse" */
     ```
@@ -311,7 +287,7 @@ class: left, middle, animated, fadeIn
     div span { color: yellow; }
     ```
     * HTML
-   
+    
     ```html
     <div>
     * <span>Span 1.
@@ -352,7 +328,7 @@ class: left, middle, animated, fadeIn
     + La règle s'applique à B !
 + Exemple:
     * CSS
-  
+    
     ```css
     div + span { color: yellow; }
     ```
@@ -391,7 +367,7 @@ class: left, middle, animated, fadeIn
 
 - `A[attr~="val"]`: **L'une des valeurs** de l'attribut `attr` de l'élément est **exactement** `val`
     + Exemple:
-   
+    
     ```css
     /* tous les <div> dont l'une des valeurs de l'attribut 'class' est 'maClasse' */
     div[class~='maClasse']  { color: yellow; }
@@ -399,13 +375,12 @@ class: left, middle, animated, fadeIn
 
 - `A[attr|="val"]`: **La valeur** de l'attribut `attr` de l'élément **commence par** `val`
     + Exemple:
-   
+    
     ```css
     /* tous les <input> dont l'attribut 'id' commence par 'btn' */
     /* Exemple: 'btn1', 'btn5', etc. */
     input[id|='btn']  { color: white; }
     ```
-
 
 ---
 # Les pseudo-classes
@@ -470,7 +445,7 @@ p.ecole:after { content: " super cool"; color: green;}
 
 ---
 # L'héritage (1/2)
-- Un élément **peut hériter** des propriétés **de ses parents**
+- Un élément HTML **peut hériter** des propriétés **de ses parents**
     + Certaines propriétés sont automatiquement héritées (ex:`color`)
     + D'autres ne le sont pas (ex: `border`)
 - Exemple:
@@ -601,7 +576,7 @@ Résultat:
 
 - Un **shorthand** est une propriété permettant de définir **plusieurs propriés** CSS en une fois
 - Exemple:
-    
+  
     ```css
     div { background-color: #000;
         background-image: url(images/bg.gif);
@@ -679,10 +654,10 @@ Exemple:
 <div class='resultat'><div></div>
 
 Résultat:
-<div id="conteneur">
-<div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white">div1</div>
-<div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
-<div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white">div3</div>
+<div id="conteneur" style="border: 1px solid black;">
+<div id="d1" style="font-size: 12pt; height:5ex; background-color:green; color:white">div1</div>
+<div id="d2" style="font-size: 12pt; height:5ex; background-color:yellow;">div2</div>
+<div id="d3" style="font-size: 12pt; height:5ex; background-color:red; color:white">div3</div>
 </div>
 
 </div>
@@ -694,13 +669,13 @@ Résultat:
 
 <div class='pull-left big-left'><div></div>
 
-- Permet de changer la manière dont un élément est affiché
+- Permet de changer la manière dont un élément (ou ses descendants) est affiché
 - Valeurs généralement utilisées:
     * `none`: élément **non affiché**
     * `inline`: éléments **en ligne**, les uns à coté des autres
     * `block`: éléments **bloc**, les uns en dessous des autres
     * `inline-block`: éléments **bloc**, les uns à coté des autres
-    * `flex`, `flow`, `grid` : conteneur d'autres blocs pour positionnement avancé
+    * `flex`, `flow`, `grid` : définit le comportement des **enfants du bloc**
 </div>
 
 <div class='pull-right small-right'><div></div>
@@ -709,13 +684,20 @@ Résultat:
 Exemple:
 
 ```css
+#conteneur div { width: 5em;}
 #d1 { display: none;}
-#d2, d3 { display: inline-block;}
+#d2, #d3 { display: inline-block;}
 ```
 <div class='resultat'><div></div>
 
-Résultat:
-<div id="conteneur">
+Résultat (2 exemples):
+<div id="conteneur" style="border: 1px solid black;">
+<div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; display:none;">div1</div>
+<div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;  display: inline-block;">div2</div>
+<div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;  display: inline-block;">div3</div>
+</div>
+<br>
+<div id="conteneur" style="border: 1px solid black; width: 7em;">
 <div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; display:none;">div1</div>
 <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;  display: inline-block;">div2</div>
 <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;  display: inline-block;">div3</div>
@@ -728,7 +710,7 @@ Résultat:
 # Positionnement
 
 - 4 valeurs possibles pour la propriété `position`
-    + `static`: flux normal du code HTML
+    + `static`: flux normal du code HTML (par défaut)
     + `relative`: décalage par rapport **à la position statique**
     + `absolute`: l'élément est **sorti du flux** et placé par rapport **au parent positionné le plus proche**
     + `fixed`: l'élément est **sorti du flux** et est fixe par rapport **à la fenêtre du navigateur**
@@ -744,13 +726,14 @@ Résultat:
 <div class='pull-left'><div></div>
 
 ```css
+#conteneur div { width: 5em;}
 #d1 { position: relative; top: 1em; left: 1em;}
-#d3 { position: fixed; top: 1em; right: 1em;}
+#d3 { position: fixed; top: -1em; right: 1em;}
 ```
 <div class='resultat'><div></div>
 
 Résultat:
-<div id="conteneur">
+<div id="conteneur" style="border: 1px solid black;">
 <div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: relative; top:1em; left: 1em;">div1</div>
 <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
 <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white; position: fixed; top: 1em; right: 1em;">div3</div>
@@ -762,16 +745,17 @@ Résultat:
 <div class='pull-right'><div></div>
 
 ```css
+#conteneur div { width: 5em;}
 /* le parent doit être positionné */
 #conteneur{ position: relative; }
-#d1 { position: absolute; top: 1em; left: 1em; }
+#d1 { position: absolute; top: -1em; left: 1em; }
 ```
 
 <div class='resultat'><div></div>
 
 Résultat:
-<div id="conteneur" style="position: relative;">
-<div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: absolute; top:1em; left: 1em;">div1</div>
+<div id="conteneur" style="position: relative; border: 1px solid black;">
+<div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: absolute; top:-1em; left: 1em;">div1</div>
 <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
 <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;">div3</div>
 </div>
@@ -820,27 +804,71 @@ Résultat:
 <div class='pull-left big-left'><div></div>
 
 - Permet de préciser comment les éléments *s'empilent* sur la page
-- Seul les **éléments positionnés** (ayant une propriété `position` qui a pour valeur `relative`, `absolute` ou `fixed`) peuvent avoir un `z-index`
+- Seul les **éléments positionnés** peuvent avoir un `z-index`
 - Les valeurs les plus élevées sont affichées au premier plan.
     + Un élément avec un  `z-index` de 2 sera devant un élément avec un `z-index` de 1
 
 </div>
 <span class='small-right pull-right'>![Z-index](images/z-index.gif "Source: http://nettech.blog.hu/2009/10/11/a_css_tokeletes_elsajatitasa_a_kezdetek ")</span>
 
+<span class='footnote'><span class='red'>*</span>Un élement est positionné si sa propriété `position` a pour valeur `relative`, `absolute` ou `fixed`</span>
+
+---
+# Les conteneurs `display:flex`
+
+- On définit un **conteneur flex** avec la propriété `display:flex`
+- `flex-direction` définit l'**axe principal** sur lequel les éléments se distribuent
+	+ `flex-direction: row` ou `flex-direction: row-reverse`: horizontalement
+	+ `flex-direction: column` ou `flex-direction: column -reverse`: verticalement
+- Par défaut les éléments peuvent dépasser du conteneur. `flex-wrap: wrap` permet d'aller à la ligne automatiquement.
+- **L'alignement** des éléments du conteneur sur l'**axe principal** s'ajuste avec `justify-content` (ex: `center` ou `space-between`)
+- **L'alignement** des éléments du conteneur sur l'**axe secondaire** s'ajuste avec `align-items` (ex: `center` ou `stretch`)
+- S'il y a **plusieurs lignes** d'éléments (à cause de wrap) leur **alignement** est géré pas `align-content` (ex: `center` ou `stretch`)
+
+
+---
+# Propriétés des éléménts `flex`
+
+- S'appliquent aux éléments contenus dans un conteneur flex
+- Changer l'ordre d'un élément avec `order`
+	+ Exemple: `order: 3`
+- Changer l'alignement d'un seul élément avec `align-self`
+	+ Exemple: `align-self: center`
+- Gérer l'ajustement automatique de la taille d'un élément avec `flex`
+	+ `flex: initial`: ne peut pas grandir mais peut rétrécir
+	+ `flex: auto` : peut grandir et rétrécir 
+	+ un élément `flex: 2` grandira 2x plus qu'un `flex: 1`
+
+- Plus de détails sur `flex` [ici](https://developer.mozilla.org/fr/docs/Web/CSS/flex) ou [là](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
+
+---
+<span class='full-page'><iframe src="https://flexbox.tech" width=830 height=630 FRAMEBORDER="no" BORDER="0" SCROLLING="no" style="margin-left: -50px; margin-top: -40px"></span>
+
+
+---
+# Les conteneurs`display:grid`
+
+<span class='center full-page-h1'>![Flex grid](images/flex-grid.png "Source: https://medium.com/@daniaherrera/getting-started-css-grid-vs-flexbox-b3012fce6476")</span>
+
+- Plus de details [ici](https://css-tricks.com/snippets/css/complete-guide-grid/)
+
+
 ---
 # Conseils de positionnement
 
 - Garder au maximum les éléments dans le flux
     + Utiliser les propriété `position`, `margin` et `padding` pour décaler les éléments
+    + Positionner les éléments hiérarchiquement **avec des conteneurs** `display: flex` ou en gille avec `display: grid`
 
 - S'il est nécessaire de sortir un élément du flux
-    + Si la hauteur de mon élément est fixe, j'utilise la propriété `positon` (généralement avec la valeur `absolute`)
-    + Si la hauteur de mon élément peut varier, j'utilise un placement à base de propriété `float`
+    + J'utilise la propriété `position` (généralement avec la valeur `absolute`)`
 
-- Si les éléments doivent pouvoir se repositionner en fonction de l'espace disponible dans leur conteneur : utiliser (de préférence) `display: inline-block` ou la propriété `float`
+- Si les éléments doivent pouvoir se repositionner en fonction de l'espace disponible dans leur conteneur : utiliser `display: inline-block` (pour l'élément) ou `display: flex` (pour le conteneur)
+	+ Mais pas les deux !!!
 
 ---
-# Nouveaux sélecteurs CSS3
+# Nouveaux sélecteurs CSS3/4
 
 - De très (trop?) nombreuses nouveautés
     + 1 nouveau sélecteur hiérarchique
@@ -858,7 +886,7 @@ Résultat:
 - Cf. la norme du module CSS [Selector Level 3](http://www.w3.org/TR/css3-selectors/)
 
 ---
-# Nouvelles propriétés CSS3
+# Quelques nouvelles propriétés CSS3/4
 
 - **Transparence**: fonctions `rbga()` et `hsla()`, propriété `opacity`
 - **Bordures** (couleurs différentes, images): `border-image`
@@ -866,14 +894,13 @@ Résultat:
 - **Fonds** (background) **multiples**
 - **Ombrage** des boites et du texte: `box-shadow`
 - **Multi-colonnes**: `columns`, `column-fill`, `break-after`, etc.
-- **Flexbox** : `display: flex` (plus de détails [ici](https://css-tricks.com/snippets/css/a-guide-to-flexbox/))
-- **Grille** : `display: grid` (plus de details [ici](https://css-tricks.com/snippets/css/complete-guide-grid/))
 - **Transformations** d'éléments (rotations, etc.): `transform`
 - **Animations**: `animation`, `@keyframes`, etc.
 - **Transitions**: `transition`
 - **Dégradés**: fonctions `linear-gradient`, `radial-gradient`, etc.
 - **Polices téléchargées**: `@font-face`
 - **Calculs simples et récupération de valeur d'attribut**: `calc()` et `attr()`
+	+ Ex: `#truc { width: calc(20% - 10px) }`
 
 ---
 # CSS 3 media queries
@@ -888,9 +915,10 @@ Résultat:
     type="text/css" >
     ```
 + Exemple CSS:
-   
+  
     ```css
-    @media screen and (max-width: 640px) {
+    /* Ne s'applique que si la largeur d'écran est inférieure à 640px */
+    @media screen and (max-width: 640px) { 
       .bloc {   display:block;
                 clear:both; }}
     ```
@@ -899,9 +927,10 @@ Résultat:
 # Responsive web design++
 
 - L'arrivée des navigateurs mobiles
+  
     + Nécessité d'adapter les sites à différentes résolutions
 - Optimiser l'affichage pour les mobiles : [le viewport](http://www.alsacreations.com/article/lire/1490-comprendre-le-viewport-dans-le-web-mobile.html)
-   
+  
     ```html
     <!-- propriété non standardisée... (origine : Apple) -->
     <meta name=viewport content="width=device-width, initial-scale=1">
@@ -928,46 +957,7 @@ Résultat:
     + Spécifier combien de colonnes prend chaque élement sur différentes tailles d'écran
         + Ex de classes bootstrap: `col-xs-*`, `col-sm-*` , `col-md-*`, `col-lg-*`
 
-- **Exemple** (2 lignes: 2 colonnes + 3 colonnes):
-
-<!-- à revoir -->
-<style>
-    #iframecontainer {
-    	position: relative;
-    	padding-top:5%;
-    	padding-bottom:15%;
-    	height: 0;
-    	overflow: hidden;
-	    }
-    #iframecontainer iframe {
-    	position: absolute;
-	    bottom:-2%;
-	    left: 5%;
-	    width: 90%;
-    }
-</style>
-<div id="iframecontainer">
-<iframe frameBorder='0' srcdoc='
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<style>
-    .container { width: 100%;}
-    .container .row div { border-style: solid; border-width: 1px; margin: 0px; background-color: #DDDDDD; }
-    .container .row  { margin-bottom: 4px; }
-</style>
-<div class="container">
-<p>Pour: mobile (xs), tablette (sm) et desktop (lg)</p>
-<div class="row">
-<div class="col-xs-12 col-sm-6 col-lg-8">.col-xs-12 .col-sm-6 .col-lg-8</div>
-<div class="col-xs-6 col-lg-4">.col-xs-6 .col-lg-4</div>
-</div>
-<div class="row">
-<div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-<div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-<div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-</div>
-</div>'>
-</iframe>
-</div>
+- **Exemples** [sur le site de bootstrap](https://getbootstrap.com/docs/3.4/examples/grid/)
 
 ---
 # Plus loin que le CSS
@@ -989,9 +979,14 @@ Résultat:
 <span class='small-right pull-right'>![less vs. Sass](images/less-vs-sass.png "Source: http://www.zingdesign.com/less-vs-sass-its-time-to-switch-to-sass/")</span>
 
 ---
+# Pour des informations plus complètes
+
+- Informations générales sur CSS: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS) 
+- Référence de toutes les propriétés CSS: [DevDocs](https://devdocs.io/css/)
+
+---
 # Fin de la partie CSS
 ## Ensuite...
 
 <br>
-<span class='center full-page'>![HTTP Cookies](images/HTTP-Cookie-Google.png "Source: http://commons.wikimedia.org/wiki/File:HTTP-Cookie-Google.png")</span>
->
+<span class='center full-page'>![HTTP Cookies](images/JS-joke.jpg "Source: https://yellowjokes.com/javascript-jokes")</span>

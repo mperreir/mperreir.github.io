@@ -17,6 +17,176 @@ class: left, middle, animated, fadeIn
 </div>
 
 ---
+# Préambule: les langages de description
+
+- Définissent une **structure** et/ou des **règles**
+
+- Sans langage spécifique, la structure n'est pas toujours explicite
+
+<br>
+**Exemple de texte seul:**
+.resultat[
+Polytech Nantes
+
+L'école d'ingénieurs de l'Université de Nantes.
+
+Polytech forme des étudiants ingénieurs, mais pas seulement. Elle délivre aussi des masters pour des publics nationaux et internationaux.
+
+Le détail de ses formations est disponible sur son site web.
+
+Ingénieur informatique: 3 ans d'études pour devenir un expert des technologies numériques.
+
+Master culture numériques: un enseignement interdisciplinaire pour des publics variés.
+]
+
+---
+# Préambule: les langages de description (HTML)
+
+- **Structurer** l'information en vue de la **présenter**
+	* **Balises**: définissent le sens
+		+ Exemple: `<h3>Polytech Nantes</h3>`
+	* **Attributs**: permettent d'apporter des informations complémentaires
+		+ Exemple: `<a href="http://polytech.univ-nantes.fr">site web</a>`
+
+```html
+<section id="polytech_nantes">
+<h3>Polytech Nantes</h3>
+<h4>L'école d'ingénieurs de l'Université de Nantes.</h4>
+<p>Polytech forme des étudiants ingénieurs, mais pas seulement. Elle délivre aussi des masters pour des publics nationaux et internationaux.</p>
+<p>Le détail de ses formations est disponible sur son <a href="http://polytech.univ-nantes.fr">site web</a>.</p> 
+<ul>
+	<li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
+</li>
+	<li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
+</ul>
+</section>
+```
+
+---
+# Préambule: les langages de description (HTML)
+
+**Rendu du document** HTML dans un navigateur web:
+.resultat[
+<section id="polytech_nantes_no_css">
+<h3>Polytech Nantes</h3>
+<h4>L'école d'ingénieurs de l'Université de Nantes.</h4>
+<p>Polytech forme des étudiants ingénieurs, mais pas seulement. Elle délivre aussi des masters pour des publics nationaux et internationaux.</p>
+<p>Le détail de ses formations est disponible sur son <a href="http://polytech.univ-nantes.fr">site web</a>.</p> 
+<ul>
+	<li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
+</li>
+	<li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
+</ul>
+</section>]
+
+---
+# Préambule: les langages de description (CSS)
+<br>
+- Définir des **règles** de présentation
+	* s'appliquent à un/des éléments choisis à l'aide d'un **sélecteur**
+
+<br>
+```CSS
+#polytech_nantes h3, #polytech_nantes h4{
+	text-align: center;
+}
+	
+#polytech_nantes{ 			/* un sélecteur */ 
+	font-size: 12pt;		/* une règle    */
+}
+
+#polytech_nantes li{
+	width: 45%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+```
+
+---
+# Préambule: les langages de description (CSS)
+<br>
+**Rendu du même document** HTML avec les règles CSS
+.resultat[
+<section id="polytech_nantes">
+<style>
+#polytech_nantes h3, #polytech_nantes h4{
+	text-align: center;
+}
+	
+#polytech_nantes{
+	font-size: 12pt;
+}
+
+#polytech_nantes li{
+	width: 45%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+</style>
+<section id="polytech_nantes">
+<h3>Polytech Nantes</h3>
+<h4>L'école d'ingénieurs de l'Université de Nantes.</h4>
+<p>Polytech forme des étudiants ingénieurs, mais pas seulement. Elle délivre aussi des masters pour des publics nationaux et internationaux.</p>
+<p>Le détail de ses formations est disponible sur son <a href="http://polytech.univ-nantes.fr">site web</a>.</p> 
+<ul>
+	<li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
+</li>
+	<li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
+</ul>
+</section>]
+
+---
+
+# Préambule: les langages de description (XML/JSON)
+- **Structurer** l'information en vue de la **manipuler**
+
+| Departement | Nom              | Surface | Habitants |
+| :---------: | :--------------: | ------: | --------: |
+| 44          | Loire-atlantique | 6815    | 1328620   |
+| 85          | Vendée           | 6720    | 655506    |
+
+devient
+
+.pull-left[
+
+```xml
+<liste_departements>
+	<departement id="44">
+		<nom> Loire-Atlantique </nom>
+		<surface> 6815 </surface>
+		<habitants> 1328620 </habitants>
+	</departement>
+	<departement id="85">
+		<nom> Vendée </nom>
+		<surface> 6720 </surface>
+		<habitants> 655506 </habitants>
+	</departement>
+</liste_departements>
+```
+.center[XML]
+]
+.pull-right[
+
+```json
+[{ "44": {
+		"nom": "Loire-Altantique",
+		"surface": "6815",
+		"habitants": "1328620"
+	}
+}, 
+{ "85": {
+		"nom": "Vendée",
+		"surface": "6720",
+		"habitants": "655506"
+	}
+}]
+```
+.center[JSON]
+]
+
+---
 # (X)HTML(5) !
 <span class='full-page'>![HTML5](images/Why-HTML5-31.jpg "Source: http://www.wix.com/blog/2012/03/why-html5-is-the-buzz-right-now/")</span>
 
@@ -27,6 +197,7 @@ class: left, middle, animated, fadeIn
 - 1995 : HTML 2
 - 1995 : HTML+ et HTML 3 (non standards)
 - 1997 : HTML 3.2 et HTML 4 (standards W3C)
+- 1998 : XML 1.0
 - 1999 : HTML 4.01 (standards W3C)
 - 2000 : XHTML 1.0 (HTML 4 réécrit en XML)
 - 2001: XHTML 1.1 (améliorations mineures de XHTML 1.0)
@@ -35,7 +206,8 @@ class: left, middle, animated, fadeIn
 - 2014 : [HTML 5](http://www.w3.org/TR/html5/) (standardisé)
 
 ---
-# Du vocabulaire...
+
+# Vocabulaire XML
 
 - **Elément** : nom, notion abstraite
     + Exemple : `p`
@@ -44,13 +216,25 @@ class: left, middle, animated, fadeIn
         - Exemple:   `<p>`
     + Balise fermante : `</element>`
         - Exemple:   `</p>`
-    + Balise auto-fermante : `<element>`
-        - Exemple:   `<img>`
 - **Attribut** : propriété d’un élément (nom, valeur)
     + `<element nom="valeur" >`
         - Exemple: `<p id="paraPrincipal" >`
-- **Commentaire**: non interprétés par les outils HTML
+- **Commentaire**: non interprétés par les outils XML
     - `<!-- Ceci est un commentaire ! -->`
+- **DTD** et **Schema**: définissent le vocabulaire et la grammaire d'un document XML
+    - Balises utilisables et leur relations hiérarchiques
+
+---
+
+# Spécificités HTML
+
+- Très proche de XML mais...
+- Commence par un doctype plutôt qu'un prologue
+  - XML : `<?xml version="1.0"?>`
+  - HTML5 : `<!DOCTYPE html>`
+  - Mais un document XML peut aussi contenir un doctype !
+- Balise auto-fermante `<element/>` ou vide `<element>`
+  - Exemple:   `<img/>` (XHTML) ou `<img>` (HTML5)
 
 ---
 # Quelques bonnes habitudes (1/2)
@@ -193,11 +377,10 @@ class: left, middle, animated, fadeIn
 # Les balises d'HTML5
 
 <h2><span class='red'>ATTENTION : Liste et description non exhaustive</span></h2>
-
 Ce cours n'a pas vocation à être une référence. D'autres sources d'information sont largement disponibles sur le web.
 
-- [https://webplatform.github.io](https://webplatform.github.io) (projet abandonné)
 - [https://developer.mozilla.org/fr/docs/Web/HTML/Reference](https://developer.mozilla.org/fr/docs/Web/HTML/Reference)
+- [https://devdocs.io/html](https://devdocs.io/html) (agrégateur de documentations)
 - Et bien sûr les textes des [standards du W3C](https://www.w3.org/TR/) !
 
 ---
@@ -206,7 +389,6 @@ Ce cours n'a pas vocation à être une référence. D'autres sources d'informati
 <div class='pull-left'><div></div>
 
 <h3> <span class='red'>Bloc</span> </h3>
-
 - Contient
     + Du texte
     + Des éléments "En ligne"
@@ -223,7 +405,6 @@ Ce cours n'a pas vocation à être une référence. D'autres sources d'informati
 <div class='pull-right'><div></div>
 
 <h3> <span class='blue'>En ligne</span> </h3>
-
 - Contient
     + Du texte
     + Des éléments "En ligne"
@@ -245,7 +426,6 @@ Ce cours n'a pas vocation à être une référence. D'autres sources d'informati
 <div class='pull-left'><div></div>
 
 <h3> <span class='red'>Bloc</span> </h3>
-
 ```html
 <div style="background:yellow;">
     Une boite jaune
@@ -260,7 +440,6 @@ Ce cours n'a pas vocation à être une référence. D'autres sources d'informati
 Résultat:
 <div style="background:yellow;">Une boite jaune</div>
 <div style="background:green;">Une boite verte</div>
-
 </div>
 
 </div>
@@ -268,7 +447,6 @@ Résultat:
 <div class='pull-right'><div></div>
 
 <h3> <span class='blue'>En ligne</span></h3>
-
 ```html
 <span style="background:yellow;">
     Une boite jaune
@@ -302,7 +480,7 @@ Résultat:
 - Ne sont utiles qu'en association avec les **attributs**
     + `class`: permet d'associer un même style CSS à différentes balises
     + `id`: identifie de manière unique une balise
-    + `style`: permet d'ajouter directement du code CSS dans le code HTML **(à éviter)**
+    + `style`: permet d'ajouter du code CSS dans une balise HTML **(à éviter)**
 
 ---
 # Balises génériques (2/2)
@@ -339,11 +517,8 @@ CSS
 ```
 
 </div>
-
 <div class='resultat pull-left'><div></div>
-
 Résultat sans CSS: <div>La div 1</div><div>La div 2</div>
-
 </div>
 <div class='resultat pull-right'><div></div>
 
@@ -361,7 +536,7 @@ Résultat sans CSS: <div>La div 1</div><div>La div 2</div>
 Peuvent être définis sur n'importe que élément HTML
 
 - `accesskey`: raccourci clavier de l'élément
-- `class`: permet d'associer un même style CSS à différentes balises
+- **`class`**: permet d'associer un même style CSS à différentes balises
   + classes multiples possibles. Ex: `<div class="classe1 classe2"></div>`
 - `contenteditable`: rend l'élément modifiable
 - `contextmenu`: permet de référencer un élément `<menu>` (contenant des `<menuitem>`) qui apparaitra au clic droit sur l'élément
@@ -373,11 +548,11 @@ Peuvent être définis sur n'importe que élément HTML
 
 Peuvent être définis sur n'importe que élément HTML
 
-- `hidden`: permet de cacher un élément
-- `id`: identifiant de l'élément
+- `hidden`: permet de "cacher" un élément **(pas que graphiquement)**
+- **`id`**: identifiant de l'élément
 - `lang`: définit le langage de l'élément
-- `style`: permet d'ajouter directement du code CSS dans le code HTML **(à éviter)**
-- `tabindex`: spécifie l'ordre de navigation de l'élément via la touche 'tab'
+- `style`: permet d'ajouter du code CSS dans une balise HTML **(à éviter)**
+- `tabindex`: spécifie l'ordre de navigation de l'élément via la touche "tab"
 - `title`: informations complémentaires concernant l'élément, apparaissant le plus souvent sous forme de bulle d'aide
 - `translate`: indique si l'élément doit être traduit en cas de traduction de la page
 
@@ -613,7 +788,7 @@ Résultat
     + L'attribut `alt` fournit une description textuelle de l'image (accessibilité).
     + L'attribut `srcset` permet de définit différentes tailles d'image (responsive + high dpi)
     + Peut être insérée dans une balise `<a>` pour créer une image cliquable
-- `<picture>` et `<source>`: Solution HTML5, alternative à `srcset`, pour spécifier **différentes images** (choix artistique) ou **différents formats** (ex: JPG et WebP)
+- `<picture>` et `<source>`: Solution HTML5, alternative à `srcset`, pour spécifier **différentes tailles d'images** (responsive + high dpi) ou **différents formats** (ex: JPG et WebP)
 - `<canvas>`: **Surface** (matricielle) de dessin, qui sera manipulée via l'API javascript éponyme.
     + A besoin d'un attribut `id` pour être référencée en JavaScript
     + Ne pas oublier de lui donner une largeur et une hauteur (de préférence en CSS)
@@ -637,7 +812,7 @@ Résultat
 <picture>
   <source media="(min-width: 650px)" srcset="images/kitten-large.png">
   <source media="(min-width: 465px)" srcset="images/kitten-medium.png">
-  <!-- par défaut / pour les navigateurs ne supportant pas <picture> -->
+  <!-- un élément <img>, pour les navigateurs ne supportant pas <picture> -->
   <img src="images/kitten-small.png" alt="a cute kitten">
 </picture>
 ```
@@ -655,7 +830,7 @@ Résultat
 - `<audio>` : Définit un **son** à jouer sur une page
 - Attributs utiles:
     + `src`: L'URL du son à jouer
-        * **Attention** : tous les (anciens) navigateurs ne supportent pas les mêmes codecs. Il faut au moins fournir le son au formats Ogg/Vorbis et MP4/AAC
+        * **Attention** : tous les navigateurs ne supportent pas les mêmes codecs. Il faut au moins fournir le son au formats Ogg/Vorbis et MP4/AAC
     + `autoplay`: Comme son nom l'indique...
     + `controls`: Permet d'afficher une interface de lecture du son
     + `type`: Le type MIME du son à jouer
@@ -675,7 +850,7 @@ Description alternative ici !
 - `<video>` : Définit une **vidéo** à jouer sur une page
  Attributs utiles:
     + `src`: L'URL du son à jouer
-        * **Attention** : comme pour l'audio, tous les (anciens) navigateurs ne supportent pas les mêmes codecs. Le .h264 (mp4) est [de mieux en mieux supporté](http://caniuse.com/#feat=mpeg4), mais il faut aussi compter avec WebM et Theora.
+        * **Attention** : comme pour l'audio, tous les navigateurs ne supportent pas les mêmes codecs. Le .h264 (mp4) est [de mieux en mieux supporté](http://caniuse.com/#feat=mpeg4), mais il faut aussi compter avec WebM et Theora.
     + `autoplay`: Comme son nom l'indique...
     + `controls`: Permet d'afficher une interface de lecture du son
     + `type`: Le type MIME du son à jouer
@@ -712,7 +887,6 @@ Exemple de vidéo YouTube:
 ```html
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kPHLewY6Oc0" frameborder="0" allowfullscreen></iframe>
 ```
-
 
 ---
 # Autre contenu
@@ -761,9 +935,9 @@ Exemple de vidéo YouTube:
 - La balise `<form>` permet de **déclarer un formulaire**
 - Attributs utiles
   + `action`: URL de la page / script serveur qui traitera les données du formulaire
-+ `method`: Méthode HTTP à utiliser (GET ou POST)
++ `method`: Méthode HTTP à utiliser (**GET** ou POST)
 + `enctype`: Seulement utilisé si `method=post`
-  * `application/x-www-form-urlencoded`: encodage des données en *percent encoding*, comme les URI
+  * **`application/x-www-form-urlencoded`**: encodage des données en *percent encoding*, comme les URI
   * `multipart/form-data`: Pas d'altération des données. Nécessaire en cas d'envoi de fichier (`<input type="file">`)
   * `text/plain`: Seuls les espaces sont convertis en '+'
 
@@ -840,10 +1014,8 @@ Résultat:
     <label for="j_aime_1">J'aime les pommes</label>
   </p>
   <p>
-    <label for="j_aime_2">
+    <label for="j_aime_2">J'adore les sushis</label>
     <input type="checkbox" id="j_aime_2" name="aime_sushis" value="1">
-      J'adore les sushis
-    </label>
   </p>
 </form>
 ```
@@ -857,8 +1029,8 @@ Résultat:
     <label for="j_aime_1">J'aime les pommes</label>
   </p>
   <p>
+  	 <input type="checkbox" id="j_aime_2" name="aime_sushis" value="1">
     <label for="j_aime_2">
-    <input type="checkbox" id="j_aime_2" name="aime_sushis" value="1">
       J'adore les sushis
     </label>
   </p>
@@ -986,7 +1158,6 @@ Exemple:
 
 Resultat:
 <textarea cols="20" rows="3">Du texte à l'intérieur</textarea>
-
 </div>
 
 ---
@@ -1175,10 +1346,12 @@ Devient (avec les microdonnées):
       * Utiliser CSS pour changer la police ou remplacer le texte par une image
     + Mais utiliser `<img>` (et `alt`) pour les images porteuses d'information
     + Respecter et exploiter au maximum la **sémantique** des balises
+    + Utiliser les [attributs ARIA](https://developer.mozilla.org/fr/docs/Accessibilité/ARIA) quand c'est nécessaire
+        * Seulement pour les rôles ARIA [non disponibles en HTML5](https://developer.paciellogroup.com/blog/2014/10/aria-in-html-there-goes-the-neighborhood/#html5na) / composants personnalisés
 
 ---
 
-# Bonus: SVG
+# SVG
 
 - Format d'image **vectoriel**
   - Fonctionne comme HTML mais avec des primitives graphiques
@@ -1192,7 +1365,7 @@ Devient (avec les microdonnées):
 
 ---
 
-# Bonus: SVG
+# SVG
 
 ````SVG
 <svg viewBox="0 0 300 200">
@@ -1207,10 +1380,8 @@ Devient (avec les microdonnées):
   <circle cx="150" cy="100" r="80" fill="green"/>
   <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
 </svg>
-
 ---
-
-# Fin du HTML
+# Fin du HTML et SVG
 ## Passons au CSS !
 
 <span class='full-page'>![HTML5](images/CSS-joke.jpg "Source: https://www.flickr.com/photos/atzu/4365152223")</span>
