@@ -699,7 +699,7 @@ Réponse
 #Architectures orientées ressources
 
 <br>
-.center[![ROA](images/roa.png "Source: https://dfflanders.wordpress.com/2010/03/07/the-new-architectural-layer-loa/")]
+.center[![ROA](images/rom.png "Source: https://www.w3.org/TR/2003/WD-ws-arch-20030808/")]
 
 ---
 #REST ? (1/2)
@@ -768,6 +768,21 @@ Réponse
     + /musique/recherche/foxy_lady
 
 ---
+
+#REST: Ressource
+
+- On peut aussi utiliser la **chaine de requête**
+	- Préciser la demande de ressource
+	- Utiliser et combiner des critères non hierarchiques
+- Exemples
+	+ Uniquement les dix premiers résultats
+		+ /music/rock?limit=10
+	+ Trie par ordre ascendant ou descendant sur un champ particulier
+		+ /music/rock/AC-DC?sort=asc&sortby=year
+	+ Format (possible aussi via entête `Accept`)
+		+ /music/classical/best_sellers?format=json
+
+---
 #REST: Interface / methodes
 
 - REST fournit une interface uniforme
@@ -779,7 +794,7 @@ Réponse
 - REST **s’appuie sur HTTP** pour exprimer les opérations via les méthodes HTTP
     + `POST` (Créer)
     + `GET` (Lire)
-    + `PUT` (MAJ)
+    + `PUT` (MAJ complète) + `PATCH` (MAJ partielle)
     + `DELETE` (Supprimer)
 - Il n'est pas nécessaire d'implémenter toutes les méthodes pour une ressource
 
@@ -788,12 +803,14 @@ Réponse
 
 - **Format d’échange** des données
     + Pour le client (`GET`)
-    + Pour le serveur (`PUT` ou `POST`)
+    + Pour le serveur (`PUT`, `POST` ou `PATCH`)
 - Généralement: Texte, JSON, XML, HTML, CSV
 - Le format d’entrée (`POST`) et de sortie (`GET`) d’une même ressource peut varier
 - On peut spécifier le format via
-    + **Entêtes HTTP** (type MIME via `content-type`)
-    + **L'URL** de la ressource (`/musique/rock/xml` ou `/musique/rock/json`)
+  + **Entêtes HTTP** (type MIME via `content-type`)
+  + **L'URL** de la ressource 
+  	- directement (`/musique/rock/xml` ou `/musique/rock/json`)
+  	- via la chaine de requête (`/musique/rock?format=xml` ou `/musique/rock?format=json`)
 
 ---
 #REST: Limites

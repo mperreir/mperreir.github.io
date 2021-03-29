@@ -16,5 +16,4 @@ class: left, middle, animated, fadeIn
     + [Protocoles web](protocoles.html)
 - Cours 4
     + [Programmation coté serveur](prog-serveur.html)
-- Cours 5
-   + [Services web et protocoles associés](services-web.html)
+    + [Services web et protocoles associés](services-web.html)

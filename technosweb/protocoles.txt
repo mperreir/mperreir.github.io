@@ -2,7 +2,7 @@ layout: true
 class: left, middle, animated, fadeIn
 
 ---
-# Protocoles web (et +)
+# Protocoles web
 ## HTTP & Websocket
 
 .center[![HTTP & Websocket](images/xwebsocket.png  "Source: http://uwe.stevelacey.net/atwd/assignment2/")]
@@ -112,7 +112,7 @@ Accept-Ranges: bytes
 4. Corps du message (**données**)
     * Ex: texte, code html, données de formulaire, image, etc.
 
-.footnote[red[*] Par défaut c'est la version 1.0 de HTTP qui est utiisée]
+.footnote[.red[*] Par défaut c'est la version 1.0 de HTTP qui est utiisée]
 
 ---
 # Les principales méthodes HTTP
@@ -121,10 +121,11 @@ Accept-Ranges: bytes
 - `GET`: demande des **informations** (entêtes) et des **données** (corps de la réponse) concernant la ressource située à l'URL spécifiée
   - Utilisé lorsque vous consultez une page web
 - `HEAD`: demande des **informations** (entêtes) concernant la ressource située à l'URL spécifiée
-- `POST`: **envoie des donnée**s (contenu d'un formulaire) qui seront traitées par le script / programme situé à l'URL
+- `POST`: **envoie des données** (contenu d'un formulaire) qui seront traitées par le script / programme situé à l'URL
   - Utilisé lorsque vous envoyez les données d'un formulaire (généralement)
 - `PUT`: **stocke** des données à l'URL spécifiée
   - Utilisé lorsque vous envoyez un fichier vers un serveur
+- `PATCH`: applique des **modifications partielles** à une ressource
 - `DELETE`: **supprime** les données situées l'URL spécifiée
 - `TRACE`: demande au serveur de retourner au client les données qui lui ont été envoyées (**écho**)
 
@@ -149,7 +150,7 @@ Accept-Ranges: bytes
     * Extension du format des emails pour supporter autre chose que le texte ASCII
     * Définit le format du contenu du mail et de ses pièces jointes
 
-- Type MIME : partie `Content-type` de MIME
+- Type MIME : partie `Content-type` / `Accept` des entêtes HTTP
     + Syntaxe : `type/sous-type`
     + Exemples :
         * Texte: `text/plain`, `text/html`
@@ -503,245 +504,9 @@ wss.on('connection', function(ws) {
 ```
 
 ---
-#Services web
-
-.center[![Services](images/Services.png "Source: http://se-preparer-aux-crises.fr/creer-de-l-argent-a-partir-de-rien/")]
-
----
-
-#C'est quoi ?
-
-- Un service Web est une **application logicielle** accessible à partir du **web**. Il utilise les **protocoles internet** pour communiquer et utilise un **langage standard** pour décrire son interface
-
-.center[![Schéma service web](images/web-service-overview-1.png "Source: http://tutorials.jenkov.com/web-services/overview.html")]
-
-- Quelle différence avec un site web ?
-  + La **présentation** des informations est inutile (HTML)
-
----
-
-#La définition du W3C
-
-<span class='citation'>Un service web est un **système logiciel** identifié par **un URI**, dont les interfaces publiques et les « bindings » sont définies et décrites en **XML**.red[*]. Sa définition peut être **découverte** [dynamiquement] par d’autres **systèmes logiciels**. Ces autres systèmes peuvent ensuite interagir avec le service web d’une façon décrite par sa définition, en utilisant des **messages XML** transportés par des **protocoles Internet**.</span>
-
-.footnote[.red[*] Le W3C met en avant XML comme langage de description (à différents niveaux). Mais ce n'est pas le seul moyen (standard) de communication...]
-
----
-
-#Exemples...
-
-- Nombreuses **API** disponibles sur le web
-  + Google: https://developers.google.com/apis-explorer (REST)
-  + Twitter: https://dev.twitter.com/ (REST)
-  + Facebook: https://developers.facebook.com/ (REST)
-  + Paypal: https://developer.paypal.com (SOAP)
-  + Viamichelin: http://dev.viamichelin.fr/presentation-soap.html (SOAP)
-
-- Accès à ces API via les protocoles de service web (SOAP, REST, etc.)
-
-.center[ou]
-
-- Via des kit de développement (SDK) spécifiques (JavaScript, Java, etc.)
-  + Les SDK ne font que simplifier l'accès au service web
-
----
-
-#Les formats d'échange de données web
-
-<span class='center full-page'>![Echange de données](images/echange-donnees.jpg "Source: http://www.rxtrace.com/2013/11/dqsa-getting-to-electronic-transaction-data-exchange.html/")</span>
-
----
-
-#[XML](http://www.w3.org/XML/)
-
-- **Extensible Markup Language**
-- Vu dans les cours précédents (*Remi Lehn*)
-- Langage de **description** de données
-- On peut **créer de nouveaux langages** via un Schéma XML
-- On peut **transformer** un document XML vers d'autres formats (XML ou non) via XSLT
-- La base de nombreux services web
-- **Attention:** format particulièrement *verbeux*
-
----
-
-#[JSON](http://json.org/)
-
-- Format de description de données textuel
-  + Existe en version binaire ([BSON](http://bsonspec.org/))
-- Dérivé de la **notation objet de JavaScript**
-- Ne contient que 2 types de structures
-  + **Objet** = ensemble non ordonnée de paires `"clé" : valeur`
-    * Ex: `{ "nom": "Polytech", "nbEtudiants: 500" }`
-  + **Tableau** = collection ordonnée de valeurs
-    * Ex: `[ 1, 2, 3, 4, 5]`
-- Une **valeur** peut être:
-  + Un objet
-  + Un tableau
-  + Un type simple (chaine, nombre, booléen, null)
-
----
-
-#XML vs. JSON: exemple
-
-.pure-g[.pure-u-1-2[
+# Fin des protocoles
+## Next... Programmation serveur
 
 
-XML
+.center[![Humour serveur](images/serveur2.jpg  "Source: http://nurdcartoon.blogspot.fr/2012/08/blog-post.html")]
 
-```xml
-<product>
-     <id>15</id>
-     <name>Widgets</name>
-     <description>These widgets are the finest widgets ever made by anyone.</description>
-     <options type="color">
-          <item>Purple</item>
-          <item>Green</item>
-          <item>Orange</item>
-     </options>
-</product>
-```
-
-]
-.pure-u-1-2[
-
-
-JSON
-
-```json
-"product" : {
-     "id" : 15,
-     "name" : "Widgets",
-     "description" : "These widgets are the finest widgets ever made by anyone.",
-     "options" : [
-          {
-               "type" : "color",
-               "items" : [
-                    "Purple",
-                    "Green",
-                    "Orange"
-               ]
-          }
-    ]
-}
-```
-
-]]
-
----
-
-#REST ? (1/2)
-
-- REST: **REpresentational State Transfer**
-- **Style d’architecture** != protocole de communication (SOAP)
-- Décrit en 2000 par Roy Thomas Fielding dans sa thèse, chap 5, "Architectural Styles and the Design of Network-based Software Architectures"
-  + 1 des principaux acteur de la spécification de HTTP
-  + Membre fondateur de la fondation Apache
-  + Développeur du serveur Web Apache
-- Style d’architecture **inspiré du Web**
-- Architecture **orientée ressource**
-
----
-
-#REST ? (2/2)
-
-- Utilisé pour développer des **Services Web**
-- Dans la littérature
-  + Architectures orientées **ressources** (ROA)
-  + Architectures orientées **données** (DOA)
-- Quand une application respecte ces principes: **RESTFul**
-- Les services web REST sont **sans états** (Stateless)
-  + Pas de mémoire des requêtes antérieures
-  + Chaque requête envoyée doit contenir toutes les informations nécessaires au traitement
-
----
-
-#Les concepts de REST
-
-- **Ressources** (Identifiant)
-  + Identifiée par une URI
-  + Exemple (fictif): http://www.achats.fr/livre/SF/Harry-Potter
-- **Méthodes** (Verbes)
-  + Action à effectuer sur la ressource
-  + Méthodes HTTP: `GET`, `POST`, `PUT` et `DELETE`
-- **Représentation** (Vue de la ressource ou de son état)
-  + Informations échangées avec le service
-  + Texte, XML, JSON, ...
-
----
-
-#REST: Ressource
-
-- Tout ce qui est **identifiable / manipulable** dans le système
-  + Document, Image, Personne, Le montant du compte d’un client, etc.
-- **Identifié par un lien** (URI)
-- Une ressource **peut avoir plusieurs URI**
-- Une URI identifie **une seule ressource** (ou un seul groupe de ressources)
-- Construite de façon **hiérarchique**
-- La représentation d’une ressource **peut évoluer avec le temps**
-  + Lié au temps: ex. Dernier article
-  + Modification structure: ex. Ajout d’un champ
-
----
-
-#REST: Ressource
-
-- Structure classique
-  + Structure **hiérarchique**
-  + Construction classique
-    * `http://domaine.com/<plus général>/../<plus spécifique>`
-- Exemples d’URIs
-  + /musique/rock
-  + /musique/rock/AC-DC/
-  + /musique/rock/AC-DC/année
-  + /musique/rock/AC-DC/back_in_black
-  + /musique/rock/AC-DC/année/5
-  + /musique/classique/meilleures_ventes
-  + /musique/recherche/foxy_lady
-
----
-
-#REST: Interface / methodes
-
-- REST fournit une interface uniforme
-- Chaque ressource peut subir **4 opérations de base** (CRUD)
-  + Create (Créer)
-  + Retrieve (Lire)
-  + Update (MAJ)
-  + Delete (Supprimer)
-- REST **s’appuie sur HTTP** pour exprimer les opérations via les méthodes HTTP
-  + `POST` (Créer)
-  + `GET` (Lire)
-  + `PUT` (MAJ)
-  + `DELETE` (Supprimer)
-- Il n'est pas nécessaire d'implémenter toutes les méthodes pour une ressource
-
----
-
-#REST: Représentation
-
-- **Format d’échange** des données
-  + Pour le client (`GET`)
-  + Pour le serveur (`PUT` ou `POST`)
-- Généralement: Texte, JSON, XML, HTML, CSV
-- Le format d’entrée (`POST`) et de sortie (`GET`) d’une même ressource peut varier
-- On peut spécifier le format via
-  + **Entêtes HTTP** (type MIME via `content-type`)
-  + **L'URL** de la ressource (`/musique/rock/xml` ou `/musique/rock/json`)
-
----
-
-#REST: Limites
-
-- **Actions binaires**:
-  + Demander si un artiste fait partie d'un groupe ?
-  + Demander si un groupe contient un artiste ?
-  + Plus dur : lien entre groupe et artiste lors de la création ?
-- **Transactions**
-  + Décrire un virement bancaire ?
-  + Créer une ressource incrémentalement ?
-- Les URI doivent-elles être **évidentes ou opaques** ?
-  + Donnée: `/serveur/home/~maurice/` ("joli", mnémotechnique)
-  + Identiﬁant: `/homedir/23eab89c/` (résistant au changement)
-- **Sécurité**
-  + Authentiﬁcation HTTP simple
-  + Utilisation d'HTTPS, cookies, tokens, etc.

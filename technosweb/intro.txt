@@ -13,26 +13,18 @@ class: left, middle, animated, fadeIn
 # Organisation des enseignements
 ## Les cours (1/2)
 
-1. .blue[MPDS] - Introduction
-2. .blue[MPDS] - HTML / CSS
+1. .blue[MPDS] - Introduction + début HTML
+2. .blue[MPDS] - HTML + CSS
 3. .blue[MPDS] - Fin de CSS + HTTP et Websocket
 4. .green[NN] - Introduction JavaScript
-5. .green[NN] - Programmation défensive en JavaScript, 'use strict', bonnes pratiques
-6. .green[NN] - JavaScript fonctionnel, fonctions flèche, générateurs
+5. .green[NN] - Fonctions
+6. .green[NN] - Asynchronisme
 7. .red[RL] - Outils, tests unitaires et intégration continue
 8. .red[RL] - XML
-
----
-# Organisation des enseignements
-## Les cours (2/2)
-
-9. .red[RL] - XML
-10. .green[NN] - JavaScript asynchrone 1/2, AJAX
-11. .green[NN] - JavaScript asynchrone 2/2, Promise, API fetch, générateurs
-12. .blue[MPDS] - Programmation côté serveur
-13. .blue[MPDS] - Services Web
-14. .red[RL] - DOM + XPATH
-15. .red[RL] - XSL
+9. .red[RL] - DOM
+10. .blue[MPDS] - Programmation côté serveur + Services Web
+11. .green[NN] - POO par prototype
+12. .red[RL] - XSL + XPATH
 
 
 ---
@@ -41,17 +33,16 @@ class: left, middle, animated, fadeIn
 
 1. **Introduction**
     + Historique, définitions et vue globale des technos web
-    + HTML5 (partie 1)
 2. **Technologies front-end** : affichage
-    + HTML5 (partie 2)
+    + HTML5 
     + CSS + Media queries
     + responsive web design et accessibilité
 3. **Protocoles web**
     + HTTP(S), MIME, Cookies, WebSocket
 12. **Programmation coté serveur**
-    + (FAST)CGI, WSGI, JSP, Servlets, Nodejs / Angularjs, etc.
+    + Rôle d'un serveur, CGI, PHP, **Nodejs**, etc.
 13. **Services web et protocoles associés**
-    + REST, XML-RPC, JSON-RPC, SOAP, UDDI, WSDL, etc.
+    + Architectures par composants, SOAP, REST
 
 ---
 # Introduction
@@ -329,8 +320,6 @@ class: left, middle, animated, fadeIn
     + Accès aux données
     + Code métier
     + PHP / MySQL, J2EE, NodeJS, Python
-
-.footnote[.red[*] Manip inspecteur web]
 
 ---
 # Les technologies web c'est aussi...
