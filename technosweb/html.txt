@@ -682,8 +682,8 @@ Dans tous les cas les listes contiennent des <span class='orange'>**éléments `
 
 - Trois types de balises nécessaires
 - .red[**`<dl>`: la liste de définitions**]
-    + .orange[**`<dt>`: un terme à définir**]
-    + .orange[**`<dd>`: la définition du terme**]
+	- .orange[**`<dt>`: un terme à définir**]
+	- .orange[**`<dd>`: la définition du terme**]
 
 - Exemple:
 
@@ -1269,7 +1269,6 @@ Exemple:
 </p>
 ```
 
-]
 .resultat[
 
 Résultat:
