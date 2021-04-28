@@ -46,6 +46,7 @@ class: left, middle, animated, fadeIn
     + **Chiffrement** des connexions
     + **Répartition** de charge entre plusieurs serveurs
     + **Compression**
+    + **Mutualisation** de plusieurs serveurs web sur une même machine / adresse
 
 ---
 #Contrôle d'accès
@@ -888,7 +889,7 @@ $ npm install
     + Vue: Le code HTML mis à jour par AngularJS
     + Contrôleur: Code JavaScript permettant de mettre à jour la vue en fonction des données du modèle
 
-##Nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), etc.
+##Nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), [Svelte](https://svelte.dev), etc.
 
 ---
 ##AngularJS: exemple
@@ -988,6 +989,22 @@ function($scope){
 ]]
 
 ]
+
+---
+#Répartition du code : client vs serveur
+
+- Ce qui est **toujours coté serveur** = le code "métier"
+	- Accès et manipulation des données
+	- Règles "métier" de traitement des données
+	- Accessible directement ou  via un service web
+
+- Ce qui est **toujours coté client** (navigateur) = interactions
+	- Réaction aux évenement d'interface utilisateur (clics, clavier, etc.)
+
+- Tout le reste peut être **coté client ou serveur**
+	- Routing
+	- Gestion des états
+	- Génération des pages (templates)
 
 ---
 #Plus loin avec NodeJS
