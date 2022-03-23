@@ -2,28 +2,32 @@ layout: true
 class: left, middle, animated, fadeIn
 
 ---
+
 #Programmation coté serveur
 .footnote[M. PERREIRA DA SILVA]
 
 ---
+
 # [Version PDF des slides](pdf/04-prog-serveur.pdf)
 
 ---
+
 #Rôle d'un serveur web
 
 - **Génération** de document
-    + HTML, XML, etc.
+  + HTML, XML, etc.
 - **Accès** aux données
-    + Fichiers (faible volume de données)
-    + SGBD (gros volume de données)
+  + Fichiers (faible volume de données)
+  + SGBD (gros volume de données)
 - **Concurrence**
-    + Ordonnancement des connexions, entrées-sorties, etc.
+  + Ordonnancement des connexions, entrées-sorties, etc.
 - **Sécurité**
-    + Restrictions d'accès aux fichiers présents sur le serveur
+  + Restrictions d'accès aux fichiers présents sur le serveur
 - **Sessions**
-    + Maintenir une conversation cohérente avec le client
+  + Maintenir une conversation cohérente avec le client
 
 ---
+
 #Serveurs web généralistes
 
 - **Apache**: serveur open source de référence (40% des sites.red[*]). Existe depuis 1995
@@ -34,6 +38,7 @@ class: left, middle, animated, fadeIn
 .footnote[.red[*] Source: [étude Netcraft](http://news.netcraft.com/archives/2015/01/15/january-2015-web-server-survey.html) janvier 2015]
 
 ---
+
 #Proxy inverse
 
 - Proxy web: donne accès a internet à partir d'un réseau LAN
@@ -41,14 +46,15 @@ class: left, middle, animated, fadeIn
 .float-right.width-40[![Proxy inverse](images/reverse-proxy.jpg "Source: https://saboursecurity.wordpress.com/2011/01/29/le-reverse-proxy-en-5-questions/")]
 
 - Proxy inverse: donne accès à un réseau LAN à partir d'internet
-    + **Cache** pour décharger les serveurs webs d'une partie de leur travail
-    + **Filtrage** des accès aux ressources web depuis l'extérieur
-    + **Chiffrement** des connexions
-    + **Répartition** de charge entre plusieurs serveurs
-    + **Compression**
-    + **Mutualisation** de plusieurs serveurs web sur une même machine / adresse
+  + **Cache** pour décharger les serveurs webs d'une partie de leur travail
+  + **Filtrage** des accès aux ressources web depuis l'extérieur
+  + **Chiffrement** des connexions
+  + **Répartition** de charge entre plusieurs serveurs
+  + **Compression**
+  + **Mutualisation** de plusieurs serveurs web sur une même machine / adresse
 
 ---
+
 #Contrôle d'accès
 ##Exemple: .htaccess d'Apache
 
@@ -71,26 +77,29 @@ require valid-user # n'importe quel utilisateur de .passwds est accepté
 ```
 
 ---
+
 #Hôtes virtuels
 
 - Un serveur web peut héberger **plusieurs sites web**, chacun à partir d'une arborescence spécifique
-    + Ex: http://www.site1.fr à partir de /var/www/site1
-    + Ex: http://www.trucbidule.com à partir de var/www/trucbidule
+  + Ex: http://www.site1.fr à partir de /var/www/site1
+  + Ex: http://www.trucbidule.com à partir de var/www/trucbidule
 - Chaque hôte virtuel à sa **configuration propre**
 - Les ressources du serveur sont **partagées** par les différents hôtes
 - Le serveur web **différencie** les hôtes par (au choix)
-    + Nom d’hôte
-    + Adresse IP
-    + Port (rarement utilisé)
+  + Nom d’hôte
+  + Adresse IP
+  + Port (rarement utilisé)
 
 ---
+
 #Réécriture d'URL
+
 - Accès à une ressource web effectué généralement via une requête `GET`
-    + Ex: http://www.notre-site.com/articles/article.php?id=12&page=2&rubrique=5
+  + Ex: http://www.notre-site.com/articles/article.php?id=12&page=2&rubrique=5
 - **Peu lisible**, et permet de connaitre la technologies (PHP) et les variables utilisées (`id`, `page`, `rubrique`). On préfèrerait:
-    + http://www.notre-site.com/articles/article-12-2-5.html
+  + http://www.notre-site.com/articles/article-12-2-5.html
 - La solution: **réécrire** les URL
-    + Exemple (Apache): via des **expressions régulières**
+  + Exemple (Apache): via des **expressions régulières**
 
 ```bash
 RewriteEngine On  # activation de la réécriture d'URL
@@ -99,49 +108,57 @@ RewriteRule ^/articles/article-([0-9]+)-([0-9]+)-([0-9]+)\.html$   /articles/art
 ```
 
 ---
+
 #Serveur web et scripts
 
 - **Site statique**: le serveur web renvoie directement la ressource (fichier) demandée
 - **Site dynamique**: un programme / script est exécuté afin de **générer** la ressource demandée (ex: page HTML)
-    + Langage utilisable: **tout langage** pouvant générer du texte
-    + Mais certains langages sont plus adaptés
-        * Librairies disponibles
-        * Facilité à manipuler du texte
-    + Deux stratégies
-        * **génération de code** HTML (CGI, WSGI, Servlets, etc.)
-        * **préprocesseurs** HTML (PHP, ASP, JSP, etc)
+  + Langage utilisable: **tout langage** pouvant générer du texte
+  + Mais certains langages sont plus adaptés
+    * Librairies disponibles
+    * Facilité à manipuler du texte
+  + Deux stratégies
+    * **génération de code** HTML (CGI, WSGI, Servlets, etc.)
+    * **préprocesseurs** HTML (PHP, ASP, JSP, etc)
 
 ---
+
 #Technologies basées sur la génération de code
+
 ## CGI, WSGI, Servlets, etc.
 
 ---
+
 #CGI
 
 - CGI (Common Gateway Interface) : interface **normalisée** permettant de faire communiquer le serveur Web avec un programme s’exécutant sur le serveur
 - On peut utiliser **n’importe quel langage**
-    + Compilé, comme C, C++, Java
-    + Interprété, comme Perl, Python, Ruby, etc.
+  + Compilé, comme C, C++, Java
+  + Interprété, comme Perl, Python, Ruby, etc.
 - Un programme CGI communique avec le serveur via:
-    + Les **variables d'environnement**: lecture des entêtes HTTP de la requête
-    + Le **flux standard** d'entrée: lecture des données de la requête (ex: requête POST)
-    + Le **flux standard** de sortie: écriture de la réponse (entêtes HTTP + données)
+  + Les **variables d'environnement**: lecture des entêtes HTTP de la requête
+  + Le **flux standard** d'entrée: lecture des données de la requête (ex: requête POST)
+  + Le **flux standard** de sortie: écriture de la réponse (entêtes HTTP + données)
 - Le programme CGI est appelé par le serveur web à **chaque requête**
 
 ---
+
 #CGI: limites
 
 - Avantages CGI
-    + **Simplicité**
-    + Indépendance par rapport aux langages de programmation
+  
+  + **Simplicité**
+  + Indépendance par rapport aux langages de programmation
 
 - Inconvénients CGI:
-    + Simplicité
-    + **Sécurité**
-    + **Performances** (1 requête = 1 processus lancé)
-        * Problème réglé par **FastCGI** et **SCGI**
+  
+  + Simplicité
+  + **Sécurité**
+  + **Performances** (1 requête = 1 processus lancé)
+    * Problème réglé par **FastCGI** et **SCGI**
 
 ---
+
 # CGI: exemple
 
 Un simple **script shell**
@@ -168,24 +185,27 @@ echo "Et ici ce sont les données (POST)=$DATA"
 echo "</body></html>"
 ```
 
-.hidden[
-
 ---
+
 #WSGI / Python
 
 - Inspiré de **CGI**
-    + Ex: passage des paramètres et entêtes dans les **variables d'environnement**
+  
+  + Ex: passage des paramètres et entêtes dans les **variables d'environnement**
 
 - Intégrable dans **n'importe quel serveur** web
-    + Ex: Apache via mod_wsgi
+  
+  + Ex: Apache via mod_wsgi
 
 - Une application WSGI doit contenir une **fonction** qui prend en paramètres
-    + un paramètre `environ`: un dictionnaire contenant les variables d'environnement
-    + une fonction `start_response` qui initie le renvoi de la réponse. Elle a 2 paramètres
-        * Le code de retour HTTP (ex: `'200 OK'`)
-        * Les entêtes HTTP de la réponse (ex: `[('Content-Type', 'text/html')])`)
+  
+  + un paramètre `environ`: un dictionnaire contenant les variables d'environnement
+  + une fonction `start_response` qui initie le renvoi de la réponse. Elle a 2 paramètres
+    * Le code de retour HTTP (ex: `'200 OK'`)
+    * Les entêtes HTTP de la réponse (ex: `[('Content-Type', 'text/html')])`)
 
 ---
+
 #WSGI: exemple
 
 ```python
@@ -207,19 +227,21 @@ def dynamic_app(environ, start_response):
 ```
 
 ---
+
 #Servlets
 
 - Permettent d'écrire le code serveur sous forme de **classes Java**
 - Nécessitent d'être hébergées par un **conteneur de Servlet** (Ex: Apache Tomcat, Jetty), lui même connecté à un **serveur web** (ex: Apache)
 - Une servlet est une classe Java héritant de `HttpServlet`
 - Méthodes utiles
-    + `void doGet( HttpServletRequest request, HttpServletResponse response )`: gestion des requêtes de type GET
-    + `void doPost( HttpServletRequest request, HttpServletResponse response )`: gestion des requêtes de type POST
-    + et aussi `doPut`; `doHead`, `doTrace`, etc.
+  + `void doGet( HttpServletRequest request, HttpServletResponse response )`: gestion des requêtes de type GET
+  + `void doPost( HttpServletRequest request, HttpServletResponse response )`: gestion des requêtes de type POST
+  + et aussi `doPut`; `doHead`, `doTrace`, etc.
 - On lit les données de la requête via un objet `HttpServletRequest` et on écrit la réponse dans un objet `HttpServletResponse`
 - Le **code métier** est réalisé avec des classes java "standard"
 
 ---
+
 #Servlets: exemple
 
 ```java
@@ -242,6 +264,7 @@ public class InfoServlet extends HttpServlet {
 ```
 
 ---
+
 #Servlets: exemple (suite)
 
 ```java
@@ -260,82 +283,91 @@ public class InfoServlet extends HttpServlet {
         out.println("<p>Liste des parametres </p>");
         for (Enumeration e =request.getParameterNames(); e.hasMoreElements();) {
             Object p = e.nextElement();
-            out.println("<p>&nbsp;&nbsp;nom : "+p+" valeur :"+request.getParameter(""+p)+"</p>");
+            out.println("<p>  nom : "+p+" valeur :"+request.getParameter(""+p)+"</p>");
         }
         out.println("</body></html>");
     }
 }
 ```
 
-]
-
 ---
+
 #Bilan: CGI, Servlets, WSGI, etc.
 
 - **Avantages**
-    + On écrit un programme "presque classique"
+  
+  + On écrit un programme "presque classique"
 
 - **Inconvénients**
-    + On doit généralement générer du code HTML...
-    + Le code HTML n'est pas séparé du code serveur
-        * Ex (Java): `System.out.println("<h1>Ceci est un titre</h1");`
-    + Maintenabilité du code HTML complexe !
-    + Besoin de séparer code HTML et code serveur
+  
+  + On doit généralement générer du code HTML...
+  + Le code HTML n'est pas séparé du code serveur
+    * Ex (Java): `System.out.println("<h1>Ceci est un titre</h1");`
+  + Maintenabilité du code HTML complexe !
+  + Besoin de séparer code HTML et code serveur
 
 ---
+
 #Préprocesseurs HTML
+
 ## PHP, ASP(.Net), JSP, etc.
 
 ---
+
 #"Préprocesseur" HTML
 
 - **Rôle prépondérant** de HTML
-    + Pages écrites en HTML
-    + Ajout (minimal) de scripts dans le HTML
-    + Code métier dans des fichiers externes
+  + Pages écrites en HTML
+  + Ajout (minimal) de scripts dans le HTML
+  + Code métier dans des fichiers externes
 - Différence avec code JavaScript intégré au HTML : **exécution sur le serveur** !
-    + L'utilisateur ne voit pas et ne peut pas modifier le code...
+  + L'utilisateur ne voit pas et ne peut pas modifier le code...
 - **Avantages**
-    + Meilleure séparation "présentation" / "code métier"
-    + Meilleure lisibilité / maintenabilité
-    + Simplification du code à écrire (moins de headers, etc.)
+  + Meilleure séparation "présentation" / "code métier"
+  + Meilleure lisibilité / maintenabilité
+  + Simplification du code à écrire (moins de headers, etc.)
 - **Inconvénients**
-    + Utile seulement si on doit générer des pages HTML...
+  + Utile seulement si on doit générer des pages HTML...
 
 ---
+
 #PHP (1/2)
 
 - Langage **interprété**, **faiblement typé**, créé en 1994 par Rasmus Lerdorf
 - Version actuelle : 7.4 (version 5.x de 2004 à fin 2018!)
 - Doit être **intégré à un serveur web** (ex: Apache via mod_php)
 - Un fichier `.php` est traité par PHP comme
-    + un fichier HTML
-    + avec des **balises spéciales** pour
-        * Exécuter du code 
-```php
-<?php echo 'Hello ', 'World'; ?>
-```
-        * Insérer la valeur d'une constante / variable dans le code HTML    
-```php
-<?= 'Hello World' ?>
-```
+  + un fichier HTML
+  + avec des **balises spéciales** pour
+    * Exécuter du code 
+      
+      ```php
+      <?php echo 'Hello ', 'World'; ?>
+      ```
+    * Insérer la valeur d'une constante / variable dans le code HTML    
+      
+      ```php
+      <?= 'Hello World' ?>
+      ```
 
 ---
+
 #PHP (2/2)
 
 - La syntaxe du langage est **proche de celle du C**
 - API et bibliothèques externes très riches du fait de sa **large utilisation**
 - Accès aux entêtes HTTP et données via des **tableaux associatifs** (super)globaux
-    + `$_GET`: données de la chaine de requête (GET)
-    + `$_POST`: données de formulaire (POST)
-    + `$_REQUEST`: concaténation des données de `$_GET` et `$_POST`
-    + `$_FILES`: informations sur les fichiers envoyés via une requête `$_POST`
-    + `$_SESSION`: données stockées dans une **session**
-    + `$_COOKIE`: les cookies envoyés par le client
-    + `$_SERVER`: entêtes HTTP et autres données passées par le serveur web
-    + `$_ENV`: les variables d'environnement (dont les variables CGI)
+  + `$_GET`: données de la chaine de requête (GET)
+  + `$_POST`: données de formulaire (POST)
+  + `$_REQUEST`: concaténation des données de `$_GET` et `$_POST`
+  + `$_FILES`: informations sur les fichiers envoyés via une requête `$_POST`
+  + `$_SESSION`: données stockées dans une **session**
+  + `$_COOKIE`: les cookies envoyés par le client
+  + `$_SERVER`: entêtes HTTP et autres données passées par le serveur web
+  + `$_ENV`: les variables d'environnement (dont les variables CGI)
 
 ---
+
 #PHP: exemple
 
 mon_form.html
@@ -365,6 +397,7 @@ bonjour.php
 ```
 
 ---
+
 #PHP: exemple
 
 On peut aussi écrire des programmes PHP qui **génèrent du code** HTML (à la Servelet, CGI, etc.)
@@ -388,9 +421,8 @@ bonjour.php
     echo $out;
 ```
 
-.hidden[
-
 ---
+
 #ASP
 
 - **Langage objet** Microsoft, équivalent à PHP
@@ -399,12 +431,13 @@ bonjour.php
 - On programme en **VBScript** ou JScript
 - Le code VBScript est intégré dans le HTML via les **balises** `<% Response.Write("Bonjour!") %>`
 - Quelques objets utiles:
-    + `Request`: toutes les informations concernant la requête (entêtes, données, cookies, etc.)
-    + `Response`: permet de controler la réponse renvoyée au client (entêtes, données, etc.)
-    + `Application`: données communes à tous les pages d'une application ASP
-    + `Session`: données de session d'un utilisateur
+  + `Request`: toutes les informations concernant la requête (entêtes, données, cookies, etc.)
+  + `Response`: permet de controler la réponse renvoyée au client (entêtes, données, etc.)
+  + `Application`: données communes à tous les pages d'une application ASP
+  + `Session`: données de session d'un utilisateur
 
 ---
+
 #ASP: exemple
 
 mon_form.html
@@ -434,18 +467,20 @@ bonjour.asp
 ```
 
 ---
+
 #ASP.Net
 
 - **Évolution d'ASP**, basée sur l'**environnement .Net** de Microsoft (depuis 2002)
 - Programmation via **n'importe quel langage** supporté par .Net (C#, VB.Net, Python, Java, etc.)
 - Plusieurs technologies disponibles
-    + **Web Pages**: intégration de code ("Razor code") dans une page web (comme ASP et PHP). Le plus simple.
-        * Executer du code (en C#): `@{ string bonjour="Bonjour!"; }`
-        * Insérer la valeur d'une variable dans le code HTML : `@bonjour`
-    + MVC: utilisation d'un pattern Modèle Vue Contrôleur
-    + Web Forms: création de pages web contenant des contrôles générés coté serveur (boutons, images, listes, tableaux, etc.)
+  + **Web Pages**: intégration de code ("Razor code") dans une page web (comme ASP et PHP). Le plus simple.
+    * Executer du code (en C#): `@{ string bonjour="Bonjour!"; }`
+    * Insérer la valeur d'une variable dans le code HTML : `@bonjour`
+  + MVC: utilisation d'un pattern Modèle Vue Contrôleur
+  + Web Forms: création de pages web contenant des contrôles générés coté serveur (boutons, images, listes, tableaux, etc.)
 
 ---
+
 #ASP.Net: exemple
 
 **Web pages (Razor code)**
@@ -478,20 +513,22 @@ bonjour.aspx
 ```
 
 ---
+
 #JSP
 
 - Toujours le même principe: exécution de **code Java** (coté serveur) dans une page HTML
-    + **Déclarations** (déclaration de variables de classes ou de méthodes): `<%! int PI=3.14159; %>`
-    + **Scriptlet** (exécution de code): `<% out.println("Bonjour !"); %>`
-    + **Expression** (affiche l'expression): `<%= PI %>`
-    + **Commentaires**: `<%-- Un commentaire JSP --%>`
+  + **Déclarations** (déclaration de variables de classes ou de méthodes): `<%! int PI=3.14159; %>`
+  + **Scriptlet** (exécution de code): `<% out.println("Bonjour !"); %>`
+  + **Expression** (affiche l'expression): `<%= PI %>`
+  + **Commentaires**: `<%-- Un commentaire JSP --%>`
 - On peut également déclarer des **directives** additionnelles
-    + Ex: `<%@ page import="java.util.*" %>`: import du package java.util
-    + Ex: `<%@ page contentType="text/html" %>`:  définition du type de contenu renvoyé
+  + Ex: `<%@ page import="java.util.*" %>`: import du package java.util
+  + Ex: `<%@ page contentType="text/html" %>`:  définition du type de contenu renvoyé
 - Le code métier est écrit sous forme de **JavaBean** (classe sérialisable)
 - Une page JSP est **compilée en une Servlet** pour son exécution
 
 ---
+
 #JSP: exemple
 
 ```jsp
@@ -513,34 +550,34 @@ bonjour.aspx
 </html>
 ```
 
-]
-
 ---
+
 #Technologie sans serveur web externe
 ##NodeJS
 
 ---
+
 # NodeJS : c'est quoi ?
 
 - Outils de création d'application web avec du **code javascript coté serveur**
 - Utilise le moteur JavaScript "V8" de Google
-    + **Rapide** !
+  + **Rapide** !
 - NodeJS n'est **PAS**:
-    + Un framework Web (mais il en existe pour NodeJS)
-    + De haut niveau
-        * Pratique pour voir les bases des technologies web
-        * Il existe de nombreux modules pour simplifier le développent
-    + Multi-threadé
-        * **Une seule instance** de votre code est exécutée
-
-.hidden[
+  + Un framework Web (mais il en existe pour NodeJS)
+  + De haut niveau
+    * Pratique pour voir les bases des technologies web
+    * Il existe de nombreux modules pour simplifier le développent
+  + Multi-threadé
+    * **Une seule instance** de votre code est exécutée
 
 ---
+
 #NodeJS est asynchrone (1/2)
 
 - Modèle de **programmation "classique"**: on attend la fin de chaque tâche (même longue) avant de passer à la suivante
-    + Ex: Lecture (synchrone) d'un fichier
-
+  
+  + Ex: Lecture (synchrone) d'un fichier
+    
     ```javascript
     // lecture du fichier 1
     var contenu = fs.readFileSync('/etc/hosts');
@@ -555,16 +592,19 @@ bonjour.aspx
     ```
 
 ---
+
 #NodeJS est asynchrone (2/2)
 
 - Modèle de **programmation "asychrone"**: on n'attend pas la fin d'une tâche (potentiellement longue) avant de passer à la suivante
-    + Utilisation massive de fonctions "callback" pour répondre à un évènement
-    + Ex: Lecture (asynchrone) d'un fichier
-
+  
+  + Utilisation massive de fonctions "callback" pour répondre à un évènement
+  
+  + Ex: Lecture (asynchrone) d'un fichier
+    
     ```javascript
     // fonction d'affichage du contenu d'un fichier
     var callback = function(err, contenu) {
-        console.log(contenu);
+      console.log(contenu);
     }
     // On demande à lire les fichiers et on passe une fonction qui sera
     // exécutée lorsque cette lecture sera terminée (ou en cas d'erreur)
@@ -577,6 +617,7 @@ bonjour.aspx
 - On peut donc effectuer **plusieurs tâches en parallèle** (lecture des 2 fichiers)
 
 ---
+
 #Fonctions anonymes
 
 Pour simplifier l'écriture des callback, (dont on se sert fréquemment) on peut déclarer directement une fonction comme paramètre d'une autre fonction...
@@ -598,14 +639,14 @@ fs.readFile('/etc/hosts', callback);
 
 .footnote[.red[*] Les promesses JavaScript et le mécanisme async / await sont également très utiles pour la programmation asynchrone... (bien supporté depuis nodejs 10)]
 
-]
-
 ---
+
 #NodeJS est également un serveur web...
 
 - Un programme NodeJS fait tourner **son propre serveur** web via l'objet [http](https://nodejs.org/api/http.html)
-    + Les réponses aux requêtes se font via une **boucle d’évènements**
-    + Une fonction est appelée à chaque évènement
+  
+  + Les réponses aux requêtes se font via une **boucle d’évènements**
+  + Une fonction est appelée à chaque évènement
 
 - Exemple:
 
@@ -624,17 +665,19 @@ console.log('Serveur lancé sur le port 8080...');
 - On lance le programme (serveur) avec: `node serveur.js`
 
 ---
+
 #Gestion des requêtes et des réponses
 
 - `http.createServer` prend en paramètre une fonction à deux arguments (`request` et `response`)
-    + `request` est de type `http.IncomingMessage`
-        * accès aux **entêtes HTTP** via le tableau associatif `headers`
-    + `response` est de type `http.ServerResponse`
-        * on écrit les **entêtes** avec la méthode `writeHead` (à appeler avant `write`)
-        * on écrit le **corps de la réponse** avec la méthode `write`  (en une ou plusieurs fois)
-        * on **termine et envoie** la réponse avec un appel à `end`
+  + `request` est de type `http.IncomingMessage`
+    * accès aux **entêtes HTTP** via le tableau associatif `headers`
+  + `response` est de type `http.ServerResponse`
+    * on écrit les **entêtes** avec la méthode `writeHead` (à appeler avant `write`)
+    * on écrit le **corps de la réponse** avec la méthode `write`  (en une ou plusieurs fois)
+    * on **termine et envoie** la réponse avec un appel à `end`
 
 ---
+
 #Gestion des évènements
 
 - De nombreux objets de Node.JS sont des instances de la classe `EventEmitter`
@@ -647,38 +690,41 @@ server.on('connection', function (stream) {
 ```
 
 ---
+
 #Nodejs: modules
 
 - NodeJS est extensible via des **modules**, pouvant être écrits par n'importe quel développeur
 - NPM (Node Package Manager) est le **gestionnaire de modules** intégré à NodeJS
-    + Installation d'un nouveau module
-        `npm install nom_du_module`
-    + Importation d'un module dans une application
-        `var module = require('nom_du_module')`
+  + Installation d'un nouveau module
+      `npm install nom_du_module`
+  + Importation d'un module dans une application
+      `var module = require('nom_du_module')`
 - Toutes les **fonctionnalités internes** de NodeJS doivent être accédées via le mécanisme des modules
-    + Gestion du protocole HTTP: `var http = require('http');`
-    + Accès au système de fichier du serveur: `var fs = require('fs');`
-    + Manipulation des chaines de requête (query string): `var querystring = require('querystring');`
-    + Etc.
+  + Gestion du protocole HTTP: `var http = require('http');`
+  + Accès au système de fichier du serveur: `var fs = require('fs');`
+  + Manipulation des chaines de requête (query string): `var querystring = require('querystring');`
+  + Etc.
 
 ---
+
 #Nodejs: frameworks
 
 - NodeJS propose des **fonctionnalités de bas niveau**
-    + Besoin d'outils d'un peu plus haut niveau pour être productif
+  + Besoin d'outils d'un peu plus haut niveau pour être productif
 - Les **frameworks** web répondent à cette problématique (dans tous les langages web)
 - **ExpressJS** est un framework web léger (minimaliste ?) pour NodeJS.red[*]
 - Fonctionnalités:
-    + Routage: quelle fonction est associée à quelle URL ?
-    + Automatisation du traitement de certaines requêtes via des "Middleware"
-    + Intégration de différents moteurs de "Template"
-    + Gestion des erreurs
-    + Générateur (de squelette) d'application web
+  + Routage: quelle fonction est associée à quelle URL ?
+  + Automatisation du traitement de certaines requêtes via des "Middleware"
+  + Intégration de différents moteurs de "Template"
+  + Gestion des erreurs
+  + Générateur (de squelette) d'application web
 - ExpressJS est un **module** de NodeJS : `var express = require('express');`
 
 .footnote[.red[*] Il existe bien entendu d'autres frameworks pour NodeJS (ex: [Koa](http://koajs.com))]
 
 ---
+
 #ExpressJS: exemple
 
 ```javascript
@@ -703,12 +749,13 @@ var server = app.listen(8080, function () {
 ```
 
 ---
+
 #ExpressJS: routing
 
 - Une **route** permet de définir quelles fonctions (callback) seront exécutées pour une **URL** et une **méthode HTTP** (GET, POST, etc.) données
 - Syntaxe: `app.METHODE( url, [callback...], callback)`
-    + L'URL peut être une chaine de caractères ou une expression régulière
-    + Si on précise plusieurs callbacks, chaque callback doit appeler le suivant via la fonction `next()`
+  + L'URL peut être une chaine de caractères ou une expression régulière
+  + Si on précise plusieurs callbacks, chaque callback doit appeler le suivant via la fonction `next()`
 
 ```javascript
 app.post('/example/b', function (req, res, next) {
@@ -724,23 +771,24 @@ app.get(/^poly.*/, function(req, res) {
 });
 ```
 
-
 ---
+
 #ExpressJS: requête et réponse
 
 - Objet `request` (1er paramètre du callback d'une route)
-    + Accès aux **entêtes HTTP** (Ex: `request.body`, `request.cookies`, etc.)
-    + Nécessité d'un module externe (`body-parser`) pour décoder le **corps des requêtes** POST
+  + Accès aux **entêtes HTTP** (Ex: `request.body`, `request.cookies`, etc.)
+  + Nécessité d'un module externe (`body-parser`) pour décoder le **corps des requêtes** POST
 - Objet `response` (2nd paramètre du callback d'une route)
-    + `response.sendStatus()`: envoi du code de statut et du message correspondant
-    + `response.send()`: envoi de données (chaine, objet, tableau, etc.)
-    + `response.sendFile()`: envoi d'un fichier binaire
-    + `response.redirect()`: demande au client d'effectuer une redirection
-    + `response.render()`: effectue le rendu d'un "template"
-    + `response.end()`: signale la fin de la réponse
-    + Etc.
+  + `response.sendStatus()`: envoi du code de statut et du message correspondant
+  + `response.send()`: envoi de données (chaine, objet, tableau, etc.)
+  + `response.sendFile()`: envoi d'un fichier binaire
+  + `response.redirect()`: demande au client d'effectuer une redirection
+  + `response.render()`: effectue le rendu d'un "template"
+  + `response.end()`: signale la fin de la réponse
+  + Etc.
 
 ---
+
 #ExpressJS: exemple 2
 
 On utilise le même fichier HTML 'mon_form.html' que précédemment
@@ -766,18 +814,21 @@ app.listen(8080);
 ```
 
 ---
+
 #Nodejs: template (jade, ejs, etc.)
 
 - On aimerait pouvoir séparer code HTML du code JavaScript (comme en PHP, JSP)...
 
 - C'est le rôle des **moteurs de template**:
-    + [Jade](http://jade-lang.com/): permet de générer du HTML à partir d'un dialecte allégé (ex: `h1` à la place de `<h1>`), mais paramétrable (boucles, variables, etc.)
-    + [EJS](http://www.embeddedjs.com/): Extension de HTML pour permettre d'enrichir le code HTML via du code JavaScript. Syntaxe proche de celle de JSP
-    + Et bien d'autres (Hogan.js, DoT.js, **Mustache.js**, Handlebars.js, etc.)
+  
+  + [Jade](http://jade-lang.com/): permet de générer du HTML à partir d'un dialecte allégé (ex: `h1` à la place de `<h1>`), mais paramétrable (boucles, variables, etc.)
+  + [EJS](http://www.embeddedjs.com/): Extension de HTML pour permettre d'enrichir le code HTML via du code JavaScript. Syntaxe proche de celle de JSP
+  + Et bien d'autres (Hogan.js, DoT.js, **Mustache.js**, Handlebars.js, etc.)
 
 - On peut utiliser les templates avec NodeJS seul ou avec NodeJS+ExpressJS (plus simple)
 
 ---
+
 #ExpressJS + EJS
 
 **Partie template EJS**
@@ -795,7 +846,7 @@ users.html
 <h1>Utilisateurs</h1>
     <ul id="users">
     <% users.forEach(function(user){ %>
-        <li><%= user.name %> &lt;<%= user.email %>&gt;</li>
+        <li><%= user.name %> <<%= user.email %>></li>
     <% }) %>
 </ul>
 </body>
@@ -803,6 +854,7 @@ users.html
 ```
 
 ---
+
 #ExpressJS + EJS
 
 **Partie code serveur NodeJS / ExpressJS**
@@ -834,9 +886,8 @@ app.get('/', function(req, res){
 app.listen(8080);
 ```
 
-.hidden[
-
 ---
+
 #ExpressJS: générateur d'applications
 
 .float-right.width-30[![Générateur d'applications ExpressJS](images/ExpressGenerator.png "Source: http://expressjs.com/starter/generator.html")]
@@ -844,10 +895,11 @@ app.listen(8080);
 - **Module** à installer avec la commande : `$ npm install express-generator -g`
 
 - On crée ensuite un **squelette d'application** avec la commande: `$ express [options] nom_de_l_appli`
-    + Exemple: Application avec moteur de template Jade (par défaut)
-        `$ express monAppli`
-    + Exemple: Application avec moteur de template EJS
-        `$ express --ejs monAppli`
+  
+  + Exemple: Application avec moteur de template Jade (par défaut)
+      `$ express monAppli`
+  + Exemple: Application avec moteur de template EJS
+      `$ express --ejs monAppli`
 
 - On installe ensuite les **dépendances** (modules) du nouveau projet
 
@@ -857,41 +909,44 @@ $ npm install
 ```
 
 ---
+
 #"Pile technologique" web
 ##LAMP vs. MEAN
 
 - **LAMP** = Linux + Apache + MySQL (MariaDB) + PHP (Perl ou Python)
-    + Serveur web classique: multi-procesus / thread
-    + Base de données relationnelle
-    + De multiples langages (Javascript / PHP / MySQL)
-    + Technologies matures
+  
+  + Serveur web classique: multi-procesus / thread
+  + Base de données relationnelle
+  + De multiples langages (Javascript / PHP / MySQL)
+  + Technologies matures
 
 - **MEAN** = MongoDB + ExpressJS + AngularJS + Nodejs
-    + Serveur web mono-thread asynchrone
-    + Base de données orientée document (NoSQL)
-    + Un seul langages (Javascript)
-    + Technologies encore jeunes
-
-]
+  
+  + Serveur web mono-thread asynchrone
+  + Base de données orientée document (NoSQL)
+  + Un seul langages (Javascript)
+  + Technologies encore jeunes
 
 ---
+
 #Client side frameworks
 ##[AngularJS](https://angularjs.org)
 
 - Framework développé par Google pour le développement d'applications "Single Page"
 - **Déporte** une grande partie des actions généralement effectuées sur le serveur **vers le client**
-    + Moteur de templates
-    + Mise à jour du HTML en fonction des données
-    + Navigation dans l'application
+  + Moteur de templates
+  + Mise à jour du HTML en fonction des données
+  + Navigation dans l'application
 - Le **serveur** n'est plus chargé que de vérifier, valider et envoyer les **données**
 - Basé sur le design pattern **Modèle Vue Contrôleur**
-    + Modèle: Données sur le serveur, envoyées en JSON ou XML
-    + Vue: Le code HTML mis à jour par AngularJS
-    + Contrôleur: Code JavaScript permettant de mettre à jour la vue en fonction des données du modèle
+  + Modèle: Données sur le serveur, envoyées en JSON ou XML
+  + Vue: Le code HTML mis à jour par AngularJS
+  + Contrôleur: Code JavaScript permettant de mettre à jour la vue en fonction des données du modèle
 
 ##Nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), [Svelte](https://svelte.dev), etc.
 
 ---
+
 ##AngularJS: exemple
 
 index.html
@@ -926,6 +981,7 @@ function($scope){
 ```
 
 ---
+
 #Client side frameworks
 ##Gestion des états
 
@@ -935,43 +991,47 @@ function($scope){
 
 .center[![Flot de données Redux](images/redux.png "Source: https://medium.com/@sidathasiri/flux-and-redux-f6c9560997d7")]
 
-.hidden[
-
 ---
+
 #Et les bases de données ?
 
 - Vous connaissez les **bases de données relationnelles**
-    + Ex: Oracle, SQLite MySQL, Postgres, etc.
-    + Besoin d'un schéma de données défini à l'avance
-    + On effectue des requêtes (pouvant être complexes) en SQL
+  
+  + Ex: Oracle, SQLite MySQL, Postgres, etc.
+  + Besoin d'un schéma de données défini à l'avance
+  + On effectue des requêtes (pouvant être complexes) en SQL
 
 - **NoSQL:** catégorie de SGBD plus **simples** que les bases relationnelles
-    + Développées initialement pour gérer les très **grandes quantités de données** des géants d'internet
-    + Quelques bases NoSQL:
-        * MongoDB (Sourceforge)
-        * CouchDB
-        * BigTable (Google)
-        * HBase (Facebook)
-        * Cassandra (Twitter)
-        * SimpleDB (Amazon)
+  
+  + Développées initialement pour gérer les très **grandes quantités de données** des géants d'internet
+  + Quelques bases NoSQL:
+    * MongoDB (Sourceforge)
+    * CouchDB
+    * BigTable (Google)
+    * HBase (Facebook)
+    * Cassandra (Twitter)
+    * SimpleDB (Amazon)
 
 ---
+
 #Une base de données NoSQL
 
 - **MongoDB:** Base de données orientée document
-    + Utilise un format de stockage BSON (version binaire du JSON)
-    + On stocke un ensemble de **documents** (≃enregistrements) dans des **collections** (≃tables)
-    + Un document contient un ensemble de **clé + valeur**
-    + Les valeurs peuvent être des types simples, des tableaux, des documents, des tableaux de documents
-    + **Pas de schéma prédéterminé** (on peut ajouter des clés à tout moment sans reconfigurer la base)
-    + Langage natif de la base: **JavaScript**
+  + Utilise un format de stockage BSON (version binaire du JSON)
+  + On stocke un ensemble de **documents** (≃enregistrements) dans des **collections** (≃tables)
+  + Un document contient un ensemble de **clé + valeur**
+  + Les valeurs peuvent être des types simples, des tableaux, des documents, des tableaux de documents
+  + **Pas de schéma prédéterminé** (on peut ajouter des clés à tout moment sans reconfigurer la base)
+  + Langage natif de la base: **JavaScript**
 
 ---
+
 #MongoDB: exemple de données
 <br>
 .pure-g[.pure-u-1-2[
 
 .centerc[Modèle **"dénormalisé"**]
+
 - Possible redondance de données
 - Moins de requêtes à effectuer pour accéder aux informations
 
@@ -981,6 +1041,7 @@ function($scope){
 .pure-u-1-2[
 
 .center[Modèle **normalisé** (classique)]
+
 - Pas de redondance
 - Plus de requêtes et requêtes plus complexes
 
@@ -988,25 +1049,30 @@ function($scope){
 
 ]]
 
-]
+
 
 ---
+
 #Répartition du code : client vs serveur
 
 - Ce qui est **toujours coté serveur** = le code "métier"
-	- Accès et manipulation des données
-	- Règles "métier" de traitement des données
-	- Accessible directement ou  via un service web
+  
+  - Accès et manipulation des données
+  - Règles "métier" de traitement des données
+  - Accessible directement ou  via un service web
 
 - Ce qui est **toujours coté client** (navigateur) = interactions
-	- Réaction aux évenement d'interface utilisateur (clics, clavier, etc.)
+  
+  - Réaction aux évenement d'interface utilisateur (clics, clavier, etc.)
 
 - Tout le reste peut être **coté client ou serveur**
-	- Routing
-	- Gestion des états
-	- Génération des pages (templates)
+  
+  - Routing
+  - Gestion des états
+  - Génération des pages (templates)
 
 ---
+
 #Plus loin avec NodeJS
 
 - Un cours bien fait: [http://courseware.codeschool.com/node_slides.pdf](http://courseware.codeschool.com/node_slides.pdf)
@@ -1016,11 +1082,13 @@ function($scope){
 - La doc d'ExpressJS:  [http://expressjs.com/](http://expressjs.com/)
 
 - Les tutoriels NodeSchool: [http://nodeschool.io/](http://nodeschool.io/)
-    + En particulier [learnyounode](https://github.com/workshopper/learnyounode)
+  
+  + En particulier [learnyounode](https://github.com/workshopper/learnyounode)
 
 - Un tutoriel MEAN: [https://thinkster.io/mean-stack-tutorial/](https://thinkster.io/mean-stack-tutorial/)
 
 ---
+
 #Prochainement: les services web
 
 .center[.inline-block.width-65[![SOAP vs. REST](images/SOAP vs. REST.jpg "Source: http://geekandpoke.typepad.com/geekandpoke/2009/11/service-calling-made-easy-part-1.html")]]
