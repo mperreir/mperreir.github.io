@@ -133,7 +133,7 @@ class: left, middle, animated, fadeIn
 
 - Certaines propriétés utilisent des **URL** comme valeur
 	+ Ex: `background-image`
-- Un utilise alors la **fonction** `url()`
+- On utilise alors la **fonction** `url()`
     + Ex: `body { background-image: url("http://www.example.fr/untruc.gif")`
     + Ex: `body { background-image: url(http://www.example.fr/untruc.gif) }`
 - Les **URL relatives** sont acceptées
@@ -380,7 +380,7 @@ class: left, middle, animated, fadeIn
 # Les pseudo-classes
 
 - Décrive un **état spécial** d'un élément
-    + `:fist-child`: l'élément est le premier fils de son parent
+    + `:first-child`: l'élément est le premier fils de son parent
     + `:link`: un lien (`<a>`) qui n'a pas encore été visité
     + `:visited`: un lien (`<a>`) qui a été visité
     + `:hover`: élément survolé
@@ -418,8 +418,8 @@ HTML
 CSS
 
 ```css
-p:fist-line { color: red;}
-p:fist-letter { color: blue;  font-weight: bold;}
+p:first-line { color: red;}
+p:first-letter { color: blue;  font-weight: bold;}
 p.ecole:after { content: " super cool"; color: green}
 ```
 .resultat[
