@@ -1,9 +1,16 @@
 'use strict';
 
 const theSpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-const recognition = new theSpeechRecognition();
+let recognition = null;
+if (!!theSpeechRecognition) {
+    recognotion = new theSpeechRecognition();
+} else {
+    console.log("No Speech Recognition API available");
+}
 
 const initTTS = function() {
+    if (! recognition)
+        return;
     let subtitle = ['div.transcript'].toDOM(document.querySelector('body')); 
     subtitle.setAttribute('style', 'visibility: hidden;');
     recognition.lang = 'FR_fr';
