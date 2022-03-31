@@ -3,7 +3,8 @@ class: left, middle, animated, fadeIn
 
 ---
 
-#Programmation coté serveur
+# Programmation coté serveur
+
 .footnote[M. PERREIRA DA SILVA]
 
 ---
@@ -12,7 +13,7 @@ class: left, middle, animated, fadeIn
 
 ---
 
-#Rôle d'un serveur web
+# Rôle d'un serveur web
 
 - **Génération** de document
   + HTML, XML, etc.
@@ -28,18 +29,18 @@ class: left, middle, animated, fadeIn
 
 ---
 
-#Serveurs web généralistes
+# Serveurs web généralistes
 
-- **Apache**: serveur open source de référence (40% des sites.red[*]). Existe depuis 1995
-- **IIS**: Le serveur Web fournit par Microsoft pour la plateforme NT (27% des sites). Seule solution pour faire fonctionner les solutions Microsoft (ASP / ASP.Net). Existe depuis 1994
-- **Nginx**: serveur **asynchrone** open source Russe (15% des sites). Existe depuis 2002
-- **Google Web Server**: version modifiée d'Apache. Code non public, uniquement utilisé par Google. (2% des sites)
+- **Apache**: serveur open source de référence (23% des sites.red[*]). Existe depuis 1995
+- **IIS**: Le serveur Web fournit par Microsoft pour la plateforme NT (4% des sites). Seule solution pour faire fonctionner les solutions Microsoft (ASP / ASP.Net). Existe depuis 1994
+- **Nginx**: serveur **asynchrone** open source Russe (31% des sites). Existe depuis 2002
+- **Google Web Server**: version modifiée d'Apache. Code non public, uniquement utilisé par Google. (4% des sites)
 
-.footnote[.red[*] Source: [étude Netcraft](http://news.netcraft.com/archives/2015/01/15/january-2015-web-server-survey.html) janvier 2015]
+.footnote[.red[*] Source: [étude Netcraft](https://news.netcraft.com/archives/2022/03/29/march-2022-web-server-survey.html) mars 2022]
 
 ---
 
-#Proxy inverse
+# Proxy inverse
 
 - Proxy web: donne accès a internet à partir d'un réseau LAN
 
@@ -55,8 +56,9 @@ class: left, middle, animated, fadeIn
 
 ---
 
-#Contrôle d'accès
-##Exemple: .htaccess d'Apache
+# Contrôle d'accès
+
+## Exemple: .htaccess d'Apache
 
 - **Chaque répertoire** peut avoir son fichier `.htaccess`
 - On peut **autoriser / interdire** l'accès
@@ -78,7 +80,7 @@ require valid-user # n'importe quel utilisateur de .passwds est accepté
 
 ---
 
-#Hôtes virtuels
+# Hôtes virtuels
 
 - Un serveur web peut héberger **plusieurs sites web**, chacun à partir d'une arborescence spécifique
   + Ex: http://www.site1.fr à partir de /var/www/site1
@@ -92,7 +94,7 @@ require valid-user # n'importe quel utilisateur de .passwds est accepté
 
 ---
 
-#Réécriture d'URL
+# Réécriture d'URL
 
 - Accès à une ressource web effectué généralement via une requête `GET`
   + Ex: http://www.notre-site.com/articles/article.php?id=12&page=2&rubrique=5
@@ -109,7 +111,7 @@ RewriteRule ^/articles/article-([0-9]+)-([0-9]+)-([0-9]+)\.html$   /articles/art
 
 ---
 
-#Serveur web et scripts
+# Serveur web et scripts
 
 - **Site statique**: le serveur web renvoie directement la ressource (fichier) demandée
 - **Site dynamique**: un programme / script est exécuté afin de **générer** la ressource demandée (ex: page HTML)
@@ -123,13 +125,13 @@ RewriteRule ^/articles/article-([0-9]+)-([0-9]+)-([0-9]+)\.html$   /articles/art
 
 ---
 
-#Technologies basées sur la génération de code
+# Technologies basées sur la génération de code
 
 ## CGI, WSGI, Servlets, etc.
 
 ---
 
-#CGI
+# CGI
 
 - CGI (Common Gateway Interface) : interface **normalisée** permettant de faire communiquer le serveur Web avec un programme s’exécutant sur le serveur
 - On peut utiliser **n’importe quel langage**
@@ -143,7 +145,7 @@ RewriteRule ^/articles/article-([0-9]+)-([0-9]+)-([0-9]+)\.html$   /articles/art
 
 ---
 
-#CGI: limites
+# CGI: limites
 
 - Avantages CGI
   
@@ -187,7 +189,9 @@ echo "</body></html>"
 
 ---
 
-#WSGI / Python
+class: bonus
+
+# WSGI / Python
 
 - Inspiré de **CGI**
   
@@ -206,7 +210,9 @@ echo "</body></html>"
 
 ---
 
-#WSGI: exemple
+class: bonus
+
+# WSGI: exemple
 
 ```python
 def dynamic_app(environ, start_response):
@@ -228,7 +234,9 @@ def dynamic_app(environ, start_response):
 
 ---
 
-#Servlets
+class: bonus
+
+# Servlets
 
 - Permettent d'écrire le code serveur sous forme de **classes Java**
 - Nécessitent d'être hébergées par un **conteneur de Servlet** (Ex: Apache Tomcat, Jetty), lui même connecté à un **serveur web** (ex: Apache)
@@ -242,7 +250,9 @@ def dynamic_app(environ, start_response):
 
 ---
 
-#Servlets: exemple
+class: bonus
+
+# Servlets: exemple
 
 ```java
 import java.io.*;
@@ -265,7 +275,9 @@ public class InfoServlet extends HttpServlet {
 
 ---
 
-#Servlets: exemple (suite)
+class: bonus
+
+# Servlets: exemple (suite)
 
 ```java
     protected void GenererReponse(HttpServletRequest request, HttpServletResponse reponse) throws IOException {
@@ -292,7 +304,7 @@ public class InfoServlet extends HttpServlet {
 
 ---
 
-#Bilan: CGI, Servlets, WSGI, etc.
+# Bilan: CGI, Servlets, WSGI, etc.
 
 - **Avantages**
   
@@ -308,13 +320,13 @@ public class InfoServlet extends HttpServlet {
 
 ---
 
-#Préprocesseurs HTML
+# Préprocesseurs HTML
 
 ## PHP, ASP(.Net), JSP, etc.
 
 ---
 
-#"Préprocesseur" HTML
+# "Préprocesseur" HTML
 
 - **Rôle prépondérant** de HTML
   + Pages écrites en HTML
@@ -331,19 +343,26 @@ public class InfoServlet extends HttpServlet {
 
 ---
 
-#PHP (1/2)
+# PHP (1/2)
 
 - Langage **interprété**, **faiblement typé**, créé en 1994 par Rasmus Lerdorf
-- Version actuelle : 7.4 (version 5.x de 2004 à fin 2018!)
+
+- Version actuelle : 8.1 (version 5.x de 2004 à fin 2018!)
+
 - Doit être **intégré à un serveur web** (ex: Apache via mod_php)
+
 - Un fichier `.php` est traité par PHP comme
+  
   + un fichier HTML
+  
   + avec des **balises spéciales** pour
+    
     * Exécuter du code 
       
       ```php
       <?php echo 'Hello ', 'World'; ?>
       ```
+    
     * Insérer la valeur d'une constante / variable dans le code HTML    
       
       ```php
@@ -352,7 +371,7 @@ public class InfoServlet extends HttpServlet {
 
 ---
 
-#PHP (2/2)
+# PHP (2/2)
 
 - La syntaxe du langage est **proche de celle du C**
 - API et bibliothèques externes très riches du fait de sa **large utilisation**
@@ -368,7 +387,7 @@ public class InfoServlet extends HttpServlet {
 
 ---
 
-#PHP: exemple
+# PHP: exemple
 
 mon_form.html
 
@@ -398,7 +417,7 @@ bonjour.php
 
 ---
 
-#PHP: exemple
+# PHP: exemple
 
 On peut aussi écrire des programmes PHP qui **génèrent du code** HTML (à la Servelet, CGI, etc.)
 
@@ -423,7 +442,9 @@ bonjour.php
 
 ---
 
-#ASP
+class: bonus
+
+# ASP
 
 - **Langage objet** Microsoft, équivalent à PHP
 - Créé en 1996, déprécié depuis la sortie d'ASP.Net en 2002
@@ -438,7 +459,9 @@ bonjour.php
 
 ---
 
-#ASP: exemple
+class: bonus
+
+# ASP: exemple
 
 mon_form.html
 
@@ -468,7 +491,9 @@ bonjour.asp
 
 ---
 
-#ASP.Net
+class: bonus
+
+# ASP.Net
 
 - **Évolution d'ASP**, basée sur l'**environnement .Net** de Microsoft (depuis 2002)
 - Programmation via **n'importe quel langage** supporté par .Net (C#, VB.Net, Python, Java, etc.)
@@ -481,7 +506,9 @@ bonjour.asp
 
 ---
 
-#ASP.Net: exemple
+class: bonus
+
+# ASP.Net: exemple
 
 **Web pages (Razor code)**
 
@@ -514,7 +541,9 @@ bonjour.aspx
 
 ---
 
-#JSP
+class: bonus
+
+# JSP
 
 - Toujours le même principe: exécution de **code Java** (coté serveur) dans une page HTML
   + **Déclarations** (déclaration de variables de classes ou de méthodes): `<%! int PI=3.14159; %>`
@@ -529,7 +558,9 @@ bonjour.aspx
 
 ---
 
-#JSP: exemple
+class: bonus
+
+# JSP: exemple
 
 ```jsp
 <%@ page import="java.io.*,java.util.*" %>
@@ -552,8 +583,9 @@ bonjour.aspx
 
 ---
 
-#Technologie sans serveur web externe
-##NodeJS
+# Technologie sans serveur web externe
+
+## NodeJS
 
 ---
 
@@ -572,7 +604,7 @@ bonjour.aspx
 
 ---
 
-#NodeJS est asynchrone (1/2)
+# NodeJS est asynchrone (1/2)
 
 - Modèle de **programmation "classique"**: on attend la fin de chaque tâche (même longue) avant de passer à la suivante
   
@@ -593,7 +625,7 @@ bonjour.aspx
 
 ---
 
-#NodeJS est asynchrone (2/2)
+# NodeJS est asynchrone (2/2)
 
 - Modèle de **programmation "asychrone"**: on n'attend pas la fin d'une tâche (potentiellement longue) avant de passer à la suivante
   
@@ -618,9 +650,11 @@ bonjour.aspx
 
 ---
 
-#Fonctions anonymes
+class: bonus
 
-Pour simplifier l'écriture des callback, (dont on se sert fréquemment) on peut déclarer directement une fonction comme paramètre d'une autre fonction...
+# Fonctions anonymes
+
+Pour simplifier l'écriture des callbacks, (dont on se sert fréquemment) on peut déclarer directement une fonction comme paramètre d'une autre fonction...
 
 ```javascript
 fs.readFile('/etc/hosts', function(err, contenu){
@@ -641,7 +675,7 @@ fs.readFile('/etc/hosts', callback);
 
 ---
 
-#NodeJS est également un serveur web...
+# NodeJS est également un serveur web...
 
 - Un programme NodeJS fait tourner **son propre serveur** web via l'objet [http](https://nodejs.org/api/http.html)
   
@@ -666,7 +700,7 @@ console.log('Serveur lancé sur le port 8080...');
 
 ---
 
-#Gestion des requêtes et des réponses
+# Gestion des requêtes et des réponses
 
 - `http.createServer` prend en paramètre une fonction à deux arguments (`request` et `response`)
   + `request` est de type `http.IncomingMessage`
@@ -678,7 +712,7 @@ console.log('Serveur lancé sur le port 8080...');
 
 ---
 
-#Gestion des évènements
+# Gestion des évènements
 
 - De nombreux objets de Node.JS sont des instances de la classe `EventEmitter`
 - Ils possèdent une méthode `on(event, listener)` qui permet de déclarer quel callback sera appelé pour quel évènement
@@ -691,7 +725,7 @@ server.on('connection', function (stream) {
 
 ---
 
-#Nodejs: modules
+# Nodejs: modules
 
 - NodeJS est extensible via des **modules**, pouvant être écrits par n'importe quel développeur
 - NPM (Node Package Manager) est le **gestionnaire de modules** intégré à NodeJS
@@ -707,7 +741,7 @@ server.on('connection', function (stream) {
 
 ---
 
-#Nodejs: frameworks
+# Nodejs: frameworks
 
 - NodeJS propose des **fonctionnalités de bas niveau**
   + Besoin d'outils d'un peu plus haut niveau pour être productif
@@ -725,7 +759,7 @@ server.on('connection', function (stream) {
 
 ---
 
-#ExpressJS: exemple
+# ExpressJS: exemple
 
 ```javascript
 var express = require('express'); // on charge ExpressJS
@@ -750,7 +784,7 @@ var server = app.listen(8080, function () {
 
 ---
 
-#ExpressJS: routing
+# ExpressJS: routing
 
 - Une **route** permet de définir quelles fonctions (callback) seront exécutées pour une **URL** et une **méthode HTTP** (GET, POST, etc.) données
 - Syntaxe: `app.METHODE( url, [callback...], callback)`
@@ -773,7 +807,7 @@ app.get(/^poly.*/, function(req, res) {
 
 ---
 
-#ExpressJS: requête et réponse
+# ExpressJS: requête et réponse
 
 - Objet `request` (1er paramètre du callback d'une route)
   + Accès aux **entêtes HTTP** (Ex: `request.body`, `request.cookies`, etc.)
@@ -789,7 +823,7 @@ app.get(/^poly.*/, function(req, res) {
 
 ---
 
-#ExpressJS: exemple 2
+# ExpressJS: exemple 2
 
 On utilise le même fichier HTML 'mon_form.html' que précédemment
 
@@ -815,7 +849,7 @@ app.listen(8080);
 
 ---
 
-#Nodejs: template (jade, ejs, etc.)
+# Nodejs: template (jade, ejs, etc.)
 
 - On aimerait pouvoir séparer code HTML du code JavaScript (comme en PHP, JSP)...
 
@@ -829,7 +863,7 @@ app.listen(8080);
 
 ---
 
-#ExpressJS + EJS
+# ExpressJS + EJS
 
 **Partie template EJS**
 
@@ -855,7 +889,7 @@ users.html
 
 ---
 
-#ExpressJS + EJS
+# ExpressJS + EJS
 
 **Partie code serveur NodeJS / ExpressJS**
 
@@ -888,7 +922,9 @@ app.listen(8080);
 
 ---
 
-#ExpressJS: générateur d'applications
+class: bonus
+
+# ExpressJS: générateur d'applications
 
 .float-right.width-30[![Générateur d'applications ExpressJS](images/ExpressGenerator.png "Source: http://expressjs.com/starter/generator.html")]
 
@@ -910,8 +946,11 @@ $ npm install
 
 ---
 
-#"Pile technologique" web
-##LAMP vs. MEAN
+class: bonus
+
+# "Pile technologique" web
+
+## LAMP vs. MEAN
 
 - **LAMP** = Linux + Apache + MySQL (MariaDB) + PHP (Perl ou Python)
   
@@ -929,8 +968,9 @@ $ npm install
 
 ---
 
-#Client side frameworks
-##[AngularJS](https://angularjs.org)
+# Client side frameworks
+
+## [AngularJS](https://angularjs.org)
 
 - Framework développé par Google pour le développement d'applications "Single Page"
 - **Déporte** une grande partie des actions généralement effectuées sur le serveur **vers le client**
@@ -943,11 +983,11 @@ $ npm install
   + Vue: Le code HTML mis à jour par AngularJS
   + Contrôleur: Code JavaScript permettant de mettre à jour la vue en fonction des données du modèle
 
-##Nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), [Svelte](https://svelte.dev), etc.
+## Nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), [Svelte](https://svelte.dev), etc.
 
 ---
 
-##AngularJS: exemple
+## AngularJS: exemple
 
 index.html
 
@@ -982,8 +1022,9 @@ function($scope){
 
 ---
 
-#Client side frameworks
-##Gestion des états
+# Client side frameworks
+
+## Gestion des états
 
 - Problème de passage à l'échelle des applications coté client
 - Comment gérer l'état de tous les composants (pure HTML ou ReactJS) ?
@@ -993,7 +1034,9 @@ function($scope){
 
 ---
 
-#Et les bases de données ?
+class: bonus
+
+# Et les bases de données ?
 
 - Vous connaissez les **bases de données relationnelles**
   
@@ -1014,7 +1057,9 @@ function($scope){
 
 ---
 
-#Une base de données NoSQL
+class: bonus
+
+# Une base de données NoSQL
 
 - **MongoDB:** Base de données orientée document
   + Utilise un format de stockage BSON (version binaire du JSON)
@@ -1026,7 +1071,10 @@ function($scope){
 
 ---
 
-#MongoDB: exemple de données
+class: bonus
+
+# MongoDB: exemple de données
+
 <br>
 .pure-g[.pure-u-1-2[
 
@@ -1049,11 +1097,9 @@ function($scope){
 
 ]]
 
-
-
 ---
 
-#Répartition du code : client vs serveur
+# Répartition du code : client vs serveur
 
 - Ce qui est **toujours coté serveur** = le code "métier"
   
@@ -1063,7 +1109,7 @@ function($scope){
 
 - Ce qui est **toujours coté client** (navigateur) = interactions
   
-  - Réaction aux évenement d'interface utilisateur (clics, clavier, etc.)
+  - Réaction aux événement d'interface utilisateur (clics, clavier, etc.)
 
 - Tout le reste peut être **coté client ou serveur**
   
@@ -1073,7 +1119,7 @@ function($scope){
 
 ---
 
-#Plus loin avec NodeJS
+# Plus loin avec NodeJS
 
 - Un cours bien fait: [http://courseware.codeschool.com/node_slides.pdf](http://courseware.codeschool.com/node_slides.pdf)
 
@@ -1089,6 +1135,6 @@ function($scope){
 
 ---
 
-#Prochainement: les services web
+# Prochainement: les services web
 
 .center[.inline-block.width-65[![SOAP vs. REST](images/SOAP vs. REST.jpg "Source: http://geekandpoke.typepad.com/geekandpoke/2009/11/service-calling-made-easy-part-1.html")]]

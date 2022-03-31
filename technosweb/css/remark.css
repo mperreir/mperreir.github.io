@@ -107,8 +107,8 @@ color: #7a7a7a;
   padding: 15px;
 }
 .inverse {
-  background: #272822;
-  color: #777872;
+  background: #3b3c3a;
+  color: #f3f3f3;
   text-shadow: 0 0 20px #333;
 }
 .inverse h1, .inverse h2 {
@@ -116,11 +116,27 @@ color: #7a7a7a;
   line-height: 0.8em;
 }
 
+.bonus h1::before {
+  content: "Bonus";
+  position: absolute;
+  top:1em;
+  right:0;
+  transform: rotate(-90deg);
+  padding: 0.3em;
+  color:white;
+  background-color:  rgb(249, 38, 114);
+}
+
+.inverse .remark-inline-code {
+  background-color: #555552 !important;
+}
+
 /* Slide-specific styling */
 #slide-inverse .footnote {
   bottom: 12px;
   left: 20px;
 }
+
 #slide-how .slides {
   font-size: 0.9em;
   position: absolute;
