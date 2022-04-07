@@ -28,7 +28,7 @@ class: left, middle, animated, fadeIn
     + [Element](https://developer.mozilla.org/fr/docs/Web/API/Element) : élément / "balise"
     + [Attribute](https://developer.mozilla.org/fr/docs/Web/API/Attr) : attribut d'un élément
   * [NodeList](https://developer.mozilla.org/fr/docs/Web/API/NodeList) : un tableau de Noeuds...
-- Le texte contenu dans un élement est un simple noeud "texte"
+- Le texte contenu dans un élément est un simple noeud "texte"
 
 ---
 
@@ -44,7 +44,7 @@ class: left, middle, animated, fadeIn
 
 # DOM : quelques outils
 
-- Récupération d'un élement ([document.querySelector()](https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector)) ou plusieurs ([document.querySelectorAll()](https://developer.mozilla.org/fr/docs/Web/API/Document/querySelectorAll)) à partir d'un [sélecteur CSS](https://developer.mozilla.org/fr/docs/Web/CSS/Sélecteurs_CSS)
+- Récupération d'un élément ([document.querySelector()](https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector)) ou plusieurs ([document.querySelectorAll()](https://developer.mozilla.org/fr/docs/Web/API/Document/querySelectorAll)) à partir d'un [sélecteur CSS](https://developer.mozilla.org/fr/docs/Web/CSS/Sélecteurs_CSS)
 
 ```javascript
 const conteneur = document.querySelector('#conteneur');
@@ -119,9 +119,9 @@ btn.addEventListener('click', () => { // callback sous forme de fonction flèche
 
 - Notion d'[event bubbling](https://developer.mozilla.org/fr/docs/Apprendre/JavaScript/Building_blocks/Evènements#le_bouillonnement_et_la_capture):
   
-  * L'élement HTML qui gère un évenement n'est pas forcement celui qui l'a généré
+  * L'élément HTML qui gère un évenement n'est pas forcement celui qui l'a généré
   * Appel des gestionnaires d'évenement en cascade (enfant vers parents)
-  * [Event.target](https://developer.mozilla.org/fr/docs/Web/API/Event/target) = l'élement à l'origiine de l'évemenent
+  * [Event.target](https://developer.mozilla.org/fr/docs/Web/API/Event/target) = l'élément à l'origine de l'évemenent
   * [Event.currentTarget](https://developer.mozilla.org/fr/docs/Web/API/Event/currentTarget) = l'élément dont le gestionnaire d'évenement a été appelé
   * [Event.stopPropagation()](https://developer.mozilla.org/fr/docs/Web/API/Event/stopPropagation) stoppe la propagation d'un évenement
 
