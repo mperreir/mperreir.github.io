@@ -899,6 +899,39 @@ Réponse
 
 ---
 
+# Spécification d'une API RESTFul (1/2)
+
+- Exemple via l'outil [Swagger.io](https://swagger.io) : [Animalerie](https://petstore.swagger.io) (Petstore)
+
+- Spécifications des opérations réalisables sur la ressource magasin (store)
+
+.center[
+
+![swagger-1.png](images/swagger-1.png)]
+
+---
+
+# Spécification d'une API RESTFul (2/2)
+
+- Modèle de données d'une commande
+
+.pure-g[
+
+.center.pure-u-1-2[
+
+Modèle
+
+![swagger-1.png](images/swagger-2.png)]
+
+.center.pure-u-1-2[
+
+Exemple JSON
+
+<br>
+![swagger-1.png](images/swagger-3.png)]]
+
+---
+
 # Service vs. ressource (1/2)
 
 - Modèle d'interaction :
