@@ -3,7 +3,7 @@ class: left, middle, animated, fadeIn
 
 ---
 
-#Technologies web et XML
+# Technologies web et XML
 .footnote[M. PERREIRA DA SILVA]
 
 - Cours 1
@@ -17,5 +17,12 @@ class: left, middle, animated, fadeIn
   + [Protocoles web](protocoles.html)
 - Cours 4
   + [Programmation coté serveur](prog-serveur.html)
-+ Cours 5
+- Cours 5
   + [Services web et protocoles associés](services-web.html)
+
+---
+
+# Bonus
+
+- [Le DOM (pour les IDIA)](dom.html)
+- [Les templates {{Mustache}}](mustache.html)
