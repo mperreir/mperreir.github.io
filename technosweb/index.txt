@@ -7,17 +7,15 @@ class: left, middle, animated, fadeIn
 .footnote[M. PERREIRA DA SILVA]
 
 - Cours 1
-  + [Introduction](intro.html)
-  + [HTML (partie 1)](html.html)
+  + [(Introduction)](intro.html)
+  + [HTML](html.html)
 - Cours 2
-  + [HTML (partie 2)](html.html#31)
-  + [CSS (partie 1)](css.html)
+  + [CSS](css.html)
 - Cours 3 
-  + [CSS (partie 2)](css.html#35)
   + [Protocoles web](protocoles.html)
+  + [Programmation coté serveur - partie 1](prog-serveur.html)
 - Cours 4
-  + [Programmation coté serveur](prog-serveur.html)
-- Cours 5
+  + [Programmation coté serveur - partie 2](prog-serveur.html)
   + [Services web et protocoles associés](services-web.html)
 
 ---

@@ -25,11 +25,11 @@ class: left, middle, animated, fadeIn
   
   - Matthieu Perreira Da Silva : ...
 
-- 5 **cours** par intervenant
+- 4 **cours** par intervenant (+1 de XML)
   
   - 4 **TPs** (HTML/CSS, JS pure, programmation client, programmation serveur)
 
-- 1 **projet** IHM - CSI - web (FISE) / 1 projet web (FISA)
+- 1 **projet** IHM - CSI - web (FISE)
 
 ---
 

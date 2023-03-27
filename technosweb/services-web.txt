@@ -860,6 +860,7 @@ Réponse
 - REST **s’appuie sur HTTP** pour exprimer les opérations via les méthodes HTTP
   + `POST` (Créer)
   + `GET` (Lire)
+  + `HEAD` (Lire les métadonnées)
   + `PUT` (MAJ complète) + `PATCH` (MAJ partielle)
   + `DELETE` (Supprimer)
 - Il n'est pas nécessaire d'implémenter toutes les méthodes pour une ressource

@@ -2,22 +2,25 @@ layout: true
 class: left, middle, animated, fadeIn
 
 ---
+
 # HTML + CSS + JavaScript
+
 ## Amélioration de l'expérience utilisateur par couches...
 
 .center[![HTML5](images/html-css-javascript.png "Source: http://blog.teamtreehouse.com/progressive-enhancement-past-present-future")]
 
 ---
-# [Version PDF des slides](pdf/01-html.pdf) 
+
+# [Version PDF des slides](pdf/01-html.pdf)
 
 ---
+
 # Préambule: les langages de description
 
 - Définissent une **structure** et/ou des **règles**
 
 - Sans langage spécifique, la structure n'est pas toujours explicite
 
-<br>
 **Exemple de texte seul:**
 
 .resultat[
@@ -35,13 +38,14 @@ Master culture numériques: un enseignement interdisciplinaire pour des publics 
 ]
 
 ---
+
 # Préambule: les langages de description (HTML)
 
 - **Structurer** l'information en vue de la **présenter**
-	* **Balises**: définissent le sens
-		+ Exemple: `<h3>Polytech Nantes</h3>`
-	* **Attributs**: permettent d'apporter des informations complémentaires
-		+ Exemple: `<a href="http://polytech.univ-nantes.fr">site web</a>`
+  * **Balises**: définissent le sens
+    + Exemple: `<h3>Polytech Nantes</h3>`
+  * **Attributs**: permettent d'apporter des informations complémentaires
+    + Exemple: `<a href="http://polytech.univ-nantes.fr">site web</a>`
 
 ```html
 <section id="polytech_nantes">
@@ -50,74 +54,76 @@ Master culture numériques: un enseignement interdisciplinaire pour des publics 
 <p>Polytech forme des étudiants ingénieurs, mais pas seulement. Elle délivre aussi des masters pour des publics nationaux et internationaux.</p>
 <p>Le détail de ses formations est disponible sur son <a href="http://polytech.univ-nantes.fr">site web</a>.</p> 
 <ul>
-	<li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
+    <li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
 </li>
-	<li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
+    <li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
 </ul>
 </section>
 ```
 
 ---
+
 # Préambule: les langages de description (HTML)
 
 **Rendu du document** HTML dans un navigateur web:
 .resultat[
+
 <section id="polytech_nantes_no_css">
 <h3>Polytech Nantes</h3>
 <h4>L'école d'ingénieurs de l'Université de Nantes.</h4>
 <p>Polytech forme des étudiants ingénieurs, mais pas seulement. Elle délivre aussi des masters pour des publics nationaux et internationaux.</p>
 <p>Le détail de ses formations est disponible sur son <a href="http://polytech.univ-nantes.fr">site web</a>.</p> 
 <ul>
-	<li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
+    <li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
 </li>
-	<li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
+    <li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
 </ul>
 </section>]
 
 ---
-# Préambule: les langages de description (CSS)
-<br>
-- Définir des **règles** de présentation
-	* s'appliquent à un/des éléments choisis à l'aide d'un **sélecteur**
 
-<br>
+# Préambule: les langages de description (CSS)
+
+- Définir des **règles** de présentation
+    * s'appliquent à un/des éléments choisis à l'aide d'un **sélecteur**
+
 ```CSS
 #polytech_nantes h3, #polytech_nantes h4{
-	text-align: center;
+    text-align: center;
 }
-	
-#polytech_nantes{ 			/* un sélecteur */ 
-	font-size: 12pt;		/* une règle    */
+
+#polytech_nantes{             /* un sélecteur */ 
+    font-size: 12pt;        /* une règle    */
 }
 
 #polytech_nantes li{
-	width: 45%;
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
 }
-```
 
+```
 ---
 # Préambule: les langages de description (CSS)
-<br>
+
 **Rendu du même document** HTML avec les règles CSS
 .resultat[
 <section id="polytech_nantes">
 <style>
 #polytech_nantes h3, #polytech_nantes h4{
-	text-align: center;
+    text-align: center;
 }
-	
+
 #polytech_nantes{
-	font-size: 12pt;
+    font-size: 12pt;
 }
 
 #polytech_nantes li{
-	width: 45%;
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
 }
 </style>
 <section id="polytech_nantes">
@@ -126,9 +132,9 @@ Master culture numériques: un enseignement interdisciplinaire pour des publics 
 <p>Polytech forme des étudiants ingénieurs, mais pas seulement. Elle délivre aussi des masters pour des publics nationaux et internationaux.</p>
 <p>Le détail de ses formations est disponible sur son <a href="http://polytech.univ-nantes.fr">site web</a>.</p> 
 <ul>
-	<li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
+    <li><h5>Ingénieur informatique:</h5> 3 ans d'études pour devenir un expert des technologies numériques.
 </li>
-	<li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
+    <li><h5>Master culture numériques:</h5> un enseignement interdisciplinaire pour des publics variés.</li>
 </ul>
 </section>]
 
@@ -148,44 +154,49 @@ devient
 
 ```xml
 <liste_departements>
-	<departement id="44">
-		<nom> Loire-Atlantique </nom>
-		<surface> 6815 </surface>
-		<habitants> 1328620 </habitants>
-	</departement>
-	<departement id="85">
-		<nom> Vendée </nom>
-		<surface> 6720 </surface>
-		<habitants> 655506 </habitants>
-	</departement>
+    <departement id="44">
+        <nom> Loire-Atlantique </nom>
+        <surface> 6815 </surface>
+        <habitants> 1328620 </habitants>
+    </departement>
+    <departement id="85">
+        <nom> Vendée </nom>
+        <surface> 6720 </surface>
+        <habitants> 655506 </habitants>
+    </departement>
 </liste_departements>
 ```
+
 .center[XML]
 ]
 .pure-u-1-2[
 
 ```json
 [{ "44": {
-		"nom": "Loire-Altantique",
-		"surface": "6815",
-		"habitants": "1328620"
-	}
+        "nom": "Loire-Altantique",
+        "surface": "6815",
+        "habitants": "1328620"
+    }
 }, 
 { "85": {
-		"nom": "Vendée",
-		"surface": "6720",
-		"habitants": "655506"
-	}
+        "nom": "Vendée",
+        "surface": "6720",
+        "habitants": "655506"
+    }
 }]
 ```
+
 .center[JSON]
 ]]
 
 ---
+
 # (X)HTML(5) !
+
 .center[![HTML5](images/Why-HTML5-31.jpg "Source: http://www.wix.com/blog/2012/03/why-html5-is-the-buzz-right-now/")]
 
 ---
+
 # Un peu d'histoire...
 
 - 1990 : HTML 1
@@ -205,19 +216,19 @@ devient
 # Vocabulaire XML
 
 - **Elément** : nom, notion abstraite
-    + Exemple : `p`
+  + Exemple : `p`
 - **Balise** : forme concrète d’un élément
-    + Balise ouvrante : `<element>`
-        - Exemple:   `<p>`
-    + Balise fermante : `</element>`
-        - Exemple:   `</p>`
+  + Balise ouvrante : `<element>`
+    - Exemple:   `<p>`
+  + Balise fermante : `</element>`
+    - Exemple:   `</p>`
 - **Attribut** : propriété d’un élément (nom, valeur)
-    + `<element nom="valeur" >`
-        - Exemple: `<p id="paraPrincipal" >`
+  + `<element nom="valeur" >`
+    - Exemple: `<p id="paraPrincipal" >`
 - **Commentaire**: non interprétés par les outils XML
-    - `<!-- Ceci est un commentaire ! -->`
+  - `<!-- Ceci est un commentaire ! -->`
 - **DTD** et **Schema**: définissent le vocabulaire et la grammaire d'un document XML
-    - Balises utilisables et leur relations hiérarchiques
+  - Balises utilisables et leur relations hiérarchiques
 
 ---
 
@@ -232,23 +243,25 @@ devient
   - Exemple:   `<img/>` (XHTML) ou `<img>` (HTML5)
 
 ---
+
 # Quelques bonnes habitudes (1/2)
 
 - Règles **XHTML** (à suivre aussi en HTML)
-    + Les noms des balises doivent être toujours en minuscule
-    + Toute balise ouverte doit être fermée
-    + Les chevauchements entre balise sont interdits
-    + Les noms des attributs doivent être écrits en minuscule
-    + Les valeurs des attributs doivent être entre guillemets doubles `"..."`
+  + Les noms des balises doivent être toujours en minuscule
+  + Toute balise ouverte doit être fermée
+  + Les chevauchements entre balise sont interdits
+  + Les noms des attributs doivent être écrits en minuscule
+  + Les valeurs des attributs doivent être entre guillemets doubles `"..."`
 
 ---
+
 # Quelques bonnes habitudes (2/2)
 
 - Respecter la sémantique des balises
-    + Ex : les tableaux ne servent pas à la mise en page !
+  + Ex : les tableaux ne servent pas à la mise en page !
 - Ne pas abuser des balises génériques (`<span>` et `<div>`)
 - Séparer le fond (HTML) de la forme (CSS)
-    + Pas de styles en *ligne* dans le code HTML
+  + Pas de styles en *ligne* dans le code HTML
 
 ```html
 <!-- A éviter ! -->
@@ -259,9 +272,12 @@ devient
 - Penser à l'accessibilité (cf. plus loin)
 
 ---
+
 # Les différentes version de HTML et leur DOCTYPE
+
 - Un document (X)HTML **doit** commencer par une balise DOCTYPE
-    + Il y a de (trop) nombreuses variantes
+  
+  + Il y a de (trop) nombreuses variantes
 
 - Les principales
 
@@ -281,7 +297,9 @@ devient
 ```
 
 ---
+
 # Pourquoi HTML 5 ?
+
 - C'est le dernier standard en date...
 - HTML 4 en **plus simpe** !
 - Meilleure **sémantique** : nouvelles balises `header`, `footer`, `nav` , etc.
@@ -291,23 +309,27 @@ devient
 - **Audio et vidéo** supportés nativement (plus besoin de plugin)
 
 ---
+
 # HTML 5 et JavaScript
+
 - Une **API** importante fait partie de HTML 5
-    + Dessin 2D (Canvas)
-    + DOM amélioré
-    + Stockage local (permanent ou temporaire)
-    + Mode hors ligne
-    + Communications bi-directionnelles avec un serveur (WebSockets)
-    + Géolocalisation
-    + Accès à l'historique Web
-    + Le drag and drop
-    + "Multithreading" (WebWorkers)
-    + Communication entre pages (Messaging)
-    + Etc.
+  + Dessin 2D (Canvas)
+  + DOM amélioré
+  + Stockage local (permanent ou temporaire)
+  + Mode hors ligne
+  + Communications bi-directionnelles avec un serveur (WebSockets)
+  + Géolocalisation
+  + Accès à l'historique Web
+  + Le drag and drop
+  + "Multithreading" (WebWorkers)
+  + Communication entre pages (Messaging)
+  + Etc.
 
 ---
+
 # Un document HTML5 minimal
-````html
+
+```html
 <!DOCTYPE html>     <!-- déclaration du doctype HTML5 -->
 <html lang="fr">    <!-- il faut préciser la langue du document html -->
   <head>            <!-- entête: titre, feuilles de style, scripts, etc. -->
@@ -320,58 +342,73 @@ devient
     <!-- contenu de la page -->
   </body>
 </html>
-````
+```
 
 ---
+
 # Structure d'un document HTML5 (1/4)
+
 ## DOCTYPE
 
 - Déjà vu précédement...
-    + Définit le **type de document** HTML
-    + Précise la DTD à utiliser
-    + Important pour que le navigateur interprète correctement la page
+  + Définit le **type de document** HTML
+  + Précise la DTD à utiliser
+  + Important pour que le navigateur interprète correctement la page
 
 ---
+
 # Structure d'un document HTML5 (2/4)
+
 ## La balise `<html></html>`
 
 - Indique au navigateur qu’il s’agit d’un **document html**
 - C'est la **racine** du document html
-    + Contient toutes les autres balises
+  + Contient toutes les autres balises
 
 ---
+
 # Structure d'un document HTML5 (3/4)
+
 ## La balise `<head></head>`
 
 - Contient des **(méta) informations** concernant le document
 - Balises filles acceptées:
-    + `title`: titre du document (**Obligatoire**)
-    + `style`: définition de styles intégrée au document
-    + `base`: URL de base pour tous le liens relatifs
-    + `link`: liens vers des feuilles de style
-    + `meta`: méta-données (mots clés, auteur, etc.)
-    + `script`: scripts (par défaut JavaScript)
-      * Attributs `async` et `defer` pour un chargement asynchrone
-      * On peut aussi charger les scripts en fin de `<body>` (obsolète)
-    + `noscript`: contenu à insérer si pas de support des scripts
+  + `title`: titre du document (**Obligatoire**)
+  + `style`: définition de styles intégrée au document
+  + `base`: URL de base pour tous le liens relatifs
+  + `link`: liens vers des feuilles de style
+  + `meta`: méta-données (mots clés, auteur, etc.)
+  + `script`: scripts (par défaut JavaScript)
+		* Attributs `async` et `defer` pour un chargement asynchrone
+    	* Attribut `type="module"` pour charger un [module javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules)
+    	* On peut aussi charger les scripts en fin de `<body>` (obsolète)
+  + `noscript`: contenu à insérer si pas de support des scripts
 
 ---
+
 # Petite parenthèse...
+
 ## Chargement des scripts
-<br>
+
 .center[![HTML5](images/defer-async.jpg "Source: http://fr.slideshare.net/pekuid/javascript-defer-async")]
 
+**Note :** pas besoin d'utiliser `defer` lors du chargement d'un module javascript, c'est fait automatiquement.
+
 ---
+
 # Structure d'un document HTML5 (4/4)
+
 ## La balise `<body></body>`
 
 - Le contenu de la page web
 - Toutes les balises affichées par le navigateur sont des balises filles de `body`
 
 ---
+
 # Les balises d'HTML5
 
 ## .red[ATTENTION : Liste et description non exhaustive]
+
 Ce cours n'a pas vocation à être une référence. D'autres sources d'information sont largement disponibles sur le web.
 
 - [https://developer.mozilla.org/fr/docs/Web/HTML/Reference](https://developer.mozilla.org/fr/docs/Web/HTML/Reference)
@@ -379,35 +416,38 @@ Ce cours n'a pas vocation à être une référence. D'autres sources d'informati
 - Et bien sûr les textes des [standards du W3C](https://www.w3.org/TR/) !
 
 ---
+
 # Les deux grands types de balises
 
 .pure-g[.pure-u-1-2[
 
 ###.red[Bloc]
+
 - Contient
-    + Du texte
-    + Des éléments "En ligne"
-    + **Des éléments "Bloc"**
-    + Des éléments auto-fermants
+  + Du texte
+  + Des éléments "En ligne"
+  + **Des éléments "Bloc"**
+  + Des éléments auto-fermants
 - Position
-    + **Les uns sous les autres**
+  + **Les uns sous les autres**
 - Largeur
-    + **Celle du conteneur**
+  + **Celle du conteneur**
 - Exemple: `<div>`, `<p>`, `<h1>`
 
 ]
 .pure-u-1-2[
 
 ###.blue[En ligne]
+
 - Contient
-    + Du texte
-    + Des éléments "En ligne"
-    + **Des éléments "En ligne" !**
-    + Des éléments auto-fermants
+  + Du texte
+  + Des éléments "En ligne"
+  + **Des éléments "En ligne" !**
+  + Des éléments auto-fermants
 - Position
-    + **Les uns à coté des autres**
+  + **Les uns à coté des autres**
 - Largeur
-    + **Sans dimension**
+  + **Sans dimension**
 - Exemple: `<span>`, `<a>`, `<img>`
 
 ]]
@@ -415,11 +455,13 @@ Ce cours n'a pas vocation à être une référence. D'autres sources d'informati
 .footnote[.red[*] Il y en a d'autres (list-item, table, table-cell, etc.)]
 
 ---
+
 # Les deux grands types de balises (exemple)
 
 .pure-g[.pure-u-1-2[
 
 ### .red[Bloc]
+
 ```html
 <div style="background:yellow;">
     Une boite jaune
@@ -429,9 +471,11 @@ Ce cours n'a pas vocation à être une référence. D'autres sources d'informati
     Une boite verte
 </div>
 ```
+
 <div class='resultat'><div></div>
 
 Résultat:
+
 <div style="background:yellow;">Une boite jaune</div>
 <div style="background:green;">Une boite verte</div>
 </div>
@@ -440,6 +484,7 @@ Résultat:
 .pure-u-1-2[
 
 ### .blue[En ligne]
+
 ```html
 <span style="background:yellow;">
     Une boite jaune
@@ -449,6 +494,7 @@ Résultat:
     Une boite verte
 </span>
 ```
+
 <div class='resultat'><div></div>
 
 Résultat:
@@ -460,21 +506,27 @@ Résultat:
 ]]
 
 ---
+
 # Balises génériques (1/2)
 
 - `<div>` : balise <span class='red'>bloc</span>
-    + Permet de regrouper des éléments
-    + Aide à l'agencement du contenu
-    + Ne pas en abuser !!!
+  
+  + Permet de regrouper des éléments
+  + Aide à l'agencement du contenu
+  + Ne pas en abuser !!!
+
 - `<span>` : balise <span class='blue'>en ligne</span>
-    + Permet d'associer un style à une partie de texte
+  
+  + Permet d'associer un style à une partie de texte
 
 - Ne sont utiles qu'en association avec les **attributs**
-    + `class`: permet d'associer un même style CSS à différentes balises
-    + `id`: identifie de manière unique une balise
-    + `style`: permet d'ajouter du code CSS dans une balise HTML **(à éviter)**
+  
+  + `class`: permet d'associer un même style CSS à différentes balises
+  + `id`: identifie de manière unique une balise
+  + `style`: permet d'ajouter du code CSS dans une balise HTML **(à éviter)**
 
 ---
+
 # Balises génériques (2/2)
 
 - Exemple:
@@ -514,6 +566,7 @@ CSS
 Résultat sans CSS: <div>La div 1</div><div>La div 2</div>
 ]
 .pure-u-1-2.resultat[
+
 <p>Résultat avec CSS: <div id="div1" class="uneDiv">La div 1</div><div id="div2" class="uneDiv">La div 2</div><style>.uneDiv {
     display:inline;
     border-style: solid;
@@ -523,6 +576,7 @@ Résultat sans CSS: <div>La div 1</div><div>La div 2</div>
 ]]
 
 ---
+
 # Les attributs globaux (1/2)
 
 Peuvent être définis sur n'importe que élément HTML
@@ -536,6 +590,7 @@ Peuvent être définis sur n'importe que élément HTML
 - `dir`: direction du texte de l'élément
 
 ---
+
 # Les attributs globaux (2/2)
 
 Peuvent être définis sur n'importe que élément HTML
@@ -549,6 +604,7 @@ Peuvent être définis sur n'importe que élément HTML
 - `translate`: indique si l'élément doit être traduit en cas de traduction de la page
 
 ---
+
 # Sections du document
 
 - `<header>`: Section d'**introduction** d'un article, d'une autre section ou du document entier
@@ -562,6 +618,7 @@ Peuvent être définis sur n'importe que élément HTML
 .footnote[.red[*] Ce sont toutes des balises de type bloc]
 
 ---
+
 # Exemple de sections d'un document
 
 .center[![HTML5](images/Html5-sections.png "Source: http://www.alsacreations.com/article/lire/1376-html5-section-article-nav-header-footer-aside.html")]
@@ -569,10 +626,13 @@ Peuvent être définis sur n'importe que élément HTML
 .footnote[.red[*] d'autres solutions sont possibles...]
 
 ---
+
 # Bien utiliser les éléments de section
+
 .center[![HTML5](images/h5d-sectioning-flowchart.png "Source: http://html5doctor.com/resources/")]
 
 ---
+
 # Les balise de structuration (1/4)
 
 - `<abbr>`: <abbr>Abréviation</abbr>
@@ -588,6 +648,7 @@ Peuvent être définis sur n'importe que élément HTML
 .footnote[En **<span class='red'>rouge, gras</span>**: les balises de type bloc]
 
 ---
+
 # Les balise de structuration (2/4)
 
 .pure-g[.pure-u-1-2[
@@ -610,6 +671,7 @@ Peuvent être définis sur n'importe que élément HTML
 ]]
 
 ---
+
 # Les balise de structuration (3/4)
 
 - .red[**`<figure>`**]: <figure>Figure (image, code, etc.)</figure>
@@ -620,6 +682,7 @@ Peuvent être définis sur n'importe que élément HTML
 - `<hr`>: Ligne de séparation horizontale<hr>
 
 ---
+
 # Les balise de structuration (4/4)
 
 - .red[**`<address>`**]: <address>Adresse de contact</address>
@@ -632,6 +695,7 @@ Peuvent être définis sur n'importe que élément HTML
 - `<time>`: Date ou heure.  Ex: <time datetime="2015-03">Mars 2015</time>
 
 ---
+
 # Les listes
 
 .pure-g[.pure-u-1-2[
@@ -648,6 +712,7 @@ Peuvent être définis sur n'importe que élément HTML
 .resultat[
 
 Résultat:
+
 <ol>
   <li>Premier élément</li>
   <li>Second élément</li>
@@ -664,9 +729,11 @@ Résultat:
    <li>Un autre élément</li>
 </ul>
 ```
+
 .resultat[
 
 Résultat:
+
 <ul>
   <li>Un élément</li>
   <li>Un autre élément</li>
@@ -678,12 +745,15 @@ Résultat:
 Dans tous les cas les listes contiennent des <span class='orange'>**éléments `<li>`**</span> et peuvent être imbriquées les unes dans les autres.
 
 ---
+
 # Les listes de définitions (plus rares)
 
 - Trois types de balises nécessaires
+
 - .red[**`<dl>`: la liste de définitions**]
-	- .orange[**`<dt>`: un terme à définir**]
-	- .orange[**`<dd>`: la définition du terme**]
+  
+  - .orange[**`<dt>`: un terme à définir**]
+  - .orange[**`<dd>`: la définition du terme**]
 
 - Exemple:
 
@@ -705,19 +775,27 @@ Dans tous les cas les listes contiennent des <span class='orange'>**éléments `
 ]
 
 ---
+
 # Les tableaux
 
 - .red[**`<table>`**]: Balise **'racine'** du tableau. Contient tous les autres éléments
+
 - .orange[**`<caption>`**]: **Titre** du tableau *(Optionnel)*
+
 - .red[**`<thead>`**]: **En-tête** du tableau *(Optionnel)*
+
 - .red[**`<tbody>`**]: **Corps** du tableau *(Optionnel)*
+
 - .red[**`<tfoot>`**]: **Pied** du tableau *(Optionnel)*
+
 - .orange[**`<tr>`**]: Une **ligne** du tableau
+
 - .orange[**`<td>`**]: Une **colonne** du tableau
 
 - Les attributs `colspan` et `rowspan` servent à **fusionner** des cellules
 
 ---
+
 # Les tableaux (exemple)
 
 .pure-g[.pure-u-1-2[
@@ -745,9 +823,11 @@ Dans tous les cas les listes contiennent des <span class='orange'>**éléments `
     </tbody>
 </table>
 ```
+
 ]
 .pure-u-1-2[.resultat[
 Résultat
+
 <table>
    <caption>Liste d'étudiants</caption>
    <thead>
@@ -771,18 +851,20 @@ Résultat
 ]]]
 
 ---
+
 # Les images
 
 - `<img>` : Une **image** dont le fichier source est indiqué par l'attribut `src`.
-    + L'attribut `alt` fournit une description textuelle de l'image (accessibilité).
-    + L'attribut `srcset` permet de définit différentes tailles d'image (responsive + high dpi)
-    + Peut être insérée dans une balise `<a>` pour créer une image cliquable
+  + L'attribut `alt` fournit une description textuelle de l'image (accessibilité).
+  + L'attribut `srcset` permet de définit différentes tailles d'image (responsive + high dpi)
+  + Peut être insérée dans une balise `<a>` pour créer une image cliquable
 - `<picture>` et `<source>`: Solution HTML5, alternative à `srcset`, pour spécifier **différentes tailles d'images** (responsive + high dpi) ou **différents formats** (ex: JPG et WebP)
 - `<canvas>`: **Surface** (matricielle) de dessin, qui sera manipulée via l'API javascript éponyme.
-    + A besoin d'un attribut `id` pour être référencée en JavaScript
-    + Ne pas oublier de lui donner une largeur et une hauteur (de préférence en CSS)
+  + A besoin d'un attribut `id` pour être référencée en JavaScript
+  + Ne pas oublier de lui donner une largeur et une hauteur (de préférence en CSS)
 
 ---
+
 # Les images (exemples)
 
 - `<img>` et `srcset`
@@ -813,16 +895,17 @@ Résultat
 ```
 
 ---
+
 # Les balises Audio
 
 - .blue[Nouveau depuis HTML5] : avant, aucun moyen standard de jouer du son
 - `<audio>` : Définit un **son** à jouer sur une page
 - Attributs utiles:
-    + `src`: L'URL du son à jouer
-        * **Attention** : tous les navigateurs ne supportent pas les mêmes codecs. Il faut au moins fournir le son au formats Ogg/Vorbis et MP4/AAC
-    + `autoplay`: Comme son nom l'indique...
-    + `controls`: Permet d'afficher une interface de lecture du son
-    + `type`: Le type MIME du son à jouer
+  + `src`: L'URL du son à jouer
+		* **Attention** : tous les navigateurs ne supportent pas les mêmes codecs. Il faut au moins fournir le son au formats Ogg/Vorbis et MP4/AAC
+  + `autoplay`: Comme son nom l'indique...
+  + `controls`: Permet d'afficher une interface de lecture du son
+  + `type`: Le type MIME du son à jouer
 
 Exemple:
 
@@ -833,16 +916,17 @@ Description alternative ici !
 ```
 
 ---
+
 # Les balises Vidéo
 
 - .blue[Nouveau depuis HTML5] : avant, aucun moyen standard de jouer des vidéos
 - `<video>` : Définit une **vidéo** à jouer sur une page
- Attributs utiles:
-    + `src`: L'URL du son à jouer
-        * **Attention** : comme pour l'audio, tous les navigateurs ne supportent pas les mêmes codecs. Le .h264 (mp4) est [de mieux en mieux supporté](http://caniuse.com/#feat=mpeg4), mais il faut aussi compter avec WebM et Theora.
-    + `autoplay`: Comme son nom l'indique...
-    + `controls`: Permet d'afficher une interface de lecture du son
-    + `type`: Le type MIME du son à jouer
+  Attributs utiles:
+  + `src`: L'URL du son à jouer
+		* **Attention** : comme pour l'audio, tous les navigateurs ne supportent pas les mêmes codecs. Le .h264 (mp4) est [de mieux en mieux supporté](http://caniuse.com/#feat=mpeg4), mais il faut aussi compter avec WebM et Theora.
+  + `autoplay`: Comme son nom l'indique...
+  + `controls`: Permet d'afficher une interface de lecture du son
+  + `type`: Le type MIME du son à jouer
 
 Exemple:
 
@@ -856,14 +940,15 @@ Exemple:
 ```
 
 ---
+
 # Les iFrame
 
 - `<iframe>`: Permet d'inclure une page web à l'intérieur d'une autre (ex: une carte Google Map).
 - Attributs utiles:
-    + `src`: URL du contenu web à intégrer
-    + `srcdoc`: Code HTML à intégrer (alternative à `src`)
-    + `sandbox` .blue[(HTML5)]: Permet de spécifier certaines options de sécurité
-    + `allowfullscreen`: Permet au contenu de l'iFrame de remplir tout l'écran
+  + `src`: URL du contenu web à intégrer
+  + `srcdoc`: Code HTML à intégrer (alternative à `src`)
+  + `sandbox` .blue[(HTML5)]: Permet de spécifier certaines options de sécurité
+  + `allowfullscreen`: Permet au contenu de l'iFrame de remplir tout l'écran
 
 Exemple basique:
 
@@ -878,21 +963,25 @@ Exemple de vidéo YouTube:
 ```
 
 ---
+
 # Autre contenu
 
 - `<embed>` (HTML5) : La bonne manière d'intéger du contenu externe via un plugin (Ex: Flash)
+  
   + Attributs utiles:
-    - `src`: URL du contenu externe à intégrer
-    - `type`: Type MIME du contenu externe
+		- `src`: URL du contenu externe à intégrer
+    	- `type`: Type MIME du contenu externe
   + Pas de possibilité de paramétrage supplémentaire
 
 - `<object>` : Element plus générique, représentant du contenu externe
+  
   + Attributs utiles:
-    - `data`: URL du contenu externe à intégrer
-    - `type`: Type MIME du contenu externe
+    	- `data`: URL du contenu externe à intégrer
+    	- `type`: Type MIME du contenu externe
   + On peut passer des paramètres supplémentaire a l'objet externe via via l'inclusion de balises `<param>` et ses attributs `name` et `value`
 
 ---
+
 # Autre contenu (exemples)
 
 - `<embed>` (HTML5)
@@ -918,19 +1007,21 @@ Exemple de vidéo YouTube:
 ```
 
 ---
+
 # Les formulaires
 
 - C'est en grande partie grace à eux que l'on peut **interagir avec l'utilisateur** et **communiquer avec le serveur web** (hors AJAX)
 - La balise `<form>` permet de **déclarer un formulaire**
 - Attributs utiles
-  + `action`: URL de la page / script serveur qui traitera les données du formulaire
-+ `method`: Méthode HTTP à utiliser (**GET** ou POST)
-+ `enctype`: Seulement utilisé si `method=post`
-  * **`application/x-www-form-urlencoded`**: encodage des données en *percent encoding*, comme les URI
-  * `multipart/form-data`: Pas d'altération des données. Nécessaire en cas d'envoi de fichier (`<input type="file">`)
-  * `text/plain`: Seuls les espaces sont convertis en '+'
+	+ `action`: URL de la page / script serveur qui traitera les données du formulaire
+	+ `method`: Méthode HTTP à utiliser (**GET** ou POST)
+	+ `enctype`: Seulement utilisé si `method=post`
+  		* **`application/x-www-form-urlencoded`**: encodage des données en *percent encoding*, comme les URI
+  		* `multipart/form-data`: Pas d'altération des données. Nécessaire en cas d'envoi de fichier (`<input type="file">`)
+  		* `text/plain`: Seuls les espaces sont convertis en '+'
 
 ---
+
 # Regroupements et labels
 
 - `<fieldset>`: Permet de créer des **groupes de widgets** `<input>`
@@ -943,6 +1034,7 @@ Exemple de vidéo YouTube:
   + L'attribut `for` spécifie une liste d'`id` de champs, séparés par des espaces
 
 ---
+
 # Exemple de regroupement
 
 .pure-g[.pure-u-2-3[
@@ -993,6 +1085,7 @@ Résultat:
 ]]]
 
 ---
+
 # Exemple labels
 
 ```html
@@ -1011,13 +1104,14 @@ Résultat:
 .resultat[
 
 Résultat:
+
 <form>
   <p>
     <input type="checkbox" id="j_aime_1" name="aime_pommes" value="1">
     <label for="j_aime_1">J'aime les pommes</label>
   </p>
   <p>
-  	 <input type="checkbox" id="j_aime_2" name="aime_sushis" value="1">
+       <input type="checkbox" id="j_aime_2" name="aime_sushis" value="1">
     <label for="j_aime_2">
       J'adore les sushis
     </label>
@@ -1027,6 +1121,7 @@ Résultat:
 ]
 
 ---
+
 # Exemple de champ `<output>`
 
 ```html
@@ -1041,6 +1136,7 @@ Résultat:
 .resultat[
 
 Résultat:
+
 <form oninput="output.value = (val1.valueAsNumber || 0) * (val2.valueAsNumber || 0)" id=foo>
   <input type=number name=val1> X
   <input type=number name=val2> =
@@ -1050,6 +1146,7 @@ Résultat:
 ]
 
 ---
+
 # Les widgets
 
 - L'élément `<input>` permet de définir de **nombreux types de widget**
@@ -1062,6 +1159,7 @@ Résultat:
 - Nombreux autres attributs spécifiques à chaque type d'input (ex: `min`, `max`, `list`, etc.) nécessaires pour l'**auto-validation** des forumulaires
 
 ---
+
 # Les boutons
 
 - L'élément `<button>` est très proche d'un champ `<input>`  de type bouton
@@ -1072,6 +1170,7 @@ Résultat:
   + `anonymous`: Pas de comportement pré-défini. Doit être exploité à l'aide de code JavaScript
 
 ---
+
 # Les widgets  (exemple)
 
 ```html
@@ -1101,11 +1200,13 @@ Résultat:
 ```
 
 ---
+
 # Les widgets  (exemple)
 
 .resultat[
 
 Resultat:
+
 <form>
   <p>
     <label for="t1">Texte:</label>
@@ -1128,9 +1229,8 @@ Resultat:
 
 ]
 
-
-
 ---
+
 # Zones de texte multilignes
 
 - L'élément `<textarea>` peut contenir plusieurs lignes de texte
@@ -1150,11 +1250,12 @@ Resultat:
 ]
 
 ---
+
 # Listes déroulantes
 
 - L'élément `<select>` définit une liste déroulante
   + `<option>`: permet de spécifier les valeurs possibles
-    * L'attribut `selected` de  `<option>` indique la valeur par défaut de la liste
+  		* L'attribut `selected` de  `<option>` indique la valeur par défaut de la liste
   + `<optgroup>`: Permet de regrouper ces valeurs
   + L'attribut `multiple` de `<select>` permet de sélectionner plusieurs options
 
@@ -1197,6 +1298,7 @@ Resultat:
 ]]]
 
 ---
+
 # Auto-complétion
 
 - L'élément `<datalist>` définit une liste de choix possibles pour un champ texte
@@ -1232,6 +1334,7 @@ Resultat:
 ]]]
 
 ---
+
 # Progression (1/2)
 
 - `<meter>`: Représente une **valeur fixe**, comprise entre un `min` et un `max`
@@ -1247,6 +1350,7 @@ Exemple:
 .resultat[
 
 Résultat:
+
 <p>Espace utilisé dans votre webmail :
    <meter low="1000" high="6500" max="7500" value="6985">6 985 Mo</meter>
 </p>
@@ -1254,9 +1358,10 @@ Résultat:
 ]
 
 ---
+
 # Progression (2/2)
 
-- `<progress>`: Reprséente une valeur qui peut **varier au cours du temps** entre un `min` et un `max`
+- `<progress>`: Représente une valeur qui peut **varier au cours du temps** entre un `min` et un `max`
 
 Exemple:
 
@@ -1272,6 +1377,7 @@ Exemple:
 .resultat[
 
 Résultat:
+
 <p>Avancement de la tâche à effectuer :
        <progress id="avancement" value="50" max="100"></progress>
        <span id="pourcentage"></span>
@@ -1282,6 +1388,7 @@ Résultat:
 ]
 
 ---
+
 # Web sémantique : les microdonnées
 
 - Ajout d'attributs aux tags d'une page HTML pour améliorer l'**indexation des pages** par des moteurs de recherche et le **partage de données**
@@ -1293,6 +1400,7 @@ Résultat:
   + `itemref`: Permet d'associer une balise non-descendante à une balise avec l'attribut `itemscope`
 
 ---
+
 # Microdonnées : exemple
 
 ```html
@@ -1324,17 +1432,18 @@ Devient (avec les microdonnées):
 ```
 
 ---
+
 # Accessibilité
 
 - Quelques règles à suivre pour rendre ses pages plus accessibles
-    + Toujours utiliser l'**attribut `alt`** lorsque l'on utilise des images
-    + Faire attention à l'**ordre des informations** (la page doit être compréhensible sans le CSS)
-    + Ne pas utiliser d'élement `<img>` pour représenter du texte
-      * Utiliser CSS pour changer la police ou remplacer le texte par une image
-    + Mais utiliser `<img>` (et `alt`) pour les images porteuses d'information
-    + Respecter et exploiter au maximum la **sémantique** des balises
-    + Utiliser les [attributs ARIA](https://developer.mozilla.org/fr/docs/Accessibilité/ARIA) quand c'est nécessaire
-        * Seulement pour les rôles ARIA [non disponibles en HTML5](https://developer.paciellogroup.com/blog/2014/10/aria-in-html-there-goes-the-neighborhood/#html5na) / composants personnalisés
+  + Toujours utiliser l'**attribut `alt`** lorsque l'on utilise des images
+  + Faire attention à l'**ordre des informations** (la page doit être compréhensible sans le CSS)
+  + Ne pas utiliser d'élement `<img>` pour représenter du texte
+  		* Utiliser CSS pour changer la police ou remplacer le texte par une image
+  + Mais utiliser `<img>` (et `alt`) pour les images porteuses d'information
+  + Respecter et exploiter au maximum la **sémantique** des balises
+  + Utiliser les [attributs ARIA](https://developer.mozilla.org/fr/docs/Accessibilité/ARIA) quand c'est nécessaire
+  		* Seulement pour les rôles ARIA [non disponibles en HTML5](https://developer.paciellogroup.com/blog/2014/10/aria-in-html-there-goes-the-neighborhood/#html5na) / composants personnalisés
 
 ---
 
@@ -1348,19 +1457,17 @@ Devient (avec les microdonnées):
 - Regroupement de différents éléments à l'aide de balises `<g>`, équivalent d'un `<div>`
 - Références des différents éléments SVG disponible sur [MDN](https://developer.mozilla.org/fr/docs/Web/SVG)
 
-
-
 ---
 
 # SVG
 
-````SVG
+```SVG
 <svg viewBox="0 0 300 200">
   <rect width="100%" height="100%" fill="red"/>
   <circle cx="150" cy=2100" r="80" fill="green"/>
   <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
 </svg>
-````
+```
 
 <svg viewBox="0 0 300 200" style="width: 100%; height: 50%; margin: 0 auto;">
   <rect width="100%" height="100%" fill="red"/>

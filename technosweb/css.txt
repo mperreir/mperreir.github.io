@@ -120,7 +120,7 @@ class: left, middle, animated, fadeIn
 - **Fonction** .red[R].green[G].blue[B](A) et HSL(A).red[*]
     + Exemple: `rgb(255,255,0)` (encore du jaune)
     + Exemple: `rgba(255,255,0,0.5)` (du jaune 50% transparent)
-    + Exemple: `hsl(50,100%,50%)` (du jaune 50% transparent)
+    + Exemple: `hsl(50,100%,50%)` (du jaune 50%)
     + Exemple: `hsla(50,100%,50%,0.5)` (du jaune 50% transparent)
 
 - Noms **prédéfinis** (17 en CSS 2, 147 en CSS 3)
@@ -379,7 +379,7 @@ class: left, middle, animated, fadeIn
 ---
 # Les pseudo-classes
 
-- Décrive un **état spécial** d'un élément
+- Décrivent un **état spécial** d'un élément
     + `:first-child`: l'élément est le premier fils de son parent
     + `:link`: un lien (`<a>`) qui n'a pas encore été visité
     + `:visited`: un lien (`<a>`) qui a été visité
@@ -507,7 +507,7 @@ Résultat:
 ---
 # La cascade
 
-- Le style d'une page est la **combinaisons** de plusieurs feuilles de style
+- Le style d'une page est la **combinaison** de plusieurs feuilles de style
 - Le style d'un élément peut être défini **plusieurs fois**
     + Dans une même feuille de style ou dans une autre feuille de style
     + La dernière définition est prioritaire sur les autres
@@ -580,7 +580,7 @@ a{ color: red !important; }
 ---
 # Shorthands
 
-- Un **shorthand** est une propriété permettant de définir **plusieurs propriés** CSS en une fois
+- Un **shorthand** est une propriété permettant de définir **plusieurs propriétés** CSS en une fois
 - Exemple:
   
     ```css
@@ -735,7 +735,7 @@ Résultat (2 exemples):
 ```css
 #conteneur div { width: 5em;}
 #d1 { position: relative; top: 1em; left: 1em;}
-#d3 { position: fixed; top: -1em; right: 1em;}
+#d3 { position: fixed; top: 1em; right: 1em;}
 ```
 .resultat[
 
@@ -850,7 +850,7 @@ Résultat:
 
 
 ---
-# Les conteneurs`display:grid`
+# Les conteneurs `display:grid`
 
 .center[![Flex grid](images/flex-grid.jpeg "Source: https://medium.com/@daniaherrera/getting-started-css-grid-vs-flexbox-b3012fce6476")]
 
@@ -865,7 +865,7 @@ Résultat:
     + Positionner les éléments hiérarchiquement **avec des conteneurs** `display: flex` ou en gille avec `display: grid`
 
 - S'il est nécessaire de sortir un élément du flux
-    + J'utilise la propriété `position` (généralement avec la valeur `absolute`)`
+    + J'utilise la propriété `position` (généralement avec la valeur `absolute`)
 
 - Si les éléments doivent pouvoir se repositionner en fonction de l'espace disponible dans leur conteneur : utiliser `display: inline-block` (pour l'élément) ou `display: flex` (pour le conteneur)
 	+ Mais pas les deux !!!
