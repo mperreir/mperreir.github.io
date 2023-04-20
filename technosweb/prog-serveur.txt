@@ -597,10 +597,10 @@ class: bonus
 - NodeJS n'est **PAS**:
   + Un framework Web (mais il en existe pour NodeJS)
   + De haut niveau
-    * Pratique pour voir les bases des technologies web
-    * Il existe de nombreux modules pour simplifier le développent
+  		* Pratique pour voir les bases des technologies web
+    	* Il existe de nombreux modules pour simplifier le développent
   + Multi-threadé
-    * **Une seule instance** de votre code est exécutée
+    	* **Une seule instance** de votre code est exécutée
 
 ---
 
