@@ -1,17 +1,21 @@
-layout: true
-class: left, middle, animated, fadeIn
-
+---
+marp: true
+lang: fr
+paginate: true
+theme: marp
 ---
 
+<!-- _paginate: skip -->
 # Les templates {{Mustache}}
 
-.center[![moustache-gracias.png](images/moustache-gracias.png)]
+![center](images/moustache-gracias.png)
 
-.footnote[par M. PERREIRA DA SILVA]
+<!-- _footer: <span class='red'>*</span> M. PERREIRA DA SILVA -->
 
 ---
 
-# [Version PDF des slides](pdf/07-mustache.pdf)
+<!-- _paginate: skip -->
+# [Version PDF des slides](pdf/mustache.pdf)
 
 ---
 
@@ -20,20 +24,25 @@ class: left, middle, animated, fadeIn
 - Simplifier / remplacer la manipulation du DOM
   
   - Originellement fait coté serveur (ASP, PHP, etc.)
+
   - Maintenant aussi coté client. Ex : [{{Mustache}}](https://github.com/janl/mustache.js)
 
 - Principe de {{Mustache}} : insérer des données en remplacement de tags
   
   * Variables `{{maVariable}}`
+
     - est remplacé par le contenu de la variable `maVariable`
+
   * Sections `{{#nomSection}}`...`{{/nomSection}}`
+
     - est répété autant de fois qu'il y a d'élements dans  `nomSection`
 
 ---
 
 # Templates : exemple simple
 
-.pure-g[.pure-u-1-2[
+<div class='pure-g'>
+<div class='pure-u-1-2'>
 
 Données JSON
 
@@ -58,8 +67,8 @@ Données JSON
 }
 ```
 
-]
-.pure-u-1-2[
+</div>
+<div class='pure-u-1-2'>
 
 Template {{Mustache}}
 
@@ -81,7 +90,8 @@ Personnes :
 -> 12 ans
 ```
 
-]]
+</div>
+</div>
 
 ---
 
@@ -94,7 +104,7 @@ HTML
 <html lang="fr">
 <head>
     <!-- Chargement de mustache -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.js"defer></script>
    <!-- et de notre scipt principal -->
    <script src="js/main.js" defer></script>
 </head>

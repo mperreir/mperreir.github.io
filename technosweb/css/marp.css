@@ -1,0 +1,79 @@
+/* @theme marp */
+
+@import 'default';
+@import url('css/pure-min.css');
+
+:root { font-size: 25px; }
+
+footer { color: inherit; }
+
+.red    { color: #FF4943; }
+.orange { color: #FF8000; }
+.gray   { color: #787878; }
+.green  { color: #32CD32; }
+.blue   { color: #41C8F0; }
+.yellow { color: #DBEC62; }
+
+.resultat{
+  padding-left: 0.5em;
+  border-left: 0.5em;
+  border-color: #87A558;
+  border-left-style: solid;
+  word-wrap: break-word;
+}
+
+.pure-g [class*=pure-u]{
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+
+.center { text-align: center; }
+
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+
+table {
+    font-size:18px;
+  }
+
+.hidden{
+  display: none;
+}
+
+section.bonus h1::before {
+  content: "Bonus";
+  position: absolute;
+  top:1em;
+  right:0;
+  transform: rotate(-90deg);
+  padding: 0.3em;
+  color:white;
+  background-color:  #41C8F0;;
+}
+
+.status-codes table tbody tr:nth-child(1) td strong
+{
+  color: #DBEC62;
+}
+
+.status-codes table tbody tr:nth-child(n+2) td strong
+{
+  color: #32CD32;
+}
+
+.status-codes table tbody tr:nth-child(n+5) td strong
+{
+  color: #41C8F0;
+}
+
+.status-codes table tbody tr:nth-child(n+8) td strong
+{
+  color: #FF8000;
+}
+
+.status-codes table tbody tr:nth-child(n+14) td strong
+{
+  color: #FF4943;
+}

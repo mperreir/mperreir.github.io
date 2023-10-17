@@ -1,23 +1,27 @@
-layout: true
-class: left, middle, animated, fadeIn
-
+---
+marp: true
+lang: fr
+paginate: true
+theme: marp
 ---
 
+<!-- _paginate: skip -->
 # Le DOM pour les ~~nuls~~ IDIA
 
-.center[![dom-nuls.jpg](images/dom-nuls.jpg)]
+![center height:20em](images/dom-nuls.jpg)
 
-.footnote[par M. PERREIRA DA SILVA]
+<!-- _footer: <span class='red'>*</span> M. PERREIRA DA SILVA -->
 
 ---
 
-# [Version PDF des slides](pdf/06-dom.pdf)
+<!-- _paginate: skip -->
+# [Version PDF des slides](pdf/dom.pdf)
 
 ---
 
 # DOM : les principes
 
-.float-right.width-40[![Le DOM (image wikipedia)](images/DOM.png)]
+![bg fit right:40%](images/DOM.png)
 
 - Document Object Model = représentation du document sous forme d'arbre
   - Documents HTML, XML, SVG, etc.
@@ -35,9 +39,13 @@ class: left, middle, animated, fadeIn
 # DOM : les principes
 
 - Chaque type de document possède ses propres types spécifiques
+
   - Ex HTML: [HTMLElement](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement), [HTMLImageElement](https://developer.mozilla.org/fr/docs/Web/API/HTMLImageElement), etc.
+
   - Ex SVG :  [SVGElement](https://developer.mozilla.org/fr/docs/Web/API/SVGElement), [SVGCircleElement](https://developer.mozilla.org/en-US/docs/Web/API/SVGCircleElement), etc.
+
 - Pour les documents XML on utilise les types de base
+
 - Le DOM permet de parcourir, consulter, modifier un document
 
 ---
@@ -46,20 +54,28 @@ class: left, middle, animated, fadeIn
 
 - Récupération d'un élément ([document.querySelector()](https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector)) ou plusieurs ([document.querySelectorAll()](https://developer.mozilla.org/fr/docs/Web/API/Document/querySelectorAll)) à partir d'un [sélecteur CSS](https://developer.mozilla.org/fr/docs/Web/CSS/Sélecteurs_CSS)
 
-```javascript
-const conteneur = document.querySelector('#conteneur');
-const sects = document.querySelectorAll('section');
-```
+  ```javascript
+  const conteneur = document.querySelector('#conteneur');
+  const sects = document.querySelectorAll('section');
+  ```
+
+---
+
+# DOM : quelques outils
 
 - Création d'éléments avec [document.createElement(*nomDeTag*)](https://developer.mozilla.org/fr/docs/Web/API/Document/createElement) ou modification de leur contenu texte ([textContent](https://developer.mozilla.org/fr/docs/Web/API/Node/textContent)) ou HTML ([innerHTML](https://developer.mozilla.org/fr/docs/Web/API/Element/innertHTML))
 
-```javascript
-const para = document.createElement('p');
+  ```javascript
+  const para = document.createElement('p');
 
-para.textContent = 'Un petit texte sympa.';
-// ou
-para.innerHTLM = '<a href="#">Un lien</a>';
-```
+  para.textContent = 'Un petit texte sympa.';
+  // ou
+  para.innerHTLM = '<a href="#">Un lien</a>';
+  ```
+
+---
+
+# DOM : quelques outils
 
 - Manipulation des attributs avec [getAttribute()](https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute) ou [setAttribute(*attribut*, *valeur*)](https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute)
 
@@ -76,17 +92,20 @@ para.innerHTLM = '<a href="#">Un lien</a>';
 # DOM : quelques outils
 
 - Ajout d'un élément comme fils d'un autre avec [appendChild(*élément*)](https://developer.mozilla.org/fr/docs/Web/API/Node/appendChild)
+
 - Suppression d'un fils avec [removeChild(*élément*)](https://developer.mozilla.org/fr/docs/Web/API/Node/removeChild)
+
 - Suppression directe d'un élément avec [remove()](https://developer.mozilla.org/fr/docs/Web/API/ChildNode/remove)
 
-```javascript
-conteneur.appendChild(para);
-conteneur.removeChild(para);
-// ou
-para.remove();
-```
+  ```javascript
+  conteneur.appendChild(para);
+  conteneur.removeChild(para);
+  // ou
+  para.remove();
+  ```
 
 - [Document](https://developer.mozilla.org/fr/docs/Web/API/Document), [Node](https://developer.mozilla.org/fr/docs/Web/API/Node), [Element](https://developer.mozilla.org/fr/docs/Web/API/Element), [HTMLElement](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement)  possèdent de nombreuses autres méthodes et propriétés
+
 - Chaque [élément HTML](https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model#interfaces_des_éléments_html) possède ses propre spécificités
 
 ---
@@ -94,40 +113,40 @@ para.remove();
 # Evenements : principes
 
 - [addEventListener(*typeEvenement*, *callback*)](https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener) : Enregistre une fonction (callback) qui sera appelée lors de l'évenement
+
   * Préciser le [type d'évenement](https://developer.mozilla.org/fr/docs/Web/Events) en 1er paramètre
 
-```javascript
-// on récupère un bouton via le DOM
-let btn=document.querySelector('#my-button');
+  ```javascript
+  // on récupère un bouton via le DOM
+  let btn=document.querySelector('#my-button');
 
-// Ajout d'un écouteur d'évenement au 'click'
-btn.addEventListener('click', () => { // callback sous forme de fonction flèche
+  // Ajout d'un écouteur d'évenement au 'click'
+  btn.addEventListener('click', () => { // callback sous forme de fonction flèche
 
-    // Petite boite de message pour l'utilisateur
-      alert('You clicked me!');
+      // Petite boite de message pour l'utilisateur
+        alert('You clicked me!');
 
-    // Puis ajout d'un paragraphe à la fin du body
-      let pElem = document.createElement('p');
-      pElem.textContent = 'This is a newly-added paragraph.';
-      document.body.appendChild(pElem);
-});
-```
+      // Puis ajout d'un paragraphe à la fin du body
+        let pElem = document.createElement('p');
+        pElem.textContent = 'This is a newly-added paragraph.';
+        document.body.appendChild(pElem);
+  });
+  ```
 
 ---
 
 # Evenements : propagation
 
 - Notion d'[event bubbling](https://developer.mozilla.org/fr/docs/Apprendre/JavaScript/Building_blocks/Evènements#le_bouillonnement_et_la_capture):
-  
   * L'élément HTML qui gère un évenement n'est pas forcement celui qui l'a généré
   * Appel des gestionnaires d'évenement en cascade (enfant vers parents)
   * [Event.target](https://developer.mozilla.org/fr/docs/Web/API/Event/target) = l'élément à l'origine de l'évemenent
   * [Event.currentTarget](https://developer.mozilla.org/fr/docs/Web/API/Event/currentTarget) = l'élément dont le gestionnaire d'évenement a été appelé
   * [Event.stopPropagation()](https://developer.mozilla.org/fr/docs/Web/API/Event/stopPropagation) stoppe la propagation d'un évenement
-
 - Exemple:
 
-.pure-g[.pure-u-2-3[
+<div class='pure-g'>
+<div class='pure-u-2-3'>
 
 ```Javascript
 let form = document.querySelector('#ex-bubble form');
@@ -141,8 +160,8 @@ form.addEventListener('click', (event) => {
 });
 ```
 
-]
-.pure-u-1-3[
+</div>
+<div class='pure-u-1-3'>
 
 <div id="ex-bubble">
 <form id="form">FORM
@@ -191,4 +210,5 @@ form.addEventListener('click', (event) => {
 }
 </style>
 
-]]
+</div>
+</div>

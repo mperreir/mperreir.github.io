@@ -1,59 +1,73 @@
-layout: true
-class: left, middle, animated, fadeIn
-
+---
+marp: true
+lang: fr
+paginate: true
+theme: marp
 ---
 
 # Protocoles web
 
+<!-- _paginate: skip -->
 ## HTTP & Websocket
 
-.center[![HTTP & Websocket](images/xwebsocket.png  "Source: http://uwe.stevelacey.net/atwd/assignment2/")]
+![center h:15em](images/xwebsocket.png  "Source: http://uwe.stevelacey.net/atwd/assignment2/")
 
-.footnote[M. PERREIRA DA SILVA]
+<!-- _footer: <span class='red'>*</span> M. PERREIRA DA SILVA -->
 
 ---
 
-# [Version PDF des slides](pdf/03-protocoles.pdf)
+<!-- _paginate: skip -->
+# [Version PDF des slides](pdf/protocoles.pdf)
 
 ---
 
 # HTTP ?
 
 - **H**yper**T**ext **T**ransfert **P**rotocole
+
 - **Objectif**: accéder à et manipuler des ressources (via des URL)
+
 - Fonctionne par dessus TCP/IP
+
 - Basé lignes de **texte**
   + On peut communiquer avec un serveur HTTP via `telnet` sur le port 80
+
 - **Sans état**
   + N'a aucune mémoire des transactions passées
+
 - Fonctionnement en mode client / serveur
   + **Requête** / **réponse**
 - Existe en version sécurisée (HTTPS)
 
 ---
 
-# Historique (1/2)
+# Historique
 
 - **1990**: HTTP 0.9
   + **Seulement la méthode GET** (récupération d'une ressource)
   + Pas de code de retour ou de type de fichiers : ne sait renvoyer que du `text/plain`
+
 - **1996**: HTTP 1.0 ([RFC 1945](https://www.ietf.org/rfc/rfc1945.txt))
   + **Nouvelles métodes** de communication (POST, PUT, etc.)
   + Entêtes, types MIME, authentification, etc.
+
 - **1997**: HTTP 1.1 ([RFC 2068](https://www.ietf.org/rfc/rfc2068.txt))
   + Modernisation: **connexions persistantes**, meilleur gestion du cache, requètes partielles, compression ,etc.
 
 ---
 
-# Historique (2/2)
+# Historique
 
 - **1999**: Maj de HTTP 1.1 ([RFC 2616](https://www.ietf.org/rfc/rfc2616.txt))
   + **Négociation de contenu**
+
 - **2011**: WebSocket ([RFC 6455](https://tools.ietf.org/html/rfc6455))
   + **Communication full-duplex**
   + Envoi de données en mode "Push"
   + Passage des serveurs proxy facilité
+
 - **2014**: **Clarification** de HTTP 1.1 ([RFCs 7230](https://www.ietf.org/rfc/rfc7230.txt)-[7237](https://www.ietf.org/rfc/rfc7237.txt))
+
 - **2015**: HTTP 2.0 ([RFC 7540](https://tools.ietf.org/html/rfc7540))
   + Objectif principal: **accélérer le web** (dérivé de google SPDY)
 
@@ -81,11 +95,12 @@ GET / HTTP/1.1
 Host: www.perdu.com
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Accept-Language: fr;q=0.8,en;q=0.6
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36
-*
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) 
+Chrome/41.0.2272.101 Safari/537.36
+
 ```
 
-**Attention**: la requête termine par une ligne vide (en jaune)
+**Attention**: la requête termine par une ligne vide
 
 ---
 
@@ -100,30 +115,32 @@ Etag: "cc-480d5dd98a340"
 Content-Type: text/html
 Content-Length: 204
 Accept-Ranges: bytes
-*
-<html><head><title>Vous Etes Perdu ?</title></head><body><h1>Perdu sur l'Internet ?</h1><h2>Pas de panique, on va vous aider</h2><strong><pre>    * <----- vous êtes ici</pre></strong></body></html>
+
+<html><head><title>Vous Etes Perdu ?</title></head><body><h1>Perdu sur l'Internet ?</h1>
+<h2>Pas de panique, on va vous aider</h2>
+<strong><pre>    * <----- vous êtes ici</pre></strong></body></html>
 ```
 
-**Attention**: une ligne vide (en jaune) sépare les entêtes des données renvoyées par le serveur
+**Attention**: une ligne vide sépare les entêtes des données renvoyées par le serveur
 
 ---
 
 # Structure d'une requête
 
 1. **Ligne de requête**: `METHOD URL [HTTP-version]`<span class='red'>*</span>
-   * Ex: `GET /index.html HTTP/1.1`
+   - Ex: `GET /index.html HTTP/1.1`
 2. **Entêtes** (ordre conseillé mais par obligatoire)
-   * Entêtes **généraux**: applicables aux requêtes **et** réponses
+   - Entêtes **généraux**: applicables aux requêtes **et** réponses
      + Ex: `Date: Thu, 26 Mar 2015 14:48:50 GMT` )
-   * Entêtes de **requête**: spécifiques aux requêtes
+   - Entêtes de **requête**: spécifiques aux requêtes
      + Ex: `Accept: text/html`
-   * Entêtes d'**entité**: méta-informations concernant le corps du message (pour les requêtes **et** les réponses)
+   - Entêtes d'**entité**: méta-informations concernant le corps du message (pour les requêtes **et** les réponses)
      + Ex: `Content-Length: 204`
 3. **Ligne vide**
 4. Corps du message (**données**)
-   * Ex: texte, code html, données de formulaire, image, etc.
+   - Ex: texte, code html, données de formulaire, image, etc.
 
-.footnote[.red[*] Par défaut c'est la version 1.0 de HTTP qui est utiisée]
+<!-- _footer: <span class='red'>*</span> Par défaut c'est la version 1.0 de HTTP qui est utilisée -->
 
 ---
 
@@ -147,14 +164,14 @@ Accept-Ranges: bytes
 
 + **Absolue** : `schéma://utilisateur:motdepasse@domaine:port/chemin?requête#fragment`
   
-  * Ex: `http://joe:bar@www.univ-nantes.fr:80/polytech/dpts/info?enseignant=perreiradasilva-m&cours=technos-web#slide4`
+  - Ex: `http://joe:bar@www.univ-nantes.fr:80/polytech/dpts/info?enseignant=perreiradasilva-m&cours=technos-web#slide4`
 
 + **Relative** : `chemin?requête#fragment`
   
-  * Ex1: `ici`
-  * Ex2: `/ici`
-  * Ex3: `./ici?query=something`
-  * Ex4: `../la/fichier.html`
+  - Ex1: `ici`
+  - Ex2: `/ici`
+  - Ex3: `./ici?query=something`
+  - Ex4: `../la/fichier.html`
 
 + Ne sont codées qu'à partir d'un **jeu limité** de caractères. Pour le reste, on utilise le **percent encoding**
 
@@ -205,9 +222,9 @@ Accept-Ranges: bytes
   
   + Règle générale: %code_UTF-8 (en hexadécimal)
     
-    * Ex1: `espace = %20`
-    * Ex2: `% = %25`
-    * Ex3: `€ = %E2%82%AC`
+    - Ex1: `espace = %20`
+    - Ex2: `% = %25`
+    - Ex3: `€ = %E2%82%AC`
   
   + Même chose pour les caractères réservés
 
@@ -225,21 +242,21 @@ Accept-Ranges: bytes
 
 - **M**ultipurpose **I**nternet **M**ail **E**xtensions (rfc 2045-2046)
   
-  * Extension du format des emails pour supporter autre chose que le texte ASCII
-  * Définit le format du contenu du mail et de ses pièces jointes
+  - Extension du format des emails pour supporter autre chose que le texte ASCII
+  - Définit le format du contenu du mail et de ses pièces jointes
 
 - Type MIME : partie `Content-type` / `Accept` des entêtes HTTP
   
   + Syntaxe : `type/sous-type`
   + Exemples :
-    * Texte: `text/plain`, `text/html`
-    * Fichiers pluri-usages: `application/pdf`, `application/xml`
-    * Multimédia: `audio/mpeg`, `image/jpeg`, `video/mp4`
-    * Etc.
+    - Texte: `text/plain`, `text/html`
+    - Fichiers pluri-usages: `application/pdf`, `application/xml`
+    - Multimédia: `audio/mpeg`, `image/jpeg`, `video/mp4`
+    - Etc.
 
 ---
 
-# Les entêtes généraux 1/2
+# Les entêtes généraux
 
 - `Cache-Control`: permet de spécifier une politique de cache que **doivent** respecter clients ou serveurs
   
@@ -261,7 +278,7 @@ Accept-Ranges: bytes
 
 ---
 
-# Les entêtes généraux 2/2
+# Les entêtes généraux
 
 
 
@@ -281,7 +298,7 @@ Accept-Ranges: bytes
 
 ---
 
-# Requête : les entêtes spécifiques 1/3
+# Requête : les entêtes spécifiques
 
 - `Accept`: types MIME acceptés
   + Ex: `Accept: text/plain; q=0.5, text/html; q=0.8`
@@ -301,7 +318,7 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 
 ---
 
-# Requête : les entêtes spécifiques 2/3
+# Requête : les entêtes spécifiques
 
 - `From`: adresse mail de l'utilisateur du client
   + Ex: `From: matthieu.perreiradasilva@univ-nantes.fr`
@@ -317,7 +334,7 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 
 ---
 
-# Requête : les entêtes spécifiques 3/3
+# Requête : les entêtes spécifiques
 
 - `Max-Forward`: nombre maximal de fois qu'un message peut être transféré (cf. méthode `TRACE`)
   + Ex: `Max-Forwards : 5`
@@ -347,11 +364,11 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 - `Content-Location`: URL à partir de laquelle on peut accéder à la ressource (si différente de l'URL de la requète)
   - Ex: `Content-Location: http://www.univ-nantes.fr/content.json`
 
-.footnote[.red[*] entité = données transmises dans le corps de la requête ou la réponse]
+<!-- _footer: <span class='red'>*</span> Entité = données transmises dans le corps de la requête ou la réponse -->
 
 ---
 
-# Les entêtes d'entité 2/2
+# Les entêtes d'entité
 
 - `Content-MD5`: hash MD5 de la ressource, pour vérification éventuelle de son intégrité
   - Ex: `Content-MD5 : 8c2d46911f3f5a326455f0ed7a8ed3b3`
@@ -369,17 +386,17 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 # Structure d'une réponse
 
 1. **Ligne de statut**: `HTTP-version Status-code Reason-phrase`
-   * Ex: `HTTP/1.1 200 OK`
+   - Ex: `HTTP/1.1 200 OK`
 2. **Entêtes** (ordre conseillé mais par obligatoire)
-   * Entêtes **généraux**: Applicables aux requêtes **et** réponses
+   - Entêtes **généraux**: Applicables aux requêtes **et** réponses
      + Ex: `Date: Thu, 26 Mar 2015 14:48:50 GMT` )
-   * Entêtes de **réponse**: Spécifiques aux réponses
+   - Entêtes de **réponse**: Spécifiques aux réponses
      + Ex: `Server: Apache`
-   * Entêtes d'**entité**: méta-informations concernant le corps du message
+   - Entêtes d'**entité**: méta-informations concernant le corps du message
      + Ex: `Content-Length: 204`
 3. **Ligne vide**
 4. Corps du message (**données**)
-   * Ex: texte, code html, données de formulaire, image, etc.
+   - Ex: texte, code html, données de formulaire, image, etc.
 
 ---
 
@@ -397,11 +414,11 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 
 ---
 
-## Les principaux codes de statut
+### Les principaux codes de statut
 
-.status-codes[
+<div class='status-codes'>
 
-| Code | Signification                 | Code | Signifiation                    | Code | Signifiation               |
+| Code | Signification                 | Code | Signification                    | Code | Signification               |
 | ---- | ----------------------------- | ---- | ------------------------------- | ---- | -------------------------- |
 | 100  | Continue                      | 101  | Switching protocols             |      |                            |
 | 200  | **OK**                        | 201  | Created                         | 202  | Accepted                   |
@@ -419,11 +436,11 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 | 500  | **Internal Server Error**     | 501  | **Not Implemented**             | 502  | Bad Gateway                |
 | 503  | **Service Unavailable**       | 504  | Gateway Timeout                 | 505  | HTTP Version Not Supported |
 
-]
+</div>
 
 ---
 
-# Réponse: les entêtes spécifiques 1/2
+# Réponse: les entêtes spécifiques
 
 - `Accept-Ranges`: indique si le serveur accepte les envois partiels
   + Ex: `Accept-Ranges: bytes` ou `Accept-Ranges: none`
@@ -440,7 +457,7 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 
 ---
 
-# Réponse: les entêtes spécifiques 2/2
+# Réponse: les entêtes spécifiques
 
 - `Server`: information concernant le serveur qui a répondu à la requête
   + Ex: `Server: Apache/2.2.14 (Win32)`
@@ -466,7 +483,7 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 
 ---
 
-# Les cookies 1/2
+# Les cookies
 
 - HTTP est un protocole sans état
   
@@ -483,7 +500,7 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
 
 ---
 
-# Les cookies 2/2
+# Les cookies
 
 - Sécurité...
   
@@ -533,18 +550,18 @@ Cookie: theme=blue; sessionToken=fds45fds2
 - Pourquoi ?
   
   + HTTP est basé sur une architecture client / serveur
-    * Le serveur ne peut **que répondre** à une requête du client
+    - Le serveur ne peut **que répondre** à une requête du client
   + Pas de vraies possibilités communication bi-directionnelle (ex: *Push*)
-    * *Polling* et *long-polling* = requêtes périodiques de l'état d'une ressource
+    - *Polling* et *long-polling* = requêtes périodiques de l'état d'une ressource
 
 - C'est quoi ?
   
   - Protocole de communication faisant partie des spécifications HTML5
   - Complémentaire à HTTP
-    * **Canal de communication bi-directionnelle** (*full-duplex*)
-    * Moins verbeux
-    * Latence moindre
-    * Traverse simplement les proxy et firewalls
+    - **Canal de communication bi-directionnelle** (*full-duplex*)
+    - Moins verbeux
+    - Latence moindre
+    - Traverse simplement les proxy et firewalls
 
 ---
 
@@ -560,7 +577,7 @@ Cookie: theme=blue; sessionToken=fds45fds2
 
 - Très **peu de données additionnelles liées au protocole** (entête, etc.) : quelques octets
 
-.footnote[.red[*] Le support de WebSocket dans les navigateurs est assez récent. Attention aux éventuels problèmes de compatibilité]
+<!-- _footer: <span class='red'>*</span> Le support de WebSocket dans les navigateurs est assez récent. Attention aux éventuels problèmes de compatibilité -->
 
 ---
 
@@ -616,7 +633,8 @@ var wss = new WebSocketServer({port: 8080});
 
 // callback appelé à l'ouverture de la connexion
 wss.on('connection', function(ws) {
-    // un fois la connexion ouverte, on déclare un  "callback" qui sera appelé à la réception d'un message
+    // un fois la connexion ouverte, on déclare un  "callback" qui sera appelé 
+    // à la réception d'un message
     ws.on('message', function(message) {
         console.log('Message reçu (serveur): %s', message);
     });
@@ -631,4 +649,4 @@ wss.on('connection', function(ws) {
 
 ## Next... Programmation serveur
 
-.center[![Humour serveur](images/serveur2.jpg  "Source: http://nurdcartoon.blogspot.fr/2012/08/blog-post.html")]
+![center h:18em](images/serveur2.jpg  "Source: http://nurdcartoon.blogspot.fr/2012/08/blog-post.html")

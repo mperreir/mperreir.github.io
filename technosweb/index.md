@@ -1,13 +1,19 @@
-layout: true
-class: left, middle, animated, fadeIn
-
+---
+marp: true
+lang: fr
+paginate: true
+theme: marp
 ---
 
 # Technologies web et XML
-.footnote[M. PERREIRA DA SILVA]
+<!-- _paginate: skip -->
+<!-- _footer: <span class='red'>*</span> M. PERREIRA DA SILVA -->
+
+---
+# Au programme
 
 - Cours 1
-  + [(Introduction)](intro.html)
+  + [Introduction](intro.html)
   + [HTML](html.html)
 - Cours 2
   + [CSS](css.html)

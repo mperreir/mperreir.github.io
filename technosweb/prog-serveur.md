@@ -1,15 +1,20 @@
-layout: true
-class: left, middle, animated, fadeIn
-
+---
+marp: true
+lang: fr
+paginate: true
+theme: marp
 ---
 
+<!-- _paginate: skip -->
 # Programmation coté serveur
 
-.footnote[M. PERREIRA DA SILVA]
+<!-- _footer: <span class='red'>*</span> M. PERREIRA DA SILVA -->
+
 
 ---
 
-# [Version PDF des slides](pdf/04-prog-serveur.pdf)
+<!-- _paginate: skip -->
+# [Version PDF des slides](pdf/prog-serveur.pdf)
 
 ---
 
@@ -17,13 +22,17 @@ class: left, middle, animated, fadeIn
 
 - **Génération** de document
   + HTML, XML, etc.
+
 - **Accès** aux données
   + Fichiers (faible volume de données)
   + SGBD (gros volume de données)
+
 - **Concurrence**
   + Ordonnancement des connexions, entrées-sorties, etc.
+
 - **Sécurité**
   + Restrictions d'accès aux fichiers présents sur le serveur
+
 - **Sessions**
   + Maintenir une conversation cohérente avec le client
 
@@ -31,12 +40,15 @@ class: left, middle, animated, fadeIn
 
 # Serveurs web généralistes
 
-- **Apache**: serveur open source de référence (23% des sites.red[*]). Existe depuis 1995
+- **Apache**: serveur open source de référence (23% des sites<span class='red'>*</span>). Existe depuis 1995
+
 - **IIS**: Le serveur Web fournit par Microsoft pour la plateforme NT (4% des sites). Seule solution pour faire fonctionner les solutions Microsoft (ASP / ASP.Net). Existe depuis 1994
+
 - **Nginx**: serveur **asynchrone** open source Russe (31% des sites). Existe depuis 2002
+
 - **Google Web Server**: version modifiée d'Apache. Code non public, uniquement utilisé par Google. (4% des sites)
 
-.footnote[.red[*] Source: [étude Netcraft](https://news.netcraft.com/archives/2022/03/29/march-2022-web-server-survey.html) mars 2022]
+<!-- _footer: <span class='red'>*</span> Source: [étude Netcraft](https://news.netcraft.com/archives/2022/03/29/march-2022-web-server-survey.html) mars 2022 -->
 
 ---
 
@@ -44,7 +56,7 @@ class: left, middle, animated, fadeIn
 
 - Proxy web: donne accès a internet à partir d'un réseau LAN
 
-.float-right.width-40[![Proxy inverse](images/reverse-proxy.jpg "Source: https://saboursecurity.wordpress.com/2011/01/29/le-reverse-proxy-en-5-questions/")]
+![bg w:90% right:40%](images/reverse-proxy.jpg "Source: https://saboursecurity.wordpress.com/2011/01/29/le-reverse-proxy-en-5-questions/")
 
 - Proxy inverse: donne accès à un réseau LAN à partir d'internet
   + **Cache** pour décharger les serveurs web d'une partie de leur travail
@@ -63,20 +75,21 @@ class: left, middle, animated, fadeIn
 - **Chaque répertoire** peut avoir son fichier `.htaccess`
 - On peut **autoriser / interdire** l'accès
 
-```bash
-order deny,allow
-allow from univ-nantes.fr # l'accès à partir de l'université est permis
-deny from all            # mais est interdit pour les autres
-```
+  ```bash
+  order deny,allow
+  allow from univ-nantes.fr # l'accès à partir de l'université est permis
+  deny from all            # mais est interdit pour les autres
+  ```
 
 - On peut **protéger** un répertoire par **mot de passe**
 
-```bash
-AuthType Basic  # Authentification basic HTTP (peu sécurisée)
-AuthUserFile /users/mperreir/www/repertoire/.passwds # endroit où vous conservez les mots de passe
-AuthName "Entrez votre mot de passe" # ce qui figurera dans la barre de titre de la fenêtre d'autentification
-require valid-user # n'importe quel utilisateur de .passwds est accepté
-```
+  ```bash
+  AuthType Basic  # Authentification basic HTTP (peu sécurisée)
+  AuthUserFile /users/mperreir/www/repertoire/.passwds # endroit où vous conservez les mots de passe
+  AuthName "Entrez votre mot de passe" # ce qui figurera dans la barre de titre de la fenêtre 
+  # d'autentification
+  require valid-user # n'importe quel utilisateur de .passwds est accepté
+  ```
 
 ---
 
@@ -85,8 +98,11 @@ require valid-user # n'importe quel utilisateur de .passwds est accepté
 - Un serveur web peut héberger **plusieurs sites web**, chacun à partir d'une arborescence spécifique
   + Ex: http://www.site1.fr à partir de /var/www/site1
   + Ex: http://www.trucbidule.com à partir de var/www/trucbidule
+
 - Chaque hôte virtuel à sa **configuration propre**
+
 - Les ressources du serveur sont **partagées** par les différents hôtes
+
 - Le serveur web **différencie** les hôtes par (au choix)
   + Nom d’hôte
   + Adresse IP
@@ -98,22 +114,27 @@ require valid-user # n'importe quel utilisateur de .passwds est accepté
 
 - Accès à une ressource web effectué généralement via une requête `GET`
   + Ex: http://www.notre-site.com/articles/article.php?id=12&page=2&rubrique=5
+
 - **Peu lisible**, et permet de connaitre la technologies (PHP) et les variables utilisées (`id`, `page`, `rubrique`). On préfèrerait:
   + http://www.notre-site.com/articles/article-12-2-5.html
+
 - La solution: **réécrire** les URL
   + Exemple (Apache): via des **expressions régulières**
 
-```bash
-RewriteEngine On  # activation de la réécriture d'URL
-# On définit une Regex qui transforme la "jolie" URL en l'URL réellement interprétée par le serveur
-RewriteRule ^/articles/article-([0-9]+)-([0-9]+)-([0-9]+)\.html$   /articles/article.php?id=$1&page=$2&rubrique=$3 [L]
-```
+    ```bash
+    RewriteEngine On  # activation de la réécriture d'URL
+    # On définit une Regex qui transforme la "jolie" URL en l'URL 
+    # réellement interprétée par le serveur
+    RewriteRule ^/articles/article-([0-9]+)-([0-9]+)-([0-9]+)\.html$
+                /articles/article.php?id=$1&page=$2&rubrique=$3 [L]
+    ```
 
 ---
 
 # Serveur web et scripts
 
 - **Site statique**: le serveur web renvoie directement la ressource (fichier) demandée
+
 - **Site dynamique**: un programme / script est exécuté afin de **générer** la ressource demandée (ex: page HTML)
   + Langage utilisable: **tout langage** pouvant générer du texte
   + Mais certains langages sont plus adaptés
@@ -134,13 +155,16 @@ RewriteRule ^/articles/article-([0-9]+)-([0-9]+)-([0-9]+)\.html$   /articles/art
 # CGI
 
 - CGI (Common Gateway Interface) : interface **normalisée** permettant de faire communiquer le serveur Web avec un programme s’exécutant sur le serveur
+
 - On peut utiliser **n’importe quel langage**
   + Compilé, comme C, C++, Java
   + Interprété, comme Perl, Python, Ruby, etc.
+
 - Un programme CGI communique avec le serveur via:
   + Les **variables d'environnement**: lecture des entêtes HTTP de la requête
   + Le **flux standard** d'entrée: lecture des données de la requête (ex: requête POST)
   + Le **flux standard** de sortie: écriture de la réponse (entêtes HTTP + données)
+
 - Le programme CGI est appelé par le serveur web à **chaque requête**
 
 ---
@@ -178,10 +202,12 @@ echo "<html><head><title>Exemple.cgi</title></head>"
 echo "<body>"
 echo "<h1>Bonjour !</h1>"
 
-# Les paramètres passés dans l'URL (query string) sont lus à partir d'une variable d'environnement
+# Les paramètres passés dans l'URL (query string) sont lus à partir 
+# d'une variable d'environnement
 echo "Voici la chaine de requête qui m'a été passée=$QUERY_STRING"
 
-# Les données de formulaire (requête POST) ou le contenu du fichier (requête PUT) sont passées sur l'entrée standard
+# Les données de formulaire (requête POST) ou le contenu du fichier
+# (requête PUT) sont passées sur l'entrée standard
 read DATA
 echo "Et ici ce sont les données (POST)=$DATA"
 echo "</body></html>"
@@ -189,8 +215,7 @@ echo "</body></html>"
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # WSGI / Python
 
 - Inspiré de **CGI**
@@ -210,8 +235,7 @@ class: bonus
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # WSGI: exemple
 
 ```python
@@ -234,8 +258,7 @@ def dynamic_app(environ, start_response):
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # Servlets
 
 - Permettent d'écrire le code serveur sous forme de **classes Java**
@@ -250,8 +273,7 @@ class: bonus
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # Servlets: exemple
 
 ```java
@@ -262,12 +284,14 @@ import java.util.*;
 
 public class InfoServlet extends HttpServlet {
     // Méthode prenant en charge les requêtes GET
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) 
+      throws IOException,ServletException {
         GenererReponse(request, response);  // traitement de la requête
     }
 
     // Méthode prenant en charge les requêtes POST
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) 
+      throws IOException,ServletException {
         GenererReponse(request, response); // traitement de la requête
     }
     // à suivre...
@@ -275,12 +299,12 @@ public class InfoServlet extends HttpServlet {
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # Servlets: exemple (suite)
 
 ```java
-    protected void GenererReponse(HttpServletRequest request, HttpServletResponse reponse) throws IOException {
+    protected void GenererReponse(HttpServletRequest request, HttpServletResponse reponse)
+      throws IOException {
         reponse.setContentType("text/html");
         PrintWriter out =reponse.getWriter();
         out.println("<html><body><head>");
@@ -313,9 +337,13 @@ class: bonus
 - **Inconvénients**
   
   + On doit généralement générer du code HTML...
+
   + Le code HTML n'est pas séparé du code serveur
+
     * Ex (Java): `System.out.println("<h1>Ceci est un titre</h1");`
+
   + Maintenabilité du code HTML complexe !
+  
   + Besoin de séparer code HTML et code serveur
 
 ---
@@ -343,7 +371,7 @@ class: bonus
 
 ---
 
-# PHP (1/2)
+# PHP
 
 - Langage **interprété**, **faiblement typé**, créé en 1994 par Rasmus Lerdorf
 
@@ -352,26 +380,20 @@ class: bonus
 - Doit être **intégré à un serveur web** (ex: Apache via mod_php)
 
 - Un fichier `.php` est traité par PHP comme
-  
   + un fichier HTML
-  
   + avec des **balises spéciales** pour
-    
     * Exécuter du code 
-      
       ```php
       <?php echo 'Hello ', 'World'; ?>
       ```
-    
     * Insérer la valeur d'une constante / variable dans le code HTML    
-      
       ```php
       <?= 'Hello World' ?>
       ```
 
 ---
 
-# PHP (2/2)
+# PHP
 
 - La syntaxe du langage est **proche de celle du C**
 - API et bibliothèques externes très riches du fait de sa **large utilisation**
@@ -442,8 +464,7 @@ bonjour.php
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # ASP
 
 - **Langage objet** Microsoft, équivalent à PHP
@@ -459,8 +480,7 @@ class: bonus
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # ASP: exemple
 
 mon_form.html
@@ -491,8 +511,7 @@ bonjour.asp
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # ASP.Net
 
 - **Évolution d'ASP**, basée sur l'**environnement .Net** de Microsoft (depuis 2002)
@@ -506,8 +525,7 @@ class: bonus
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # ASP.Net: exemple
 
 **Web pages (Razor code)**
@@ -530,23 +548,21 @@ bonjour.aspx
 
 ```cs-html
 <html>
-    <body>
-        @{ string nom = Request.Form["nom"] }
-        Bonjour @nom <br>
-        Ton adresse mail est: @Request.Form["email"]<br>
-        Ton navigateur est: @Request.ServerVariables["http_user_agent"]
+    <body> @{ string nom = Request.Form["nom"] }
+        <p>Bonjour @nom</p>
+        <p>Ton adresse mail est: @Request.Form["email"]</p>
+        <p>Ton navigateur est: @Request.ServerVariables["http_user_agent"]</p>
     </body>
 </html>
 ```
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # JSP
 
 - Toujours le même principe: exécution de **code Java** (coté serveur) dans une page HTML
-  + **Déclarations** (déclaration de variables de classes ou de méthodes): `<%! int PI=3.14159; %>`
+  + **Déclarations** (de variables de classes ou de méthodes): `<%! int PI=3.14159; %>`
   + **Scriptlet** (exécution de code): `<% out.println("Bonjour !"); %>`
   + **Expression** (affiche l'expression): `<%= PI %>`
   + **Commentaires**: `<%-- Un commentaire JSP --%>`
@@ -558,25 +574,24 @@ class: bonus
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # JSP: exemple
 
 ```jsp
 <%@ page import="java.io.*,java.util.*" %>
 <html>
     <body>
-    <%-- déclaration d'une variable de classe --%>
-    <%! int nombreVisites = 0; %>
-    <%-- On récupère le nom dans une variable intermédiaire --%>
-    <%  // on exécute du code java...
-        String nom=request.getParameter("nom");
-        nombreVisites++;
-    %>
-    Bonjour <%= nom %> <br>
-    Ton adresse mail est: <%= request.getParameter("email") %> <br>
-    Ton navigateur est: <%= request.getHeader("User-Agent") %> <br>s
-    C'est la <%= nombreVisites %> visite sur ce site
+      <%-- déclaration d'une variable de classe --%>
+      <%! int nombreVisites = 0; %>
+      <%-- On récupère le nom dans une variable intermédiaire --%>
+      <%  // on exécute du code java...
+          String nom=request.getParameter("nom");
+          nombreVisites++;
+      %>
+      <p>Bonjour <%= nom %> </p>
+      <p>Ton adresse mail est: <%= request.getParameter("email") %> </p>
+      <p>Ton navigateur est: <%= request.getHeader("User-Agent") %> </p>
+      <p>C'est la <%= nombreVisites %> visite sur ce site</p>
     </body>
 </html>
 ```
@@ -592,8 +607,10 @@ class: bonus
 # NodeJS : c'est quoi ?
 
 - Outils de création d'application web avec du **code javascript coté serveur**
+
 - Utilise le moteur JavaScript "V8" de Google
   + **Rapide** !
+
 - NodeJS n'est **PAS**:
   + Un framework Web (mais il en existe pour NodeJS)
   + De haut niveau
@@ -604,7 +621,7 @@ class: bonus
 
 ---
 
-# NodeJS est asynchrone (1/2)
+# NodeJS est asynchrone
 
 - Modèle de **programmation "classique"**: on attend la fin de chaque tâche (même longue) avant de passer à la suivante
   
@@ -625,7 +642,7 @@ class: bonus
 
 ---
 
-# NodeJS est asynchrone (2/2)
+# NodeJS est asynchrone
 
 - Modèle de **programmation "asynchrone"**: on n'attend pas la fin d'une tâche (potentiellement longue) avant de passer à la suivante
   
@@ -650,8 +667,7 @@ class: bonus
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # Fonctions anonymes
 
 Pour simplifier l'écriture des callbacks, (dont on se sert fréquemment) on peut déclarer directement une fonction comme paramètre d'une autre fonction...
@@ -671,7 +687,8 @@ var callback = function(err, contenu) {
 fs.readFile('/etc/hosts', callback);
 ```
 
-.footnote[.red[*] Les promesses JavaScript et le mécanisme async / await sont également très utiles pour la programmation asynchrone... (bien supporté depuis nodejs 10)]
+
+<!-- _footer: <span class='red'>*</span> Les promesses JavaScript et le mécanisme async / await sont également très utiles pour la programmation asynchrone... -->
 
 ---
 
@@ -703,8 +720,10 @@ console.log('Serveur lancé sur le port 8080...');
 # Gestion des requêtes et des réponses
 
 - `http.createServer` prend en paramètre une fonction à deux arguments (`request` et `response`)
+
   + `request` est de type `http.IncomingMessage`
     * accès aux **entêtes HTTP** via le tableau associatif `headers`
+
   + `response` est de type `http.ServerResponse`
     * on écrit les **entêtes** avec la méthode `writeHead` (à appeler avant `write`)
     * on écrit le **corps de la réponse** avec la méthode `write`  (en une ou plusieurs fois)
@@ -715,13 +734,14 @@ console.log('Serveur lancé sur le port 8080...');
 # Gestion des évènements
 
 - De nombreux objets de Node.JS sont des instances de la classe `EventEmitter`
+
 - Ils possèdent une méthode `on(event, listener)` qui permet de déclarer quel callback sera appelé pour quel évènement
 
-```javascript
-server.on('connection', function (stream) {
-  console.log('someone connected!');
-});
-```
+  ```javascript
+  server.on('connection', function (stream) {
+    console.log('someone connected!');
+  });
+  ```
 
 ---
 
@@ -755,7 +775,7 @@ server.on('connection', function (stream) {
   + Générateur (de squelette) d'application web
 - ExpressJS est un **module** de NodeJS : `var express = require('express');`
 
-.footnote[.red[*] Il existe bien entendu d'autres frameworks pour NodeJS (ex: [Koa](http://koajs.com))]
+<!-- _footer: <span class='red'>*</span> Il existe bien entendu d'autres frameworks pour NodeJS (ex: [Koa](http://koajs.com)) -->
 
 ---
 
@@ -787,23 +807,24 @@ var server = app.listen(8080, function () {
 # ExpressJS: routing
 
 - Une **route** permet de définir quelles fonctions (callback) seront exécutées pour une **URL** et une **méthode HTTP** (GET, POST, etc.) données
+
 - Syntaxe: `app.METHODE( url, [callback...], callback)`
   + L'URL peut être une chaine de caractères ou une expression régulière
   + Si on précise plusieurs callbacks, chaque callback doit appeler le suivant via la fonction `next()`
 
-```javascript
-app.post('/example/b', function (req, res, next) {
-    console.log('La réponse sera renvoyée par la fonction suivante ...');
-    next();
-}, function (req, res) {
-    res.send('Vous êtes dans B!');
-});
+  ```javascript
+  app.post('/example/b', function (req, res, next) {
+      console.log('La réponse sera renvoyée par la fonction suivante ...');
+      next();
+  }, function (req, res) {
+      res.send('Vous êtes dans B!');
+  });
 
-// fonctionnera pour "polytech", "polyjoule", "polyson", etc.
-app.get(/^poly.*/, function(req, res) {
-  res.send('Poly quelque chose !');
-});
-```
+  // fonctionnera pour "polytech", "polyjoule", "polyson", etc.
+  app.get(/^poly.*/, function(req, res) {
+    res.send('Poly quelque chose !');
+  });
+  ```
 
 ---
 
@@ -812,6 +833,7 @@ app.get(/^poly.*/, function(req, res) {
 - Objet `request` (1er paramètre du callback d'une route)
   + Accès aux **entêtes HTTP** (Ex: `request.body`, `request.cookies`, etc.)
   + Nécessité d'un module externe (`body-parser`) pour décoder le **corps des requêtes** POST
+
 - Objet `response` (2nd paramètre du callback d'une route)
   + `response.sendStatus()`: envoi du code de statut et du message correspondant
   + `response.send()`: envoi de données (chaine, objet, tableau, etc.)
@@ -909,7 +931,7 @@ var users = [
   { name: 'jacques', email: 'jacques@polytech.fr' }
 ];
 
-// On affiche les utilisateur lors d'une requête GET à la racine du site
+// On affiche les utilisateur lors d'une requête GET à la racine du site                         
 app.get('/', function(req, res){
   res.render('users.html', {
     users: users,
@@ -922,11 +944,10 @@ app.listen(8080);
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # ExpressJS: générateur d'applications
 
-.float-right.width-30[![Générateur d'applications ExpressJS](images/ExpressGenerator.png "Source: http://expressjs.com/starter/generator.html")]
+![bg fit right:30%](images/ExpressGenerator.png "Source: http://expressjs.com/starter/generator.html")
 
 - **Module** à installer avec la commande : `$ npm install express-generator -g`
 
@@ -939,15 +960,14 @@ class: bonus
 
 - On installe ensuite les **dépendances** (modules) du nouveau projet
 
-```bash
-$ cd monAppli
-$ npm install
-```
+  ```bash
+  $ cd monAppli
+  $ npm install
+  ```
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # "Pile technologique" web
 
 ## LAMP vs. MEAN
@@ -981,9 +1001,9 @@ class: bonus
 - Basé sur le design pattern **Modèle Vue Contrôleur**
   + Modèle: Données sur le serveur, envoyées en JSON ou XML
   + Vue: Le code HTML mis à jour par AngularJS
-  + Contrôleur: Code JavaScript permettant de mettre à jour la vue en fonction des données du modèle
+  + Contrôleur: JavaScript permet de mettre à jour la vue en fonction des données du modèle
 
-## Nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), [Svelte](https://svelte.dev), etc.
+<!-- _footer: <span class='red'>*</span> Ils existe de nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), [Svelte](https://svelte.dev), etc. -->
 
 ---
 
@@ -998,7 +1018,7 @@ index.html
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
   </head>
-  <body ng-app="monAppAngular" ng-controller="MainCtrl">
+  <body ng-app="monAppAngular" ng-controller="MainCtrl">                                          
     <div> {{test}} </div>
     <div ng-repeat="elt in liste | orderBy: '+nom'">
         {{elt.nom}} - {{elt.desc}}
@@ -1016,7 +1036,7 @@ app.controller('MainCtrl', [
 '$scope',
 function($scope){
  $scope.test = 'Hello world!';
- $scope.liste = [{nom: 'e1', desc: 'element 1'}, {nom: 'e2', desc: 'element 2'}];
+ $scope.liste = [{nom: 'e1', desc: 'element 1'}, {nom: 'e2', desc: 'element 2'}];                    
 }]);
 ```
 
@@ -1030,12 +1050,11 @@ function($scope){
 - Comment gérer l'état de tous les composants (pure HTML ou ReactJS) ?
 - Flux / Redux => notion de store, d'état et d'action
 
-.center[.inline-block.width-65[![Flot de données Redux](images/redux.gif "Source: https://medium.com/@sidathasiri/flux-and-redux-f6c9560997d7")]]
+![center h:13em](images/redux.gif "Source: https://medium.com/@sidathasiri/flux-and-redux-f6c9560997d7")
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # Et les bases de données ?
 
 - Vous connaissez les **bases de données relationnelles**
@@ -1045,23 +1064,18 @@ class: bonus
   + On effectue des requêtes (pouvant être complexes) en SQL
 
 - **NoSQL:** catégorie de SGBD plus **simples** que les bases relationnelles
-  
+
   + Développées initialement pour gérer les très **grandes quantités de données** des géants d'internet
   + Quelques bases NoSQL:
-    * MongoDB (Sourceforge)
-    * CouchDB
-    * BigTable (Google)
-    * HBase (Facebook)
-    * Cassandra (Twitter)
-    * SimpleDB (Amazon)
+    * MongoDB (Sourceforge), CouchDB, BigTable (Google), HBase (Facebook), Cassandra (Twitter), SimpleDB (Amazon)
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # Une base de données NoSQL
 
 - **MongoDB:** Base de données orientée document
+
   + Utilise un format de stockage BSON (version binaire du JSON)
   + On stocke un ensemble de **documents** (≃enregistrements) dans des **collections** (≃tables)
   + Un document contient un ensemble de **clé + valeur**
@@ -1071,31 +1085,31 @@ class: bonus
 
 ---
 
-class: bonus
-
+<!-- _class: bonus  -->
 # MongoDB: exemple de données
 
-<br>
-.pure-g[.pure-u-1-2[
+<div class='pure-g'>
+<div class='pure-u-1-2'>
 
-.centerc[Modèle **"dénormalisé"**]
+<div class='center'>Modèle "dénormalisé"</div>
 
 - Possible redondance de données
 - Moins de requêtes à effectuer pour accéder aux informations
 
-![Exemple de données non-normalisées MongoDB](images/data-model-denormalized.png "Source: http://docs.mongodb.org/manual/core/data-model-design/")
+![center h:12em](images/data-model-denormalized.png "Source: http://docs.mongodb.org/manual/core/data-model-design/")
 
-]
-.pure-u-1-2[
+</div>
+<div class='pure-u-1-2'>
 
-.center[Modèle **normalisé** (classique)]
+<div class='center'>Modèle normalisé (classique)</div>
 
 - Pas de redondance
 - Plus de requêtes et requêtes plus complexes
 
-![Exemple de données normalisées MongoDB](images/data-model-normalized.png "Source: http://docs.mongodb.org/manual/core/data-model-design/")
+![center h:12em](images/data-model-normalized.png "Source: http://docs.mongodb.org/manual/core/data-model-design/")
 
-]]
+</div>
+</div>
 
 ---
 
@@ -1137,4 +1151,4 @@ class: bonus
 
 # Prochainement: les services web
 
-.center[.inline-block.width-65[![SOAP vs. REST](images/SOAP vs. REST.jpg "Source: http://geekandpoke.typepad.com/geekandpoke/2009/11/service-calling-made-easy-part-1.html")]]
+![bg left:40% ](images/SOAP_vs_REST.jpg "Source: http://geekandpoke.typepad.com/geekandpoke/2009/11/service-calling-made-easy-part-1.html")

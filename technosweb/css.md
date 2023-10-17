@@ -1,43 +1,54 @@
-layout: true
-class: left, middle, animated, fadeIn
-
 ---
+marp: true
+lang: fr
+paginate: true
+theme: marp
+---
+
+<!-- _paginate: skip -->
 # CSS ?
 
-.center[![Lego CSS](images/lego-css.jpg "Source: http://slides.com/brianlam/html5-and-css3--2")]
+![center h:6em](images/lego-css.jpg "Source: http://slides.com/brianlam/html5-and-css3--2")
 
-- **HTML**: .red[Structuration]  (sémantique) de l'information
-- **CSS**: Modifier la .blue[présentation] des balises HTML
+
+- **HTML**: <span class='red'>Structuration</span>  (sémantique) de l'information
+- **CSS**: Modifier la <span class='blue'>présentation</span> des balises HTML
     + Couleur et arrière-plan
     + Propriétés de typographie
     + Propriétés de texte
     + Propriétés du modèle de boite
     + Positionnement de ces boites
 
+<!-- _footer: <span class='red'>*</span> M. PERREIRA DA SILVA -->
+
 ---
-# [Version PDF des slides](pdf/02-css.pdf)
+<!-- _paginate: skip -->
+# [Version PDF des slides](pdf/css.pdf)
 
 ---
 # Pourquoi ???
-- .green[**Avantages**]
+- <span class='green'>**Avantages**</span>
     + Séparation contenu (HTML) / mise en forme (CSS)
     + Meilleure lisibilité du code
     + C'est plus 'green' (mise en cache séparée du HTML et CSS)
     + Présentation homogène du site web
     + Maintenance facilitée : répercussion automatique des modifications
     + Compatible avec divers langages (HTML, XML, SVG, etc.)
-- .red[**Inconvénients**]
+
+- <span class='red'>**Inconvénients**</span>
     + Encore quelques différences de rendu entre les navigateurs
     + Certaines fonctionnalités récentes (CSS3/4) pas encore supportées par tous les navigateurs
 
 ---
-# Un peu d'histoire... (1/3)
+# Un peu d'histoire...
 
 - **1994**: Håkon Wium Lie & Bert bos établie le **concept des CSS**
     + 1er format à inclure l'idée de *cascade*
     + Un document peut hériter son style à partir de plusieurs *feuilles de style*.
+
 - **1996**: CSS 1 (*W3C Recommendation*)
     + propriétés typographiques du texte mais **pas de mise en page**
+
 - **1998**: CSS 2 (*W3C Recommendation*)
     + styles propres aux différents média (ex: `screen` et `print`)
     + nouvelles fonctionnalités de **positionnement des éléments**
@@ -45,11 +56,11 @@ class: left, middle, animated, fadeIn
     + possibilité de prendre en compte les préférences de l'utilisateur dans la mise en forme d'un site
 
 ---
-# Un peu d'histoire... (2/3)
+# Un peu d'histoire...
 
 - **1998**: CSS 2 (*W3C Recommendation*)
     + **spécifications incomplètes** rendant inimplémentables certaines fonctionnalités
-    + **absence d'intéret** de la part de concepteurs de navigateurs
+    + **absence d'intérêt** de la part de concepteurs de navigateurs
 
 - **2004** (*W3C Recommendation*) à **2011** (*W3C Proposed Recommendation*): CSS 2.1
     + **Simplifier CSS 2** et l'adapter aux pratiques généralement admises
@@ -57,14 +68,14 @@ class: left, middle, animated, fadeIn
     + Très peu de nouvelles fonctionnalités
 
 ---
-# Un peu d'histoire... (3/3)
+# Un peu d'histoire...
 
 - **1999 à maintenant** : CSS (level) 3
     + **Modularisation** : chaque sous ensemble est standardisé séparément
     + Exemples de modules
-        * Nouveaux sélecteurs
-        * Média Queries
-        * Gestion de la couleur
+        - Nouveaux sélecteurs
+        - Média Queries
+        - Gestion de la couleur
      + Actuellement, [prise en charge partielle](https://en.wikipedia.org/wiki/Comparison_of_browser_engines_%28CSS_support%29) par les navigateurs
 
 - **CSS 4 ?**
@@ -74,50 +85,71 @@ class: left, middle, animated, fadeIn
 # Syntaxe
 
 - On définit des **règles CSS**
+
     + **`selecteur { propriété_CSS : valeur; ..._}`**
 
 - Exemple:
-.center[![Selecteurs](images/syntaxe_css.png "Source: Antony bourmaud (Université de La Rochelle)")]
+
+![center h:10em](images/syntaxe_css.png "Source: Antony bourmaud (Université de La Rochelle)")
 
 ---
 # Propriété : valeur;
 
 - Une **propriété** est un mot réservé défini dans les normes
+
     + Exemples: `border`, `margin`, `padding`, `background`
 
 - Les **valeurs** sont soit des
+
     + Unités normalisées
-        * Exemple: `12px`
+
+        - Exemple: `12px`
+
     + Mots clés
-        * Exemple: `black`, `red`, `none`
+
+        - Exemple: `black`, `red`, `none`
 
 ---
 # Les unités (CSS 2)
 
-.pure-g[.pure-u-1-2[
+<div class='pure-g'>
+<div class='pure-u-1-2'>
+
 - **Unités absolues**
     + Pouce (2,54cm): `1.5 in`
-    + Centimetre: `1.5 cm`
-    + Millimètre: `1.5 mm`
-    + Point (1/72 in): `1.5 pt`
-    + Pica (12 pt): `1.5 pc`
-]
-.pure-u-1-2[
-- **Unités relatives**
-    + **Largeur de 'M'**: `1.5 em`
-    + Hauteur de 'x': `1.5 ex`
-    + **Pourcentage**: `1.5 %`
-    + Pixel (résolution): `1.5 px`
-]]
 
-.footnote[.red[*] CSS 3 définit aussi des unités relatives au viewport dont nous reparlerons dans la partie responsive design : `vh`, `vw`, `vmin` et `vmax`]
+    + Centimètre: `1.5 cm`
+
+    + Millimètre: `1.5 mm`
+
+    + Point (1/72 in): `1.5 pt`
+
+    + Pica (12 pt): `1.5 pc`
+
+</div>
+<div class='pure-u-1-2'>
+
+- **Unités relatives**
+
+    + **Largeur de 'M'**: `1.5 em`
+
+    + Hauteur de 'x': `1.5 ex`
+
+    + **Pourcentage**: `1.5 %`
+
+    + Pixel (résolution): `1.5 px`
+
+</div>
+</div>
+
+<!-- _footer: <span class='red'>*</span> CSS 3 définit aussi des unités relatives au viewport dont nous reparlerons dans la partie responsive design : `vh`, `vw`, `vmin` et `vmax` -->
 ---
 # Les couleurs
 
-- Code .red[R].green[G].blue[B] **hexadécimal**
+- Code <span class='red'>R</span><span class='green'>G</span><span class='blue'>B</span> **hexadécimal**
     + Exemple: `#FFFF00` (jaune)
 
-- **Fonction** .red[R].green[G].blue[B](A) et HSL(A).red[*]
+- **Fonction** <span class='red'>R</span><span class='green'>G</span><span class='blue'>B</span>(A) et HSL(A)<span class='red'>*</span>
     + Exemple: `rgb(255,255,0)` (encore du jaune)
     + Exemple: `rgba(255,255,0,0.5)` (du jaune 50% transparent)
     + Exemple: `hsl(50,100%,50%)` (du jaune 50%)
@@ -126,7 +158,7 @@ class: left, middle, animated, fadeIn
 - Noms **prédéfinis** (17 en CSS 2, 147 en CSS 3)
     + Exemples (CSS 2): aqua, black, blue, fuchsia, gray, green, lime, maroon, navy, olive, orange, purple, red, silver, teal, white, yellow
 
-.footnote[.red[*] La prise en compte de la transparence fait partie de CSS3]
+<!-- _footer: <span class='red'>*</span> La prise en compte de la transparence fait partie de CSS3 -->
 
 ---
 # Les URL
@@ -141,7 +173,7 @@ class: left, middle, animated, fadeIn
     + Ex: `body { background-image: url("./images/untruc.gif") }`
 
 ---
-# Lier styles CSS et document HTML (1/3)
+# Lier styles CSS et document HTML
 
 - **Style en ligne** (à **VRAIMENT** éviter)
     + Attribut `style` des balises HTML
@@ -154,11 +186,11 @@ class: left, middle, animated, fadeIn
     ```
 
 ---
-# Lier styles CSS et document HTML (2/3)
+# Lier styles CSS et document HTML
 
 - **Feuille de style interne** (à éviter aussi)
     + Balise `<style></style>` dans la partie `<head>` de la page
-    + On préfèrera écrire les règles CSS dans une feuille de style séparée
+    + On préférera écrire les règles CSS dans une feuille de style séparée
 
 - Exemple:
 
@@ -177,7 +209,7 @@ class: left, middle, animated, fadeIn
     ```
 
 ---
-# Lier styles CSS et document HTML (3/3)
+# Lier styles CSS et document HTML
 
 - **Feuille de style externe liée** (à privilégier)
     + Règles CSS dans un fichier externe
@@ -204,14 +236,14 @@ class: left, middle, animated, fadeIn
 - On peut spécifier le **média cible** de nos règles CSS
     + au liage / à l'import d'une feuille de style (*vu juste avant*)
     + au niveau des règles CSS, avec `@media type_media { /* code CSS */ }`
-        * Exemple:
+        - Exemple:
         
-        ```css
-        @media print {
-            /* le menu n'est pas affiché à l'impression */
-            #mon_menu { display: none;}
-        }
-        ```
+            ```css
+            @media print {
+                /* le menu n'est pas affiché à l'impression */
+                #mon_menu { display: none;}
+            }
+            ```
 - Types de média les plus courants
     + `all`: tous les supports
     + `screen`: moniteur couleur d'ordinateur
@@ -221,160 +253,161 @@ class: left, middle, animated, fadeIn
 
 
 ---
-# Sélecteurs simples (1/2)
+# Sélecteurs simples
 
 - `nomElement`: sélecteur de **balise**
     + Exemple:
 
-    ```css
-    p { color: red;} /* tous les paragraphes <p> */
-    ```
+        ```css
+        p { color: red;} /* tous les paragraphes <p> */
+        ```
 
 - `.nomClasse`: sélecteur de **classe**
     + Exemple:
     
-    ```css
-    .maClasse { color: green;} /* les élements de la classe "maClasse" */
-    ```
+        ```css
+        .maClasse { color: green;} /* les élements de la classe "maClasse" */
+        ```
 
 - `#identifiant`: sélecteur d'**ID**
     + Exemple:
     
-    ```css
-    #monId { color: blue;} /* l'élément ayant l'ID "monId" */
-    ```
+        ```css
+        #monId { color: blue;} /* l'élément ayant l'ID "monId" */
+        ```
 
 ---
-# Sélecteurs simples (2/2)
+# Sélecteurs simples
 
 - `*`: sélecteur **universel**
     + Exemple:
     
-    ```css
-     * { color: orange;} /* tous les éléments */
-    ```
+        ```css {1}
+        * { color: orange;} /* tous les éléments */
+        ```
 
 - On peut **combiner** les sélecteurs
     + Exemple:
     
-    ```css
-    p.maClasse { color: lime; } /* tous les <p> de classe "maClasse" */
-    ```
+        ```css
+        p.maClasse { color: lime; } /* tous les <p> de classe "maClasse" */
+        ```
 
 - On peut **grouper** les sélecteurs
     + Exemple:
     
-    ```css
-    .maClasse1, .maClasse2 { color: lime; } /* tous les éléments de classe "maClasse1" ou "maClasse2" */
-    ```
+        ```css
+        /* tous les éléments de classe "maClasse1" ou "maClasse2" */
+        .maClasse1, .maClasse2 { color: lime; } 
+        ```
 
 ---
-# Sélecteurs hiérarchiques (1/3)
+# Sélecteurs hiérarchiques
 
 - `A B`: **Descendance**
     + B est un descendant quelconque de A
     + La règle s'applique à B !
 + Exemple:
-    * CSS
+    - CSS
     
-    ```css
-    div span { color: yellow; }
-    ```
-    * HTML
+        ```css
+        div span { color: yellow; }
+        ```
+    - HTML
     
-    ```html
-    <div>
-    * <span>Span 1.
-    *      <span>Span 2.</span>
-    * </span>
-    </div>
-    <span>Span 3.</span>
-    ```
+        ```html
+        <div>
+        * <span>Span 1.
+        *      <span>Span 2.</span>
+        * </span>
+        </div>
+        <span>Span 3.</span>
+        ```
 
 ---
-# Sélecteurs hiérarchiques (2/3)
+# Sélecteurs hiérarchiques
 
 - `A > B`: **Enfant**
     + B est un fils (direct) de A
     + La règle s'applique à B !
 + Exemple:
-    * CSS
+    - CSS
     
-    ```css
-    div > span { color: yellow; }
-    ```
-    * HTML
+        ```css
+        div > span { color: yellow; }
+        ```
+    - HTML
     
-    ```html
-    <div>
-    * <span>Span 1.
-           <span>Span 2.</span>
-    * </span>
-    </div>
-    <span>Span 3.</span>
-    ```
+        ```html
+        <div>
+        * <span>Span 1.
+            <span>Span 2.</span>
+        * </span>
+        </div>
+        <span>Span 3.</span>
+        ```
 
 ---
-# Sélecteurs hiérarchiques (3/3)
+# Sélecteurs hiérarchiques
 
 - `A + B`: **Frère adjacent**
     + B est au même niveau que A et le suit immédiatement
     + La règle s'applique à B !
 + Exemple:
-    * CSS
+    - CSS
     
-    ```css
-    div + span { color: yellow; }
-    ```
-    * HTML
+        ```css
+        div + span { color: yellow; }
+        ```
+    - HTML
     
-    ```html
-    <div>
-         <span>Span 1.
-           <span>Span 2.</span>
-         </span>
-    </div>
-    *<span>Span 3.</span>
-    ```
+        ```html
+        <div>
+            <span>Span 1.
+            <span>Span 2.</span>
+            </span>
+        </div>
+        *<span>Span 3.</span>
+        ```
 
 ---
-# Les sélecteurs basés attribut (1/2)
+# Les sélecteurs basés attribut
 
 - `A[attr]`: L'élément **possède** l'attribut `attr` , **peu importe sa valeur**
     + Exemple:
     
-    ```css
-    /* tous les <input> qui possèdent un attribut 'type' */
-    input[type]  { color: red; }
-    ```
+        ```css
+        /* tous les <input> qui possèdent un attribut 'type' */
+        input[type]  { color: red; }
+        ```
 
 - `A[attr="val"]`: **La valeur** de l'attribut `attr` de l'élément est **exactement** `val`
     + Exemple:
     
-    ```css
-    /* tous les <input> dont l'attribut 'type' est 'button' */
-    input[type='button']  { color: green; }
-    ```
+        ```css
+        /* tous les <input> dont l'attribut 'type' est 'button' */
+        input[type='button']  { color: green; }
+        ```
 
 ---
-# Les sélecteurs basés attribut (2/2)
+# Les sélecteurs basés attribut
 
 - `A[attr~="val"]`: **L'une des valeurs** de l'attribut `attr` de l'élément est **exactement** `val`
     + Exemple:
     
-    ```css
-    /* tous les <div> dont l'une des valeurs de l'attribut 'class' est 'maClasse' */
-    div[class~='maClasse']  { color: yellow; }
-    ```
+        ```css
+        /* tous les <div> dont l'une des valeurs de l'attribut 'class' est 'maClasse' */
+        div[class~='maClasse']  { color: yellow; }
+        ```
 
 - `A[attr|="val"]`: **La valeur** de l'attribut `attr` de l'élément **commence par** `val`
     + Exemple:
     
-    ```css
-    /* tous les <input> dont l'attribut 'id' commence par 'btn' */
-    /* Exemple: 'btn1', 'btn5', etc. */
-    input[id|='btn']  { color: white; }
-    ```
+        ```css
+        /* tous les <input> dont l'attribut 'id' commence par 'btn' */
+        /* Exemple: 'btn1', 'btn5', etc. */
+        input[id|='btn']  { color: white; }
+        ```
 
 ---
 # Les pseudo-classes
@@ -390,22 +423,26 @@ class: left, middle, animated, fadeIn
 
 - Quelques exemples:
 
-```css
-a:link { color: #FF1493; } /* les liens non visités sont roses */
-a:visited { color: #1E90FF; } /* les liens visités sont bleus */
-p:lang(en) { display: none; } /* n'affiche pas les paragraphes en anglais */
-```
+    ```css
+    a:link { color: #FF1493; } /* les liens non visités sont roses */
+    a:visited { color: #1E90FF; } /* les liens visités sont bleus */
+    p:lang(en) { display: none; } /* n'affiche pas les paragraphes en anglais */
+    ```
 
 ---
 # Les pseudo-éléments
 
-- Permettent de modifier **une partie** d'un élement
+- Permettent de modifier **une partie** d'un élément
+
     + `:first-line`: la première ligne
+
     + `:first-letter`: la dernière ligne
+
     + `:before`: s'utilise avec la propriété `content` afin d'ajouter du contenu avant un élément
+
     + `:after`: s'utilise avec la propriété `content` afin d'ajouter du contenu avant un élément
 
-<span class='footnote'><span class='red'>*</span> Les pseudo éléments sont écrits précédés d'un `::` en CSS 3 afin de les différencier des pseudo-classes (ex:`::after`)</span>
+<!-- _footer: <span class='red'>*</span> Les pseudo éléments sont écrits précédés d'un `::` en CSS 3 afin de les différencier des pseudo-classes (ex:`::after`) -->
 
 ---
 # Les pseudo-éléments (exemple)
@@ -422,11 +459,13 @@ p:first-line { color: red;}
 p:first-letter { color: blue;  font-weight: bold;}
 p.ecole:after { content: " super cool"; color: green}
 ```
-.resultat[
 
 Resultat:
+
+<div class='resultat'>
+
 <p>
-<style>
+<style scoped>
 p.exemple1:first-line { color: red;}
 p.exemple1:first-letter { color: blue; font-weight: bold;}
 p.ecole:after { content: " super cool"; color: green;}
@@ -435,114 +474,126 @@ p.ecole:after { content: " super cool"; color: green;}
 <p class="ecole">Est une école d'ingénieurs</p>
 </p>
 
-]
+</div>
 
 ---
-# L'héritage (1/2)
+# L'héritage
 - Un élément HTML **peut hériter** des propriétés **de ses parents**
     + Certaines propriétés sont automatiquement héritées (ex:`color`)
     + D'autres ne le sont pas (ex: `border`)
 - Exemple:
     HTML
-    
+
     ```html
     <p>Polytech <em>est une école</em> d'ingénieurs</p>
     ```
+
     CSS
    
     ```css
-    p { 
-	    color: red; 
-	    border: medium solid; 
-    }
+    p { color: red; 
+	    border: medium solid; }
     ```
 
-.resultat[
+    Résultat:
 
-Résultat:
-<p>
-    <style>
-        p.exemple2 { color: red; border: medium solid; }
-    </style>
-    <p class="exemple2">Polytech <em>est une école</em> d'ingénieurs</p>
-</p>
+    <div class='resultat'>
 
-]
+    <p>
+        <style scoped>
+            p.exemple2 { color: red; border: medium solid; }
+        </style>
+        <p class="exemple2">Polytech <em>est une école</em> d'ingénieurs</p>
+    </p>
+
+    </div>
 
 ---
-# L'héritage (2/2)
+# L'héritage
 
 - Il est cependant possible de **forcer l'héritage** d'une propriété
     + On utilise `inherit` comme valeur de propriété
 - Exemple:
-HTML
+    HTML
 
-```html
-<p>Polytech <em>est une école</em> d'ingénieurs</p>
-```
-CSS
+    ```html
+    <p>Polytech <em>est une école</em> d'ingénieurs</p>
+    ```
+    CSS
 
-```css
-p { 
-	color: red;
-	border: medium solid; 
-}
+    ```css
+    p { color: red;
+        border: medium solid; 
+    }
+    em { border: inherit; }
+    ```
 
-em { border: inherit; }
-```
+    Résultat:
 
-.resultat[
+    <div class='resultat'>
 
-Résultat:
-<p>
-    <style>
-        p.exemple3 { color: red; border: medium solid; }
-        p.exemple3 em { border: inherit; }
-    </style>
-    <p class="exemple3">Polytech <em>est une école</em> d'ingénieurs</p>
-</p>
+    <p>
+        <style scoped>
+            p.exemple3 { color: red; border: medium solid; }
+            p.exemple3 em { border: inherit; }
+        </style>
+        <p class="exemple3">Polytech <em>est une école</em> d'ingénieurs</p>
+    </p>
 
-]
+    </div>
 
 ---
 # La cascade
 
 - Le style d'une page est la **combinaison** de plusieurs feuilles de style
+
 - Le style d'un élément peut être défini **plusieurs fois**
     + Dans une même feuille de style ou dans une autre feuille de style
     + La dernière définition est prioritaire sur les autres
+
 - L'**utilisateur** peut définir ses propres feuilles de style
     + Via les paramètres de son navigateur
+
 - Le style final est calculé selon des règles de **priorité**
+
 - Il est possible de rendre une règle **plus prioritaire** avec `!important`
 	+ Exemple:
 
-```CSS
-a{ color: red !important; }
-```
+        ```CSS
+        a{ color: red !important; }
+        ```
 
 ---
 # Priorités entre feuilles de styles
 
 - Par ordre de **priorité** (- vers +)
+
     + styles par défaut du navigateur
+
     + styles utilsateur
+
     + styles de l'auteur
+
     + styles `!important` de l'auteur
+
     + styles `!important` du l'utilisateur
-        * Il peut donc toujours avoir le dernier mot !
+
+        - Il peut donc toujours avoir le dernier mot !
 
 ---
 # Priorités entre sélecteurs
 
 - Plus un sélecteur est spécifique, plus il est prioritaire
+
 - On calcul un **score de spécificité** à partir des sélecteurs présents
     + Element HTML : 1
     + Classe: 10
     + Id: 100
     + Les attributs HTML `style` sont prioritaires: 1000
+
 - On compte le nombre de chacun de ces sélecteurs et on en fait la somme
-- La présence de sélecteurs hierarchiques (`+` ou `>`) ne modifie pas la spécificité
+
+- La présence de sélecteurs hiérarchiques (`+` ou `>`) ne modifie pas la spécificité
 
 ---
 # Priorités entre sélecteurs (exemples)
@@ -563,9 +614,9 @@ a{ color: red !important; }
 
 ---
 
-.center[.inline-block.width-50[![Cascade CSS](images/cascade.png "Source: http://openweb.eu.org/articles/cascade_css")]]
+![center](images/cascade.png "Source: http://openweb.eu.org/articles/cascade_css")
 
-.center[Résumé des priorités]
+<div class='center'>Résumé des priorités</div>
 
 ---
 # Les propriétés "de base"
@@ -597,11 +648,8 @@ a{ color: red !important; }
 - Shorthands courants: `background`,`font`, `border`, `margin`, `padding`
 
 ---
-# Le modèle de boite (1/2)
+# Le modèle de boite
 
-.pure-g[.pure-u-1-2[
-
-<br>
 - L'espacement (`padding`) sépare le contenu et la bordure (`border`)
 
 - La marge (`margin`) sépare la bordure (`border`) et l'élément parent
@@ -610,17 +658,12 @@ a{ color: red !important; }
 
 - L'image de fond est située derrière le contenu
 
-]
-.pure-u-1-2[
-
-![Cascade CSS](images/mod-css.png "Source: http://www.univ-montp3.fr/miap/ens/info/Master1LEA/TD9/exo1.html")
-
-]]
+![bg w:90% right:50%](images/mod-css.png "Source: http://www.univ-montp3.fr/miap/ens/info/Master1LEA/TD9/exo1.html")
 
 ---
-# Le modèle de boite (2/2)
+# Le modèle de boite
 
-.float-right[![Cascade CSS](images/box-model-w3c.png "Source: http://codingdomain.com/webdevelopment/css/terminology/")]
+![bg w:90% right:50%](images/box-model-w3c.png "Source: http://codingdomain.com/webdevelopment/css/terminology/")
 
 <br>
 - Les propriétés `width` et `height` de la boite définissent la **largeur du contenu**
@@ -635,7 +678,8 @@ a{ color: red !important; }
 ---
 # Le flux des éléments HTML
 
-.pure-g[.pure-u-2-3[
+<div class='pure-g'>
+<div class='pure-u-2-3'>
 
 - Eléments **blocs** les uns en dessous des autres
     + Occupent la totalité de la largeur de leur conteneur
@@ -647,8 +691,8 @@ a{ color: red !important; }
 - L'ordre d'affichage est celui de déclaration des éléments dans le source HTML
 
 
-]
-.pure-u-1-3[
+</div>
+<div class='pure-u-1-3'>
 
 Exemple:
 
@@ -660,35 +704,38 @@ Exemple:
 </div>
 ```
 
-.resultat[
-
 Résultat:
-<div id="conteneur" style="border: 1px solid black;">
+
+<div class='resultat'>
+
+<div id="conteneur" style="border: 1px solid grey;">
 <div id="d1" style="font-size: 12pt; height:5ex; background-color:green; color:white">div1</div>
 <div id="d2" style="font-size: 12pt; height:5ex; background-color:yellow;">div2</div>
 <div id="d3" style="font-size: 12pt; height:5ex; background-color:red; color:white">div3</div>
 </div>
 
-]]]
+</div>
+</div>
+</div>
 
 ---
 # La propriété `display`
 
 
-.pure-g[.pure-u-2-3[
+<div class='pure-g'>
+<div class='pure-u-2-3'>
 
 - Permet de changer la manière dont un élément (ou ses descendants) est affiché
 - Valeurs généralement utilisées:
-    * `none`: élément **non affiché**
-    * `inline`: éléments **en ligne**, les uns à coté des autres
-    * `block`: éléments **bloc**, les uns en dessous des autres
-    * `inline-block`: éléments **bloc**, les uns à coté des autres
-    * `flex`, `flow`, `grid` : définit le comportement des **enfants du bloc**
+    - `none`: élément **non affiché**
+    - `inline`: éléments **en ligne**, les uns à coté des autres
+    - `block`: éléments **bloc**, les uns en dessous des autres
+    - `inline-block`: éléments **bloc**, les uns à coté des autres
+    - `flex`, `flow`, `grid` : définit le comportement des **enfants du bloc**
 
-]
-.pure-u-1-3[
+</div>
+<div class='pure-u-1-3'>
 
-<br>
 Exemple:
 
 ```css
@@ -696,22 +743,26 @@ Exemple:
 #d1 { display: none;}
 #d2, #d3 { display: inline-block;}
 ```
-.resultat[
 
 Résultat (2 exemples):
-<div id="conteneur" style="border: 1px solid black;">
+
+<div class='resultat'>
+
+<div id="conteneur" style="border: 1px solid grey;">
 <div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; display:none;">div1</div>
 <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;  display: inline-block;">div2</div>
 <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;  display: inline-block;">div3</div>
 </div>
 <br>
-<div id="conteneur" style="border: 1px solid black; width: 7em;">
+<div id="conteneur" style="border: 1px solid grey; width: 6em;">
 <div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; display:none;">div1</div>
 <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;  display: inline-block;">div2</div>
 <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;  display: inline-block;">div3</div>
 </div>
 
-]]]
+</div>
+</div>
+</div>
 
 ---
 # Positionnement
@@ -725,29 +776,34 @@ Résultat (2 exemples):
 - On complète le positionnement avec les propriétés `top`, `bottom`, `right`, `left`
     + Les valeurs négatives sont autorisées
 
-.footnote[.red[*] Un élement est positionné si sa propriété `position` a pour valeur `relative`, `absolute` ou `fixed`]
+<!-- _footer: <span class='red'>*</span> Un élement est positionné si sa propriété `position` a pour valeur `relative`, `absolute` ou `fixed` -->
 
 ---
 # Positionnement (exemple)
 
-.pure-g[.pure-u-1-2[
+<div class='pure-g'>
+<div class='pure-u-1-2'>
 
 ```css
 #conteneur div { width: 5em;}
 #d1 { position: relative; top: 1em; left: 1em;}
 #d3 { position: fixed; top: 1em; right: 1em;}
 ```
-.resultat[
 
 Résultat:
-<div id="conteneur" style="border: 1px solid black;">
-<div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: relative; top:1em; left: 1em;">div1</div>
-<div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
-<div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white; position: fixed; top: 1em; right: 1em;">div3</div>
+
+<div class='resultat'>
+
+<div id="conteneur" style="border: 1px solid grey;">
+    <div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: relative; top:1em; left: 1em;">div1</div>
+    <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
+    <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white; position: fixed; top: 1em; right: 1em;">div3</div>
 </div>
 
-]]
-.pure-u-1-2[
+</div>
+
+</div>
+<div class='pure-u-1-2'>
 
 ```css
 #conteneur div { width: 5em;}
@@ -756,22 +812,26 @@ Résultat:
 #d1 { position: absolute; top: -1em; left: 1em; }
 ```
 
-.resultat[
-
 Résultat:
-<div id="conteneur" style="position: relative; border: 1px solid black;">
-<div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: absolute; top:-1em; left: 1em;">div1</div>
-<div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
-<div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;">div3</div>
+
+<div class='resultat'>
+
+<div id="conteneur" style="position: relative; border: 1px solid grey;">
+    <div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: absolute; top:-1em; left: 1em;">div1</div>
+    <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
+    <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;">div3</div>
 </div>
 
-]]]
+</div>
+</div>
+</div>
 
 ---
 # La propriété `float`
 
 
-.float-right[
+<div class='pure-g'>
+<div class='pure-u-1-4'>
 
 <div style="font-size: 8pt; width:20em; height:20ex; background-color:yellow; margin: 0.5em;"><div style="width:5em; height:5ex; background-color:green; color:white">no float</div>
 <div style="width:5em; height:5ex; background-color:red; color:white">no float</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus blandit ipsum a quam hendrerit pretium non sit amet.</p>
@@ -789,9 +849,9 @@ Résultat:
 <div style="width:5em; height:5ex; background-color:red; color:white; float: left; clear: left">float-left + clear</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus blandit ipsum a quam hendrerit pretium non sit amet.</p>
 </div>
 
-]
+</div>
+<div class='pure-u-3-4'>
 
-<br>
 - **Rôle primaire** : habillage de texte (au sens *média print*). Le texte "s'enroule" autour de l'élément
 
 - L'élément flottant est **sorti du flux** est est positionné soit à gauche `float:left` ou à droite `float:right` de son conteneur
@@ -804,14 +864,14 @@ Résultat:
 ---
 # Le `z-index`
 
-.float-right.width-40[![Z-index](images/z-index.gif "Source: http://nettech.blog.hu/2009/10/11/a_css_tokeletes_elsajatitasa_a_kezdetek ")]
+![bg w:90% right:50%](images/z-index.gif "Source: http://nettech.blog.hu/2009/10/11/a_css_tokeletes_elsajatitasa_a_kezdetek ")
 
 - Permet de préciser comment les éléments *s'empilent* sur la page
-- Seul les **éléments positionnés** peuvent avoir un `z-index`
+- Seul les **éléments positionnés**<span class='red'>*</span> peuvent avoir un `z-index`
 - Les valeurs les plus élevées sont affichées au premier plan.
     + Un élément avec un  `z-index` de 2 sera devant un élément avec un `z-index` de 1
 
-.footnote[.red[*] Un élement est positionné si sa propriété `position` a pour valeur `relative`, `absolute` ou `fixed`]
+<!-- _footer: <span class='red'>*</span> Un élement est positionné si sa propriété `position` a pour valeur `relative`, `absolute` ou `fixed` -->
 ---
 # Les conteneurs `display:flex`
 
@@ -826,7 +886,7 @@ Résultat:
 
 
 ---
-# Propriétés des éléménts `flex`
+# Propriétés des éléments `flex`
 
 - S'appliquent aux éléments contenus dans un conteneur flex
 - Changer l'ordre d'un élément avec `order`
@@ -842,17 +902,13 @@ Résultat:
 
 
 ---
-.center[
 
-<iframe src="https://flexbox.tech" width=830 height=630 FRAMEBORDER="no" BORDER="0" SCROLLING="no" style="margin-left: -50px; margin-top: -40px">
-
-]
-
+<iframe src="https://flexbox.tech" width=1120 height=560 FRAMEBORDER="no" BORDER="0" SCROLLING="no"></iframe>
 
 ---
 # Les conteneurs `display:grid`
 
-.center[![Flex grid](images/flex-grid.jpeg "Source: https://medium.com/@daniaherrera/getting-started-css-grid-vs-flexbox-b3012fce6476")]
+![center h:20em](images/flex-grid.jpeg "Source: https://medium.com/@daniaherrera/getting-started-css-grid-vs-flexbox-b3012fce6476")
 
 - Plus de details [ici](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
@@ -871,25 +927,24 @@ Résultat:
 	+ Mais pas les deux !!!
 
 ---
-# Nouveaux sélecteurs CSS3/4
+# Nouveaux sélecteurs CSS 3/4
 
 - De très (trop?) nombreuses nouveautés
     + 1 nouveau sélecteur hiérarchique
-        * `A ~ B` (adjacence **indirecte**)
+        - `A ~ B` (adjacence **indirecte**)
     + 3 nouveaux sélecteur basés attribut:
-        * `^=`: la valeur de l'attribut commence exactement par
-        * `$=`: la valeur de l'attribut finit exactement par
-        * `*=`: la valeur de l'attribut comporte au moins une fois
-
+        - `^=`: la valeur de l'attribut commence exactement par
+        - `$=`: la valeur de l'attribut finit exactement par
+        - `*=`: la valeur de l'attribut comporte au moins une fois
     + Des pseudo-classes
-        * Exemple: `:root`, `nth-child()`, `contains()`)
+        - Exemple: `:root`, `nth-child()`, `contains()`)
     + Des pseudo-éléments
-        * Les mêmes qu'en CSS 2.1 mais précédés de `::`
+        - Les mêmes qu'en CSS 2.1 mais précédés de `::`
 
 - Cf. la norme du module CSS [Selector Level 3](http://www.w3.org/TR/css3-selectors/)
 
 ---
-# Quelques nouvelles propriétés CSS3/4
+# Quelques nouvelles propriétés CSS 3/4
 
 - **Transparence**: fonctions `rbga()` et `hsla()`, propriété `opacity`
 - **Bordures** (couleurs différentes, images): `border-image`
@@ -965,7 +1020,7 @@ Résultat:
 ---
 # Plus loin que le CSS
 
-.float-right.width-30[![less vs. Sass](images/less-vs-sass.png "Source: http://www.zingdesign.com/less-vs-sass-its-time-to-switch-to-sass/")]
+![bg fit right:60%](images/less-vs-sass.png "Source: http://www.zingdesign.com/less-vs-sass-its-time-to-switch-to-sass/")
 
 - Pré-processeurs CSS
     + [Less](http://lesscss.org/)
@@ -987,5 +1042,4 @@ Résultat:
 ---
 # Fin de la partie CSS
 
-<br>
-.center[![HTTP Cookies](images/JS-joke.jpg "Source: https://yellowjokes.com/javascript-jokes")]
+![center h:22em](images/JS-joke.jpg "Source: https://yellowjokes.com/javascript-jokes")

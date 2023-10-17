@@ -1,36 +1,46 @@
-layout: true
-class: left, middle, animated, fadeIn
-
+---
+marp: true
+lang: fr
+paginate: true
+theme: marp
 ---
 
+<!-- _paginate: skip -->
 # Services webs et protocoles associés
 
-.footnote[M. PERREIRA DA SILVA]
+<br>
 
-.center[![Tag could services web](images/web-services.jpg "Source: https://fr.fotolia.com/id/27338958")]
+![center h:15em](images/web-services.jpg "Source: https://fr.fotolia.com/id/27338958")
+
+<!-- _footer: <span class='red'>*</span> M. PERREIRA DA SILVA -->
 
 ---
 
-# [Version PDF des slides](pdf/05-services-web.pdf)
+<!-- _paginate: skip -->
+# [Version PDF des slides](pdf/services-web.pdf)
 
 ---
 
 # Introduction
 
 - Oublions le web quelques instants...
+
 - Parlons programmation et architecture logicielle
+
   + Ne **pas réinventer la roue** à chaque programme
+
   + **"Industrialiser"** le développement (ex: sous traitance)
-    * Énormes logiciels d’entreprise
+    - Énormes logiciels d’entreprise
+
   + Besoin de **réutilisation**
-    * Du code : Programmation orientée objet (POO)
-    * Des fonctionnalités : **Programmation orientée composant** (POC)
+    - Du code : Programmation orientée objet (POO)
+    - Des fonctionnalités : **Programmation orientée composant** (POC)
 
 ---
 
 # Évolution du niveau d'abstraction
 
-.center[![Niveau d'abstraction des architectures](images/Evolution abstraction.png "Source: http://www-inf.it-sudparis.eu/cours/WebServices/")]
+![center h:20em](images/Evolution_abstraction.png "Source: http://www-inf.it-sudparis.eu/cours/WebServices/")
 
 ---
 
@@ -52,10 +62,12 @@ class: left, middle, animated, fadeIn
 # Composants et architecture "locale"
 
 - Les composants résident **sur une même machine**
+
 - Besoin d'une plateforme de gestion de composants
   + Component Object Model (COM): OCX, ActiveX (Microsoft)
   + XPCOM: modèle de composant de Mozilla
   + Etc.
+
 - Définition de l'**interface du composant** via un langage
   + **IDL:** Interface Description Langage (équivalent du .h en C)
   + Gestion de l'hétérogénéité des types dans les différents langages
@@ -70,8 +82,8 @@ class: left, middle, animated, fadeIn
 - Contraintes complémentaires
   + Besoin d'un **protocole de communication** entre les composants
   + Besoin de **sérialiser / désérialiser** les données sur le réseau
-    * Binaire
-    * Texte
+    - Binaire
+    - Texte
   + Besoin de **détection et description** des composants sur le réseau
 - Exemples:
   + DCOM: version distribuée de COM (Microsoft)
@@ -83,7 +95,7 @@ class: left, middle, animated, fadeIn
 
 # Zoom sur quelques technologies d'architectures distribuées
 
-.center[![Zoom](images/zoom.png "Source: http://en.wikipedia.org/wiki/File:ZOOM_Israel.png")]
+![center h:15em](images/zoom.png "Source: http://en.wikipedia.org/wiki/File:ZOOM_Israel.png")
 
 ---
 
@@ -93,47 +105,55 @@ class: left, middle, animated, fadeIn
   + Numéro de programme (attribué par l'IANA)
   + Numéro de version du programme (ex: 1)
   + Numéro de procédure
+
 - Données et procédures représentées via le langage **XDR/RPC** (External Data Representation)
   + **1 seul paramètre** envoyé / retourné
   + Besoin de **définir des structures de données**
+
 - Code écrit dans n'importe quel langage ayant une libraire RPC (ex: C)
+
 - Données sérialisée (en **binaire**) et envoyées via les protocoles **TCP ou UDP**
+
 - Plutôt dédié aux appels distants sur réseau local (**LAN**)
 
 ---
 
 # ONC RPC: déroulement d'un appel
 
-.center[![ONC RPC](images/sun-rpc-remote-procedure-call.jpg "Source: http://fr.slideshare.net/PeterREgli/sun-rpc")]
+![center h:20em](images/sun-rpc-remote-procedure-call.jpg "Source: http://fr.slideshare.net/PeterREgli/sun-rpc")
 
 ---
 
-class: bonus
+<!-- _class: bonus  -->
 
 # [Corba](http://www.corba.org/): "standard" industriel (OMG)
 
 - Composants **orientés objet** (héritage, etc.)
+
 - Principe de l'**ORB** (Object Request Broker): sert d'intermédiaire de communication entre les différents objets / composants
+
 - Description de l'interface des objets via le **langage IDL**
   + Syntaxe proche du C++
   + Traduction automatique de l'interface vers un squelette C++,Python, Java, etc.
+
 - Fourniture de différents services
   + Nommage: retrouver un objet à partir de son nom
   + Courtage: retrouver un objet à partir de ses propriétés
   + etc.
+
 - Communication entre les ORB via les protocoles **GIOP** (LAN) ou **IIOP** (Internet)
 
 ---
 
-class: bonus
+<!-- _class: bonus  -->
 
 # Corba : Architecture
 
-.center[![CORBA](images/corba.gif "Source: http://www.cs.wustl.edu/~schmidt/corba-overview.html")]
+![center h:20em](images/corba.gif "Source: http://www.cs.wustl.edu/~schmidt/corba-overview.html")
 
 ---
 
-class: bonus
+<!-- _class: bonus  -->
 
 # RMI et .Net Remoting (WCF)
 
@@ -156,7 +176,7 @@ class: bonus
 
 ---
 
-class: bonus
+<!-- _class: bonus  -->
 
 # [Entreprise Java Bean](http://www.oracle.com/technetwork/java/javaee/ejb/index.html) (EJB)
 
@@ -165,23 +185,23 @@ class: bonus
 - 3 types de composants (beans):
   
   + EJB entité: représente des données (généralement persistantes)
-    * Mapping objet / relationnel avec une base de données
+    - Mapping objet / relationnel avec une base de données
   + **EJB session**: service = mise à disposition d'un certain nombre de méthodes
-    * Stateless Session Bean: pas de conservation de l'état entre les appels
-    * Stateful Session Bean: état conservé entre les appels
+    - Stateless Session Bean: pas de conservation de l'état entre les appels
+    - Stateful Session Bean: état conservé entre les appels
   + EJB message: réalisation de tâches asynchrones
 
 - Fonctionne sur un **serveur d'application**
 
 ---
 
-class: bonus
+<!-- _class: bonus  -->
 
 # EJB: exemples de "Session Bean"
 
 ```java
 @Stateless // Bean stateless
-public class StatelessSessionBeanImpl implements StatelessSessionBean {
+public class StatelessSessionBeanImpl implements StatelessSessionBean {                      
 // l'interface StatelessSessionBean sera utilisée coté client
     public int doubleUnEntier( int unEntier) {
         return unEntier*2;
@@ -191,7 +211,7 @@ public class StatelessSessionBeanImpl implements StatelessSessionBean {
 
 ```java
 @Stateful // Bean statefull
-public class StatefulSessionBeanImpl implements StatefulSessionBean {
+public class StatefulSessionBeanImpl implements StatefulSessionBean {                       
 // l'interface StatefulSessionBean sera utilisée coté client
     private int nombre=0;
 
@@ -214,10 +234,12 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 # Les serveurs d'application
 
 - **Hébergent les composants** et gèrent leur cycle de vie
+
 - Fournissent d'**autres services**
   + Lien avec serveur web
   + Lien avec SGBD
   + Administration des composants
+
 - Généralement **spécifiques à une technologie**
   + Java EE: JBOSS, Apache TomEE, Oracle GlassFish
   + .Net: intégré au framework .Net
@@ -228,7 +250,7 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 
 # Services web
 
-.center[![Services](images/Services.png "Source: http://se-preparer-aux-crises.fr/creer-de-l-argent-a-partir-de-rien/")]
+![center h:20em](images/Services.png "Source: http://se-preparer-aux-crises.fr/creer-de-l-argent-a-partir-de-rien/")
 
 ---
 
@@ -236,7 +258,7 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 
 - Un service Web est une **application logicielle** accessible à partir du **web**. Il utilise les **protocoles internet** pour communiquer et utilise un **langage standard** pour décrire son interface
 
-.center![Schéma service web](images/web-service-overview-1.png "Source: http://tutorials.jenkov.com/web-services/overview.html")]
+![center h:10em](images/web-service-overview-1.png "Source: http://tutorials.jenkov.com/web-services/overview.html")
 
 - Quelle différence avec un site web ?
   + La **présentation** des informations est inutile (HTML)
@@ -245,9 +267,9 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 
 # La définition du W3C
 
-.citation[Un service web est un **système logiciel** identifié par **un URI**, dont les interfaces publiques et les « bindings » sont définies et décrites en **XML**.red[*]. Sa définition peut être **découverte** [dynamiquement] par d’autres **systèmes logiciels**. Ces autres systèmes peuvent ensuite interagir avec le service web d’une façon décrite par sa définition, en utilisant des **messages XML** transportés par des **protocoles Internet**]
+> Un service web est un **système logiciel** identifié par **un URI**, dont les interfaces publiques et les « bindings » sont définies et décrites en **XML**.red[*]. Sa définition peut être **découverte** [dynamiquement] par d’autres **systèmes logiciels**. Ces autres systèmes peuvent ensuite interagir avec le service web d’une façon décrite par sa définition, en utilisant des **messages XML** transportés par des **protocoles Internet**]
 
-.footnote[.red[*]Le W3C met en avant XML comme langage de description (à différents niveaux). Mais ce n'est pas le seul moyen (standard) de communication...]
+<!-- _footer: <span class='red'>*</span> Le W3C met en avant XML comme langage de description (à différents niveaux). Mais ce n'est pas le seul moyen (standard) de communication... -->
 
 ---
 
@@ -263,7 +285,7 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 
 - Accès à ces API via les protocoles de service web (SOAP, REST, etc.)
 
-.center[ou]
+  ou
 
 - Via des kit de développement (SDK) spécifiques (JavaScript, Java, etc.)
   + Les SDK ne font que simplifier l'accès au service web
@@ -272,18 +294,24 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 
 # Les formats d'échange de données web
 
-.center[![Echange de données](images/echange-donnees.jpg "Source: http://www.rxtrace.com/2013/11/dqsa-getting-to-electronic-transaction-data-exchange.html/")]
+![center h:20em](images/echange-donnees.jpg "Source: http://www.rxtrace.com/2013/11/dqsa-getting-to-electronic-transaction-data-exchange.html/")
 
 ---
 
 # [XML](http://www.w3.org/XML/)
 
 - **Extensible Markup Language**
+
 - Vu dans les cours précédents (*Remi Lehn*)
+
 - Langage de **description** de données
+
 - On peut **créer de nouveaux langages** via un Schéma XML
+
 - On peut **transformer** un document XML vers d'autres formats (XML ou non) via XSLT
+
 - La base de nombreux services web
+
 - **Attention:** format particulièrement *verbeux*
 
 ---
@@ -292,12 +320,15 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 
 - Format de description de données textuel
   + Existe en version binaire ([BSON](http://bsonspec.org/))
+
 - Dérivé de la **notation objet de JavaScript**
+
 - Ne contient que 2 types de structures
   + **Objet** = ensemble non ordonnée de paires `"clé" : valeur`
-    * Ex: `{ "nom": "Polytech", "nbEtudiants: 500" }`
+    - Ex: `{ "nom": "Polytech", "nbEtudiants: 500" }`
   + **Tableau** = collection ordonnée de valeurs
-    * Ex: `[ 1, 2, 3, 4, 5]`
+    - Ex: `[ 1, 2, 3, 4, 5]`
+
 - Une **valeur** peut être:
   + Un objet
   + Un tableau
@@ -307,7 +338,8 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 
 # XML vs. JSON: exemple
 
-.pure-g[.pure-u-1-2[
+<div class='pure-g'>
+<div class='pure-u-1-2'>
 
 XML
 
@@ -315,7 +347,8 @@ XML
 <product>
      <id>15</id>
      <name>Widgets</name>
-     <description>These widgets are the finest widgets ever made by anyone.</description>
+     <description>These widgets are the finest 
+     widgets ever made by anyone.</description>
      <options type="color">
           <item>Purple</item>
           <item>Green</item>
@@ -324,8 +357,8 @@ XML
 </product>
 ```
 
-]
-.pure-u-1-2[
+</div>
+<div class='pure-u-1-2'>
 
 JSON
 
@@ -333,7 +366,8 @@ JSON
 "product" : {
      "id" : 15,
      "name" : "Widgets",
-     "description" : "These widgets are the finest widgets ever made by anyone.",
+     "description" : "These widgets are the finest 
+     widgets ever made by anyone.",
      "options" : [
           {
                "type" : "color",
@@ -347,51 +381,60 @@ JSON
 }
 ```
 
-]]
+</div>
+</div>
 
 ---
 
 # Architectures (web) orientées service
 
-.center[![SOA](images/SOA.jpg "Source: http://forums.dayzgame.com/index.php?/topic/216790-sons-of-anarchy-soa/")]
+![center h:20em](images/SOA.jpg "Source: http://forums.dayzgame.com/index.php?/topic/216790-sons-of-anarchy-soa/")
 
 ---
 
-# [XML-RPC](http://xmlrpc.scripting.com/) (1/2)
+# [XML-RPC](http://xmlrpc.scripting.com/)
 
 - **Appel de procédure distant** (RPC) avec
+
   + **Transport** des messages via HTTP
-    * **Requête `POST`**
+    - **Requête `POST`**
+
   + **Encodage** des messages via **XML** dans le **corps de la requête**
-    * Un seul élément `<methodCall>` par requête
-    * L'élément fils `<methodName> définit la méthode à appeler`
-    * Les paramètres sont passés dans l'élément `<params>` via des balises `<param>`
+    - Un seul élément `<methodCall>` par requête
+    - L'élément fils `<methodName> définit la méthode à appeler`
+    - Les paramètres sont passés dans l'élément `<params>` via des balises `<param>`
+
   + On peut passer en **paramètre / résultat**
-    * Des types simples (entier, flottant, booléen, chaine, date, données binaires en Base64)
-    * Des tableaux
-    * Des structures
+    - Des types simples (entier, flottant, booléen, chaine, date, données binaires en Base64)
+    - Des tableaux
+    - Des structures
+
   + La réponse ne peut contenir **qu'une seule balise `<param>`**
 
 ---
 
-# [XML-RPC](http://xmlrpc.scripting.com/) (2/2)
+# [XML-RPC](http://xmlrpc.scripting.com/)
 
 - **Avantage**:
   
   + Simple
+
   + Indépendant du langage de programmation (Java, PHP, etc.)
+
   + Utilise des protocoles et langages standards
 
 - **Limitations** :
   
   + Types de données limités
+
   + Assez verbeux (XML...)
 
 ---
 
 # XML-RPC: exemple
 
-.pure-g[.pure-u-1-2[
+<div class='pure-g'>
+<div class='pure-u-1-2'>
 
 Requête
 
@@ -404,7 +447,8 @@ Content-length: 181
 
 <?xml version="1.0"?>
 <methodCall>
-   <methodName>example.doubleUnEntier</methodName>
+   <methodName>example.doubleUnEntier
+   </methodName>
    <params>
       <param>
          <value><int>41</int></value>
@@ -413,8 +457,8 @@ Content-length: 181
    </methodCall>
 ```
 
-]
-.pure-u-1-2[
+</div>
+<div class='pure-u-1-2'>
 
 Réponse
 
@@ -430,38 +474,48 @@ Server: UserLand Frontier/5.1.2-WinNT
 <methodResponse>
    <params>
       <param>
-         <value><int>82</int></value>
+         <value><int>82</int>
+         </value>
          </param>
       </params>
    </methodResponse>
 ```
 
-]]
+</div>
+</div>
 
 ---
 
-# [JSON-RPC](http://www.jsonrpc.org/) (1/2)
+# [JSON-RPC](http://www.jsonrpc.org/)
 
 - **Très similaire** à l'esprit **XML-RPC**
+
   + Simple
+
   + Lisible par un humain
+
 - Mais...
+
   + Remplacement de XML par **JSON** (plus compact)
+
   + Codage **Unicode** par défaut
+
   + **Indépendant du protocole** (HTTP(S), TCP/IP, etc.)
+
   + Support des **notifications** (message n'attendant pas de réponse)
 
 ---
 
-# [JSON-RPC](http://www.jsonrpc.org/) (2/2)
+# [JSON-RPC](http://www.jsonrpc.org/)
 
 - Membres d'un **objet requête**
   + `jsonrpc`: version du protocole utilisé (actuellement "2.0")
   + `method`: nom de la méthode à appeler
   + `params` (optionnel): structure de données contenant les paramètres à passer à la méthode
-    * On ne passe qu'une structure
+    - On ne passe qu'une structure
   + `id`: identifiant de la requête (nombre ou chaine de caractère), qui sera également utilisé par la réponse.
-    * Si l'`id` est NULL, alors la requête est une notification
+    - Si l'`id` est NULL, alors la requête est une notification
+
 - Membres d'un **objet réponse**
   + `jsonrpc` et `id`: identique aux champs de la requête
   + `result`: valeur de retour de la méthode. Ne doit pas être présent en cas d'erreur.
@@ -484,7 +538,8 @@ Requête / réponse basique
 Requête / réponse  simple
 
 ```json
-{"jsonrpc": "2.0", "method": "majPersonne", "params": { "nom": "Robert", "age": 57, "Classement": [1,2,6,2,1] }, "id": "request-2"}
+{"jsonrpc": "2.0", "method": "majPersonne", "params": { "nom": "Robert", "age": 57,
+ "Classement": [1,2,6,2,1] }, "id": "request-2"}
 ```
 
 ```json
@@ -501,7 +556,7 @@ En cas d'erreur
 
 # Service web (SOAP): architecture
 
-.center[![ONC RPC](images/Architecture WebService SOAP.png "Source: http://lig-membres.imag.fr/plumejeaud/NFE107-fichesLecture/Service%20Web%20(SOAP).ppt.pdf")]
+![center h:20em](images/Architecture_WebService_SOAP.png "Source: http://lig-membres.imag.fr/plumejeaud/NFE107-fichesLecture/Service%20Web%20(SOAP).ppt.pdf")
 
 ---
 
@@ -510,8 +565,10 @@ En cas d'erreur
 - **Annuaire** (Service Registry)
   + Annuaire des services publiés par les providers (UDDI)
   + Géré sur un serveur niveau application, entreprise ou mondial
+
 - **Service Provider**
   + Application s'exécutant sur un serveur et comportant un module logiciel accessible en XML
+
 - **Service Requester**
   + Application cliente se liant à un service et invoquant ses fonctions par des messages XML (REST, XML-RPC,SOAP)
 
@@ -521,8 +578,10 @@ En cas d'erreur
 
 - **WSDL** (Web Services Description Language) donne la **description** au format XML des Web Services en précisant les méthodes pouvant être invoquées, leur signature et le point d'accès (URL, port, etc..).
   + Dialecte XML permettant de décrire un web service
+
 - **UDDI** (Universal Description, Discovery and Integration) normalise une solution d'**annuaire distribué** de Web Services, permettant à la fois la publication et l'exploration. UDDI se comporte lui-même comme un Web service dont les méthodes sont appelées via le protocole SOAP.
   + Annuaire permettant d’enregistrer et de rechercher des service web
+
 - **SOAP** (Simple Object Access Protocol) : Protocole de **communication** des services Web par échange de message XML.
 
 ---
@@ -530,13 +589,16 @@ En cas d'erreur
 # [SOAP](http://www.w3.org/TR/soap12-part0/)
 
 - Protocole de **communication** de messages
+
 - N'est **pas lié** à un protocole de **transport** particulier (mais HTTP est populaire)
+
 - Un message SOAP est composé de
   + Une **déclaration** XML (optionnelle), suivie de
   + Une **enveloppe** SOAP (l'élément racine) qui est composée de:
-    * Un Entête SOAP (optionnel)
-    * Un Corps SOAP : dont le contenu dépend de l'application
+    - Un Entête SOAP (optionnel)
+    - Un Corps SOAP : dont le contenu dépend de l'application
       - Peut contenir des messages d'erreur et pièces jointes
+
 - Un dialogue SOAP contient un message de **requête** et un message de **réponse**
 
 ---
@@ -593,6 +655,7 @@ Réponse: la valeur de l'entier doublé...
 # [WSDL](http://www.w3.org/TR/wsdl)
 
 - Document XML **décrivant un service web**
+
 - Définition du service via 7 éléments principaux
   + `<types>`: **définition des données** utilisées par le service web
   + `<message>`: définition de la **structure d'un message** en lui attribuant un nom et en décrivant les éléments qui le composent (nom + type)
@@ -604,7 +667,7 @@ Réponse: la valeur de l'entier doublé...
 
 ---
 
-# WSDL : exemple (1/2)
+# WSDL : exemple
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -631,7 +694,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 ---
 
-# WSDL : exemple (2/2)
+# WSDL : exemple
 
 ```xml
     <binding name="CalculerSoapBinding" type="impl:Calculer">
@@ -639,10 +702,12 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <operation name="additionner">
             <soap:operation soapAction="" />
                 <input name="doublerUnEntierReq">
-                    <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MonServiceSOAP" use="encoded" />
+                    <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="urn:MonServiceSOAP" use="encoded" />
                 </input>
                 <output name="doublerUnEntierRes">
-                    <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MonServiceSOAP" use="encoded" />
+                    <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="urn:MonServiceSOAP" use="encoded" />
                 </output>
             </operation>
         </binding>
@@ -659,27 +724,33 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 # UDDI
 
 - UDDI permet la **découverte et la description** des services web
+
 - Un annuaire UDDI comporte 3 composants :
   + Les **pages blanches**: comprennent la **liste des entreprises** ainsi que des informations associées à ces dernières.
   + Les **pages jaunes**: recensent les **services Web** de chacune des entreprises sous le standard WSDL.
   + Les **pages vertes**: fournissent des **informations techniques précises** sur les services fournis. Ces informations concernent les descriptions de services et d'information de liaison ou encore les processus métiers associés.
+
 - Pas aussi largement utilisé qu'espéré
   + IBM, Microsoft et SAP hébergeaient des annuaires UDDI publics il y a quelques années...
   + Les annuaires UDDI sont plutôt privés (inter entreprise)
 
 ---
 
-class: bonus
+<!-- _class: bonus  -->
 
 # [JSON-WSP](http://en.wikipedia.org/wiki/JSON-WSP) (Abandonné...)
 
 - **Alternative aux services web SOAP**, pas encore standardisée
   + RFC en cours...
+
 - Comble les lacunes de JSON-RPC en terme de **description de service** (types et méthodes)
   + Équivalent de SOAP + WSDL
+
 - Utilise des **requêtes HTTP `POST`** pour le transport (comme XML-RPC)
+
 - Fonctionnement des requêtes / réponses / erreurs **très proche de JSON-RPC**
   + Champs `methodName`, `args`, `result`
+
 - Ajout d'un objet de **description** des types et méthodes
   + Déclaration de **structures de données** complexes
   + **Documentation** des types et des méthodes
@@ -687,7 +758,7 @@ class: bonus
 
 ---
 
-class: bonus
+<!-- _class: bonus  -->
 
 # JSON-WSP: exemple (1/2)
 
@@ -720,7 +791,7 @@ Description (ici on ne définit qu'une méthode, pas de type)
 
 ---
 
-class: bonus
+<!-- _class: bonus  -->
 
 # JSON-WSP: exemple (2/2)
 
@@ -729,7 +800,7 @@ Requête
 ```json
 {   "type": "jsonwsp/request",
     "version": "1.0",
-    "methodname": "doubleUnEntier",
+    "methodname": "doubleUnEntier",                                                               
     "args": {
         "unEntier": 3615
     },
@@ -746,7 +817,7 @@ Réponse
     "type": "jsonwsp/response",
     "version": "1.0",
     "servicename": "MonService",
-    "method": "doubleUnEntier",
+    "method": "doubleUnEntier",                                                                
     "result": 7230,
     "reflection": {
         "id": 1234
@@ -758,31 +829,37 @@ Réponse
 
 # Architectures orientées ressources
 
-<br>
-.center[![ROA](images/rom.png "Source: https://www.w3.org/TR/2003/WD-ws-arch-20030808/")]
+![center h:20em](images/rom.png "Source: https://www.w3.org/TR/2003/WD-ws-arch-20030808/")
 
 ---
 
-# REST ? (1/2)
+# REST ?
 
 - REST: **REpresentational State Transfer**
+
 - **Style d’architecture** != protocole de communication (SOAP)
+
 - Décrit en 2000 par Roy Thomas Fielding dans sa thèse, chap 5, "Architectural Styles and the Design of Network-based Software Architectures"
   + 1 des principaux acteur de la spécification de HTTP
   + Membre fondateur de la fondation Apache
   + Développeur du serveur Web Apache
+
 - Style d’architecture **inspiré du Web**
+
 - Architecture **orientée ressource**
 
 ---
 
-# REST ? (2/2)
+# REST ?
 
 - Utilisé pour développer des **Services Web**
+
 - Dans la littérature
   + Architectures orientées **ressources** (ROA)
   + Architectures orientées **données** (DOA)
+
 - Quand une application respecte ces principes: **RESTFul**
+
 - Les services web REST sont **sans états** (Stateless)
   + Pas de mémoire des requêtes antérieures
   + Chaque requête envoyée doit contenir toutes les informations nécessaires au traitement
@@ -794,9 +871,11 @@ Réponse
 - **Ressources** (Identifiant)
   + Identifiée par une URI
   + Exemple (fictif): http://www.achats.fr/livre/SF/Harry-Potter
+
 - **Méthodes** (Verbes)
   + Action à effectuer sur la ressource
   + Méthodes HTTP: `GET`, `POST`, `PUT` et `DELETE`
+
 - **Représentation** (Vue de la ressource ou de son état)
   + Informations échangées avec le service
   + Texte, XML, JSON, ...
@@ -807,10 +886,15 @@ Réponse
 
 - Tout ce qui est **identifiable / manipulable** dans le système
   + Document, Image, Personne, Le montant du compte d’un client, etc.
+
 - **Identifié par un lien** (URI)
+
 - Une ressource **peut avoir plusieurs URI**
+
 - Une URI identifie **une seule ressource** (ou un seul groupe de ressources)
+
 - Construite de façon **hiérarchique**
+
 - La représentation d’une ressource **peut évoluer avec le temps**
   + Lié au temps: ex. Dernier article
   + Modification structure: ex. Ajout d’un champ
@@ -822,7 +906,8 @@ Réponse
 - Structure classique
   + Structure **hiérarchique**
   + Construction classique
-    * `http://domaine.com/<plus général>/../<plus spécifique>`
+    - `http://domaine.com/<plus général>/../<plus spécifique>`
+
 - Exemples d’URIs
   + /musique/rock
   + /musique/rock/AC-DC/
@@ -836,9 +921,10 @@ Réponse
 
 # REST: Ressource
 
-- On peut aussi utiliser la **chaine de requête**
+- On peut aussi utiliser la **chaîne de requête**
   - Préciser la demande de ressource
-  - Utiliser et combiner des critères non hierarchiques
+  - Utiliser et combiner des critères non hiérarchiques
+  
 - Exemples
   + Uniquement les dix premiers résultats
     + /music/rock?limit=10
@@ -849,7 +935,7 @@ Réponse
 
 ---
 
-# REST: Interface / methodes
+# REST: Interface / méthodes
 
 - REST fournit une interface uniforme
 - Chaque ressource peut subir **4 opérations de base** (CRUD)
@@ -872,8 +958,11 @@ Réponse
 - **Format d’échange** des données
   + Pour le client (`GET`)
   + Pour le serveur (`PUT`, `POST` ou `PATCH`)
+
 - Généralement: Texte, JSON, XML, HTML, CSV
+
 - Le format d’entrée (`POST`) et de sortie (`GET`) d’une même ressource peut varier
+
 - On peut spécifier le format via
   + **Entêtes HTTP** (type MIME via `content-type`)
   + **L'URL** de la ressource 
@@ -900,62 +989,63 @@ Réponse
 
 ---
 
-# Spécification d'une API RESTFul (1/2)
+# Spécification d'une API RESTFul
 
 - Exemple via l'outil [Swagger.io](https://swagger.io) : [Animalerie](https://petstore.swagger.io) (Petstore)
 
 - Spécifications des opérations réalisables sur la ressource magasin (store)
 
-.center[
-
-![swagger-1.png](images/swagger-1.png)]
+![center h:15em](images/swagger-1.png)
 
 ---
 
-# Spécification d'une API RESTFul (2/2)
+# Spécification d'une API RESTFul
 
 - Modèle de données d'une commande
 
-.pure-g[
-
-.center.pure-u-1-2[
+<div class='pure-g'>
+<div class='pure-u-1-2'>
 
 Modèle
 
-![swagger-1.png](images/swagger-2.png)]
+![center](images/swagger-2.png)
 
-.center.pure-u-1-2[
+</div>
+<div class='pure-u-1-2'>
 
 Exemple JSON
 
-<br>
-![swagger-1.png](images/swagger-3.png)]]
+![center](images/swagger-3.png)
+
+</div>
+</div>
 
 ---
 
-# Service vs. ressource (1/2)
+# Service vs. ressource
 
 - Modèle d'interaction :
   + SOAP : **Échanges**
-    * Le serveur conserve des données sur la session
-    * Les messages ne contiennent que ce qu'ils expriment
+    - Le serveur conserve des données sur la session
+    - Les messages ne contiennent que ce qu'ils expriment
   + REST : **Opérations indépendantes**
-    * Serveur sans état
-    * Les messages doivent embarquer le contexte
+    - Serveur sans état
+    - Les messages doivent embarquer le contexte
+
 - Cible :
   + SOAP : plutôt des **services transactionnels** (ex: réservation de billet)
   + REST : plutôt des échanges de **données / documents** (ex: tweets)
 
 ---
 
-# Service vs. ressource (1/2)
+# Service vs. ressource
 
 - Protocole :
   + SOAP: **subit HTTP**
-    * Indépendant du transport donc d'HTTP, mais la large majorité des échanges passe par HTTP
-    * Propre modèle de sécurité
-    * Propre retour des erreurs
-    * Propre stratégie de cache
+    - Indépendant du transport donc d'HTTP, mais la large majorité des échanges passe par HTTP
+    - Propre modèle de sécurité
+    - Propre retour des erreurs
+    - Propre stratégie de cache
   + REST: **épouse HTTP**
 - Formats :
   + REST: **s'adapte** aux capacités du client (négociation de contenu)
@@ -982,4 +1072,4 @@ Exemple JSON
 
 # C'est fini...
 
-.center[![Terminé](images/termine.jpg "Source: http://www.enviedecrire.com/comment-savoir-si-votre-roman-est-termine/")]
+![center h:20em](images/termine.jpg "Source: http://www.enviedecrire.com/comment-savoir-si-votre-roman-est-termine/")
