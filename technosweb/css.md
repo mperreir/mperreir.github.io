@@ -902,8 +902,9 @@ Résultat:
 
 
 ---
+# Expérimenter avec `flex`
 
-<iframe src="https://flexbox.tech" width=1120 height=560 FRAMEBORDER="no" BORDER="0" SCROLLING="no"></iframe>
+[![center h:20em](images/Flexbox-playground.png "Source: https://medium.com/@daniaherrera/getting-started-css-grid-vs-flexbox-b3012fce6476")](https://flexbox.tech)
 
 ---
 # Les conteneurs `display:grid`

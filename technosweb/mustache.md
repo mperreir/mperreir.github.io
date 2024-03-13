@@ -29,11 +29,11 @@ theme: marp
 
 - Principe de {{Mustache}} : insérer des données en remplacement de tags
   
-  * Variables `{{maVariable}}`
+  - Variables `{{maVariable}}`
 
     - est remplacé par le contenu de la variable `maVariable`
 
-  * Sections `{{#nomSection}}`...`{{/nomSection}}`
+  - Sections `{{#nomSection}}`...`{{/nomSection}}`
 
     - est répété autant de fois qu'il y a d'élements dans  `nomSection`
 

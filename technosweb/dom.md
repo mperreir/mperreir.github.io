@@ -28,10 +28,10 @@ theme: marp
 - [Document](https://developer.mozilla.org/fr/docs/Web/API/Document) : le document lui même
 - [Document.documentElement](https://developer.mozilla.org/fr/docs/Web/API/Document/documentElement) : la racine du document (`<html>`)
 - L'arbre est composé de (types de base) :
-  * [Node](https://developer.mozilla.org/fr/docs/Web/API/Node) : l'élément de base 
-    + [Element](https://developer.mozilla.org/fr/docs/Web/API/Element) : élément / "balise"
-    + [Attribute](https://developer.mozilla.org/fr/docs/Web/API/Attr) : attribut d'un élément
-  * [NodeList](https://developer.mozilla.org/fr/docs/Web/API/NodeList) : un tableau de Noeuds...
+  - [Node](https://developer.mozilla.org/fr/docs/Web/API/Node) : l'élément de base 
+    - [Element](https://developer.mozilla.org/fr/docs/Web/API/Element) : élément / "balise"
+    - [Attribute](https://developer.mozilla.org/fr/docs/Web/API/Attr) : attribut d'un élément
+  - [NodeList](https://developer.mozilla.org/fr/docs/Web/API/NodeList) : un tableau de Noeuds...
 - Le texte contenu dans un élément est un simple noeud "texte"
 
 ---
@@ -114,7 +114,7 @@ theme: marp
 
 - [addEventListener(*typeEvenement*, *callback*)](https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener) : Enregistre une fonction (callback) qui sera appelée lors de l'évenement
 
-  * Préciser le [type d'évenement](https://developer.mozilla.org/fr/docs/Web/Events) en 1er paramètre
+  - Préciser le [type d'évenement](https://developer.mozilla.org/fr/docs/Web/Events) en 1er paramètre
 
   ```javascript
   // on récupère un bouton via le DOM
@@ -138,11 +138,11 @@ theme: marp
 # Evenements : propagation
 
 - Notion d'[event bubbling](https://developer.mozilla.org/fr/docs/Apprendre/JavaScript/Building_blocks/Evènements#le_bouillonnement_et_la_capture):
-  * L'élément HTML qui gère un évenement n'est pas forcement celui qui l'a généré
-  * Appel des gestionnaires d'évenement en cascade (enfant vers parents)
-  * [Event.target](https://developer.mozilla.org/fr/docs/Web/API/Event/target) = l'élément à l'origine de l'évemenent
-  * [Event.currentTarget](https://developer.mozilla.org/fr/docs/Web/API/Event/currentTarget) = l'élément dont le gestionnaire d'évenement a été appelé
-  * [Event.stopPropagation()](https://developer.mozilla.org/fr/docs/Web/API/Event/stopPropagation) stoppe la propagation d'un évenement
+  - L'élément HTML qui gère un évenement n'est pas forcement celui qui l'a généré
+  - Appel des gestionnaires d'évenement en cascade (enfant vers parents)
+  - [Event.target](https://developer.mozilla.org/fr/docs/Web/API/Event/target) = l'élément à l'origine de l'évemenent
+  - [Event.currentTarget](https://developer.mozilla.org/fr/docs/Web/API/Event/currentTarget) = l'élément dont le gestionnaire d'évenement a été appelé
+  - [Event.stopPropagation()](https://developer.mozilla.org/fr/docs/Web/API/Event/stopPropagation) stoppe la propagation d'un évenement
 - Exemple:
 
 <div class='pure-g'>
