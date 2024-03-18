@@ -209,7 +209,7 @@ theme: marp
 
 # URI, URL et URN
 
-- **URI** (Uniform Resource Identifier) : Identifie une ressource (physique ou abstraite) sur un réseau ([RFC 3986](http://www.rfc-base.org/rfc-3986.html))
+- **URI** (Uniform Resource Identifier) : Identifie une ressource (physique ou abstraite) sur un réseau ([RFC 3986](https://www.ietf.org/rfc/rfc3986.txt)
 
 - **Schéma** : Type de ressource identifiée par l'URI (ex: http, ftp, mailto, about). Ne référence pas forcement un protocole
 
