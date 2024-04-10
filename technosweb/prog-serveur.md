@@ -138,11 +138,11 @@ theme: marp
 - **Site dynamique**: un programme / script est exécuté afin de **générer** la ressource demandée (ex: page HTML)
   + Langage utilisable: **tout langage** pouvant générer du texte
   + Mais certains langages sont plus adaptés
-    * Librairies disponibles
-    * Facilité à manipuler du texte
+    - Librairies disponibles
+    - Facilité à manipuler du texte
   + Deux stratégies
-    * **génération de code** HTML (CGI, WSGI, Servlets, etc.)
-    * **préprocesseurs** HTML (PHP, ASP, JSP, etc)
+    - **génération de code** HTML (CGI, WSGI, Servlets, etc.)
+    - **préprocesseurs** HTML (PHP, ASP, JSP, etc)
 
 ---
 
@@ -181,7 +181,7 @@ theme: marp
   + Simplicité
   + **Sécurité**
   + **Performances** (1 requête = 1 processus lancé)
-    * Problème réglé par **FastCGI** et **SCGI**
+    - Problème réglé par **FastCGI** et **SCGI**
 
 ---
 
@@ -230,8 +230,8 @@ echo "</body></html>"
   
   + un paramètre `environ`: un dictionnaire contenant les variables d'environnement
   + une fonction `start_response` qui initie le renvoi de la réponse. Elle a 2 paramètres
-    * Le code de retour HTTP (ex: `'200 OK'`)
-    * Les entêtes HTTP de la réponse (ex: `[('Content-Type', 'text/html')])`)
+    - Le code de retour HTTP (ex: `'200 OK'`)
+    - Les entêtes HTTP de la réponse (ex: `[('Content-Type', 'text/html')])`)
 
 ---
 
@@ -340,7 +340,7 @@ public class InfoServlet extends HttpServlet {
 
   + Le code HTML n'est pas séparé du code serveur
 
-    * Ex (Java): `System.out.println("<h1>Ceci est un titre</h1");`
+    - Ex (Java): `System.out.println("<h1>Ceci est un titre</h1");`
 
   + Maintenabilité du code HTML complexe !
   
@@ -382,11 +382,11 @@ public class InfoServlet extends HttpServlet {
 - Un fichier `.php` est traité par PHP comme
   + un fichier HTML
   + avec des **balises spéciales** pour
-    * Exécuter du code 
+    - Exécuter du code 
       ```php
       <?php echo 'Hello ', 'World'; ?>
       ```
-    * Insérer la valeur d'une constante / variable dans le code HTML    
+    - Insérer la valeur d'une constante / variable dans le code HTML    
       ```php
       <?= 'Hello World' ?>
       ```
@@ -518,8 +518,8 @@ bonjour.asp
 - Programmation via **n'importe quel langage** supporté par .Net (C#, VB.Net, Python, Java, etc.)
 - Plusieurs technologies disponibles
   + **Web Pages**: intégration de code ("Razor code") dans une page web (comme ASP et PHP). Le plus simple.
-    * Exécuter du code (en C#): `@{ string bonjour="Bonjour!"; }`
-    * Insérer la valeur d'une variable dans le code HTML : `@bonjour`
+    - Exécuter du code (en C#): `@{ string bonjour="Bonjour!"; }`
+    - Insérer la valeur d'une variable dans le code HTML : `@bonjour`
   + MVC: utilisation d'un pattern Modèle Vue Contrôleur
   + Web Forms: création de pages web contenant des contrôles générés coté serveur (boutons, images, listes, tableaux, etc.)
 
@@ -614,10 +614,10 @@ bonjour.aspx
 - NodeJS n'est **PAS**:
   + Un framework Web (mais il en existe pour NodeJS)
   + De haut niveau
-		* Pratique pour voir les bases des technologies web
-		* Il existe de nombreux modules pour simplifier le développent
+		- Pratique pour voir les bases des technologies web
+		- Il existe de nombreux modules pour simplifier le développent
   + Multi-threadé
-    	* **Une seule instance** de votre code est exécutée
+    - **Une seule instance** de votre code est exécutée
 
 ---
 
@@ -722,12 +722,12 @@ console.log('Serveur lancé sur le port 8080...');
 - `http.createServer` prend en paramètre une fonction à deux arguments (`request` et `response`)
 
   + `request` est de type `http.IncomingMessage`
-    * accès aux **entêtes HTTP** via le tableau associatif `headers`
+    - accès aux **entêtes HTTP** via le tableau associatif `headers`
 
   + `response` est de type `http.ServerResponse`
-    * on écrit les **entêtes** avec la méthode `writeHead` (à appeler avant `write`)
-    * on écrit le **corps de la réponse** avec la méthode `write`  (en une ou plusieurs fois)
-    * on **termine et envoie** la réponse avec un appel à `end`
+    - on écrit les **entêtes** avec la méthode `writeHead` (à appeler avant `write`)
+    - on écrit le **corps de la réponse** avec la méthode `write`  (en une ou plusieurs fois)
+    - on **termine et envoie** la réponse avec un appel à `end`
 
 ---
 
@@ -1067,7 +1067,7 @@ function($scope){
 
   + Développées initialement pour gérer les très **grandes quantités de données** des géants d'internet
   + Quelques bases NoSQL:
-    * MongoDB (Sourceforge), CouchDB, BigTable (Google), HBase (Facebook), Cassandra (Twitter), SimpleDB (Amazon)
+    - MongoDB (Sourceforge), CouchDB, BigTable (Google), HBase (Facebook), Cassandra (Twitter), SimpleDB (Amazon)
 
 ---
 
