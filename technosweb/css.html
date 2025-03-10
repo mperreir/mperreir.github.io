@@ -112,7 +112,7 @@
 <li>Gestion de la couleur</li>
 </ul>
 </li>
-<li>Actuellement, <a href="https://en.wikipedia.org/wiki/Comparison_of_browser_engines_%28CSS_support%29">prise en charge partielle</a> par les navigateurs</li>
+<li>Actuellement, <a href="https://caniuse.com/">prise en charge partielle</a> par les navigateurs</li>
 </ul>
 </li>
 <li>
@@ -460,7 +460,7 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Div 3.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <div class='center'>CSS</div>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-css"><span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: green; }
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-css"><span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: whitesmoke; }
 <span class="hljs-selector-tag">section</span> <span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: yellow; }
 </code></pre>
 </div>
@@ -468,7 +468,7 @@
 Résultat:
 <div class='resultat r1'>
     <style>
-        .r1 div { background-color: green;}
+        .r1 div { background-color: whitesmoke;}
         .r1 section div { background-color: yellow; }
     </style>
     <section>
@@ -505,7 +505,7 @@ Résultat:
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Div 3.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <div class='center'>CSS</div>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-css"><span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: green; }
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-css"><span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: whitesmoke; }
 <span class="hljs-selector-tag">section</span> &gt; <span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: yellow; }
 </code></pre>
 </div>
@@ -513,7 +513,7 @@ Résultat:
 Résultat:
 <div class='resultat r2'>
     <style>
-        .r2 div { background-color: green;}
+        .r2 div { background-color: whitesmoke;}
         .r2 .r2workaround { background-color: yellow; }
     </style>
     <section>
@@ -550,16 +550,16 @@ Résultat:
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Div 3.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <div class='center'>CSS</div>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-css"><span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: green; }
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-css"><span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: whitesmoke; }
 <span class="hljs-selector-tag">section</span> + <span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">background-color</span>: yellow; }
 </code></pre>
 </div>
 <div class='pure-u-1-2'>
 Résultat:
-<div class='resultat r2'>
+<div class='resultat r3'>
     <style>
-        .r2 div { background-color: green;}
-        .r2 section + div { background-color: yellow; }
+        .r3 div { background-color: whitesmoke;}
+        .r3 section + div { background-color: yellow; }
     </style>
     <section>
         <div>Div 1.

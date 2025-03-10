@@ -43,22 +43,22 @@ theme: marp
 
 # Historique
 
-- **1990**: HTTP 0.9
+- **1990**: HTTP/0.9
   + **Seulement la méthode GET** (récupération d'une ressource)
   + Pas de code de retour ou de type de fichiers : ne sait renvoyer que du `text/plain`
 
-- **1996**: HTTP 1.0 ([RFC 1945](https://www.ietf.org/rfc/rfc1945.txt))
+- **1996**: HTTP/1.0 ([RFC 1945](https://www.ietf.org/rfc/rfc1945.txt))
   + **Nouvelles métodes** de communication (POST, PUT, etc.)
   + Entêtes, types MIME, authentification, etc.
 
-- **1997**: HTTP 1.1 ([RFC 2068](https://www.ietf.org/rfc/rfc2068.txt))
+- **1997**: HTTP/1.1 ([RFC 2068](https://www.ietf.org/rfc/rfc2068.txt))
   + Modernisation: **connexions persistantes**, meilleur gestion du cache, requètes partielles, compression ,etc.
 
 ---
 
 # Historique
 
-- **1999**: Maj de HTTP 1.1 ([RFC 2616](https://www.ietf.org/rfc/rfc2616.txt))
+- **1999**: Maj de HTTP/1.1 ([RFC 2616](https://www.ietf.org/rfc/rfc2616.txt))
   + **Négociation de contenu**
 
 - **2011**: WebSocket ([RFC 6455](https://tools.ietf.org/html/rfc6455))
@@ -66,10 +66,13 @@ theme: marp
   + Envoi de données en mode "Push"
   + Passage des serveurs proxy facilité
 
-- **2014**: **Clarification** de HTTP 1.1 ([RFCs 7230](https://www.ietf.org/rfc/rfc7230.txt)-[7237](https://www.ietf.org/rfc/rfc7237.txt))
+- **2014**: **Clarification** de HTTP/1.1 ([RFCs 7230](https://www.ietf.org/rfc/rfc7230.txt)-[7237](https://www.ietf.org/rfc/rfc7237.txt))
 
-- **2015**: HTTP 2.0 ([RFC 7540](https://tools.ietf.org/html/rfc7540))
-  + Objectif principal: **accélérer le web** (dérivé de google SPDY)
+- **2015**: HTTP/2 ([RFC 7540](https://tools.ietf.org/html/rfc7540))
+  + Objectif principal: **accélérer le web** (dérivé de google SPDY) via le multiplexage des requêtes
+
+- **2022**: HTTP/3 ([RFC 9114](https://datatracker.ietf.org/doc/html/rfc9114))
+  + Abandon de TCP en faveur de [QUIC](https://datatracker.ietf.org/doc/rfc9000/) (basé sur UDP) pour réduire la latence
 
 ---
 

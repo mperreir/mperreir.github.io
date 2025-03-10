@@ -76,7 +76,7 @@ theme: marp
         - Nouveaux sélecteurs
         - Média Queries
         - Gestion de la couleur
-     + Actuellement, [prise en charge partielle](https://en.wikipedia.org/wiki/Comparison_of_browser_engines_%28CSS_support%29) par les navigateurs
+     + Actuellement, [prise en charge partielle](https://caniuse.com/) par les navigateurs
 
 - **CSS 4 ?**
     + Seulement des modules CSS level 4
@@ -323,7 +323,7 @@ theme: marp
 <div class='center'>CSS</div>
 
 ```css
-div { background-color: green; }
+div { background-color: whitesmoke; }
 section div { background-color: yellow; }
 ```    
 </div>
@@ -331,7 +331,7 @@ section div { background-color: yellow; }
 Résultat:
 <div class='resultat r1'>
     <style>
-        .r1 div { background-color: green;}
+        .r1 div { background-color: whitesmoke;}
         .r1 section div { background-color: yellow; }
     </style>
     <section>
@@ -366,7 +366,7 @@ Résultat:
 <div class='center'>CSS</div>
 
 ```css
-div { background-color: green; }
+div { background-color: whitesmoke; }
 section > div { background-color: yellow; }
 ```    
 </div>
@@ -374,7 +374,7 @@ section > div { background-color: yellow; }
 Résultat:
 <div class='resultat r2'>
     <style>
-        .r2 div { background-color: green;}
+        .r2 div { background-color: whitesmoke;}
         .r2 .r2workaround { background-color: yellow; }
     </style>
     <section>
@@ -409,16 +409,16 @@ Résultat:
 <div class='center'>CSS</div>
 
 ```css
-div { background-color: green; }
+div { background-color: whitesmoke; }
 section + div { background-color: yellow; }
 ```    
 </div>
 <div class='pure-u-1-2'>
 Résultat:
-<div class='resultat r2'>
+<div class='resultat r3'>
     <style>
-        .r2 div { background-color: green;}
-        .r2 section + div { background-color: yellow; }
+        .r3 div { background-color: whitesmoke;}
+        .r3 section + div { background-color: yellow; }
     </style>
     <section>
         <div>Div 1.
