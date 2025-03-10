@@ -14,6 +14,14 @@ footer { color: inherit; }
 .blue   { color: #41C8F0; }
 .yellow { color: #DBEC62; }
 
+section {
+  padding: 1rem 2.5rem;
+}
+
+li p {
+  margin: 0;
+}
+
 .resultat{
   padding-left: 0.5em;
   border-left: 0.5em;

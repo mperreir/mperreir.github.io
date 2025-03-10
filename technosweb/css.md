@@ -308,21 +308,41 @@ theme: marp
     + B est un descendant quelconque de A
     + La règle s'applique à B !
 + Exemple:
-    - CSS
-    
-        ```css
-        div span { color: yellow; }
-        ```
-    - HTML
-    
-        ```html
-        <div>
-        * <span>Span 1.
-        *      <span>Span 2.</span>
-        * </span>
+<div class='pure-g'>
+<div class='pure-u-1-2'>
+<div class='center'>HTML</div>
+
+```html
+<section>
+    <div>Div 1.
+        <div>Div 2.</div>
+    </div>
+</section>
+<div>Div 3.</div>
+```
+<div class='center'>CSS</div>
+
+```css
+div { background-color: green; }
+section div { background-color: yellow; }
+```    
+</div>
+<div class='pure-u-1-2'>
+Résultat:
+<div class='resultat r1'>
+    <style>
+        .r1 div { background-color: green;}
+        .r1 section div { background-color: yellow; }
+    </style>
+    <section>
+        <div>Div 1.
+        <div>Div 2.</div>
         </div>
-        <span>Span 3.</span>
-        ```
+    </section>
+    <div>Div 3.</div>
+</div>   
+</div>
+</div>
 
 ---
 # Sélecteurs hiérarchiques
@@ -331,21 +351,41 @@ theme: marp
     + B est un fils (direct) de A
     + La règle s'applique à B !
 + Exemple:
-    - CSS
-    
-        ```css
-        div > span { color: yellow; }
-        ```
-    - HTML
-    
-        ```html
-        <div>
-        * <span>Span 1.
-            <span>Span 2.</span>
-        * </span>
+<div class='pure-g'>
+<div class='pure-u-1-2'>
+<div class='center'>HTML</div>
+
+```html
+<section>
+    <div>Div 1.
+        <div>Div 2.</div>
+    </div>
+</section>
+<div>Div 3.</div>
+```
+<div class='center'>CSS</div>
+
+```css
+div { background-color: green; }
+section > div { background-color: yellow; }
+```    
+</div>
+<div class='pure-u-1-2'>
+Résultat:
+<div class='resultat r2'>
+    <style>
+        .r2 div { background-color: green;}
+        .r2 .r2workaround { background-color: yellow; }
+    </style>
+    <section>
+        <div class="r2workaround">Div 1.
+            <div>Div 2.</div>
         </div>
-        <span>Span 3.</span>
-        ```
+    </section>
+    <div>Div 3.</div>
+</div>   
+</div>
+</div>
 
 ---
 # Sélecteurs hiérarchiques
@@ -354,21 +394,41 @@ theme: marp
     + B est au même niveau que A et le suit immédiatement
     + La règle s'applique à B !
 + Exemple:
-    - CSS
-    
-        ```css
-        div + span { color: yellow; }
-        ```
-    - HTML
-    
-        ```html
-        <div>
-            <span>Span 1.
-            <span>Span 2.</span>
-            </span>
+<div class='pure-g'>
+<div class='pure-u-1-2'>
+<div class='center'>HTML</div>
+
+```html
+<section>
+    <div>Div 1.
+        <div>Div 2.</div>
+    </div>
+</section>
+<div>Div 3.</div>
+```
+<div class='center'>CSS</div>
+
+```css
+div { background-color: green; }
+section + div { background-color: yellow; }
+```    
+</div>
+<div class='pure-u-1-2'>
+Résultat:
+<div class='resultat r2'>
+    <style>
+        .r2 div { background-color: green;}
+        .r2 section + div { background-color: yellow; }
+    </style>
+    <section>
+        <div>Div 1.
+            <div>Div 2.</div>
         </div>
-        *<span>Span 3.</span>
-        ```
+    </section>
+    <div>Div 3.</div>
+</div>   
+</div>
+</div>
 
 ---
 # Les sélecteurs basés attribut
@@ -505,7 +565,6 @@ p.ecole:after { content: " super cool"; color: green;}
         </style>
         <p class="exemple2">Polytech <em>est une école</em> d'ingénieurs</p>
     </p>
-
     </div>
 
 ---

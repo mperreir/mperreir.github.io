@@ -318,6 +318,7 @@ theme: marp
 
 - Richesse graphique
   - Animations, etc.
+
 - UX proche d'une application "Desktop"
   - Interface, réactivité, etc.
 - Ajout de fonctionnalités non / mal supportées par les navigateurs
