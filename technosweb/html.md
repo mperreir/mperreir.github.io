@@ -1459,9 +1459,9 @@ Exemple:
 <input type="text" id="inpChocType" 
   list="chocType">
 <datalist id="chocType">
-  <option value="blanc" >
-  <option value="lait" >
-  <option value="noir" >
+  <option value="blanc"></option>
+  <option value="lait"></option>
+  <option value="noir"></option>
 </datalist>
 ```
 
@@ -1472,13 +1472,15 @@ Résultat:
 
 <div class='resultat'>
 
+<form>
 <label for="inpChocType">Chocolats</label>
 <input type="text" id="inpChocType" list="chocType">
 <datalist id="chocType">
-  <option value="blanc" >
-<option value="lait" >
-  <option value="noir" >
+<option value="blanc"></option>
+<option value="lait"></option>
+<option value="noir"></option>
 </datalist>
+</form>
 
 </div>
 </div>
