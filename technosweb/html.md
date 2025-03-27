@@ -839,10 +839,9 @@ Dans tous les cas les listes contiennent des <span class='orange'><strong>élém
 
 - Trois types de balises nécessaires
 
-- **<span class='red'>`<dl>`</span>**: la liste de définitions**]
-  
-  - **<span class='orange'>`<dt>`</span>**: un terme à définir**]
-  - **<span class='orange'>`<dd>`</span>**: la définition du terme**]
+- **<span class='red'>`<dl>`</span>**: la liste de définitions
+  - **<span class='orange'>`<dt>`</span>**: un terme à définir
+  - **<span class='orange'>`<dd>`</span>**: la définition du terme
 
 <div class='pure-g'>
 <div class='pure-u-1-2'>

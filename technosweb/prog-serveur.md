@@ -629,11 +629,11 @@ bonjour.aspx
     
     ```javascript
     // lecture du fichier 1
-    var contenu = fs.readFileSync('/etc/hosts');
+    let contenu = fs.readFileSync('/etc/hosts');
     // on affiche ensuite son contenu dans la fenêtre de log
     console.log(contenu);
     // lecture du fichier 2
-    var contenu = fs.readFileSync('/etc/passwd');
+    let contenu = fs.readFileSync('/etc/passwd');
     // on affiche ensuite son contenu dans la fenêtre de log
     console.log(contenu);
     // puis on effectue une autre tâche
@@ -652,7 +652,7 @@ bonjour.aspx
     
     ```javascript
     // fonction d'affichage du contenu d'un fichier
-    var callback = function(err, contenu) {
+    const callback = function(err, contenu) {
       console.log(contenu);
     }
     // On demande à lire les fichiers et on passe une fonction qui sera
@@ -681,7 +681,7 @@ fs.readFile('/etc/hosts', function(err, contenu){
 est équivalent à
 
 ```javascript
-var callback = function(err, contenu) {
+const callback = function(err, contenu) {
     console.log(contenu); // on affiche le contenu du fichier
 }
 fs.readFile('/etc/hosts', callback);
@@ -704,8 +704,8 @@ fs.readFile('/etc/hosts', callback);
 serveur.js
 
 ```javascript
-var http = require('http'); // import du module http
-var server = http.createServer(function(request, response) {
+const http = require('http'); // import du module http
+const server = http.createServer(function(request, response) {
     response.writeHead(200); // code de statut HTTP
     response.write("Bonjour tout le monde !"); // contenu de la réponse
     response.end(); // on envoie la réponse
@@ -752,11 +752,11 @@ console.log('Serveur lancé sur le port 8080...');
   + Installation d'un nouveau module
       `npm install nom_du_module`
   + Importation d'un module dans une application
-      `var module = require('nom_du_module')`
+      `const module = require('nom_du_module')`
 - Toutes les **fonctionnalités internes** de NodeJS doivent être accédées via le mécanisme des modules
-  + Gestion du protocole HTTP: `var http = require('http');`
-  + Accès au système de fichier du serveur: `var fs = require('fs');`
-  + Manipulation des chaines de requête (query string): `var querystring = require('querystring');`
+  + Gestion du protocole HTTP: `const http = require('http');`
+  + Accès au système de fichier du serveur: `const fs = require('fs');`
+  + Manipulation des chaines de requête (query string): `const querystring = require('querystring');`
   + Etc.
 
 ---
@@ -766,7 +766,7 @@ console.log('Serveur lancé sur le port 8080...');
 - NodeJS propose des **fonctionnalités de bas niveau**
   + Besoin d'outils d'un peu plus haut niveau pour être productif
 - Les **frameworks** web répondent à cette problématique (dans tous les langages web)
-- **ExpressJS** est un framework web léger (minimaliste ?) pour NodeJS.red[*]
+- **ExpressJS** est un framework web léger (minimaliste ?) pour NodeJS<span class='red'>*</span>
 - Fonctionnalités:
   + Routage: quelle fonction est associée à quelle URL ?
   + Automatisation du traitement de certaines requêtes via des "Middleware"
@@ -782,8 +782,8 @@ console.log('Serveur lancé sur le port 8080...');
 # ExpressJS: exemple
 
 ```javascript
-var express = require('express'); // on charge ExpressJS
-var app = express();    // on récupère notre application
+const express = require('express'); // on charge ExpressJS
+const app = express();    // on récupère notre application
 
 // routage : une requête GET effectuée à la racine du site
 // déclenchera cette fonction
@@ -792,10 +792,10 @@ app.get('/', function (req, res) {
 });
 
 // Création du serveur web pour notre application sur le port 8080
-var server = app.listen(8080, function () {
+const server = app.listen(8080, function () {
 
-  var host = server.address().address;
-  var port = server.address().port;
+  const host = server.address().address;
+  const port = server.address().port;
 
   console.log('Application lancée à l\'adresse suivante http://%s:%s', host, port);
 
@@ -838,9 +838,10 @@ var server = app.listen(8080, function () {
   + `response.sendStatus()`: envoi du code de statut et du message correspondant
   + `response.send()`: envoi de données (chaine, objet, tableau, etc.)
   + `response.sendFile()`: envoi d'un fichier binaire
+  + `response.json()`: envoi des données au format JSON
   + `response.redirect()`: demande au client d'effectuer une redirection
   + `response.render()`: effectue le rendu d'un "template"
-  + `response.end()`: signale la fin de la réponse
+  + `response.end()`: permet de renvoyer une réponse vide (pas nécessaire sinon)
   + Etc.
 
 ---
@@ -850,8 +851,8 @@ var server = app.listen(8080, function () {
 On utilise le même fichier HTML 'mon_form.html' que précédemment
 
 ```javascript
-var app = require('express')();
-var bodyParser = require('body-parser');
+const app = require('express')();
+const bodyParser = require('body-parser');
 
 // Pour décoder un formulaire encodé avec 'application/x-www-form-urlencoded'
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -918,14 +919,14 @@ users.html
 server.js
 
 ```javascript
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 // On charge et on déclare EJS comme moteur de template
 app.engine('.html', require('ejs').__express);
 
 // Nos utilisateurs
-var users = [
+let users = [
   { name: 'pierre', email: 'pierre@polytech.fr' },
   { name: 'paul', email: 'paul@polytech.fr' },
   { name: 'jacques', email: 'jacques@polytech.fr' }
@@ -1030,7 +1031,7 @@ index.html
 app.js
 
 ```javascript
-var app = angular.module('monAppAngular', []);
+const app = angular.module('monAppAngular', []);
 
 app.controller('MainCtrl', [
 '$scope',

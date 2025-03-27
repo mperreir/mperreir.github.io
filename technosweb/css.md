@@ -725,6 +725,7 @@ p.ecole:after { content: " super cool"; color: green;}
 ![bg w:90% right:50%](images/box-model-w3c.png "Source: http://codingdomain.com/webdevelopment/css/terminology/")
 
 <br>
+
 - Les propriétés `width` et `height` de la boite définissent la **largeur du contenu**
 
 - **Taille de la boite** = taille du contenu + espacement + bordure + marge

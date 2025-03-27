@@ -267,7 +267,7 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 
 # La définition du W3C
 
-> Un service web est un **système logiciel** identifié par **un URI**, dont les interfaces publiques et les « bindings » sont définies et décrites en **XML**.red[*]. Sa définition peut être **découverte** [dynamiquement] par d’autres **systèmes logiciels**. Ces autres systèmes peuvent ensuite interagir avec le service web d’une façon décrite par sa définition, en utilisant des **messages XML** transportés par des **protocoles Internet**]
+> Un service web est un **système logiciel** identifié par **un URI**, dont les interfaces publiques et les « bindings » sont définies et décrites en **XML**<span class='red'>*</span>. Sa définition peut être **découverte** [dynamiquement] par d’autres **systèmes logiciels**. Ces autres systèmes peuvent ensuite interagir avec le service web d’une façon décrite par sa définition, en utilisant des **messages XML** transportés par des **protocoles Internet**]
 
 <!-- _footer: <span class='red'>*</span> Le W3C met en avant XML comme langage de description (à différents niveaux). Mais ce n'est pas le seul moyen (standard) de communication... -->
 
@@ -278,10 +278,10 @@ public class StatefulSessionBeanImpl implements StatefulSessionBean {
 - Nombreuses **API** disponibles sur le web
   
   + Google: https://developers.google.com/apis-explorer (REST)
-  + Twitter: https://dev.twitter.com/ (REST)
+  + X: https://docs.x.com/x-api/ (REST)
   + Facebook: https://developers.facebook.com/ (REST)
-  + Paypal: https://developer.paypal.com (SOAP)
-  + Viamichelin: http://dev.viamichelin.fr/presentation-soap.html (SOAP)
+  + Paypal: https://developer.paypal.com/api/rest/ (REST)
+  + Salesforce: https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/ (SOAP)
 
 - Accès à ces API via les protocoles de service web (SOAP, REST, etc.)
 
