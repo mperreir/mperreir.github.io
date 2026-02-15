@@ -768,10 +768,10 @@ Résultat:
 
 <div class='resultat'>
 
-<div id="conteneur" style="border: 1px solid grey;">
-<div id="d1" style="font-size: 12pt; height:5ex; background-color:green; color:white">div1</div>
-<div id="d2" style="font-size: 12pt; height:5ex; background-color:yellow;">div2</div>
-<div id="d3" style="font-size: 12pt; height:5ex; background-color:red; color:white">div3</div>
+<div id="conteneur" style="border: 1px solid grey; font-size: 12pt">
+<div id="d1" style="height:5ex; background-color:green; color:white">div1</div>
+<div id="d2" style="height:5ex; background-color:yellow;">div2</div>
+<div id="d3" style="height:5ex; background-color:red; color:white">div3</div>
 </div>
 
 </div>
@@ -808,16 +808,16 @@ Résultat (2 exemples):
 
 <div class='resultat'>
 
-<div id="conteneur" style="border: 1px solid grey;">
-<div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; display:none;">div1</div>
-<div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;  display: inline-block;">div2</div>
-<div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;  display: inline-block;">div3</div>
+<div id="conteneur" style="border: 1px solid grey; font-size: 12pt">
+<div id="d1" style="width:5em; height:5ex; background-color:green; color:white; display:none;">div1</div>
+<div id="d2" style="width:5em; height:5ex; background-color:yellow;  display: inline-block;">div2</div>
+<div id="d3" style="width:5em; height:5ex; background-color:red; color:white;  display: inline-block;">div3</div>
 </div>
 <br>
-<div id="conteneur" style="border: 1px solid grey; width: 6em;">
-<div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; display:none;">div1</div>
-<div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;  display: inline-block;">div2</div>
-<div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;  display: inline-block;">div3</div>
+<div id="conteneur" style="border: 1px solid grey; width: 6em; font-size: 12pt">
+<div id="d1" style="width:5em; height:5ex; background-color:green; color:white; display:none;">div1</div>
+<div id="d2" style="width:5em; height:5ex; background-color:yellow;  display: inline-block;">div2</div>
+<div id="d3" style="width:5em; height:5ex; background-color:red; color:white;  display: inline-block;">div3</div>
 </div>
 
 </div>
@@ -854,10 +854,10 @@ Résultat:
 
 <div class='resultat'>
 
-<div id="conteneur" style="border: 1px solid grey;">
-    <div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: relative; top:1em; left: 1em;">div1</div>
-    <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
-    <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white; position: fixed; top: 1em; right: 1em;">div3</div>
+<div id="conteneur" style="border: 1px solid grey; font-size: 12pt">
+    <div id="d1" style="width:5em; height:5ex; background-color:green; color:white; position: relative; top:1em; left: 1em;">div1</div>
+    <div id="d2" style="width:5em; height:5ex; background-color:yellow;">div2</div>
+    <div id="d3" style="width:5em; height:5ex; background-color:red; color:white; position: fixed; top: 1em; right: 1em;">div3</div>
 </div>
 
 </div>
@@ -876,10 +876,10 @@ Résultat:
 
 <div class='resultat'>
 
-<div id="conteneur" style="position: relative; border: 1px solid grey;">
-    <div id="d1" style="font-size: 12pt; width:5em; height:5ex; background-color:green; color:white; position: absolute; top:-1em; left: 1em;">div1</div>
-    <div id="d2" style="font-size: 12pt; width:5em; height:5ex; background-color:yellow;">div2</div>
-    <div id="d3" style="font-size: 12pt; width:5em; height:5ex; background-color:red; color:white;">div3</div>
+<div id="conteneur" style="position: relative; border: 1px solid grey; font-size: 12pt">
+    <div id="d1" style="width:5em; height:5ex; background-color:green; color:white; position: absolute; top:-1em; left: 1em;">div1</div>
+    <div id="d2" style="width:5em; height:5ex; background-color:yellow;">div2</div>
+    <div id="d3" style="width:5em; height:5ex; background-color:red; color:white;">div3</div>
 </div>
 
 </div>
