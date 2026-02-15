@@ -942,7 +942,7 @@ Résultat:
 - Par défaut les éléments peuvent dépasser du conteneur. `flex-wrap: wrap` permet d'aller à la ligne automatiquement.
 - **L'alignement** des éléments du conteneur sur l'**axe principal** s'ajuste avec `justify-content` (ex: `center` ou `space-between`)
 - **L'alignement** des éléments du conteneur sur l'**axe secondaire** s'ajuste avec `align-items` (ex: `center` ou `stretch`)
-- S'il y a **plusieurs lignes** d'éléments (à cause de wrap) leur **alignement** est géré pas `align-content` (ex: `center` ou `stretch`)
+- S'il y a **plusieurs lignes** d'éléments (à cause de wrap) leur **alignement** est géré par `align-content` (ex: `center` ou `stretch`)
 
 
 ---
@@ -964,7 +964,7 @@ Résultat:
 ---
 # Expérimenter avec `flex`
 
-[![center h:20em](images/Flexbox-playground.png "Source: https://medium.com/@daniaherrera/getting-started-css-grid-vs-flexbox-b3012fce6476")](https://flexbox.tech)
+[![center h:20em](images/Flexbox-playground2.png "Source: https://medium.com/@daniaherrera/getting-started-css-grid-vs-flexbox-b3012fce6476")](https://codepen.io/enxaneta/full/adLPwv/)
 
 ---
 # Les conteneurs `display:grid`
@@ -984,7 +984,7 @@ Résultat:
 - S'il est nécessaire de sortir un élément du flux
     + J'utilise la propriété `position` (généralement avec la valeur `absolute`)
 
-- Si les éléments doivent pouvoir se repositionner en fonction de l'espace disponible dans leur conteneur : utiliser `display: inline-block` (pour l'élément) ou `display: flex` (pour le conteneur)
+- Pour Renvoyer à la ligne automatiquement les éléments d'un conteneur : **utiliser `display: flex` + `flex-wrap: wrap`** (pour le conteneur) ou `display: inline-block` (pour l'élément)
 	+ Mais pas les deux !!!
 
 ---
