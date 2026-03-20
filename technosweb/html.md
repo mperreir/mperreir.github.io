@@ -531,6 +531,7 @@ Résultat:
 <div class='resultat'>
 
 <div style="background:yellow;">Une boite jaune</div>
+
 <div style="background:green;">Une boite verte</div>
 </div>
 
@@ -552,11 +553,8 @@ Résultat:
 Résultat:
 
 <div class='resultat'><div></div>
-
 <span style="background:yellow;">Une boite jaune</span>
 <span style="background:green;">Une boite verte</span>
-
-
 </div>
 </div>
 
