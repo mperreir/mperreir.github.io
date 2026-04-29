@@ -48,7 +48,7 @@ theme: marp
   + Pas de code de retour ou de type de fichiers : ne sait renvoyer que du `text/plain`
 
 - **1996**: HTTP/1.0 ([RFC 1945](https://www.ietf.org/rfc/rfc1945.txt))
-  + **Nouvelles métodes** de communication (POST, PUT, etc.)
+  + **Nouvelles méthodes** de communication (POST, PUT, etc.)
   + Entêtes, types MIME, authentification, etc.
 
 - **1997**: HTTP/1.1 ([RFC 2068](https://www.ietf.org/rfc/rfc2068.txt))
