@@ -460,13 +460,13 @@ Résultat:
         div[class~='maClasse']  { color: yellow; }
         ```
 
-- `A[attr^="val"]`: **La valeur** de l'attribut `attr` **commence par** `val`
+- `A[attr|="val"]`: **La valeur** de l'attribut `attr` **commence par** `val` **suivi d'un tiret**
     + Exemple:
     
         ```css
-        /* tous les <input> dont l'attribut 'id' commence par 'btn' */
-        /* Exemple: 'btn1', 'btn5', etc. */
-        input[id^='btn']  { color: white; }
+        /* tous les <div> dont l'attribut 'lang' vaut 'fr' ou commence par 'fr-' */
+        /* Exemple: 'fr', 'fr-FR', etc. */
+        div[lang|='fr']  { color: white; }
         ```
 
 ---

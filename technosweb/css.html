@@ -613,13 +613,13 @@ Résultat:
 </ul>
 </li>
 <li>
-<p><code>A[attr^=&quot;val&quot;]</code>: <strong>La valeur</strong> de l'attribut <code>attr</code> <strong>commence par</strong> <code>val</code></p>
+<p><code>A[attr|=&quot;val&quot;]</code>: <strong>La valeur</strong> de l'attribut <code>attr</code> <strong>commence par</strong> <code>val</code> <strong>suivi d'un tiret</strong></p>
 <ul>
 <li>
 <p>Exemple:</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-css"><span class="hljs-comment">/* tous les &lt;input&gt; dont l&#x27;attribut &#x27;id&#x27; commence par &#x27;btn&#x27; */</span>
-<span class="hljs-comment">/* Exemple: &#x27;btn1&#x27;, &#x27;btn5&#x27;, etc. */</span>
-<span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[id^=<span class="hljs-string">&#x27;btn&#x27;</span>]</span>  { <span class="hljs-attribute">color</span>: white; }
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-css"><span class="hljs-comment">/* tous les &lt;div&gt; dont l&#x27;attribut &#x27;lang&#x27; vaut &#x27;fr&#x27; ou commence par &#x27;fr-&#x27; */</span>
+<span class="hljs-comment">/* Exemple: &#x27;fr&#x27;, &#x27;fr-FR&#x27;, etc. */</span>
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-attr">[lang|=<span class="hljs-string">&#x27;fr&#x27;</span>]</span>  { <span class="hljs-attribute">color</span>: white; }
 </code></pre>
 </li>
 </ul>
