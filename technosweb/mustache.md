@@ -104,7 +104,7 @@ HTML
 <html lang="fr">
 <head>
     <!-- Chargement de mustache -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.js"defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.js" defer></script>
    <!-- et de notre scipt principal -->
    <script src="js/main.js" defer></script>
 </head>
@@ -133,20 +133,22 @@ Javascript
 ```javascript
 'use strict';
 // on définit nos données (normalement chargées depuis un serveur)
-let people = {
-    "name": {
+let people = [
+    {
+      "name": {
         "first": "Michael",
         "last": "Jackson"
       },
       "age": "RIP"
     },
     {
-    "name": {
+      "name": {
         "first": "Toto",
         "last": "Le héro"
       },
       "age": "12 ans"
-    };
+    }
+];
 
 // rendu du template
 const template = document.querySelector('#main-template').innerHTML;

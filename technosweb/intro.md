@@ -71,7 +71,7 @@ theme: marp
   - l'Internet = interconnexion de dizaines de milliers de réseaux autonomes
     - Différents protocoles de communication : IP, TCP, DNS, FTP, HTTP, Telnet, etc.
   - le Web = un système hypertexte public fonctionnant sur l'Internet
-    - Deux protocoles principaux : HTTP et WebSocket
+    - Protocole principal : HTTP (WebSocket est un complément d'HTTP)
     - Et d'autres : Ethernet, IP, TCP, UDP, FTP, etc.
 
 - Permet de mettre des <span class='green'>ressources</span> à disposition des utilisateurs
@@ -102,7 +102,7 @@ theme: marp
 - World Wide Web consortium (http://www.w3.org/)
   - Fondé en 1994
   - Président : Tim Berners-Lee (ancien du CERN)
-  - 384 membres (dont Microsoft, Mozilla, Apple, Opera, Google, etc.)
+  - Plus de 330 organisations membres (2026), dont Microsoft, Mozilla, Apple, Google
 
 - Objectif : créer et promouvoir les standards du web
 
@@ -125,7 +125,6 @@ theme: marp
 - Outils de validation (gratuits)
   - HTML: http://validator.w3.org/
   - CSS: http://jigsaw.w3.org/css-validator/
-  - Mobile-friendly:  http://validator.w3.org/mobile/
 
 <!-- _footer: <span class='red'>*</span> Aller regarder un standard -->
 
@@ -138,14 +137,16 @@ theme: marp
 ![bg w:70% right:25%](images/WSaP_logo.png "Source: http://en.wikipedia.org/wiki/Web_Standards_Project")
 
 - Web Standards Project (http://www.webstandards.org/)
-  - Fondé en 1998
+  - Fondé en 1998, arrêté en 2011
 
 - Objectif : respect des standards par les navigateurs
 
 - Les outils du WaSP
-  - ACID test (actuellement ACID3)
+  - ACID test (dernier en date : ACID3)
     - http://www.acidtests.org/
   - Évalue : HTML, DOM, CSS, SVG, ECMAScript (JavaScript)
+
+<!-- _footer: <span class='red'>*</span> ACID3 est une démo historique (tests actuels : <a href='https://github.com/web-platform-tests/wpt'>Web Platform Tests)</a> -->
 
 ---
 
@@ -162,7 +163,7 @@ theme: marp
 - Certaines RFC sont des standards (liste dans [RFC 5000](https://www.ietf.org/rfc/rfc5000.txt))
   - UTF-8: [RFC 3629](https://www.ietf.org/rfc/rfc3629.txt)
   - MIME: [RFC 2045](https://www.ietf.org/rfc/rfc2045.txt)
-  - HTTP: [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)
+  - HTTP: [RFC 9110](https://datatracker.ietf.org/doc/html/rfc9110) (sémantique) et [RFC 9111](https://datatracker.ietf.org/doc/html/rfc9111) (cache)
   - etc.
 
 ---

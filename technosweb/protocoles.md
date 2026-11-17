@@ -67,6 +67,7 @@ theme: marp
   + Passage des serveurs proxy facilité
 
 - **2014**: **Clarification** de HTTP/1.1 ([RFCs 7230](https://www.ietf.org/rfc/rfc7230.txt)-[7237](https://www.ietf.org/rfc/rfc7237.txt))
+  + remplacées en 2022 par les [RFC 9110](https://datatracker.ietf.org/doc/html/rfc9110) et [RFC 9111](https://datatracker.ietf.org/doc/html/rfc9111)
 
 - **2015**: HTTP/2 ([RFC 7540](https://tools.ietf.org/html/rfc7540))
   + Objectif principal: **accélérer le web** (dérivé de google SPDY) via le multiplexage des requêtes
@@ -237,7 +238,7 @@ Accept-Ranges: bytes
 
 | ,   | /   | :   | ;   | =   | ?   | @   | [   | ]   |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| %2C | %2F | %3A | %3B | %3C | %3F | %40 | %5B | %5D |
+| %2C | %2F | %3A | %3B | %3D | %3F | %40 | %5B | %5D |
 
 ---
 
@@ -497,8 +498,7 @@ Pour tous les entêtes de type `Accept`, on peut spécifier une préférence `q`
   
   + Entête `Set-Cookie` envoyé par le serveur pour stocker des informations sur le client
   + Entête `Cookie` utilisé par le client pour renvoyer vers le serveur les informations stockées précédemment
-  + Taille d'un cookie limitée à 4096 octets
-  + Max 50 cookies par domaine (site web)
+  + Ordre de grandeur : 4 ko par cookie, quelques dizaines par domaine (limites des premiers navigateurs, pas la spécification)
   + Les cookies ont une date d'expiration
 
 ---

@@ -70,7 +70,7 @@ theme: marp
 
   para.textContent = 'Un petit texte sympa.';
   // ou
-  para.innerHTLM = '<a href="#">Un lien</a>';
+  para.innerHTML = '<a href="#">Un lien</a>';
   ```
 
 ---

@@ -401,7 +401,7 @@ JSON
 
   + **Encodage** des messages via **XML** dans le **corps de la requête**
     - Un seul élément `<methodCall>` par requête
-    - L'élément fils `<methodName> définit la méthode à appeler`
+    - L'élément fils `<methodName>` définit la méthode à appeler
     - Les paramètres sont passés dans l'élément `<params>` via des balises `<param>`
 
   + On peut passer en **paramètre / résultat**
@@ -447,8 +447,7 @@ Content-length: 181
 
 <?xml version="1.0"?>
 <methodCall>
-   <methodName>example.doubleUnEntier
-   </methodName>
+   <methodName>example.doubleUnEntier</methodName>
    <params>
       <param>
          <value><int>41</int></value>
@@ -641,7 +640,7 @@ Réponse: la valeur de l'entier doublé...
    xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"
    xmlns:xsd="http://www.w3.org/1999/XMLSchema">
     <SOAP-ENV:Body>
-        <ns1:doublerUnEntierRep
+        <ns1:doublerUnEntierResp
          xmlns:ns1="urn:MonServiceSOAP"
          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
             <return xsi:type="xsd:int">2048</return>
@@ -699,7 +698,7 @@ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 ```xml
     <binding name="CalculerSoapBinding" type="impl:Calculer">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
-        <operation name="additionner">
+        <operation name="doublerUnEntier">
             <soap:operation soapAction="" />
                 <input name="doublerUnEntierReq">
                     <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
@@ -1051,7 +1050,7 @@ Exemple JSON
   + REST: **s'adapte** aux capacités du client (négociation de contenu)
   + WSDL: **définit finement** les formats des données échangées
 - Documentation :
-  + REST : **pas de norme**, mais [possible depuis WSDL 2.0](https://www.ibm.com/developerworks/library/ws-restwsdl/)
+  + REST : **pas de norme d'échange**, description par [OpenAPI](https://spec.openapis.org/oas/latest.html)
   + WSDL : **définit finement** (mais verbeusement) les échanges
 
 ---
@@ -1062,7 +1061,7 @@ Exemple JSON
 | --------------------------------------- | --------------------------------------- |
 | Suppose une communication point à point | Gère les environnements distribués      |
 | Ne nécessite qu'un serveur HTTP         | Nécessite des outils / middleware       |
-| Pas de description des services         | WSDL                                    |
+| Pas de description des services         | WSDL (côté REST : OpenAPI)              |
 | Ne fonctionne que via HTTP              | Différents types de transport possibles |
 | Peu verbeux                             | Très verbeux                            |
 | Pas Standard                            | Standard                                |

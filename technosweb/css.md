@@ -325,7 +325,7 @@ theme: marp
 ```css
 div { background-color: whitesmoke; }
 section div { background-color: yellow; }
-```    
+```
 </div>
 <div class='pure-u-1-2'>
 Résultat:
@@ -368,7 +368,7 @@ Résultat:
 ```css
 div { background-color: whitesmoke; }
 section > div { background-color: yellow; }
-```    
+```
 </div>
 <div class='pure-u-1-2'>
 Résultat:
@@ -411,7 +411,7 @@ Résultat:
 ```css
 div { background-color: whitesmoke; }
 section + div { background-color: yellow; }
-```    
+```
 </div>
 <div class='pure-u-1-2'>
 Résultat:
@@ -460,13 +460,13 @@ Résultat:
         div[class~='maClasse']  { color: yellow; }
         ```
 
-- `A[attr|="val"]`: **La valeur** de l'attribut `attr` de l'élément **commence par** `val`
+- `A[attr^="val"]`: **La valeur** de l'attribut `attr` **commence par** `val`
     + Exemple:
     
         ```css
         /* tous les <input> dont l'attribut 'id' commence par 'btn' */
         /* Exemple: 'btn1', 'btn5', etc. */
-        input[id|='btn']  { color: white; }
+        input[id^='btn']  { color: white; }
         ```
 
 ---
@@ -496,11 +496,11 @@ Résultat:
 
     + `:first-line`: la première ligne
 
-    + `:first-letter`: la dernière ligne
+    + `:first-letter`: la première lettre
 
     + `:before`: s'utilise avec la propriété `content` afin d'ajouter du contenu avant un élément
 
-    + `:after`: s'utilise avec la propriété `content` afin d'ajouter du contenu avant un élément
+    + `:after`: s'utilise avec la propriété `content` afin d'ajouter du contenu après un élément
 
 <!-- _footer: <span class='red'>*</span> Les pseudo éléments sont écrits précédés d'un `::` en CSS 3 afin de les différencier des pseudo-classes (ex:`::after`) -->
 
@@ -536,6 +536,8 @@ p.ecole:after { content: " super cool"; color: green;}
 
 </div>
 
+<!-- `scoped` : fonctionnalité de style scopé de Marp (les règles restent dans la slide), pas un attribut HTML -->
+
 ---
 # L'héritage
 - Un élément HTML **peut hériter** des propriétés **de ses parents**
@@ -549,7 +551,7 @@ p.ecole:after { content: " super cool"; color: green;}
     ```
 
     CSS
-   
+
     ```css
     p { color: red; 
 	    border: medium solid; }
@@ -700,7 +702,7 @@ p.ecole:after { content: " super cool"; color: green;}
         background-position: top right;}
     ```
     devient
-   
+
     ```css
     div { background: #000 url(images/bg.gif) no-repeat top right; }
     ```
@@ -791,7 +793,7 @@ Résultat:
     - `inline`: éléments **en ligne**, les uns à coté des autres
     - `block`: éléments **bloc**, les uns en dessous des autres
     - `inline-block`: éléments **bloc**, les uns à coté des autres
-    - `flex`, `flow`, `grid` : définit le comportement des **enfants du bloc**
+    - `flex`, `grid` : définit le comportement des **enfants du bloc**
 
 </div>
 <div class='pure-u-1-3'>
@@ -998,16 +1000,15 @@ Résultat:
         - `$=`: la valeur de l'attribut finit exactement par
         - `*=`: la valeur de l'attribut comporte au moins une fois
     + Des pseudo-classes
-        - Exemple: `:root`, `nth-child()`, `contains()`)
+        - Exemple: `:root`, `:nth-child()`, `:has()`
     + Des pseudo-éléments
         - Les mêmes qu'en CSS 2.1 mais précédés de `::`
-
 - Cf. la norme du module CSS [Selector Level 3](http://www.w3.org/TR/css3-selectors/)
 
 ---
 # Quelques nouvelles propriétés CSS 3/4
 
-- **Transparence**: fonctions `rbga()` et `hsla()`, propriété `opacity`
+- **Transparence**: fonctions `rgba()` et `hsla()`, propriété `opacity`
 - **Bordures** (couleurs différentes, images): `border-image`
 - **Angles arrondis**: `border-radius`
 - **Fonds** (background) **multiples**
@@ -1051,16 +1052,10 @@ Résultat:
 - Optimiser l'affichage pour les mobiles : [le viewport](http://www.alsacreations.com/article/lire/1490-comprendre-le-viewport-dans-le-web-mobile.html)
   
     ```html
-    <!-- propriété non standardisée... (origine : Apple) -->
+    <!-- balise non standardisée... (origine : Apple), mais comprise par tous les navigateurs -->
     <meta name=viewport content="width=device-width, initial-scale=1">
     ```
-    et / ou règle CSS 3 `@viewport`
-   
-    ```css
-    @viewport {
-        width: device-width;
-        zoom: 1; }
-    ```
+    <!-- La règle CSS `@viewport` correspondante n'a jamais été implémentée, elle a été retirée des spécifications -->
 
 - Typographie et `rem` (CSS 3)
     + `em` spécifie une taille de police relative à celle du parent
@@ -1068,15 +1063,15 @@ Résultat:
 
 ---
 # Les frameworks responsive
-- [Bootstrap](http://getbootstrap.com/),  [Foundation](http://foundation.zurb.com/), etc.
+- [Bootstrap](https://getbootstrap.com/),  [Foundation](https://get.foundation/), etc.
 - Principe
     + Mise en page à partir d'une grille à 12 colonnes
 - Un utilise des **classes** afin
     + D'organiser les différents blocs en lignes (`row`) et colonnes (`col`)
     + Spécifier combien de colonnes prend chaque élement sur différentes tailles d'écran
-        + Ex de classes bootstrap: `col-xs-*`, `col-sm-*` , `col-md-*`, `col-lg-*`
+        + Ex de classes bootstrap: `col-sm-*`, `col-md-*`, `col-lg-*`, `col-xl-*`
 
-- **Exemples** [sur le site de bootstrap](https://getbootstrap.com/docs/3.4/examples/grid/)
+- **Exemples** [sur le site de bootstrap](https://getbootstrap.com/docs/5.3/layout/grid/)
 
 ---
 # Plus loin que le CSS

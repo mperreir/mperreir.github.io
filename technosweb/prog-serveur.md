@@ -40,15 +40,17 @@ theme: marp
 
 # Serveurs web généralistes
 
-- **Apache**: serveur open source de référence (23% des sites<span class='red'>*</span>). Existe depuis 1995
+- **Cloudflare Server**: serveur des infrastructures Cloudflare, désormais le plus déployé (35 % des sites<span class='red'>*</span>)
 
-- **IIS**: Le serveur Web fournit par Microsoft pour la plateforme NT (4% des sites). Seule solution pour faire fonctionner les solutions Microsoft (ASP / ASP.Net). Existe depuis 1994
+- **Nginx**: serveur **asynchrone** open source Russe (30 % des sites). Existe depuis 2002
 
-- **Nginx**: serveur **asynchrone** open source Russe (31% des sites). Existe depuis 2002
+- **Apache**: serveur open source historique (21 % des sites). Existe depuis 1995
 
-- **Google Web Server**: version modifiée d'Apache. Code non public, uniquement utilisé par Google. (4% des sites)
+- **LiteSpeed**: serveur commercial, très présent dans l'hébergement mutualisé (13 % des sites)
 
-<!-- _footer: <span class='red'>*</span> Source: [étude Netcraft](https://news.netcraft.com/archives/2022/03/29/march-2022-web-server-survey.html) mars 2022 -->
+- **Node.js** (7,8 %) et **IIS** (2,8 %) suivent. IIS est la seule solution pour faire tourner ASP / ASP.Net
+
+<!-- _footer: <span class='red'>*</span> Source: [W3Techs](https://w3techs.com/technologies/overview/web_server), 17 novembre 2026 -->
 
 ---
 
@@ -75,11 +77,13 @@ theme: marp
 - **Chaque répertoire** peut avoir son fichier `.htaccess`
 - On peut **autoriser / interdire** l'accès
 
-  ```bash
-  order deny,allow
-  allow from univ-nantes.fr # l'accès à partir de l'université est permis
-  deny from all            # mais est interdit pour les autres
+  ```apache
+  # Apache 2.4 : tout ce qui n'est pas explicitement autorisé est refusé
+  Require host univ-nantes.fr   # accès permis à partir de l'université
   ```
+
+  <!-- L'ancienne syntaxe `order deny,allow` + `allow from` + `deny from all` est celle d'Apache 2.2, série stoppée en 2017 -->
+
 
 - On peut **protéger** un répertoire par **mot de passe**
 
@@ -242,13 +246,13 @@ echo "</body></html>"
 def dynamic_app(environ, start_response):
     headers = [("Content-Type", "text/plain")]
 
-    if environ['REQUEST_METHOD'] == “GET”:
+    if environ['REQUEST_METHOD'] == "GET":
         status = "200 OK"
         body = "Hello world!"
     else:
         status = "405 Method Not Allowed"
         body = "What are you trying to do?"
-        headers.append((“Allow”, “GET”))
+        headers.append(("Allow", "GET"))
 
     headers.append(("Content-Length", str(len(body))))
     start_response(status, headers)
@@ -375,7 +379,7 @@ public class InfoServlet extends HttpServlet {
 
 - Langage **interprété**, **faiblement typé**, créé en 1994 par Rasmus Lerdorf
 
-- Version actuelle : 8.1 (version 5.x de 2004 à fin 2018!)
+- Version actuelle : 8.5 (version 5.x de 2004 à fin 2018 !)
 
 - Doit être **intégré à un serveur web** (ex: Apache via mod_php)
 
@@ -430,7 +434,7 @@ bonjour.php
 ```php
 <html>
     <body>
-        Bonjour <?php echo $_POST["name"]; ?><br>
+        Bonjour <?php echo $_POST["nom"]; ?><br>
         Ton adresse mail est: <?= $_POST["email"] ?><br>
         Ton navigateur est: <?php echo $_SERVER["HTTP_USER_AGENT"] ?>
     </body>
@@ -450,13 +454,13 @@ bonjour.php
     $out = "";
 
     // On génère le code de la réponse à la requête POST
-    $out += "<html>";
-    $out += "<body>";
-    $out += "Bonjour " . $_POST["name"] . "<br>";
-    $out += "Ton adresse mail est: " . $_POST["email"] . "<br>";
-    $out += "Ton navigateur est: " . $_SERVER["HTTP_USER_AGENT"];
-    $out += "</body>";
-    $out += "</html>";
+    $out .= "<html>";
+    $out .= "<body>";
+    $out .= "Bonjour " . $_POST["nom"] . "<br>";
+    $out .= "Ton adresse mail est: " . $_POST["email"] . "<br>";
+    $out .= "Ton navigateur est: " . $_SERVER["HTTP_USER_AGENT"];
+    $out .= "</body>";
+    $out .= "</html>";
 
     // on renvoie le code HTML au serveur web
     echo $out;
@@ -488,7 +492,7 @@ mon_form.html
 ```html
 <html>
     <body>
-        <form action="bonjour.php" method="post">
+        <form action="bonjour.asp" method="post">
             <p>Nom: <input type="text" name="nom"></p>
             <p>Mail: <input type="email" name="email"></p>
             <input type="submit">
@@ -502,9 +506,9 @@ bonjour.asp
 ```vbscript-html
 <html>
     <body>
-        Bonjour <% Response.write(Request.Form("nom") %><br>
-        Ton adresse mail est: <% Response.Write(Request.Form("email") %><br>
-        Ton navigateur est: <% Response.write(Request.ServerVariables("http_user_agent") %>
+        Bonjour <% Response.Write(Request.Form("nom")) %><br>
+        Ton adresse mail est: <% Response.Write(Request.Form("email")) %><br>
+        Ton navigateur est: <% Response.Write(Request.ServerVariables("http_user_agent")) %>
     </body>
 </html>
 ```
@@ -535,7 +539,7 @@ mon_form.html
 ```html
 <html>
     <body>
-        <form action="bonjour.php" method="post">
+        <form action="bonjour.cshtml" method="post">
             <p>Nom: <input type="text" name="nom"></p>
             <p>Mail: <input type="email" name="email"></p>
             <input type="submit">
@@ -544,7 +548,7 @@ mon_form.html
 </html>
 ```
 
-bonjour.aspx
+bonjour.cshtml
 
 ```cs-html
 <html>
@@ -819,7 +823,7 @@ const server = app.listen(8080, function () {
   }, function (req, res) {
       res.send('Vous êtes dans B!');
   });
-
+  
   // fonctionnera pour "polytech", "polyjoule", "polyson", etc.
   app.get(/^poly.*/, function(req, res) {
     res.send('Poly quelque chose !');
@@ -832,7 +836,7 @@ const server = app.listen(8080, function () {
 
 - Objet `request` (1er paramètre du callback d'une route)
   + Accès aux **entêtes HTTP** (Ex: `request.body`, `request.cookies`, etc.)
-  + Nécessité d'un module externe (`body-parser`) pour décoder le **corps des requêtes** POST
+  + Le corps des requêtes POST se décode avec `express.urlencoded()` (formulaire) et `express.json()` (JSON), intégrés depuis Express 4.16
 
 - Objet `response` (2nd paramètre du callback d'une route)
   + `response.sendStatus()`: envoi du code de statut et du message correspondant
@@ -851,11 +855,11 @@ const server = app.listen(8080, function () {
 On utilise le même fichier HTML 'mon_form.html' que précédemment
 
 ```javascript
-const app = require('express')();
-const bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
 
 // Pour décoder un formulaire encodé avec 'application/x-www-form-urlencoded'
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // Une route pour gérer les requêtes POST à la racine du site
 app.post('/', function (req, res) {
@@ -872,14 +876,14 @@ app.listen(8080);
 
 ---
 
-# Nodejs: template (jade, ejs, etc.)
+# Nodejs: template (pug, ejs, etc.)
 
 - On aimerait pouvoir séparer code HTML du code JavaScript (comme en PHP, JSP)...
 
 - C'est le rôle des **moteurs de template**:
   
-  + [Jade](http://jade-lang.com/): permet de générer du HTML à partir d'un dialecte allégé (ex: `h1` à la place de `<h1>`), mais paramétrable (boucles, variables, etc.)
-  + [EJS](http://www.embeddedjs.com/): Extension de HTML pour permettre d'enrichir le code HTML via du code JavaScript. Syntaxe proche de celle de JSP
+  + [Pug](https://pugjs.org) (anciennement Jade) : permet de générer du HTML à partir d'un dialecte allégé (ex: `h1` à la place de `<h1>`), mais paramétrable (boucles, variables, etc.)
+  + [EJS](https://embeddedjs.com/): Extension de HTML pour permettre d'enrichir le code HTML via du code JavaScript. Syntaxe proche de celle de JSP
   + Et bien d'autres (Hogan.js, DoT.js, [Mustache.js](https://github.com/janl/mustache.js/), Handlebars.js, etc.)
 
 - On peut utiliser les templates avec NodeJS seul ou avec NodeJS+ExpressJS (plus simple)
@@ -954,7 +958,7 @@ app.listen(8080);
 
 - On crée ensuite un **squelette d'application** avec la commande: `$ express [options] nom_de_l_appli`
   
-  + Exemple: Application avec moteur de template Jade (par défaut)
+  + Exemple: Application avec moteur de template Pug (par défaut)
       `$ express monAppli`
   + Exemple: Application avec moteur de template EJS
       `$ express --ejs monAppli`
@@ -980,18 +984,17 @@ app.listen(8080);
   + De multiples langages (Javascript / PHP / MySQL)
   + Technologies matures
 
-- **MEAN** = MongoDB + ExpressJS + AngularJS + Nodejs
-  
+- **MEAN** = MongoDB + ExpressJS + AngularJS + Nodejs (pile historique)
   + Serveur web mono-thread asynchrone
   + Base de données orientée document (NoSQL)
   + Un seul langages (Javascript)
-  + Technologies encore jeunes
+  + Technologies encore "jeunes"
 
 ---
 
 # Client side frameworks
 
-## [AngularJS](https://angularjs.org)
+## [AngularJS](https://angularjs.org) (remplacé par [Angular](https://angular.io))
 
 - Framework développé par Google pour le développement d'applications "Single Page"
 - **Déporte** une grande partie des actions généralement effectuées sur le serveur **vers le client**
@@ -1004,7 +1007,7 @@ app.listen(8080);
   + Vue: Le code HTML mis à jour par AngularJS
   + Contrôleur: JavaScript permet de mettre à jour la vue en fonction des données du modèle
 
-<!-- _footer: <span class='red'>*</span> Ils existe de nombreux autres frameworks : [Vuejs](https://vuejs.org), [Reactjs](https://fr.reactjs.org), [Angular](https://angular.io), [Svelte](https://svelte.dev), etc. -->
+<!-- _footer: <span class='red'>*</span> Il existe de nombreux autres frameworks : [Vue](https://vuejs.org), [React](https://react.dev), [Angular](https://angular.io), [Svelte](https://svelte.dev), etc. -->
 
 ---
 
@@ -1068,7 +1071,7 @@ function($scope){
 
   + Développées initialement pour gérer les très **grandes quantités de données** des géants d'internet
   + Quelques bases NoSQL:
-    - MongoDB (Sourceforge), CouchDB, BigTable (Google), HBase (Facebook), Cassandra (Twitter), SimpleDB (Amazon)
+    - MongoDB (MongoDB Inc.), CouchDB, BigTable (Google), HBase (Facebook), Cassandra (Apache Foundation), SimpleDB (Amazon)
 
 ---
 
@@ -1145,8 +1148,6 @@ function($scope){
 - Les tutoriels NodeSchool: [http://nodeschool.io/](http://nodeschool.io/)
   
   + En particulier [learnyounode](https://github.com/workshopper/learnyounode)
-
-- Un tutoriel MEAN: [https://thinkster.io/mean-stack-tutorial/](https://thinkster.io/mean-stack-tutorial/)
 
 ---
 

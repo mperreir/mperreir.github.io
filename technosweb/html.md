@@ -223,6 +223,7 @@ devient
 - 2003 : XHTML 2 (concurrent de HTML 5)
 - 2008: HTML 5 (premier "Draft" public)
 - 2014 : [HTML 5](http://www.w3.org/TR/html5/) (standardisé)
+- Depuis 2019 : [HTML Living Standard](https://html.spec.whatwg.org/) (WHATWG), mis à jour en continu
 
 ---
 
@@ -316,10 +317,10 @@ devient
   ```html
   <!-- HTML 5 : la simplicité !-->
   <!DOCTYPE html>
-
+  
   <!-- HTML 4.01 STRICT (existe aussi en TRANSITIONAL et FRAMESET)-->
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-
+  
   <!-- XHTML 1.1 (STRICT par défaut)-->
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
   ```
@@ -651,17 +652,11 @@ Résultat sans CSS:
 
 Peuvent être définis sur n'importe que élément HTML
 
-- `accesskey`: raccourci clavier de l'élément
-
+- `accesskey`: raccourci clavier de l'élément **(peu fiable d'un navigateur à l'autre, à éviter)**
 - **`class`**: permet d'associer un même style CSS à différentes balises
   + classes multiples possibles. Ex: `<div class="classe1 classe2"></div>`
-
 - `contenteditable`: rend l'élément modifiable
-
-- `contextmenu`: permet de référencer un élément `<menu>` (contenant des `<menuitem>`) qui apparaitra au clic droit sur l'élément
-
 - `data-*`: permet d'intégrer des données au code HTML, qui pourront être accédées via le DOM
-
 - `dir`: direction du texte de l'élément
 
 ---
@@ -764,7 +759,7 @@ Peuvent être définis sur n'importe que élément HTML
 - `<a>`: <a>Lien hypertexte</a>. L'attribut `href` définit l'URL cible
 - `<br>` : (**ne devrait pas servir souvent !**) <br>Retour à la ligne
 - **<span class='red'>`<p>`</span>**: <p>Paragraphe</p>
-- `<hr`>: Ligne de séparation horizontale<hr>
+- `<hr>`: Ligne de séparation horizontale<hr>
 
 ---
 
@@ -1077,7 +1072,7 @@ frameborder="0" allowfullscreen></iframe>
 
 # Autre contenu
 
-- `<embed>` (HTML5) : La bonne manière d'intéger du contenu externe via un plugin (Ex: Flash)
+- `<embed>` (HTML5) : contenu externe que le navigateur affiche seul (PDF, image vectorielle). **Les plugins (Flash, QuickTime) ont disparu**
   
   + Attributs utiles:
 		- `src`: URL du contenu externe à intégrer
@@ -1100,10 +1095,10 @@ frameborder="0" allowfullscreen></iframe>
 - `<embed>` (HTML5)
 
   ```html
-  <!-- Une vidéo lue avec le plugin Quicktime -->
+  <!-- Une vidéo Quicktime (plugin disparu) -->
   <embed type="video/quicktime" src="movie.mov" width="640" height="480">
 
-  <!-- Un contenu (ex: animation) Flash -->
+  <!-- Une animation Flash (plugin disparu) -->
   <embed type="application/x-shockwave-flash" src="anim.swf"  width="640" height="480">
   ```
 
@@ -1112,7 +1107,7 @@ frameborder="0" allowfullscreen></iframe>
   ```html
   <!-- Un contenu (ex: animation) Flash -->
   <object data="anim.swf" type="application/x-shockwave-flash"></object>
-
+  
   <!-- Un contenu (ex: animation) Flash avec paramètres-->
   <object data="anim.swf" type="application/x-shockwave-flash">
     <param name="foo" value="bar">
@@ -1308,9 +1303,10 @@ Résultat:
 
 ```html
 <form>
+  <!-- motif ancré automatiquement -->
   <p>
     <label for="t1">Texte:</label>
-    <input id="t1" type="text" required pattern="^test1|test2$">
+    <input id="t1" type="text" required pattern="test1|test2">
   </p>
   <!-- Champ email pouvant contenir plusieurs adresse -->
   <p>
@@ -1343,7 +1339,7 @@ Resultat:
 <form>
   <p>
     <label for="t1">Texte:</label>
-    <input id="t1" type="text" required pattern="^test1|test2$">
+    <input id="t1" type="text" required pattern="test1|test2">
   </p>
   <p>
     <label for="e1">Email:</label>
@@ -1354,8 +1350,8 @@ Resultat:
     <input id="p1" required type="password">
   </p>
   <p>
-    <label for="p1">Recherche:</label>
-    <input id="s1" type="search" placeholder="Faites une recherche !" autosave>
+    <label for="s1">Recherche:</label>
+    <input id="s1" type="search" placeholder="Faites une recherche !">
   </p>
   <button type="submit">Tester la <strong>validation</strong></button>
 </form>
@@ -1637,7 +1633,7 @@ Devient (avec les micro-données):
 ```SVG
 <svg viewBox="0 0 300 200">
   <rect width="100%" height="100%" fill="red"/>
-  <circle cx="150" cy=2100" r="80" fill="green"/>
+  <circle cx="150" cy="100" r="80" fill="green"/>
   <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
 </svg>
 ```
